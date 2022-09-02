@@ -1,7 +1,7 @@
 ---
 lab:
   title: 05 - 사이트 간 연결 구현
-  module: Module 05 - Intersite Connectivity
+  module: Administer Intersite Connectivity
 ---
 
 # <a name="lab-05---implement-intersite-connectivity"></a>랩 05 - 사이트 간 연결 구현

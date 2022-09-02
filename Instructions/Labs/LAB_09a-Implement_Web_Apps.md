@@ -1,7 +1,7 @@
 ---
 lab:
   title: 09a - 웹앱 구현
-  module: Module 09 - Serverless Computing
+  module: Administer Serverless Computing
 ---
 
 # <a name="lab-09a---implement-web-apps"></a>랩 09a - 웹앱 구현

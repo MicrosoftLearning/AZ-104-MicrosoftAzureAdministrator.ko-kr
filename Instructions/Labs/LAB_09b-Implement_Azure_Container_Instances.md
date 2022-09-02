@@ -1,7 +1,7 @@
 ---
 lab:
   title: 09b - Azure Container Instances 구현
-  module: Module 09 - Serverless Computing
+  module: Administer Serverless Computing
 ---
 
 # <a name="lab-09b---implement-azure-container-instances"></a>랩 09b - Azure Container Instances 구현
