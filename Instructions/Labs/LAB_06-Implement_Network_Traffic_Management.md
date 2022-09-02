@@ -1,7 +1,7 @@
 ---
 lab:
   title: 06 - 트래픽 관리 구현
-  module: Module 06 - Network Traffic Management
+  module: Administer Network Traffic Management
 ---
 
 # <a name="lab-06---implement-traffic-management"></a>랩 06 - 트래픽 관리 구현

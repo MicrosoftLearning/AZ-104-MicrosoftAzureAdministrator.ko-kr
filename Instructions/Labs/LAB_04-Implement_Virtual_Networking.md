@@ -1,7 +1,7 @@
 ---
 lab:
   title: 04 - 가상 네트워킹 구현
-  module: Module 04 - Virtual Networking
+  module: Administer Virtual Networking
 ---
 
 # <a name="lab-04---implement-virtual-networking"></a>랩 04 - 가상 네트워킹 구현
