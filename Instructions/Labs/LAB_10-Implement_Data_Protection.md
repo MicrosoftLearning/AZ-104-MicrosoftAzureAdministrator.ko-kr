@@ -1,7 +1,7 @@
 ---
 lab:
   title: 10 – 데이터 보호 구현
-  module: Module 10 - Data Protection
+  module: Administer Data Protection
 ---
 
 # <a name="lab-10---backup-virtual-machines"></a>랩 10 - 가상 머신 백업
@@ -10,6 +10,8 @@ lab:
 ## <a name="lab-scenario"></a>랩 시나리오
 
 You have been tasked with evaluating the use of Azure Recovery Services for backup and restore of files hosted on Azure virtual machines and on-premises computers. In addition, you want to identify methods of protecting data stored in the Recovery Services vault from accidental or malicious data loss.
+
+대화형 가이드 형식으로 이 랩을 미리 보려면 **[여기를 클릭하세요](https://mslabs.cloudguides.com/en-us/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2016)** .
 
 ## <a name="objectives"></a>목표
 

@@ -1,7 +1,7 @@
 ---
 lab:
   title: 08 - 가상 머신 관리
-  module: Module 08 - Virtual Machines
+  module: Administer Virtual Machines
 ---
 
 # <a name="lab-08---manage-virtual-machines"></a>랩 08 - 가상 머신 관리
@@ -10,6 +10,8 @@ lab:
 ## <a name="lab-scenario"></a>랩 시나리오
 
 You were tasked with identifying different options for deploying and configuring Azure virtual machines. First, you need to determine different compute and storage resiliency and scalability options you can implement when using Azure virtual machines. Next, you need to investigate compute and storage resiliency and scalability options that are available when using Azure virtual machine scale sets. You also want to explore the ability to automatically configure virtual machines and virtual machine scale sets by using the Azure Virtual Machine Custom Script extension.
+
+대화형 가이드 형식으로 이 랩을 미리 보려면 **[여기를 클릭하세요](https://mslabs.cloudguides.com/en-us/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2012)** .
 
 ## <a name="objectives"></a>목표
 
@@ -30,7 +32,7 @@ You were tasked with identifying different options for deploying and configuring
 ![이미지](../media/lab08.png)
 
 
-## <a name="instructions"></a>지침
+## <a name="instructions"></a>Instructions
 
 ### <a name="exercise-1"></a>연습 1
 

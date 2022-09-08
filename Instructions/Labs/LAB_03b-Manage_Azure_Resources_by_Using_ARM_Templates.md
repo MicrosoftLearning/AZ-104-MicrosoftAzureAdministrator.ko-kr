@@ -1,7 +1,7 @@
 ---
 lab:
   title: 03b - ARM 템플릿을 사용하여 Azure 리소스 관리
-  module: Module 03 - Azure Administration
+  module: Administer Azure Resources
 ---
 
 # <a name="lab-03b---manage-azure-resources-by-using-arm-templates"></a>랩 03b - ARM 템플릿을 사용하여 Azure 리소스 관리
@@ -9,6 +9,8 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 이제 Azure Portal을 사용하여 리소스 프로비저닝 및 리소스 그룹에 기반한 리소스 구성과 관련된 기본 Azure 관리 기능을 살펴보았으므로 Azure Resource Manager 템플릿을 사용하여 동등한 작업을 수행해야 합니다.
+
+대화형 가이드 형식으로 이 랩을 미리 보려면 **[여기를 클릭하세요](https://mslabs.cloudguides.com/en-us/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%205)** .
 
 ## <a name="objectives"></a>목표
 
@@ -24,7 +26,7 @@ lab:
 
 ![이미지](../media/lab03b.png)
 
-## <a name="instructions"></a>지침
+## <a name="instructions"></a>Instructions
 
 ### <a name="exercise-1"></a>연습 1
 
@@ -72,12 +74,6 @@ lab:
    "sourceResourceId": {
        "type": "String"
    },
-   "sourceUri": {
-       "type": "String"
-   },
-   "osType": {
-       "type": "String"
-   },
    ```
 
    ```json
@@ -85,10 +81,6 @@ lab:
        "defaultValue": "V1",
        "type": "String"
    },      
-   ```
-
-   ```json
-   "osType": "[parameters('osType')]",
    ```
 
     ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: These parameters are removed since they are not applicable to the current deployment. In particular, sourceResourceId, sourceUri, osType, and hyperVGeneration parameters are applicable to creating an Azure disk from an existing VHD file.
