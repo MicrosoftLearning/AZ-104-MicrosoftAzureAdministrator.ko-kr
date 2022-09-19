@@ -11,7 +11,7 @@ lab:
 
 You need to evaluate the use of Azure storage for storing files residing currently in on-premises data stores. While majority of these files are not accessed frequently, there are some exceptions. You would like to minimize cost of storage by placing less frequently accessed files in lower-priced storage tiers. You also plan to explore different protection mechanisms that Azure Storage offers, including network access, authentication, authorization, and replication. Finally, you want to determine to what extent Azure Files service might be suitable for hosting your on-premises file shares.
 
-대화형 가이드 형식으로 이 랩을 미리 보려면 **[여기를 클릭하세요](https://mslabs.cloudguides.com/en-us/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2011)** .
+<bpt id="p1">**</bpt>Note:<ept id="p1">**</ept> An <bpt id="p2">**</bpt><bpt id="p3">[</bpt>interactive lab simulation<ept id="p3">](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2011)</ept><ept id="p2">**</ept> is available that allows you to click through this lab at your own pace. You may find slight differences between the interactive simulation and the hosted lab, but the core concepts and ideas being demonstrated are the same. 
 
 ## <a name="objectives"></a>목표
 
@@ -111,17 +111,15 @@ You need to evaluate the use of Azure storage for storing files residing current
 
 1. **스토리지 계정 만들기** 블레이드의 **데이터 보호** 탭에서 사용 가능한 옵션을 검토하고 기본값을 수락하고 **검토 + 만들기**를 클릭한 다음 유효성 검사 프로세스가 완료될 때까지 기다렸다가 **만들기**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the Storage account to be created. This should take about 2 minutes.
+    >현재 온-프레미스 데이터 저장소에 있는 파일을 저장하는 데 Azure Storage를 사용하는 안을 평가해야 합니다.
 
 1. 배포 블레이드에서 **리소스로 이동**을 클릭하여 Azure Storage 계정 블레이드를 표시합니다.
 
-1. 스토리지 계정 블레이드의 **데이터 관리** 섹션에서 **지역 복제**를 클릭하고 보조 위치를 기록합니다. 
+1. 스토리지 계정 블레이드의 **데이터 관리** 섹션에서 **중복**을 클릭하고 보조 위치를 기록합니다. 
 
-1. 스토리지 계정 블레이드의 **설정** 섹션에서 **구성**을 선택한 다음 **복제** 드롭다운 목록에서 **LRS(로컬 중복 스토리지)** 를 선택하고 변경 사항을 저장합니다.
+1. 이러한 파일의 대부분은 몇 가지 예외를 제외하고는 자주 액세스하지 않습니다.
 
-1. **지역 복제** 블레이드로 다시 전환합니다. 이 시점에서 스토리지 계정은 기본 위치만 있음을 확인하세요.
-
-1. 스토리지 계정의**구성** 블레이드를 다시 표시하고 **Blob 액세스 계층(기본값)** 을 **쿨**로 설정하고 변경 사항을 저장합니다.
+1. 사용자는 자주 액세스하지 않는 파일을 저렴한 스토리지 계층에 배치하여 스토리지 비용을 최소화하려고 합니다.
 
     > **참고**: 쿨 액세스 계층은 자주 액세스하지 않는 데이터에 최적입니다.
 
@@ -162,7 +160,7 @@ You need to evaluate the use of Azure storage for storing files residing current
 
 1. **라이선스/LICENSE** 블레이드에서 사용 가능한 옵션을 검토합니다.
 
-    > 현재 온-프레미스 데이터 저장소에 있는 파일을 저장하는 데 Azure Storage를 사용하는 안을 평가해야 합니다.
+    > 또한 네트워크 액세스, 인증, 권한 부여 및 복제를 포함하여 Azure Storage가 제공하는 다양한 보호 메커니즘을 알아볼 계획입니다.
 
 #### <a name="task-4-manage-authentication-and-authorization-for-azure-storage"></a>작업 4: Azure Storage에 대한 인증 및 권한 부여 관리
 
@@ -197,17 +195,17 @@ You need to evaluate the use of Azure storage for storing files residing current
 
 1. InPrivate 모드를 사용하여 다른 브라우저 창을 열고 이전 단계에서 복사한 URL로 이동합니다.
 
-    > 이러한 파일의 대부분은 몇 가지 예외를 제외하고는 자주 액세스하지 않습니다.
+    > 마지막으로 Azure Files 서비스가 온-프레미스 파일 공유를 호스트하는 데 어느 정도 적합한지를 결정해야 합니다.
 
     > **참고**: 이것은 이제 새로 생성된 SAS 토큰을 기반으로 액세스 권한이 부여되므로 예상된 결과입니다.
 
-    > 사용자는 자주 액세스하지 않는 파일을 저렴한 스토리지 계층에 배치하여 스토리지 비용을 최소화하려고 합니다.
+    > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Save the blob SAS URL. You will need it later in this lab.
 
 1. InPrivate 브라우저 창을 닫고 Azure Storage 컨테이너의 **라이선스/LICENSE** 블레이드가 표시된 브라우저 창으로 돌아가서 다시 **az104-07-container** 블레이드로 이동합니다.
 
 1. **인증 방법** 레이블 옆에 있는 **Azure AD 사용자 계정으로 전환 ** 링크를 클릭합니다.
 
-    > 또한 네트워크 액세스, 인증, 권한 부여 및 복제를 포함하여 Azure Storage가 제공하는 다양한 보호 메커니즘을 알아볼 계획입니다.  
+    >                 **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2011)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다.  
 
     > **참고**: 이 시점에서는 인증 방법을 변경할 권한이 없습니다.
 
@@ -243,7 +241,7 @@ You need to evaluate the use of Azure storage for storing files residing current
 
 1. 새로 만든 파일 공유를 클릭한 다음 **연결**을 클릭합니다.
 
-1. 마지막으로 Azure Files 서비스가 온-프레미스 파일 공유를 호스트하는 데 어느 정도 적합한지를 결정해야 합니다.
+1. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다.
 
 1. Azure Portal에서 **가상 머신**을 검색하여 선택하고 가상 머신 목록에서 **az104-07-vm0**을 클릭합니다.
 

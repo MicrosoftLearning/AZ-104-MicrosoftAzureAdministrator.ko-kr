@@ -11,7 +11,7 @@ lab:
 
 You were tasked with identifying different options for deploying and configuring Azure virtual machines. First, you need to determine different compute and storage resiliency and scalability options you can implement when using Azure virtual machines. Next, you need to investigate compute and storage resiliency and scalability options that are available when using Azure virtual machine scale sets. You also want to explore the ability to automatically configure virtual machines and virtual machine scale sets by using the Azure Virtual Machine Custom Script extension.
 
-대화형 가이드 형식으로 이 랩을 미리 보려면 **[여기를 클릭하세요](https://mslabs.cloudguides.com/en-us/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2012)** .
+<bpt id="p1">**</bpt>Note:<ept id="p1">**</ept> An <bpt id="p2">**</bpt><bpt id="p3">[</bpt>interactive lab simulation<ept id="p3">](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2012)</ept><ept id="p2">**</ept> is available that allows you to click through this lab at your own pace. You may find slight differences between the interactive simulation and the hosted lab, but the core concepts and ideas being demonstrated are the same. 
 
 ## <a name="objectives"></a>목표
 
@@ -91,7 +91,7 @@ You were tasked with identifying different options for deploying and configuring
     | 가속된 네트워킹 | 해제
     | 기존 부하 분산 솔루션 뒤에 이 가상 머신을 배치하시겠습니까? | **선택 취소** |
 
-1. **다음: 관리 >** 를 클릭하고 **가상 머신 만들기** 블레이드의 **관리** 탭에서 다음 설정을 지정합니다(다른 설정은 기본값으로 유지).
+1. **다음: 모니터링 >** 을 클릭하고, **가상 머신 만들기** 블레이드의 **모니터링** 탭에서 다음 설정을 지정합니다(다른 설정은 기본값으로 유지).
 
     | 설정 | 값 |
     | --- | --- |
@@ -176,7 +176,7 @@ You were tasked with identifying different options for deploying and configuring
 
 1. **템플릿 편집** 블레이드에서 템플릿 콘텐츠를 표시하는 섹션에 줄 **20**(`"resources": [` 줄 바로 아래)부터 다음 코드를 삽입합니다.
 
-   ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: If you are using a tool that pastes the code in line by line intellisense may add extra brackets causing validation errors. You may want to paste the code into notepad first and then paste it into line 20.
+   >Azure 가상 머신의 배포 및 구성을 위한 다양한 옵션을 식별하는 작업을 수행해야 합니다.
 
    ```json
         {
@@ -204,7 +204,7 @@ You were tasked with identifying different options for deploying and configuring
 
 1. **저장**을 클릭하고, **사용자 지정 템플릿** 블레이드로 돌아와서 **검토 + 만들기**를 클릭하고 **검토 + 만들기** 블레이드에서 **만들기**를 클릭합니다.
 
-    >Azure 가상 머신의 배포 및 구성을 위한 다양한 옵션을 식별하는 작업을 수행해야 합니다.
+    >먼저 Azure 가상 머신을 사용할 경우 구현할 수 있는 다양한 컴퓨팅 및 스토리지 복원력과 확장성 옵션을 결정해야 합니다.
 
 1. 사용자 지정 스크립트 확장 기반 구성이 성공했는지 확인하려면 **운영** 섹션에서 **az104-08-vm1** 블레이드를 다시 탐색한 후 **실행 명령**을 클릭하고 명령 목록에서 **RunPowerShellScript**를 클릭합니다.
 
@@ -274,7 +274,7 @@ You were tasked with identifying different options for deploying and configuring
 
 1. **사용자 지정 배포** 블레이드에서 **템플릿 편집**을 클릭합니다.
 
-    >먼저 Azure 가상 머신을 사용할 경우 구현할 수 있는 다양한 컴퓨팅 및 스토리지 복원력과 확장성 옵션을 결정해야 합니다.
+    >다음으로 Azure 가상 머신 확장 집합을 사용할 경우 사용할 수 있는 컴퓨팅 및 스토리지 복원력과 확장성 옵션을 조사해야 합니다.
 
 1. **템플릿 편집** 블레이드의 템플릿 콘텐츠를 표시하는 섹션에서 줄 **30** `"vmSize": "Standard_D2s_v3"`을 다음 줄로 바꿉니다.
 
@@ -306,14 +306,14 @@ You were tasked with identifying different options for deploying and configuring
                     ]
    ```
 
-    >다음으로 Azure 가상 머신 확장 집합을 사용할 경우 사용할 수 있는 컴퓨팅 및 스토리지 복원력과 확장성 옵션을 조사해야 합니다.
+    >또한 Azure 가상 머신 사용자 지정 스크립트 확장을 사용하여 가상 머신 및 가상 머신 확장 집합을 자동으로 구성하는 기능을 탐색하고자 합니다.
 
     >**참고**: 템플릿의 이 섹션에서는 두 개의 관리 디스크를 만들고 Azure Portal을 통한 첫 번째 가상 머신의 스토리지 구성과 유사하게 **az104-08-vm1**에 연결합니다.
 
 
 1. **저장**을 클릭하고, **사용자 지정 배포** 블레이드에서 **검토 + 만들기**를 클릭하고, **검토 + 만들기** 블레이드에서 **만들기**를 클릭합니다.
 
-    >또한 Azure 가상 머신 사용자 지정 스크립트 확장을 사용하여 가상 머신 및 가상 머신 확장 집합을 자동으로 구성하는 기능을 탐색하고자 합니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the template deployment to complete. You can monitor its progress from the <bpt id="p1">**</bpt>Disks<ept id="p1">**</ept> blade of the <bpt id="p2">**</bpt>az104-08-vm1<ept id="p2">**</ept> virtual machine. This should take no more than 3 minutes.
 
 1. **az104-08-vm1** 블레이드로 돌아와서, **작업** 섹션에서 **실행 명령**을 클릭하고, 명령 목록에서 **RunPowerShellScript**를 클릭합니다.
 
@@ -449,7 +449,7 @@ You were tasked with identifying different options for deploying and configuring
 
 1. **가상 머신 확장 집합 만들기** 블레이드의 **검토 + 만들기** 탭에서 유효성 검사가 통과되었는지 확인하고 **만들기**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the virtual machine scale set deployment to complete. This should take about 5 minutes.
+    >                **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2012)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다.
 
 #### <a name="task-6-configure-azure-virtual-machine-scale-sets-by-using-virtual-machine-extensions"></a>작업 6: 가상 머신 확장을 사용하여 Azure 가상 머신 확장 집합 구성
 
@@ -582,7 +582,7 @@ You were tasked with identifying different options for deploying and configuring
 
 1. 변경 사항을 저장하고 **az10408vmss0** 블레이드의 **설정** 섹션에서 **인스턴스**를 클릭합니다. 그런 다음 가상 머신 확장 집합의 인스턴스 옆에 있는 체크박스를 선택하고 **업그레이드**를 클릭한 다음 확인을 요청하면 **예**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: The disk attached in the previous step is a raw disk. Before it can be used, it is necessary to create a partition, create a filesystem, and mount it. To accomplish this, you will use Azure virtual machine Custom Script extension. First, you will need to remove the existing Custom Script Extension.
+    >대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다.
 
 1. **az10408vmss0** 블레이드의 **설정** 섹션에서 **확장**을 클릭하고 **CustomScriptExtension**을 클릭한 다음 **제거**를 클릭합니다.
 

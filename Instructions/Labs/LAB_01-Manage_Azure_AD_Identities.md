@@ -12,7 +12,7 @@ lab:
 
 In order to allow Contoso users to authenticate by using Azure AD, you have been tasked with provisioning users and group accounts. Membership of the groups should be updated automatically based on the user job titles. You also need to create a test Azure AD tenant with a test user account and grant that account limited permissions to resources in the Contoso Azure subscription.
 
-대화형 가이드 형식으로 이 랩을 미리 보려면 **[여기를 클릭하세요](https://mslabs.cloudguides.com/en-us/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%201)** .
+<bpt id="p1">**</bpt>Note:<ept id="p1">**</ept> An <bpt id="p2">**</bpt><bpt id="p3">[</bpt>interactive lab simulation<ept id="p3">](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%201)</ept><ept id="p2">**</ept> is available that allows you to click through this lab at your own pace. You may find slight differences between the interactive simulation and the hosted lab, but the core concepts and ideas being demonstrated are the same.
 
 ## <a name="objectives"></a>목표
 
@@ -114,7 +114,7 @@ In order to allow Contoso users to authenticate by using Azure AD, you have been
 
 1. 브라우저 창을 새로 고치고 성공적으로 활성화되었는지 확인합니다. 
 
- ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: It can take up to 10 minutes for the licenses to activate. Continue refreshing the page until it appears. Do not proceed until the licenses have been activated.
+ >Contoso 사용자가 Azure AD를 사용하여 인증할 수 있도록 하려면 사용자 및 그룹 계정을 프로비전해야 합니다.
 
 1. **라이선스 - 모든 제품** 블레이드에서 **Azure Active Directory Premium P2** 항목을 선택하고 Azure AD Premium P2의 모든 라이선스 옵션을 사용자 계정 및 새로 만든 두 사용자 계정에 할당합니다.
 
@@ -141,7 +141,7 @@ In order to allow Contoso users to authenticate by using Azure AD, you have been
     | 연산자 | **같음** |
     | 값 | **클라우드 관리자** |
 
-1. Contoso 사용자가 Azure AD를 사용하여 인증할 수 있도록 하려면 사용자 및 그룹 계정을 프로비전해야 합니다. 
+1. 그룹의 구성원은 사용자 직위에 따라 자동으로 업데이트되어야 합니다. 
 
 1. Azure AD 테넌트의 **그룹 - 모든 그룹** 블레이드로 돌아와서 **+ 새 그룹** 단추를 클릭하고 다음 설정을 사용하여 새 그룹을 만듭니다.
 
@@ -162,7 +162,7 @@ In order to allow Contoso users to authenticate by using Azure AD, you have been
     | 연산자 | **같음** |
     | 값 | **시스템 관리자** |
 
-1. 그룹의 구성원은 사용자 직위에 따라 자동으로 업데이트되어야 합니다. 
+1. 또한 테스트 사용자 계정이 있는 Azure AD 테넌트를 만들고 Contoso Azure 구독의 리소스에 대한 제한된 권한을 해당 계정에 부여해야 합니다. 
 
 1. Azure AD 테넌트의 **그룹 - 모든 그룹** 블레이드로 돌아와서 **+ 새 그룹** 단추를 클릭하고 다음 설정을 사용하여 새 그룹을 만듭니다.
 
@@ -177,11 +177,11 @@ In order to allow Contoso users to authenticate by using Azure AD, you have been
 
 1. **구성원 추가** 블레이드에서 **IT 클라우드 관리자** 및 **IT 시스템 관리자** 그룹을 검색 및 선택하고 **새 그룹** 블레이드로 돌아가서 **만들기**를 클릭합니다.
 
-1. 또한 테스트 사용자 계정이 있는 Azure AD 테넌트를 만들고 Contoso Azure 구독의 리소스에 대한 제한된 권한을 해당 계정에 부여해야 합니다.
+1. Back on the <bpt id="p1">**</bpt>Groups - All groups<ept id="p1">**</ept> blade, click the entry representing the <bpt id="p2">**</bpt>IT Cloud Administrators<ept id="p2">**</ept> group and, on then display its <bpt id="p3">**</bpt>Members<ept id="p3">**</ept> blade. Verify that the <bpt id="p1">**</bpt>az104-01a-aaduser1<ept id="p1">**</ept> appears in the list of group members.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: You might experience delays with updates of the dynamic membership groups. To expedite the update, navigate to the group blade, display its <bpt id="p1">**</bpt>Dynamic membership rules<ept id="p1">**</ept> blade, <bpt id="p2">**</bpt>Edit<ept id="p2">**</ept> the rule listed in the <bpt id="p3">**</bpt>Rule syntax<ept id="p3">**</ept> textbox by adding a whitespace at the end, and <bpt id="p4">**</bpt>Save<ept id="p4">**</ept> the change.
+    >                **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%201)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다.
 
-1. Navigate back to the <bpt id="p1">**</bpt>Groups - All groups<ept id="p1">**</ept> blade, click the entry representing the <bpt id="p2">**</bpt>IT System Administrators<ept id="p2">**</ept> group and, on then display its <bpt id="p3">**</bpt>Members<ept id="p3">**</ept> blade. Verify that the <bpt id="p1">**</bpt>az104-01a-aaduser2<ept id="p1">**</ept> appears in the list of group members.
+1. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다.
 
 #### <a name="task-3-create-an-azure-active-directory-ad-tenant-optional---lab-environment-issue"></a>작업 3: AD(Azure Active Directory) 테넌트 만들기(선택 사항 - 랩 환경 이슈)
 
@@ -234,7 +234,7 @@ In order to allow Contoso users to authenticate by using Azure AD, you have been
 
 1. Azure Portal 도구 모음에서 **디렉터리 + 구독** 단추(Cloud Shell 단추 바로 오른쪽)를 사용해 기본 Azure AD 테넌트로 다시 전환합니다.
 
-1. **사용자 - 모든 사용자** 블레이드로 다시 이동한 다음 **+ 새 게스트 사용자**를 클릭하세요.
+1. **사용자 - 모든 사용자** 블레이드로 다시 이동한 다음, **+ 외부 사용자 초대**를 클릭합니다.
 
 1. 다음 설정을 사용하여 새 게스트 사용자를 초대합니다(다른 설정은 기본값으로 유지).
 
