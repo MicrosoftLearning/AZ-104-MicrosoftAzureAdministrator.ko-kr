@@ -20,9 +20,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 - granting permissions to submit support requests for all subscriptions in the management group to a designated Azure Active Directory user. That user's permissions should be limited only to: 
 
     - 지원 요청 티켓 만들기
-    - 리소스 그룹 보기
-
-대화형 가이드 형식으로 이 랩을 미리 보려면 **[여기를 클릭하세요](https://mslabs.cloudguides.com/en-us/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%202)** .
+    - 리소스 그룹 보기 
 
 ## <a name="objectives"></a>목표
 

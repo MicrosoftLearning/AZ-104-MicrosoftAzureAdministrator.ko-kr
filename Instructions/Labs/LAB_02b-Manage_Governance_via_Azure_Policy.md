@@ -15,9 +15,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 
 - 적절하게 태그가 지정된 인프라 리소스만 인프라 리소스 그룹에 추가할 수 있도록 합니다.
 
-- 모든 비준수 리소스를 수정합니다.
-
-대화형 가이드 형식으로 이 랩을 미리 보려면 **[여기를 클릭하세요](https://mslabs.cloudguides.com/en-us/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%203)** .
+- 모든 비준수 리소스를 수정합니다. 
 
 ## <a name="objectives"></a>목표
 
@@ -33,7 +31,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 
 ![이미지](../media/lab02b.png)
 
-## <a name="instructions"></a>Instructions
+## <a name="instructions"></a>지침
 
 ### <a name="exercise-1"></a>연습 1
 
