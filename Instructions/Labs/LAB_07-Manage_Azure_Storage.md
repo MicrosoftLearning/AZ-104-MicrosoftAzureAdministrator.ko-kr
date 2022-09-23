@@ -11,8 +11,6 @@ lab:
 
 You need to evaluate the use of Azure storage for storing files residing currently in on-premises data stores. While majority of these files are not accessed frequently, there are some exceptions. You would like to minimize cost of storage by placing less frequently accessed files in lower-priced storage tiers. You also plan to explore different protection mechanisms that Azure Storage offers, including network access, authentication, authorization, and replication. Finally, you want to determine to what extent Azure Files service might be suitable for hosting your on-premises file shares.
 
-대화형 가이드 형식으로 이 랩을 미리 보려면 **[여기를 클릭하세요](https://mslabs.cloudguides.com/en-us/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2011)** .
-
 ## <a name="objectives"></a>목표
 
 이 랩에서는 다음을 수행합니다.
@@ -31,7 +29,7 @@ You need to evaluate the use of Azure storage for storing files residing current
 ![이미지](../media/lab07.png)
 
 
-## <a name="instructions"></a>Instructions
+## <a name="instructions"></a>지침
 
 ### <a name="exercise-1"></a>연습 1
 
@@ -53,7 +51,8 @@ You need to evaluate the use of Azure storage for storing files residing current
 
 1. Cloud Shell 창에서 다음을 실행하여 가상 머신을 호스트할 리소스 그룹을 만듭니다(‘[Azure_region]’ 자리 표시자를 Azure 가상 머신을 배포하려는 Azure 지역의 이름으로 바꿈).
 
-    >**참고**: Azure 지역의 이름을 나열하려면 `(Get-AzLocation).Location`**참고**를 실행하세요. 아래의 각 명령은 별도로 입력해야 합니다.
+    >**참고**: Azure 지역의 이름을 나열하려면 `(Get-AzLocation).Location`
+    >**참고**를 실행하세요. 아래의 각 명령은 별도로 입력해야 합니다.
 
     ```powershell
     $location = '[Azure_region]'

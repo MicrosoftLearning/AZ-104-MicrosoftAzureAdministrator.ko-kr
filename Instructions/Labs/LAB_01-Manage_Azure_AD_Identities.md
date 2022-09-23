@@ -12,8 +12,6 @@ lab:
 
 In order to allow Contoso users to authenticate by using Azure AD, you have been tasked with provisioning users and group accounts. Membership of the groups should be updated automatically based on the user job titles. You also need to create a test Azure AD tenant with a test user account and grant that account limited permissions to resources in the Contoso Azure subscription.
 
-대화형 가이드 형식으로 이 랩을 미리 보려면 **[여기를 클릭하세요](https://mslabs.cloudguides.com/en-us/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%201)** .
-
 ## <a name="objectives"></a>목표
 
 이 랩에서는 다음을 수행합니다.
@@ -28,7 +26,7 @@ In order to allow Contoso users to authenticate by using Azure AD, you have been
 ## <a name="architecture-diagram"></a>아키텍처 다이어그램
 ![이미지](../media/lab01.png)
 
-## <a name="instructions"></a>Instructions
+## <a name="instructions"></a>지침
 
 ### <a name="exercise-1"></a>연습 1
 
