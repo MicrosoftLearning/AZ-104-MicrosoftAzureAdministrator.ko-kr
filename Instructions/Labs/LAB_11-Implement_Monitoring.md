@@ -1,51 +1,55 @@
 ---
 lab:
-    title: '11 - 모니터링 구현'
-    module: '모듈 11 - 모니터링'
+  title: 11 - 모니터링 구현
+  module: Administer Monitoring
 ---
 
-# 랩 11 - 모니터링 구현
-# 학생 랩 매뉴얼
+# <a name="lab-11---implement-monitoring"></a>랩 11 - 모니터링 구현
+# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
 
-## 랩 시나리오
+## <a name="lab-scenario"></a>랩 시나리오
 
-Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azure 기능을 평가해야 하며, 특히 Azure 가상 머신에 중점을 두어야 합니다. 이를 위해 Log Analytics을 비롯한 Azure Monitor의 기능을 검사하려고 합니다.
+You need to evaluate Azure functionality that would provide insight into performance and configuration of Azure resources, focusing in particular on Azure virtual machines. To accomplish this, you intend to examine the capabilities of Azure Monitor, including Log Analytics.
 
-## 목표
+대화형 가이드 형식으로 이 랩을 미리 보려면 **[여기를 클릭하세요](https://mslabs.cloudguides.com/en-us/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2017)** .
 
-이 랩에서는 다음 작업을 수행합니다.
+## <a name="objectives"></a>목표
+
+이 랩에서는 다음을 수행합니다.
 
 + 작업 1: 랩 환경 프로비전
 + 작업 2: Microsoft.Insights 및 Microsoft.AlertsManagement 리소스 공급자 등록
-+ 작업 3: Azure Log Analytics 작업 영역 및 Azure Automation 기반 솔루션 만들기 및 구성
++ 작업 3: Azure Log Analytics 작업 영역 및 Azure 자동화 기반 솔루션 만들기 및 구성
 + 작업 4: Azure 가상 머신의 기본 모니터링 설정 검토
 + 작업 5: Azure 가상 머신 진단 설정 구성
 + 작업 6: Azure Monitor 기능 검토
 + 작업 7: Azure Log Analytics 기능 검토
 
-## 예상 시간: 45분
+## <a name="estimated-timing-45-minutes"></a>예상 소요 시간: 45분
 
-## 지침
+## <a name="instructions"></a>지침
 
-### 연습 1:
+### <a name="exercise-1"></a>연습 1
 
-#### 작업 1: 랩 환경 프로비전
+#### <a name="task-1-provision-the-lab-environment"></a>작업 1: 랩 환경 프로비전
 
-이 작업에서는 모니터링 시나리오를 테스트하는 데 사용되는 가상 머신을 배포합니다.
+이 작업에서는 모니터링 시나리오를 테스트하는 데 사용할 가상 머신을 배포합니다.
 
 1. [Azure Portal](https://portal.azure.com)에 로그인합니다.
 
 1. Azure Portal에서 오른쪽 상단의 아이콘을 클릭하여 **Azure Cloud Shell**을 엽니다.
 
-1. **Bash** 또는 **PowerShell**을 선택하라는 메시지가 표시되면 **PowerShell**을 선택합니다.
+1. **Bash**와 **PowerShell** 중에서 선택하라는 메시지가 표시되면 **PowerShell**을 선택합니다.
 
     >**참고**: **Cloud Shell**을 처음 시작했는데 **탑재된 스토리지 없음**이라는 메시지가 표시되면 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 클릭합니다.
 
 1. Cloud Shell 창의 도구 모음에서 **파일 업로드/다운로드** 아이콘을 클릭한 다음, 드롭다운 메뉴에서 **업로드**를 클릭하여 파일 **\\Allfiles\\Labs\\11\\az104-11-vm-template.json** 및 **\\Allfiles\\Labs\\11\\az104-11-vm-parameters.json**을 Cloud Shell 홈 디렉터리에 업로드합니다.
 
-1. Cloud Shell 창에서 다음을 실행하여 가상 머신을 호스팅할 리소스 그룹을 만듭니다(`[Azure_region]` 자리 표시자를 Azure 가상 머신을 배포하려는 Azure 지역의 이름으로 대체).
+1. Edit the Parameters file you just uploaded and change the password. If you need help editing the file in the Shell please ask your instructor for assistance. As a best practice, secrets, like passwords, should be more securely stored in the Key Vault. 
 
-    >**참고**: [작업 영역 매핑 설명서](https://docs.microsoft.com/ko-kr/azure/automation/how-to/region-mappings)에 참조된 **Log Analytics 작업 영역 지역**으로 나와 있는 지역 중 하나를 선택해야 합니다
+1. Cloud Shell 창에서 다음을 실행하여 가상 머신을 호스팅할 리소스 그룹을 만듭니다(`[Azure_region]` 자리 표시자를 Azure 가상 머신을 배포하려는 Azure 지역의 이름으로 바꾸기).
+
+    >**참고**: [작업 영역 매핑 설명서](https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings)에 참조된 **Log Analytics 작업 영역 지역**으로 나와 있는 지역 중 하나를 선택해야 합니다
 
    ```powershell
    $location = '[Azure_region]'
@@ -65,9 +69,9 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
       -AsJob
    ```
 
-    >**참고**: 배포가 완료될 때까지 기다리지 말고 다음 작업을 진행합니다. 배포에는 약 3분이 소요됩니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Do not wait for the deployment to complete but instead proceed to the next task. The deployment should take about 3 minutes.
 
-#### 작업 2: Microsoft.Insights 및 Microsoft.AlertsManagement 리소스 공급자를 등록합니다.
+#### <a name="task-2-register-the-microsoftinsights-and-microsoftalertsmanagement-resource-providers"></a>작업 2: Microsoft.Insights 및 Microsoft.AlertsManagement 리소스 공급자를 등록합니다.
 
 1. Cloud Shell 창에서 다음을 실행하여 Microsoft.Insights와 Microsoft.AlertsManagement 리소스 공급자를 등록합니다.
 
@@ -79,9 +83,9 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 
 1. Cloud Shell 창을 최소화합니다(닫지 않습니다).
 
-#### 작업 3: Azure Log Analytics 작업 영역 및 Azure Automation 기반 솔루션 만들기 및 구성
+#### <a name="task-3-create-and-configure-an-azure-log-analytics-workspace-and-azure-automation-based-solutions"></a>작업 3: Azure Log Analytics 작업 영역 및 Azure 자동화 기반 솔루션 만들기 및 구성
 
-이 작업에서는 Azure Log Analytics 작업 영역 및 Azure Automation 기반 솔루션을 만들고 구성합니다.
+이 작업에서는 Azure Log Analytics 작업 영역 및 Azure 자동화 기반 솔루션을 만들고 구성합니다.
 
 1. Azure Portal에서 **Log Analytics 작업 영역**을 검색 및 선택하고 **Log Analytics 작업 영역** 블레이드에서 **+ 만들기**를 클릭합니다.
 
@@ -89,45 +93,45 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 
     | 설정 | 값 |
     | --- | --- |
-    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-    | 리소스 그룹 | 새 리소스 그룹 **az104-11-rg1**의 이름 |
-    | Log Analytics 작업 영역 | 모든 고유 이름 |
+    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | Resource group | 새 리소스 그룹 **az104-11-rg1**의 이름 |
+    | Log Analytics 작업 영역 | 고유한 이름 |
     | 지역 | 이전 작업에서 가상 머신을 배포한 Azure 지역의 이름 |
 
-    >**참고**: 이전 작업에서 가상 머신을 배포한 것과 같은 지역을 지정해야 합니다.
+    >**참고**: 이전 작업에서 가상 머신을 배포한 지역과 같은 지역을 지정해야 합니다.
 
-    >**참고**: 배포가 완료될 때까지 기다립니다. 배포에는 약 1분이 소요됩니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the deployment to complete. The deployment should take about 1 minute.
 
 1. Azure Portal에서 **자동화 계정**을 검색 및 선택하고 **자동화 계정** 블레이드에서 **+ 만들기**를 선택합니다.
 
-1. **자동화 계정 만들기** 블레이드에서 다음 설정을 지정하고 **검토 + 만들기**를 클릭합니다. 유효성 검사가 완료되면 **만들기**를 클릭합니다.
+1. **Automation 계정 만들기** 블레이드에서 다음 설정을 지정하고 유효성 검사 시 **검토 + 만들기**를 클릭하고 **만들기**를 클릭합니다.
 
     | 설정 | 값 |
     | --- | --- |
-    | 이름 | 모든 고유 이름 |
-    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-    | 리소스 그룹 | **az104-11-rg1** |
-    | 위치 | [작업 영역 매핑 설명서](https://docs.microsoft.com/ko-kr/azure/automation/how-to/region-mappings)에 따라 결정된 Azure 지역의 이름 |
+    | Automation 계정 이름 | 고유한 이름 |
+    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | Resource group | **az104-11-rg1** |
+    | 지역 | [작업 영역 매핑 설명서](https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings)에 따라 결정되는 Azure 지역의 이름 |
 
-    >**참고**: [작업 영역 매핑 설명서](https://docs.microsoft.com/ko-kr/azure/automation/how-to/region-mappings)를 기반으로 Azure 지역을 지정해야 합니다.
+    >**참고**: [작업 영역 매핑 설명서](https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings)를 기반으로 Azure 지역을 지정해야 합니다.
 
-    >**참고**: 배포가 완료될 때까지 기다립니다. 배포는 3분 정도 걸릴 수 있습니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the deployment to complete. The deployment might take about 3 minutes.
 
 1. **리소스로 이동**을 클릭합니다.
 
 1. 자동화 계정 블레이드의 **구성 관리** 섹션에서 **인벤토리**를 클릭합니다.
 
-1. **인벤토리** 창의 **Log Analytics 작업 영역** 드롭다운 목록에서 이 작업의 앞부분에서 만든 Log Analytics 작업 영역을 선택하고 **사용**을 클릭합니다.
+1. **인벤토리** 창의 **Log Analytics 작업 영역** 드롭다운 리스트에서 이 작업 앞부분에서 만든 Log Analytics 작업 영역을 선택하고 **사용**을 클릭합니다.
 
-    >**참고**: 해당 Log Analytics 솔루션의 설치가 완료될 때까지 기다립니다. 3분 정도 걸릴 수 있습니다.
+    >Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azure 기능을 평가해야 하며, 특히 Azure 가상 머신에 중점을 두어야 합니다.
 
-    >**참고**: 이렇게 하면 **변경 내용 추적** 솔루션도 자동으로 설치됩니다.
+    >**참고**: **변경 내용 추적** 솔루션도 자동으로 설치됩니다.
 
 1. 자동화 계정 블레이드의 **업데이트 관리** 섹션에서 **업데이트 관리**를 클릭하고 **사용**을 클릭합니다.
 
-    >**참고**: 설치가 완료될 때까지 기다립니다. 5분 정도 걸릴 수 있습니다.
+    >이를 위해 Log Analytics를 포함하여 Azure Monitor의 기능을 검사하려고 합니다.
 
-#### 작업 4: Azure 가상 머신의 기본 모니터링 설정 검토
+#### <a name="task-4-review-default-monitoring-settings-of-azure-virtual-machines"></a>작업 4: Azure 가상 머신의 기본 모니터링 설정 검토
 
 이 작업에서는 Azure 가상 머신의 기본 모니터링 설정을 검토합니다.
 
@@ -135,17 +139,17 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 
 1. **az104-11-vm0** 블레이드의 **모니터링** 섹션에서 **메트릭**을 선택합니다.
 
-1. **az104-11-vm0 \| 메트릭** 블레이드에서 기본 차트에서 유일하게 사용 가능한 **메트릭 네임스페이스**는 **가상 머신 호스트**뿐이라는 점에 유의합니다.
+1. **az104-11-vm0 \| 메트릭스** 블레이드의 기본 차트에서 사용 가능한 유일한 **메트릭 네임스페이스**는 **가상 컴퓨터 호스트**입니다.
 
-    >**참고**: 게스트 수준 진단 설정이 아직 구성되지 않았기 때문에 이와 같은 결과는 예상되었습니다. 그러나 **메트릭 네임스페이스** 드롭다운 목록에서 게스트 메모리 메트릭을 직접 사용하도록 설정할 수 있습니다. 이 연습의 뒷부분에서 해당 메트릭을 사용하도록 설정합니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This is expected, since no guest-level diagnostic settings have been configured yet. You do have, however, the option of enabling guest memory metrics directly from the <bpt id="p1">**</bpt>Metrics Namespace<ept id="p1">**</ept> drop down-list. You will enable it later in this exercise.
 
 1. **메트릭** 드롭다운 목록에서 사용 가능한 메트릭 목록을 검토합니다.
 
-    >**참고**: 목록에는 게스트 수준 메트릭에 대한 액세스 없이 가상 머신 호스트로부터 수집할 수 있는 다양한 CPU, 디스크 및 네트워크 관련 메트릭이 포함되어 있습니다.
+    >**참고**: 목록에는 게스트 수준 메트릭에 액세스할 필요 없이 가상 머신 호스트에서 수집할 수 있는 다양한 CPU, 디스크, 네트워크 관련 메트릭이 포함됩니다.
 
 1. **메트릭** 드롭다운 목록에서 **백분율 CPU**를 선택하고 **집계** 드롭다운 목록에서 **평균**을 선택하고 결과 차트를 검토합니다.
 
-#### 작업 5: Azure 가상 머신 진단 설정 구성
+#### <a name="task-5-configure-azure-virtual-machine-diagnostic-settings"></a>작업 5: Azure 가상 머신 진단 설정 구성
 
 이 작업에서는 Azure 가상 머신 진단 설정을 구성합니다.
 
@@ -153,37 +157,37 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 
 1. **az104-11-vm0 \| 진단 설정** 블레이드의 **개요** 탭에서 **게스트 수준 모니터링 사용**을 클릭합니다.
 
-    >**참고**: 작업이 적용될 때까지 기다립니다. 3분 정도 걸릴 수 있습니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the operation to take effect. This might take about 3 minutes.
 
-1. **az104-11-vm0 \|진단 설정** 블레이드의 **성능 카운터** 탭으로 전환하고 사용 가능한 카운터를 검토합니다.
+1. **az104-11-vm0 \| 진단 설정** 블레이드의 **성능 카운터** 탭으로 전환하고 사용 가능한 카운터를 검토합니다.
 
-    >**참고**: 기본적으로 CPU, 메모리, 디스크 및 네트워크 카운터가 사용됩니다. 자세한 목록을 보려면 **사용자 지정** 보기로 전환할 수 있습니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: By default, CPU, memory, disk, and network counters are enabled. You can switch to the <bpt id="p1">**</bpt>Custom<ept id="p1">**</ept> view for more detailed listing.
 
-1. **az104-11-vm0 \| 진단 설정** 블레이드의 **로그** 탭으로 전환하여 사용 가능한 이벤트 로그 컬렉션 옵션을 검토합니다.
+1. **az104-11-vm0 \| 진단 설정** 블레이드의 **로그** 탭으로 전환하여 사용 가능한 이벤트 로그 수집 옵션을 검토합니다.
 
-    >**참고**: 기본적으로 로그 컬렉션에는 응용 프로그램 로그 및 시스템 로그의 중요 항목, 오류 항목, 경고 항목과 보안 로그의 감사 실패 항목이 포함됩니다. 여기에서도 자세한 구성 설정을 위해 **사용자 지정** 보기로 전환할 수 있습니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: By default, log collection includes critical, error, and warning entries from the Application Log and System log, as well as Audit failure entries from the Security log. Here as well you can switch to the <bpt id="p1">**</bpt>Custom<ept id="p1">**</ept> view for more detailed configuration settings.
 
-1. **az104-11-vm0** 블레이드의 **모니터링** 섹션에서 **로그**를 클릭한 다음 **사용**을 클릭합니다.
+1. **az104-11-vm0** 블레이드의 **모니터링** 섹션에서 **Log Analytics 에이전트**를 클릭한 다음 **사용**을 클릭합니다.
 
 1. **az104-11-vm0 - 로그** 블레이드에서 이 랩의 앞부분에서 만든 Log Analytics 작업 영역이 **Log Analytics 작업 영역 선택** 드롭다운 목록에서 선택되었는지 확인하고 **사용**을 클릭합니다.
 
-    >**참고**: 작업이 완료될 때까지 기다리지 말고 다음 단계를 진행하세요. 해당 작업에는 약 5분이 소요됩니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Do not wait for the operation to complete but instead proceed to the next step. The operation might take about 5 minutes.
 
 1. **az104-11-vm0 \| 로그** 블레이드의 **모니터링** 섹션에서 **메트릭**을 클릭합니다.
 
-1. **az104-11-vm0 \| 메트릭** 블레이드의 기본 차트에는 이 시점에서 **메트릭 네임스페이스** 드롭다운 목록에 **가상 머신 호스트** 항목과 함께 **게스트(클래식)** 항목 또한 포함한다는 것에 유의합니다.
+1. **az104-11-vm0 \| 메트릭** 블레이드의 기본 차트에서 이 시점에서 **메트릭 네임스페이스** 드롭다운 목록과 **가상 머신 호스트** 항목에는 **게스트(클래식)** 항목도 포함됨을 유의하세요.
 
-    >**참고**: 게스트 수준 진단 설정을 사용하도록 설정했으므로 이 항목이 포함되는 것은 정상적인 현상입니다. **새 게스트 메모리 메트릭 사용** 옵션도 있습니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This is expected, since you enabled guest-level diagnostic settings. You also have the option to <bpt id="p1">**</bpt>Enable new guest memory metrics<ept id="p1">**</ept>.
 
 1. **메트릭 네임스페이스** 드롭다운 목록에서 **게스트(클래식)** 항목을 선택합니다.
 
 1. **메트릭** 드롭다운 목록에서 사용 가능한 메트릭 목록을 검토합니다.
 
-    >**참고**: 호스트 수준 모니터링에서만 사용할 경우 목록에는 사용할 수 없는 추가 게스트 수준 메트릭이 포함됩니다:
+    >**참고**: 목록에는 호스트 수준 모니터링만 사용할 경우 사용할 수 없는 추가 게스트 수준 메트릭이 포함됩니다.
 
-1. **메트릭** 드롭다운 목록에서 **메모리\\사용 가능한 바이트 수**를 선택하고 **집계** 드롭다운 목록에서 **최대값**을 선택한 후에 표시되는 차트를 검토합니다.
+1. **메트릭** 드롭다운 목록에서 **메모리\\사용 가능한 바이트 수**를 선택하고 **집계** 드롭다운 목록에서 **최댓값**을 선택한 후에 표시되는 차트를 검토합니다.
 
-#### 작업 6: Azure Monitor 기능 검토
+#### <a name="task-6-review-azure-monitor-functionality"></a>작업 6: Azure Monitor 기능 검토
 
 1. Azure Portal에서 **모니터**를 검색하여 선택하고 **모니터 \| 개요** 블레이드에서 **메트릭**을 클릭합니다.
 
@@ -195,11 +199,11 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 
 1. **모니터 \| 메트릭** 블레이드의 **az104-11-vm0의 평균 CPU 비율** 창에서 **새 경고 규칙**을 클릭합니다.
 
-    >**참고**: 메트릭에서 경고 규칙을 만드는 것은 게스트(클래식) 메트릭 네임스페이스의 메트릭에 대해 지원되지 않습니다. 이 작업은 [Windows 가상 머신용 Resource Manager 템플릿을 사용하여 Azure Monitor 메트릭 저장소에 게스트 OS 메트릭 보내기](https://docs.microsoft.com/ko-kr/azure/azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm) 문서에 설명된 대로 Azure Resource Manager 템플릿을 사용하여 수행할 수 있습니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Creating an alert rule from Metrics is not supported for metrics from the Guest (classic) metric namespace. This can be accomplished by using Azure Resource Manager templates, as described in the document <bpt id="p1">[</bpt>Send Guest OS metrics to the Azure Monitor metric store using a Resource Manager template for a Windows virtual machine<ept id="p1">](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm)</ept>
 
 1. **경고 규칙 만들기** 블레이드의 **조건** 에서 기존 조건 항목을 클릭합니다.
 
-1. **신호 논리 구성** 블레이드에서 신호 목록의 **경고 논리** 섹션에서 다음 설정을 지정하고(다른 설정은 기본값으로 유지) **완료**를 클릭합니다.
+1. **신호 논리 구성** 블레이드 신호 리스트의 **경고 논리** 섹션에서 다음 설정을 지정하고(나머지 설정은 기본값으로 남겨둡니다) **완료**를 클릭합니다.
 
     | 설정 | 값 |
     | --- | --- |
@@ -208,49 +212,49 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
     | 집계 유형 | **평균** |
     | 임계값 | **2** |
     | 집계 세분성(기간) | **1분** |
-    | 평가 빈도 | **1분 마다** |
+    | 평가 빈도 | **1분마다** |
 
-1. **경고 규칙 만들기** 블레이드의 **작업 그룹** 섹션에서 **작업 그룹 추가**를 클릭한 다음 **+ 작업 그룹 만들기** 단추를 클릭합니다.
+1. **다음: 작업 >** 을 클릭하고 **경고 규칙 만들기** 블레이드의 **작업 그룹** 섹션에서 **+ 작업 그룹 만들기** 단추를 클릭합니다.
 
 1. **작업 그룹 만들기** 블레이드의 **기본** 탭에서 다음 설정을 지정하고(나머지는 기본값을 그대로 유지) **다음: 알림 >** 을 클릭합니다.
 
     | 설정 | 값 |
     | --- | --- |
-    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-    | 리소스 그룹 | **az104-11-rg1** |
+    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | Resource group | **az104-11-rg1** |
     | 작업 그룹 이름 | **az104-11-ag1** |
     | 표시 이름 | **az104-11-ag1** |
 
-1. **작업 그룹 만들기** 블레이드의 **알림** 탭 내 **알림 유형** 드롭다운 목록에서 **메일/SMS/푸시/음성**을 선택합니다. **이름** 텍스트 상자에 **admin email**을 입력합니다. **세부 정보 편집**(연필) 아이콘을 클릭합니다.
+1. On the <bpt id="p1">**</bpt>Notifications<ept id="p1">**</ept> tab of the <bpt id="p2">**</bpt>Create an action group<ept id="p2">**</ept> blade, in the <bpt id="p3">**</bpt>Notification type<ept id="p3">**</ept> drop-down list, select <bpt id="p4">**</bpt>Email/SMS message/Push/Voice<ept id="p4">**</ept>. In the <bpt id="p1">**</bpt>Name<ept id="p1">**</ept> text box, type <bpt id="p2">**</bpt>admin email<ept id="p2">**</ept>. Click the <bpt id="p1">**</bpt>Edit details<ept id="p1">**</ept> (pencil) icon.
 
-1. **전자 메일/SMS/푸시/음성** 블레이드에서 **전자 메일** 체크박스를 선택하고 **전자 메일** 텍스트 상자에 사용자의 전자 메일 주소를 입력합니다. 나머지 항목은 기본값을 그대로 두고 **확인**을 클릭하여 **작업 그룹 만들기** 블레이드의 **알림** 탭으로 돌아와 **다음: 작업 >** 을 선택합니다.
+1. **메일/SMS/푸시/음성** 블레이드에서 **메일** 체크박스를 선택하고 **메일** 텍스트 상자에 사용자의 메일 주소를 입력합니다. 나머지 항목은 기본값을 그대로 두고 **확인**을 클릭하여 **작업 그룹 만들기** 블레이드의 **알림** 탭으로 돌아와 **다음: 작업  >** 을 선택합니다.
 
 1. **작업 그룹 만들기** 블레이드의 **작업** 탭에서 옵션을 변경하지 않고 **작업 유형** 드롭다운 목록에서 제공되는 항목을 검토한 다음 **검토 + 만들기**를 선택합니다.
 
 1. **작업 그룹 만들기** 블레이드의 **검토 + 만들기** 탭에서 **만들기**를 선택합니다.
 
-1. **경고 규칙 만들기** 블레이드로 돌아와 **경고 규칙 세부 정보** 섹션에서 다음 설정을 지정합니다(나머지는 기본값을 그대로 유지).
+1. **경고 규칙 만들기** 블레이드로 돌아가서 **다음: 세부 사항 >** 을 클릭하고 **경고 규칙 세부 정보** 섹션에서 다음 설정을 지정합니다(나머지는 기본값을 그대로 유지).
 
     | 설정 | 값 |
     | --- | --- |
-    | 경고 규칙 이름 | **테스트 임계값 이상의 CPU 백분율** |
-    | 설명 | **테스트 임계값 이상의 CPU 백분율** |
+    | 경고 규칙 이름 | **CPU Percentage above the test threshold** |
+    | 경고 규칙 설명 | **테스트 임계값을 초과하는 CPU 백분율** |
     | 심각도 | **Sev 3** |
-    | 규칙을 만들면 바로 사용 | **예** |
+    | 만들어지면 바로 사용 | **예** |
 
-1. **경고 규칙 만들기**를 클릭합니다.
+1. **검토 + 만들기**를 클릭하고 **검토 + 만들기** 탭에서 **만들기**를 클릭합니다.
 
-    >**참고**: 메트릭 경고 규칙이 활성화되려면 최대 10분이 걸릴 수 있습니다.
+    >**참고**: 메트릭 경고 규칙이 활성화되는 데 최대 10분이 걸릴 수 있습니다.
 
 1. Azure Portal에서 **가상 머신**을 검색 및 선택하고 **가상 머신** 블레이드에서 **az104-11-vm0**을 선택합니다.
 
-1. **az104-11-vm0** 블레이드에서 **연결**을 클릭하고 드롭다운 메뉴에서 **RDP**를 클릭합니다. 그런 후에 **RDP와 연결** 블레이드에서 **RDP 파일 다운로드**를 클릭하고 표시되는 메시지에 따라 원격 데스크톱 세션을 시작합니다.
+1. **az104-11-vm0** 블레이드에서 **연결**을 클릭하고 드롭다운 메뉴에서 **RDP**를 클릭하고 **RDP와 연결** 블레이드에서 **RDP 파일 다운로드**를 클릭하고 프롬프트를 따라 원격 데스크톱 세션을 시작합니다.
 
-    >**참고**: 이 단계는 Windows 컴퓨터에서 원격 데스크톱을 통해 연결하는 것을 말합니다. Mac에서는 Mac App Store에서 원격 데스크톱 클라이언트를 사용할 수 있고 Linux 컴퓨터에서는 오픈 소스 RDP 클라이언트 소프트웨어를 사용할 수 있습니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This step refers to connecting via Remote Desktop from a Windows computer. On a Mac, you can use Remote Desktop Client from the Mac App Store and on Linux computers you can use an open source RDP client software.
 
-    >**참고**: 대상 가상 머신에 연결할 때 경고 프롬프트는 무시해도 됩니다.
+    >**참고**: 대상 가상 머신에 연결할 때 경고 프롬프트는 무시해도 괜찮습니다.
 
-1. 메시지가 표시되면 사용자 이름 **Student**와 암호 **Pa55w.rd1234**를 사용하여 로그인합니다.
+1. 메시지가 표시되면 parameters 파일의 **Student** 사용자 이름과 암호를 사용하여 로그인합니다.
 
 1. 원격 데스크톱 세션 내에서 **시작**을 클릭하고 **Windows System** 폴더를 확장하고 **명령 프롬프트**를 클릭합니다.
 
@@ -272,13 +276,13 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 
 1. **모든 경고** 블레이드에서 생성된 경고를 검토합니다.
 
-#### 작업 7: Azure Log Analytics 기능 검토
+#### <a name="task-7-review-azure-log-analytics-functionality"></a>작업 7: Azure Log Analytics 기능 검토
 
-1. Azure Portal에서 **모니터** 블레이드로 돌아와 **로그**를 클릭합니다.
+1. Azure Portal에서 **모니터** 블레이드로 돌아가서 **로그**를 클릭합니다.
 
     >**참고**: Log Analytics에 처음으로 액세스한다면 **시작**을 클릭해야 합니다.
 
-1. 필요한 경우 **범위 선택**을 클릭하고 **범위 선택** 블레이드에서 **최근 항목** 탭을 선택한 다음 **az104-11-vm0**을 선택하고 **적용**을 클릭합니다.
+1. 필요한 경우 **범위 선택**을 클릭하고 **범위 선택** 블레이드에서 **최근 항목** 탭을 선택한 다음 **a104-11-vm0**을 선택하고 **적용**을 클릭합니다.
 
 1. 쿼리 창에 다음 쿼리를 붙여넣고 **실행**을 클릭한 후에 표시되는 차트를 검토합니다.
 
@@ -292,23 +296,28 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
    | render timechart
    ```
 
-1. 도구 모음에서 **쿼리**를 클릭하고 **쿼리** 창에서 **VM 사용 가능성 추적** 타일을 찾아 해당 타일의 **실행** 명령 단추를 클릭한 후 결과를 검토합니다.
+    > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: The query should not have any errors (indicated by red blocks on the right scroll bar). If the query will not paste without errors directly from the instructions, paste the query code into a text editor such as Notepad, and then copy and paste it into the query window from there.
 
-1. **새 쿼리 1** 탭에서 **테이블** 헤더를 선택하고 **가상 머신** 섹션에서 테이블 목록을 검토합니다.
 
-    >**참고**: 테이블 중 몇 개의 이름은 이 랩의 앞부분에서 설치한 솔루션과 일치합니다.
+1. 도구 모음에서 **쿼리**를 클릭하고 **쿼리** 창에서 **VM 사용 가능성 추적** 타일을 찾아 두 번 클릭하여 쿼리 창을 채우고 타일에서 **실행** 명령 버튼을 클릭한 후 결과를 검토합니다.
+
+1. **새 쿼리 1** 탭에서 **테이블** 헤더를 선택하고 **가상 머신** 섹션의 테이블 목록을 검토합니다.
+
+    >**참고**: 여러 테이블의 이름은 이 랩의 앞부분에서 설치한 솔루션에 해당합니다.
 
 1. **VMComputer** 항목 위를 마우스로 가리킨 다음 **데이터 미리 보기** 아이콘을 클릭합니다.
 
 1. 데이터가 사용 가능한 경우 **업데이트** 창에서 **편집기에서 사용**을 클릭합니다.
 
-    >**참고**: 업데이트 데이터를 사용할 수 있게 되기까지 몇 분간 기다려야 할 수 있습니다.
+    >**참고**: 업데이트 데이터를 사용할 수 있게 되기까지 몇 분 정도 기다려야 할 수 있습니다.
 
-#### 리소스 정리
+#### <a name="clean-up-resources"></a>리소스 정리
 
-   >**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스를 제거해야 합니다. 사용하지 않는 리소스를 제거하면 예상하지 못한 비용이 발생하지 않습니다.
+><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
 
-1. Azure Portal에서 **Cloud Shell** 창의 **PowerShell** 세션을 엽니다.
+><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>:  Don't worry if the lab resources cannot be immediately removed. Sometimes resources have dependencies and take a longer time to delete. It is a common Administrator task to monitor resource usage, so just periodically review your resources in the Portal to see how the cleanup is going. 
+
+1. Azure Portal의 **Cloud Shell** 창에서 **PowerShell** 세션을 엽니다.
 
 1. 다음 명령을 실행하여 이 모듈의 전체 랩에서 생성된 모든 리소스 그룹을 나열합니다.
 
@@ -316,21 +325,21 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
    Get-AzResourceGroup -Name 'az104-11*'
    ```
 
-1. 다음 명령을 실행하여 이 모듈의 전체 랩에서 만든 모든 리소스 그룹을 삭제합니다.
+1. 다음 명령을 실행하여 이 모듈의 랩 전체에서 만든 모든 리소스 그룹을 삭제합니다.
 
    ```powershell
    Get-AzResourceGroup -Name 'az104-11*' | Remove-AzResourceGroup -Force -AsJob
    ```
 
-    >**참고**: 명령은 비동기적으로 실행되므로(-AsJob 매개 변수에 의해 결정됨) 동일한 PowerShell 세션 내에서 즉시 다른 PowerShell 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지 몇 분 정도 걸릴 것입니다.
+    >**참고**: 이 명령은 -AsJob 매개 변수에 의해 결정되어 비동기로 실행되므로, 동일한 PowerShell 세션 내에서 이 명령을 실행한 직후 다른 PowerShell 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지는 몇 분 정도 걸립니다.
 
-#### 복습
+#### <a name="review"></a>검토
 
-이 랩에서는 다음 작업을 수행했습니다.
+이 랩에서는 다음을 수행합니다.
 
 + 랩 환경 프로비전
-+ Azure Log Analytics 작업 영역 및 Azure Automation 기반 솔루션 만들기 및 구성
-+ Azure 가상 머신의 기본 모니터링 설정 검토
++ Azure Log Analytics 작업 영역 및 Azure 자동화 기반 솔루션을 만들고 구성
++ Azure 가상 머신의 기본 모니터링 설정을 검토함
 + Azure 가상 머신 진단 설정 구성
-+ Azure Monitor 기능 검토
-+ Azure Log Analytics 기능 검토
++ 검토된 Azure Monitor 기능
++ 검토된 Azure Log Analytics 기능

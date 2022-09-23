@@ -1,45 +1,45 @@
 ---
 lab:
-    title: '03d - Azure CLI를 사용하여 Azure 리소스 관리'
-    module: '모듈 03 - Azure 관리'
+  title: 03d - Azure CLI를 사용하여 Azure 리소스 관리
+  module: Administer Azure Resources
 ---
 
-# 랩 03d - Azure CLI를 사용하여 Azure 리소스 관리
-# 학생 랩 매뉴얼
+# <a name="lab-03d---manage-azure-resources-by-using-azure-cli"></a>랩 03d - Azure CLI를 사용하여 Azure 리소스 관리
+# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
 
-## 랩 시나리오
+## <a name="lab-scenario"></a>랩 시나리오
 
-이제 Azure Portal, Azure Resource Manager 템플릿 및 Azure PowerShell을 사용하여 리소스 프로비전 및 리소스 그룹에 기반한 리소스 구성과 관련된 기본 Azure 관리 기능을 살펴보았으므로 Azure CLI를 사용하여 동등한 작업을 수행해야 합니다. Azure CLI를 설치하지 않으려면 Azure Cloud Shell에서 사용할 수 있는 Bash 환경을 활용합니다.
+Now that you explored the basic Azure administration capabilities associated with provisioning resources and organizing them based on resource groups by using the Azure portal, Azure Resource Manager templates, and Azure PowerShell, you need to carry out the equivalent task by using Azure CLI. To avoid installing Azure CLI, you will leverage Bash environment available in Azure Cloud Shell.
 
-## 목표
+## <a name="objectives"></a>목표
 
-이 랩에서는 다음 작업을 수행합니다.
+이 랩에서는 다음을 수행합니다.
 
-+ 작업 1: Azure Cloud Shell에서 Bash 세션 시작하기
++ 작업 1: Azure Cloud Shell에서 Bash 세션을 시작합니다.
 + 작업 2: Azure CLI를 사용하여 리소스 그룹 및 Azure 관리 디스크 만들기
 + 작업 3: Azure CLI를 사용하여 관리 디스크 구성
 
-## 예상 시간: 20분
+## <a name="estimated-timing-20-minutes"></a>예상 소요 시간: 20분
 
-## 지침
+## <a name="instructions"></a>Instructions
 
-### 연습 1:
+### <a name="exercise-1"></a>연습 1
 
-#### 작업 1: Azure Cloud Shell에서 Bash 세션을 시작합니다.
+#### <a name="task-1-start-a-bash-session-in-azure-cloud-shell"></a>작업 1: Azure Cloud Shell에서 Bash 세션을 시작합니다.
 
 이 작업에서는 Cloud Shell에서 Bash 세션을 엽니다. 
 
-1. 포털에서 오른쪽 상단의 아이콘을 클릭하여 **Azure Cloud Shell** 을 엽니다.
+1. 포털에서 오른쪽 상단의 아이콘을 클릭하여 **Azure Cloud Shell**을 엽니다.
 
-1. **Bash** 또는 **PowerShell**을 선택하라는 메시지가 표시되면 **Bash** 를 선택합니다. 
+1. **Bash**와 **PowerShell** 중 선택하라는 메시지가 표시되면 **Bash**를 선택합니다. 
 
-    >**참고**: 처음으로 **Cloud Shell** 을 시작하고 **탑재된 스토리지가 없음** 메시지가 표시되면, 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 클릭합니다. 
+    >**참고**: **Cloud Shell**을 처음 시작했는데 **탑재된 스토리지 없음**이라는 메시지가 표시되면 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 클릭합니다. 
 
 1. 메시지가 표시되면 **스토리지 만들기**를 클릭하고 Azure Cloud Shell 창이 표시될 때까지 기다립니다. 
 
 1. Cloud Shell 창의 왼쪽 상단 모서리에 있는 드롭다운 메뉴에 **Bash**가 나타나는지 확인합니다.
 
-#### 작업 2: Azure CLI를 사용하여 리소스 그룹 및 Azure 관리 디스크 만들기
+#### <a name="task-2-create-a-resource-group-and-an-azure-managed-disk-by-using-azure-cli"></a>작업 2: Azure CLI를 사용하여 리소스 그룹 및 Azure 관리 디스크 만들기
 
 이 작업에서는 Cloud Shell 내에 있는 Azure CLI 세션을 사용하여 리소스 그룹 및 Azure 관리 디스크를 만듭니다.
 
@@ -76,7 +76,7 @@ lab:
    az disk show --resource-group $RGNAME --name $DISKNAME
    ```
 
-#### 작업 3: Azure CLI를 사용하여 관리 디스크 구성
+#### <a name="task-3-configure-the-managed-disk-by-using-azure-cli"></a>작업 3: Azure CLI를 사용하여 관리 디스크 구성
 
 이 작업에서는 Cloud Shell 내에 있는 Azure CLI 세션을 사용하여 Azure 관리 디스크의 구성을 관리합니다. 
 
@@ -104,29 +104,31 @@ lab:
    az disk show --resource-group $RGNAME --name $DISKNAME --query sku
    ```
 
-#### 리소스 정리
+#### <a name="clean-up-resources"></a>리소스 정리
 
-   >**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스를 제거해야 합니다. 사용하지 않는 리소스를 제거하면 예기치 않은 비용이 발생하지 않습니다.
+ > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+
+ > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>:  Don't worry if the lab resources cannot be immediately removed. Sometimes resources have dependencies and take a long time to delete. It is a common Administrator task to monitor resource usage, so just periodically review your resources in the Portal to see how the cleanup is going. 
 
 1. Azure Portal의 **Cloud Shell** 창에서 **Bash** 세션을 시작합니다.
 
-1. 다음 명령을 실행하여 이 모듈의 랩에서 만든 모든 리소스 그룹을 나열합니다.
+1. 다음 명령을 실행하여 이 모듈의 전체 랩에서 생성된 모든 리소스 그룹을 나열합니다.
 
    ```sh
    az group list --query "[?starts_with(name,'az104-03')].name" --output tsv
    ```
 
-1. 다음 명령을 실행하여 이 모듈의 전체 랩에서 만든 모든 리소스 그룹을 삭제합니다.
+1. 다음 명령을 실행하여 이 모듈의 랩 전체에서 만든 모든 리소스 그룹을 삭제합니다.
 
    ```sh
    az group list --query "[?starts_with(name,'az104-03')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
    ```
 
-    >**참고**: 명령은 비동기적으로 실행되므로 (-nowait 매개 변수에 의해 결정됨) 동일한 Bash 세션 내에서 즉시 다른 Azure CLI 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지 몇 분 정도 걸립니다.
+    >**참고**: 명령은 비동기적으로 실행되므로(--nowait 매개 변수에 의해 결정됨) 동일한 Bash 세션 내에서 즉시 다른 Azure CLI 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지 몇 분 정도 걸립니다.
 
-#### 검토
+#### <a name="review"></a>검토
 
-이 랩에서는 다음을 다루었습니다.
+이 랩에서는 다음을 수행합니다.
 
 - Azure Cloud Shell에서 Bash 세션 시작
 - Azure CLI를 사용하여 리소스 그룹 및 Azure 관리 디스크 만들기

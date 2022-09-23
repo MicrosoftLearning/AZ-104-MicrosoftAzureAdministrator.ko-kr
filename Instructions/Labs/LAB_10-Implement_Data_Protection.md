@@ -1,35 +1,37 @@
 ---
 lab:
-    title: '10 - 데이터 보호 구현'
-    module: '모듈 10 - 데이터 보호'
+  title: 10 – 데이터 보호 구현
+  module: Administer Data Protection
 ---
 
-# 랩 10 - 데이터 보호 구현
-# 학생 랩 매뉴얼
+# <a name="lab-10---backup-virtual-machines"></a>랩 10 - 가상 머신 백업
+# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
 
-## 랩 시나리오
+## <a name="lab-scenario"></a>랩 시나리오
 
-Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일의 백업 및 복원을 위해 Azure Recovery Services 사용을 평가해야 합니다. 또한 Recovery Services 자격 증명 모음에 저장된 데이터를 우발적이거나 악의적인 데이터 손실로부터 보호하는 방법을 식별하려고 합니다.
+You have been tasked with evaluating the use of Azure Recovery Services for backup and restore of files hosted on Azure virtual machines and on-premises computers. In addition, you want to identify methods of protecting data stored in the Recovery Services vault from accidental or malicious data loss.
 
-## 목표
+대화형 가이드 형식으로 이 랩을 미리 보려면 **[여기를 클릭하세요](https://mslabs.cloudguides.com/en-us/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2016)** .
 
-이 랩에서는 다음 작업을 수행합니다.
+## <a name="objectives"></a>목표
+
+이 랩에서는 다음을 수행합니다.
 
 + 작업 1: 랩 환경 프로비전
 + 작업 2: Recovery Services 자격 증명 모음 만들기
 + 작업 3: Azure 가상 머신 수준 백업 구현
 + 작업 4: 파일 및 폴더 백업 구현
 + 작업 5: Azure Recovery Services 에이전트를 사용하여 파일 복구 수행
-+ 작업 6: Azure 가상 머신 스냅샷을 사용하여 파일 복구 수행 (선택 사항)
++ 작업 6: Azure 가상 머신 스냅샷을 사용하여 파일 복구 수행(선택 사항)
 + 작업 7: Azure Recovery Services 일시 삭제 기능 검토 (선택 사항)
 
-## 예상 시간: 50분
+## <a name="estimated-timing-50-minutes"></a>예상 소요 시간: 50분
 
-## 지침
+## <a name="instructions"></a>지침
 
-### 연습 1:
+### <a name="exercise-1"></a>연습 1
 
-#### 작업 1: 랩 환경 프로비전
+#### <a name="task-1-provision-the-lab-environment"></a>작업 1: 랩 환경 프로비전
 
 이 작업에서는 다른 백업 시나리오를 테스트하는 데 사용할 두 개의 가상 머신을 배포합니다.
 
@@ -37,20 +39,24 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
 1. Azure Portal에서 오른쪽 상단의 아이콘을 클릭하여 **Azure Cloud Shell**을 엽니다.
 
-1. **Bash** 또는 **PowerShell**을 선택하라는 메시지가 표시되면 **PowerShell**을 선택합니다.
+1. **Bash**와 **PowerShell** 중에서 선택하라는 메시지가 표시되면 **PowerShell**을 선택합니다.
 
-    >**참고**: 처음으로 **Cloud Shell**을 시작하고 **탑재된 스토리지가 없음** 메시지가 표시되면, 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 클릭합니다.
+    >**참고**: **Cloud Shell**을 처음 시작했는데 **탑재된 스토리지 없음**이라는 메시지가 표시되면 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 클릭합니다.
 
-1. Cloud Shell 창의 도구 모음에서 **파일 업로드/다운로드** 아이콘을 클릭하고 드롭다운 메뉴에서 **업로드**를 클릭하여 **\\Allfiles\\Labs\\10\\az104-10-vms-edge-template.json** 및 **\\Allfiles\\Labs\\10\\az104-10-vms-edge-parameters.json** 파일을 Cloud Shell 홈 디렉터리에 업로드합니다.
+1. Cloud Shell 창의 도구 모음에서 **파일 업로드/다운로드** 아이콘을 클릭하고, 드롭다운 메뉴에서 **업로드**를 클릭하고, **\\Allfiles\\Labs\\10\\az104-10-vms-edge-template.json** and **\\Allfiles\\Labs\\10\\az104-10-vms-edge-parameters.json** 파일을 Cloud Shell 홈 디렉터리에 업로드합니다.
 
-1. Cloud Shell 창에서 다음을 실행하여 가상 머신을 호스팅할 리소스 그룹을 만듭니다(`[Azure_region]` 자리 표시자를 Azure 가상 머신을 배포하려는 Azure 지역의 이름으로 대체). 각 명령줄을 따로 입력하고 따로 실행합니다.
+1. Edit the Parameters file you just uploaded and change the password. If you need help editing the file in the Shell please ask your instructor for assistance. As a best practice, secrets, like passwords, should be more securely stored in the Key Vault. 
+
+1. From the Cloud Shell pane, run the following to create the resource group that will be hosting the virtual machines (replace the <ph id="ph1">`[Azure_region]`</ph> placeholder with the name of an Azure region where you intend to deploy Azure virtual machines). Type each command line separately and execute them separately:
 
    ```powershell
    $location = '[Azure_region]'
     ```
+    
    ```powershell
    $rgName = 'az104-10-rg0'
     ```
+    
    ```powershell
    New-AzResourceGroup -Name $rgName -Location $location
    ```
@@ -67,9 +73,9 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
 1. Cloud Shell을 최소화하지만 닫지는 않습니다.
 
-    >**참고**: 배포가 완료될 때까지 기다리지 말고 다음 작업으로 진행하세요. 배포에는 약 5분이 소요됩니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Do not wait for the deployment to complete but instead proceed to the next task. The deployment should take about 5 minutes.
 
-#### 작업 2: Recovery Services 자격 증명 모음 만들기
+#### <a name="task-2-create-a-recovery-services-vault"></a>작업 2: Recovery Services 자격 증명 모음 만들기
 
 이 작업에서는 Recovery Services 자격 증명 모음을 만듭니다.
 
@@ -79,16 +85,16 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
     | 설정 | 값 |
     | --- | --- |
-    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-    | 리소스 그룹 | 새 리소스 그룹 **az104-10-rg1**의 이름 |
+    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | Resource group | 새 리소스 그룹 **az104-10-rg1**의 이름 |
     | 자격 증명 모음 이름 | **az104-10-rsv1** |
     | 지역 | 이전 작업에서 두 가상 머신을 배포한 지역의 이름 |
 
-    >**참고**: 이전 작업에서 가상 머신을 배포한 동일한 영역을 지정해야 합니다.
+    >**참고**: 이전 작업에서 가상 머신을 배포한 지역과 같은 지역을 지정해야 합니다.
 
 1. **검토 + 만들기**를 클릭하고, 유효성 검사를 통과했는지 확인하고, **만들기**를 클릭합니다.
 
-    >**참고**: 배포가 완료될 때까지 기다립니다. 배포에는 1분 미만이 걸려야 합니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the deployment to complete. The deployment should take less than 1 minute.
 
 1. 배포가 완료되면 **리소스로 이동**을 클릭합니다.
 
@@ -96,17 +102,17 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
 1. **az104-10-rsv1 - 속성** 블레이드의 **백업 구성** 레이블에서 **업데이트** 링크를 클릭합니다.
 
-1. **백업 구성** 블레이드에서 **스토리지 복제 유형**을 **로컬 중복** 또는 **지역 중복**으로 설정할 수 있습니다. **지역 중복**의 기본 설정을 그대로 놔두고 블레이드를 닫습니다.
+1. Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일의 백업 및 복원을 위해 Azure Recovery Services 사용을 평가해야 합니다.
 
     >**참고**: 이 설정은 기존 백업 항목이 없는 경우에만 구성할 수 있습니다.
 
 1. **az104-10-rsv1 - 속성** 블레이드로 돌아가서 **보안 설정** 레이블에서 **업데이트** 링크를 클릭합니다.
 
-1. **보안 설정** 블레이드에서 **일시 삭제(Azure Virtual Machines의 경우)** 가 **사용**으로 설정되었는지 확인합니다.
+1. **보안 설정** 블레이드에서 **일시 삭제(Azure에서 실행되는 워크로드의 경우)** 가 **사용**으로 설정되어 있는지 확인합니다.
 
 1. **보안 설정** 블레이드를 닫고 **az104-10-rsv1** Recovery Services 자격 증명 모음 블레이드에서 **개요**를 클릭합니다.
 
-#### 작업 3: Azure 가상 머신 수준 백업 구현
+#### <a name="task-3-implement-azure-virtual-machine-level-backup"></a>작업 3: Azure 가상 머신 수준 백업 구현
 
 이 작업에서는 Azure 가상 머신 수준의 백업을 구현합니다.
 
@@ -118,7 +124,7 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
     | 설정 | 값 |
     | --- | --- |
-    | 워크로드가 실행되는 위치는 어디입니까? | **Azure** |
+    | 워크로드는 어디에서 실행되고 있습니까? | **Azure** |
     | 백업하려는 것은 무엇입니까? | **가상 머신** |
 
 1. **백업 목표** 블레이드에서 **백업**을 클릭합니다.
@@ -131,25 +137,25 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
     | ---- | ---- |
     | 정책 이름 | **az104-10-backup-policy** |
     | 빈도 | **매일** |
-    | 시간 | **오전 12:00** |
-    | 시간대 | 현지 표준 시간대의 이름 |
-    | 인스턴트 복구 스냅샷 유지 기간 | **2**일 |
+    | Time | **오전 12:00** |
+    | 표준 시간대 | 현지 표준 시간대의 이름 |
+    | 인스턴트 복구 스냅을 유지 | **2**일 |
 
 1. **확인**을 클릭하여 정책을 만든 다음 **가상 머신** 섹션에서 **추가**를 선택합니다.
 
 1. **가상 머신 선택** 블레이드에서 **az-104-10-vm0**을 선택하고 **확인**을 클릭한 후 **백업** 블레이드에서 **백업 사용**을 클릭합니다.
 
-    >**참고**: 백업 사용 설정이 완료될 때까지 기다립니다. 약 2분이 소요됩니다.
+    >또한 Recovery Services 자격 증명 모음에 저장된 데이터를 우발적이거나 악의적인 데이터 손실로부터 보호하는 방법을 식별하려고 합니다.
 
-1. **az104-10 rsv1** Recovery Services 자격 증명 모음 블레이드로 다시 이동하여 **보호된 항목** 섹션에서 **백업 항목**을 클릭한 다음 **Azure 가상 머신** 항목을 클릭합니다.
+1. **az104-10-rsv1** Recovery Services 자격 증명 모음 블레이드로 다시 이동하고, **보호된 항목** 섹션에서 **백업 항목**을 클릭한 다음, **Azure 가상 머신** 항목을 클릭합니다.
 
-1. **az104-10-vm0**의 **백업 항목(Azure 가상 머신)** 블레이드에서 **백업 사전 검사** 및 **마지막 백업 상태** 항목의 값을 검토합니다.
+1. **백업 항목(Azure 가상 머신)** 블레이드에서 **az104-10-vm0**에 대한 **세부 정보 보기** 링크를 선택하고 **백업 사전 검사** 및 **마지막 백업 상태** 항목의 값을 검토합니다.
 
 1. **az104-10-vm0** 백업 항목 블레이드에서 **지금 백업**을 클릭하고 드롭다운 목록까지 **백업 유지** 기본값을 수락하고 **확인**을 클릭합니다.
 
     >**참고**: 백업이 완료될 때까지 기다리지 말고 다음 작업으로 진행하세요.
 
-#### 작업 4: 파일 및 폴더 백업 구현
+#### <a name="task-4-implement-file-and-folder-backup"></a>작업 4: 파일 및 폴더 백업 구현
 
 이 작업에서는 Azure Recovery Services를 사용하여 파일 및 폴더 백업을 구현합니다.
 
@@ -157,11 +163,11 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
 1. **az104-10-vm1** 블레이드에서 **연결**을 클릭하고 드롭다운 메뉴에서 **RDP**를 클릭하고 **RDP로 연결** 블레이드에서 **RDP 파일 다운로드**를 클릭하고 프롬프트를 따라 원격 데스크톱 세션을 시작합니다.
 
-    >**참고**: 이 단계는 Windows 컴퓨터에서 원격 데스크톱을 통해 연결하는 것을 말합니다. Mac에서는 Mac App Store에서 원격 데스크톱 클라이언트를 사용할 수 있고 Linux 컴퓨터에서는 오픈 소스 RDP 클라이언트 소프트웨어를 사용할 수 있습니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This step refers to connecting via Remote Desktop from a Windows computer. On a Mac, you can use Remote Desktop Client from the Mac App Store and on Linux computers you can use an open source RDP client software.
 
-    >**참고**: 대상 가상 머신에 연결할 때 경고 프롬프트를 무시하세요.
+    >**참고**: 대상 가상 머신에 연결할 때 경고 프롬프트는 무시해도 괜찮습니다.
 
-1. 메시지가 표시되면 사용자 이름 **Student**와 암호 **Pa55w.rd1234**를 사용하여 로그인합니다.
+1. 메시지가 표시되면 parameters 파일의 **Student** 사용자 이름과 암호를 사용하여 로그인합니다.
 
     >**참고:** Azure Portal은 IE11을 더 이상 지원하지 않기 때문에 이 작업에 Microsoft Edge 브라우저를 사용해야 합니다.
 
@@ -175,7 +181,7 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
     | 설정 | 값 |
     | --- | --- |
-    | 워크로드가 실행되는 위치는 어디입니까? | **온-프레미스** |
+    | 워크로드는 어디에서 실행되고 있습니까? | **온-프레미스** |
     | 백업하려는 것은 무엇입니까? | **파일 및 폴더** |
 
     >**참고**: 이 작업에서 사용 중인 가상 머신이 Azure에서 실행되는데, 이를 활용하여 Windows Server 운영 체제를 실행하는 모든 온-프레미스 컴퓨터에 적용되는 백업 기능을 평가할 수 있습니다.
@@ -188,21 +194,21 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
     >**참고**: **Microsoft Azure Recovery Services 에이전트 설치 마법사**의 **Microsoft 업데이트 옵트인** 페이지에서 **Microsoft 업데이트를 사용하지 않음** 설치 옵션을 선택합니다.
 
-1. **Microsoft Azure Recovery Services 에이전트 설정 마법사**의 **설치** 페이지에서 **등록 진행**을 클릭합니다. 이렇게 하면 **서버 등록 마법사**가 시작됩니다.
+1. On the <bpt id="p1">**</bpt>Installation<ept id="p1">**</ept> page of the <bpt id="p2">**</bpt>Microsoft Azure Recovery Services Agent Setup Wizard<ept id="p2">**</ept>, click <bpt id="p3">**</bpt>Proceed to Registration<ept id="p3">**</ept>. This will start <bpt id="p1">**</bpt>Register Server Wizard<ept id="p1">**</ept>.
 
 1. Azure Portal을 표시하는 웹 브라우저 창으로 전환하여 **인프라 준비** 블레이드에서 **이미 다운로드 완료 또는 최신 복구 서버 에이전트 사용** 체크박스를 선택하고 **다운로드**를 클릭합니다.
 
-1. 보관 자격 증명 파일을 열거나 저장할지 여부를 묻는 메시지가 표시되면 **저장**을 클릭합니다. 이렇게 하면 보관 자격 증명 파일을 로컬 다운로드 폴더에 저장합니다.
+1. When prompted, whether to open or save the vault credentials file, click <bpt id="p1">**</bpt>Save<ept id="p1">**</ept>. This will save the vault credentials file to the local Downloads folder.
 
 1. **서버 등록 마법사** 창으로 다시 전환하여 **자격 증명 모음 식별** 페이지에서 **찾아보기**를 클릭합니다.
 
 1. **보관 자격 증명 선택** 대화 상자에서 **다운로드** 폴더로 검색하고 다운로드한 보관 자격 증명 파일을 클릭하고 **열기**를 클릭합니다.
 
-1. **자격 증명 모음 식별** 페이지로 돌아가서 **다음**을 클릭합니다.
+1. **자격 증명 모음 ID** 페이지로 돌아가서 **다음**을 클릭합니다.
 
 1. **서버 등록 마법사**의 **암호화 설정** 페이지에서 **암호 생성**을 클릭합니다.
 
-1. **서버 등록 마법사**의 **암호화 설정** 페이지에서 **위치를 입력하여 암호 저장** 옆에 있는 **찾아보기** 단추를 클릭합니다.
+1. **서버 등록 마법사**의 **암호화 설정** 페이지에서 **암호를 저장할 위치 입력** 옆에 있는 **찾아보기** 단추를 클릭합니다.
 
 1. **폴더 찾아보기** 대화 상자에서 **문서** 폴더를 선택하고 **확인**을 클릭합니다.
 
@@ -210,7 +216,7 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
     >**참고**: 프로덕션 환경에서는 백업하는 서버가 아닌 안전한 위치에 암호 파일을 저장해야 합니다.
 
-1. **서버 등록 마법사**의 **서버 등록** 페이지에서 암호 파일의 위치에 대한 경고를 검토하고 **Microsoft Azure Recovery Services 에이전트 실행** 체크박스가 선택됐는지 확인하고 **닫기**를 클릭합니다. 이렇게 하면 **Microsoft Azure Backup** 콘솔이 자동으로 열립니다.
+1. On the <bpt id="p1">**</bpt>Server Registration<ept id="p1">**</ept> page of the <bpt id="p2">**</bpt>Register Server Wizard<ept id="p2">**</ept>, review the warning regarding the location of the passphrase file, ensure that the <bpt id="p3">**</bpt>Launch Microsoft Azure Recovery Services Agent<ept id="p3">**</ept> checkbox is selected and click <bpt id="p4">**</bpt>Close<ept id="p4">**</ept>. This will automatically open the <bpt id="p1">**</bpt>Microsoft Azure Backup<ept id="p1">**</ept> console.
 
 1. **Microsoft Azure Backup** 콘솔의 **작업** 창에서 **백업 예약**을 클릭합니다.
 
@@ -218,17 +224,17 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
 1. **백업할 항목 선택** 페이지에서 **항목 추가**를 클릭합니다.
 
-1. **항목 선택** 대화 상자에서 **C:\\Windows\\System32\\drivers\\etc\\** 를 확장하고 **호스트**를 선택한 다음, **확인**을 클릭합니다.
+1. **항목 선택** 대화 상자에서 **C:\\Windows\\System32\\drivers\\etc\\** 를 확장하고, **hosts**를 선택한 다음, **확인**을 클릭합니다.
 
 1. **백업할 항목 선택** 페이지에서 **다음**을 클릭합니다.
 
-1. **백업 예약 지정** 페이지에서 **날짜** 옵션이 선택됐는지 확인하고 **예약 시간(최대 허용 횟수는 하루에 세 번)** 상자 아래의 첫 번째 드롭다운 목록 상자에서 **오전 4:30**을 선택하고 **다음**을 클릭합니다.
+1. **백업 예약 지정** 페이지에서 **날짜** 옵션이 선택됐는지 확인하고 **다음 번(최대 허용 횟수는 하루에 세 번)** 상자 아래의 첫 번째 드롭다운 목록 상자에서 **오전 4:30**을 선택한 후 **다음**을 클릭합니다.
 
 1. **보존 정책 선택** 페이지에서 기본값을 수락하고 **다음**을 클릭합니다.
 
 1. **초기 백업 유형 선택** 페이지에서 기본값을 수락하고 **다음**을 클릭합니다.
 
-1. **확인** 페이지에서 **완료**를 클릭합니다. 백업 일정이 만들어지면 **닫기**를 클릭합니다.
+1. On the <bpt id="p1">**</bpt>Confirmation<ept id="p1">**</ept> page, click <bpt id="p2">**</bpt>Finish<ept id="p2">**</ept>. When the backup schedule is created, click <bpt id="p1">**</bpt>Close<ept id="p1">**</ept>.
 
 1. **Microsoft Azure Backup** 콘솔의 작업 창에서 **지금 백업**을 클릭합니다.
 
@@ -242,33 +248,33 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
 1. 백업이 완료되면 **닫기**를 클릭한 다음, Microsoft Azure Backup을 닫습니다.
 
-1. Azure Portal을 보여주는 웹 브라우저 창으로 전환하고 Recovery Services 자격 증명 모음 블레이드로 다시 이동하여 **보호된 항목** 섹션에서 **백업 항목**을 클릭합니다.
+1. Azure Portal을 보여주는 웹 브라우저 창으로 전환하고 **Recovery Services 자격 증명 모음** 블레이드로 다시 이동하여 **보호된 항목** 섹션에서 **백업 항목**을 클릭합니다.
 
 1. **az104-10-rsv1 - 백업 항목** 블레이드에서 **Azure Backup 에이전트**를 클릭합니다.
 
 1. **백업 항목(Azure Backup 에이전트)** 블레이드에서 **az104-10-vm1**의 **C:\\** 드라이브를 참조하는 항목이 있는지 확인합니다.
 
-#### 작업 5: Azure Recovery Services 에이전트를 사용하여 파일 복구 수행 (선택 사항)
+#### <a name="task-5-perform-file-recovery-by-using-azure-recovery-services-agent-optional"></a>작업 5: Azure Recovery Services 에이전트를 사용하여 파일 복구 수행 (선택 사항)
 
 이 작업에서는 Azure Recovery Services 에이전트를 사용하여 파일 복원을 수행합니다.
 
-1. **Az104-10-vm1에**에 대한 원격 데스크톱 세션에서, 파일 탐색기를 열고 **C:\\Windows\\System32\\drivers\\etc\\** 폴더로 이동하여 **호스트** 파일을 삭제합니다.
+1. **az104-10-vm1**에 대한 원격 데스크톱 세션 내에서 파일 탐색기를 열고, **C:\\Windows\\System32\\drivers\\etc\\** 폴더로 이동하고, **hosts** 파일을 삭제합니다.
 
-1. Microsoft Azure Backup을 열고 **작업** 창에서 **데이터 복구**를 클릭합니다. 이렇게 하면 **데이터 복구 마법사**가 시작됩니다.
+1. Open Microsoft Azure Backup and click <bpt id="p1">**</bpt>Recover data<ept id="p1">**</ept> in the <bpt id="p2">**</bpt>Actions<ept id="p2">**</ept> pane. This will start <bpt id="p1">**</bpt>Recover Data Wizard<ept id="p1">**</ept>.
 
 1. **데이터 복구 마법사**의 **시작** 페이지에서 **서버(az104-10-vm1)** 옵션이 선택되었는지 확인하고 **다음**을 클릭합니다.
 
 1. **복구 모드 선택** 페이지에서 **개별 파일 및 폴더** 옵션이 선택되었는지 확인하고 **다음**을 클릭합니다.
 
-1. **볼륨 및 날짜 선택** 페이지의 **볼륨 선택** 드롭다운 목록에서 **C:\\** 를 선택하고 사용 가능한 백업의 기본 선택을 수락하고 **탑재**를 클릭합니다.
+1. **볼륨 및 날짜 선택** 페이지의 **볼륨 선택** 드롭다운 목록에서 **C:\\** 를 선택하고, 사용 가능한 백업의 기본 선택을 그대로 사용하고, **탑재**를 클릭합니다.
 
-    >**참고**: 탑재 작업이 완료될 때까지 기다립니다. 완료되려면 약 2분이 소요됩니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the mount operation to complete. This might take about 2 minutes.
 
 1. **파일 찾아보기 및 복구** 페이지에서 복구 볼륨의 드라이브 문자를 기록하고 robocopy 사용 관련 팁을 검토합니다.
 
 1. **시작**을 클릭하고 **Windows System** 폴더를 확장하고 **명령 프롬프트**를 클릭합니다.
 
-1. 명령 프롬프트에서 다음을 실행하여 **호스트** 파일을 원래 위치로 복사하여 복원합니다(`[recovery_volume]` 을 이전에 식별한 복구 볼륨의 드라이브 문자로 교체).
+1. 명령 프롬프트에서 다음을 실행하여 **hosts** 파일을 원래 위치로 복사하여 복원합니다(`[recovery_volume]`을 이전에 식별한 복구 볼륨의 드라이브 문자로 바꾸기).
 
    ```sh
    robocopy [recovery_volume]:\Windows\System32\drivers\etc C:\Windows\system32\drivers\etc hosts /r:1 /w:1
@@ -278,27 +284,27 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
 1. 원격 데스크톱 세션을 종료합니다.
 
-#### 작업 6: Azure 가상 머신 스냅샷을 사용하여 파일 복구 수행 (선택 사항)
+#### <a name="task-6-perform-file-recovery-by-using-azure-virtual-machine-snapshots-optional"></a>작업 6: Azure 가상 머신 스냅샷을 사용하여 파일 복구 수행(선택 사항)
 
 이 작업에서는 Azure 가상 머신 수준 스냅샷 기반 백업에서 파일을 복원합니다.
 
 1. 랩 컴퓨터에서 실행 중인 브라우저 창으로 전환하고 Azure Portal을 표시합니다.
 
-1. Azure Portal에서 **가상 머신**을 검색 및 선택하고 **가상 머신** 블레이드에서 **az104-10-vm0**을 선택합니다.
+1. Azure Portal에서 **가상 머신**을 검색하여 선택하고 **가상 머신** 블레이드에서 **az104-10-vm0**을 선택합니다.
 
-1. **az104-10-vm0** 블레이드에서 **연결**을 클릭하고 드롭다운 메뉴에서 **RDP**를 클릭하고 **RDP와 연결** 블레이드에서 **RDP 파일 다운로드**를 클릭하여 원격 데스크톱 세션을 시작하라는 프롬프트를 따릅니다.
+1. **az104-10-vm0** 블레이드에서 **연결**을 클릭하고 드롭다운 메뉴에서 **RDP**를 클릭한 다음 **RDP와 연결** 블레이드에서 **RDP 파일 다운로드**를 클릭하여 원격 데스크톱 세션을 시작하라는 프롬프트를 따릅니다.
 
-    >**참고**: 이 단계는 Windows 컴퓨터에서 원격 데스크톱을 통해 연결하는 것을 말합니다. Mac에서는 Mac App Store에서 원격 데스크톱 클라이언트를 사용할 수 있고 Linux 컴퓨터에서는 오픈 소스 RDP 클라이언트 소프트웨어를 사용할 수 있습니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This step refers to connecting via Remote Desktop from a Windows computer. On a Mac, you can use Remote Desktop Client from the Mac App Store and on Linux computers you can use an open source RDP client software.
 
-    >**참고**: 대상 가상 머신에 연결할 때 경고 프롬프트를 무시하세요.
+    >**참고**: 대상 가상 머신에 연결할 때 경고 프롬프트는 무시해도 괜찮습니다.
 
-1. 메시지가 표시되면 사용자 이름 **Student**와 암호 **Pa55w.rd1234**를 사용하여 로그인합니다.
+1. 메시지가 표시되면 parameters 파일의 **Student** 사용자 이름과 암호를 사용하여 로그인합니다.
 
    >**참고:** Azure Portal은 IE11을 더 이상 지원하지 않기 때문에 이 작업에 Microsoft Edge 브라우저를 사용해야 합니다.
 
 1. **az104-10-vm0**으로의 원격 데스크톱 세션 내에서 **시작**을 클릭하고 **Windows System** 폴더를 확장하고 **명령 프롬프트**를 클릭합니다.
 
-1. 명령 프롬프트에서 다음을 실행하여 **호스트** 파일을 삭제합니다.
+1. 명령 프롬프트에서 다음 명령을 실행하여 **호스트** 파일을 삭제합니다.
 
    ```sh
    del C:\Windows\system32\drivers\etc\hosts
@@ -306,7 +312,7 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
    >**참고**: 이 작업의 뒷부분에서는 Azure 가상 머신 수준 스냅샷 기반 백업에서 이 파일을 복원합니다.
 
-1. **az104-10-vm0** Azure 가상 머신으로의 원격 데스크톱 세션 내에서 Edge 웹 브라우저를 시작하고 [Azure Portal](https://portal.azure.com)로 이동한 후 자격 증명을 사용하여 로그인합니다.
+1. **az104-10-vm0** Azure 가상 머신에 대한 원격 데스크톱 세션 내에서 Edge 웹 브라우저를 시작하고, [Azure Portal](https://portal.azure.com)로 이동하고, 자격 증명을 사용하여 로그인합니다.
 
 1. Azure Portal에서 **Recovery Services 자격 증명 모음**을 검색 및 선택하고 **Recovery Services 자격 증명 모음**에서 **az104-10-rsv1**를 클릭합니다.
 
@@ -314,7 +320,7 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
 1. **az104-10-rsv1 - 백업 항목** 블레이드에서 **Azure 가상 머신**을 클릭합니다.
 
-1. **백업 항목(Azure 가상 머신)** 블레이드에서 **az104-10-vm0**을 클릭합니다.
+1. **백업 항목(Azure Virtual Machine)** 블레이드에서 **az104-10-vm0**에 대한 **세부 정보 보기**를 선택합니다.
 
 1. **az104-10-vm0** 백업 항목 블레이드에서 **파일 복구**를 클릭합니다.
 
@@ -328,19 +334,19 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
 1. 파일 탐색기 창으로 돌아가 새로 다운로드한 파일을 두 번 클릭합니다.
 
-1. 포털에서 암호를 제공하라는 메시지가 표시되면 **파일 복구** 블레이드의 **스크립트 실행을 위한 암호** 텍스트 상자에서 암호를 복사하여 명령 프롬프트에 붙여넣은 다음 **Enter** 키를 누릅니다.
+1. Azure Portal에서 암호를 제공하도록 메시지가 표시되면 **파일 복구** 블레이드의 **스크립트 실행을 위한 암호** 입력란에서 암호를 복사하여 명령 프롬프트에 붙여 넣은 다음 **Enter** 키를 누릅니다.
 
     >**참고**: 이렇게 하면 탑재 진행률을 표시하는 Windows PowerShell 창이 열립니다.
 
     >**참고**: 이 시점에서 오류 메시지를 받았다면 웹 브라우저 창을 새로 고치고 마지막 세 단계를 반복합니다.
 
-1. 탑재 프로세스가 완료될 때까지 기다렸다가 Windows PowerShell 창의 정보 메시지를 검토하고 **Windows**를 호스팅하는 볼륨에 할당된 드라이브 문자를 기록하고 파일 탐색기를 시작합니다.
+1. 탑재 진행률이 완료될 때까지 기다렸다가 Windows PowerShell 창의 정보 메시지를 검토하고 **Windows**를 호스팅하는 볼륨에 할당된 드라이브 문자를 기록하고 파일 탐색기를 시작합니다.
 
 1. 파일 탐색기에서 이전 단계에서 식별한 운영 체제 볼륨의 스냅샷을 호스팅하는 드라이브 문자로 이동하여 해당 콘텐츠를 검토합니다.
 
 1. **명령 프롬프트** 창으로 전환합니다.
 
-1. 명령 프롬프트에서 다음을 실행하여 복원 **호스트** 파일을 원래 위치로 복사합니다(`[os_volume]`을 이전에 식별한 운영 체제 볼륨의 드라이브 문자로 바꿉니다).
+1. 명령 프롬프트에서 다음을 실행하여 복원 **hosts** 파일을 원래 위치로 복사하여 복원합니다(`[os_volume]`을 이전에 식별한 운영 체제 볼륨의 드라이브 문자로 바꾸기).
 
    ```sh
    robocopy [os_volume]:\Windows\System32\drivers\etc C:\Windows\system32\drivers\etc hosts /r:1 /w:1
@@ -350,7 +356,7 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
 1. 원격 데스크톱 세션을 종료합니다.
 
-#### 작업 7: Azure Recovery Services 일시 삭제 기능 검토
+#### <a name="task-7-review-the-azure-recovery-services-soft-delete-functionality"></a>작업 7: Azure Recovery Services 일시 삭제 기능 검토
 
 1. 랩 컴퓨터의 Azure Portal에서 **Recovery Services 자격 증명 모음**을 검색 및 선택하고 **Recovery Services 자격 증명 모음**에서 **az104-10-rsv1**을 클릭합니다.
 
@@ -360,9 +366,11 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
 1. **백업 항목(Azure Backup 에이전트)** 블레이드에서 **az104-10-vm1**의 백업을 나타내는 항목을 클릭합니다.
 
-1. **C:\\ on az104-10-vm1.** 블레이드에서 **az104-10-vm1.** 링크를 클릭합니다.
+1. On the <bpt id="p1">**</bpt>C:<ph id="ph1">\\</ph> on az104-10-vm1.<ept id="p1">**</ept> blade, select <bpt id="p1">**</bpt>View details<ept id="p1">**</ept> for <bpt id="p2">**</bpt>az104-10-vm1.<ept id="p2">**</ept> .
 
-1. **az104-10-vm1.** 보호된 서버 블레이드에서 **삭제**를 클릭합니다.
+1. 세부 정보 블레이드에서 **az104-10-vm1**을 클릭합니다.
+
+1. On the <bpt id="p1">**</bpt>az104-10-vm1.<ept id="p1">**</ept> Protected Servers blade, click <bpt id="p1">**</bpt>Delete<ept id="p1">**</ept>.
 
 1. **삭제** 블레이드에서 다음 설정을 지정합니다.
 
@@ -370,17 +378,19 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
     | --- | --- |
     | 서버 이름 입력 | **az104-10-vm1.** |
     | 이유 | **개발/테스트 서버 재활용** |
-    | 주석 | **az104 10 lab** |
+    | 의견 | **az104 10 lab** |
 
     >**참고**: 서버 이름을 입력할 때 후행 기간을 포함해야 합니다.
 
-1. **이 서버와 연결된 백업 데이터가 1개 있습니다. "확인"을 클릭하면 모든 클라우드 백업 데이터가 영구적으로 삭제된다는 것을 알고 있습니다. 이 작업을 취소할 수 없습니다. 이 구독 관리자에게 이 삭제를 통지하는 경고가 발송될 수 있습니다** 레이블 옆의 체크박스를 선택하고 **삭제**를 클릭합니다.
+1. **이 서버와 연결된 1개 백업 항목의 백업 데이터가 있습니다. "확인"을 클릭하면 모든 클라우드 백업 데이터가 영구적으로 삭제된다는 것을 알고 있습니다. 이 작업을 취소할 수 없습니다. 이 삭제를 알리는 경고가 이 구독 관리자에게 전송될 수 있습니다.** 레이블 옆에 있는 확인란을 사용하도록 설정하고 **삭제**를 클릭합니다.
+
+    >**참고**: **일시 삭제** 기능을 사용하지 않도록 설정해야 하므로 이 작업이 실패합니다.
 
 1. **az104-10-rsv1 - 백업 항목** 블레이드로 돌아가서 **Azure 가상 머신**을 클릭합니다.
 
 1. **az104-10-rsv1 - 백업 항목** 블레이드에서 **Azure 가상 머신**을 클릭합니다.
 
-1. **백업 항목(Azure 가상 머신)** 블레이드에서 **az104-10-vm0**을 클릭합니다.
+1. **백업 항목(Azure Virtual Machine)** 블레이드에서 **az104-10-vm0**에 대한 **세부 정보 보기**를 선택합니다.
 
 1. **az104-10-vm0** 백업 항목 블레이드에서 **백업 중지**를 클릭합니다.
 
@@ -390,7 +400,7 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
     | --- | --- |
     | 백업 항목의 이름을 입력하세요 | **az104-10-vm0** |
     | 이유 | **기타** |
-    | 주석 | **az104 10 lab** |
+    | 의견 | **az104 10 lab** |
 
 1. **az104-10-rsv1 - 백업 항목** 블레이드로 돌아가서 **새로 고침**을 클릭합니다.
 
@@ -398,7 +408,7 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
 1. **Azure 가상 머신** 항목을 클릭하고 **백업 항목(Azure 가상 머신)** 블레이드에서 **az104-10-vm0** 항목을 클릭합니다.
 
-1. **az104-10-vm0** 백업 항목 블레이드에서 삭제된 백업에 대한 **삭제 취소** 옵션이 있습니다.
+1. **az104-10-vm0** 백업 항목 블레이드에서 삭제된 백업의 **삭제 취소** 옵션이 있습니다.
 
     >**참고**: 이 기능은 기본적으로 Azure 가상 머신 백업에 사용하도록 설정된 일시 삭제 기능이 제공됩니다.
 
@@ -406,7 +416,7 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
 1. **az104-10-rsv1 - 속성** 블레이드에서 **보안 설정** 레이블 아래에 있는 **업데이트** 링크를 클릭합니다.
 
-1. **보안 설정** 블레이드에서 **일시 삭제(Azure에서 실행되는 워크로드의 경우)** 를 사용 해제하고 **저장**을 클릭합니다.
+1. **보안 설정** 블레이드에서 **일시 삭제(Azure에서 실행되는 워크로드의 경우)** 를 사용하지 않도록 설정하고, **보안 기능(온-프레미스에서 실행되는 워크로드의 경우)** 도 사용하지 않도록 설정하고, **저장**을 클릭합니다.
 
     >**참고**: 일시 삭제 상태인 항목에는 영향을 주지 않습니다.
 
@@ -424,13 +434,17 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
     | --- | --- |
     | 백업 항목의 이름을 입력하세요 | **az104-10-vm0** |
     | 이유 | **기타** |
-    | 주석 | **az104 10 lab** |
+    | 의견 | **az104 10 lab** |
 
-#### 리소스 정리
+1. 이 작업의 시작 부분에 있는 단계를 반복하여 **az104-10-vm1**에 대한 백업 항목을 삭제합니다.
 
-   >**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스를 제거해야 합니다. 사용하지 않는 리소스를 제거하면 예기치 않은 비용이 발생하지 않습니다.
+#### <a name="clean-up-resources"></a>리소스 정리
 
-1. Azure Portal에서 **Cloud Shell** 창 내의 **PowerShell** 세션을 엽니다.
+><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+
+><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>:  Don't worry if the lab resources cannot be immediately removed. Sometimes resources have dependencies and take a longer time to delete. It is a common Administrator task to monitor resource usage, so just periodically review your resources in the Portal to see how the cleanup is going. 
+
+1. Azure Portal의 **Cloud Shell** 창에서 **PowerShell** 세션을 엽니다.
 
 1. 다음 명령을 실행하여 이 모듈의 전체 랩에서 생성된 모든 리소스 그룹을 나열합니다.
 
@@ -438,7 +452,7 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
    Get-AzResourceGroup -Name 'az104-10*'
    ```
 
-1. 다음 명령을 실행하여 이 모듈의 전체 랩에서 만든 모든 리소스 그룹을 삭제합니다.
+1. 다음 명령을 실행하여 이 모듈의 랩 전체에서 만든 모든 리소스 그룹을 삭제합니다.
 
    ```powershell
    Get-AzResourceGroup -Name 'az104-10*' | Remove-AzResourceGroup -Force -AsJob
@@ -446,16 +460,16 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
    >**참고**: 선택적으로 자동 생성된 리소스 그룹 중 **AzureBackupRG_** 접두사가 있는 리소스 그룹을 삭제할 수 있습니다(삭제하지 않아도 추가 요금이 부과되지 않음).
 
-    >**참고**: 명령은 비동기적으로 실행되므로(-AsJob 매개 변수에 의해 결정됨) 동일한 PowerShell 세션 내에서 즉시 다른 PowerShell 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지 몇 분 정도 걸릴 것입니다.
+    >**참고**: 이 명령은 -AsJob 매개 변수에 의해 결정되어 비동기로 실행되므로, 동일한 PowerShell 세션 내에서 이 명령을 실행한 직후 다른 PowerShell 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지는 몇 분 정도 걸립니다.
 
-#### 복습
+#### <a name="review"></a>검토
 
-이 랩에서는 다음을 수행했습니다.
+이 랩에서는 다음을 수행합니다.
 
 + 랩 환경 프로비전
 + Recovery Services 자격 증명 모음 만들기
 + Azure 가상 머신 수준 백업 구현
 + 파일 및 폴더 백업 구현
 + Azure Recovery Services 에이전트를 사용하여 파일 복구
-+ Azure 가상 머신 스냅샷을 사용하여 파일 복구 수행
++ Azure 가상 머신 스냅샷을 사용하여 파일 복구
 + Azure Recovery Services 일시 삭제 기능 검토
