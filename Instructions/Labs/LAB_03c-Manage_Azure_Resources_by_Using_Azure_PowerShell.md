@@ -9,7 +9,9 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-Now that you explored the basic Azure administration capabilities associated with provisioning resources and organizing them based on resource groups by using the Azure portal and Azure Resource Manager templates, you need to carry out the equivalent task by using Azure PowerShell. To avoid installing Azure PowerShell modules, you will leverage PowerShell environment available in Azure Cloud Shell.
+이제 Azure Portal 및 Azure Resource Manager 템플릿을 사용하여 리소스 프로비전 및 리소스 그룹에 기반한 리소스 구성과 관련된 기본 Azure 관리 기능을 살펴보았으므로 Azure PowerShell을 사용하여 동등한 작업을 수행해야 합니다. Azure PowerShell 모듈을 설치하지 않으려면 Azure Cloud Shell에서 사용할 수 있는 PowerShell 환경을 활용합니다.
+
+                **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%206)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
 ## <a name="objectives"></a>목표
 
@@ -27,7 +29,7 @@ Now that you explored the basic Azure administration capabilities associated wit
 
 ## <a name="instructions"></a>Instructions
 
-> <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>:  Always create your own secure password for any virtual machine or user account you create. If the virtual machine is created for you, use <bpt id="p1">**</bpt>Reset password<ept id="p1">**</ept> in the Portal to update the password. 
+> **참고**:  만든 가상 머신 또는 사용자 계정에 대해 항상 사용자 고유의 보안 암호를 만듭니다. 가상 머신을 만든 경우 포털에서 **암호 재설정**을 사용하여 암호를 업데이트합니다. 
 
 ### <a name="exercise-1"></a>연습 1
 
@@ -122,7 +124,7 @@ Now that you explored the basic Azure administration capabilities associated wit
 
 #### <a name="clean-up-resources"></a>리소스 정리
 
-   ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Do not delete resources you deployed in this lab. You will reference them in the next lab of this module.
+   >**참고**: 이 랩에서 배포한 리소스는 삭제하지 마세요. 이 모듈의 다음 랩에서 참조해야 합니다.
 
 #### <a name="review"></a>검토
 

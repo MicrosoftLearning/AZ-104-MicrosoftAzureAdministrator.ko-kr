@@ -9,9 +9,9 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-You have been tasked with evaluating the use of Azure Recovery Services for backup and restore of files hosted on Azure virtual machines and on-premises computers. In addition, you want to identify methods of protecting data stored in the Recovery Services vault from accidental or malicious data loss.
+Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일의 백업 및 복원을 위해 Azure Recovery Services 사용을 평가해야 합니다. 또한 Recovery Services 자격 증명 모음에 저장된 데이터를 우발적이거나 악의적인 데이터 손실로부터 보호하는 방법을 식별하려고 합니다.
 
-대화형 가이드 형식으로 이 랩을 미리 보려면 **[여기를 클릭하세요](https://mslabs.cloudguides.com/en-us/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2016)** .
+                **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2016)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
 ## <a name="objectives"></a>목표
 
@@ -45,9 +45,9 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 1. Cloud Shell 창의 도구 모음에서 **파일 업로드/다운로드** 아이콘을 클릭하고, 드롭다운 메뉴에서 **업로드**를 클릭하고, **\\Allfiles\\Labs\\10\\az104-10-vms-edge-template.json** and **\\Allfiles\\Labs\\10\\az104-10-vms-edge-parameters.json** 파일을 Cloud Shell 홈 디렉터리에 업로드합니다.
 
-1. Edit the Parameters file you just uploaded and change the password. If you need help editing the file in the Shell please ask your instructor for assistance. As a best practice, secrets, like passwords, should be more securely stored in the Key Vault. 
+1. 방금 업로드한 Parameters 파일을 편집하고 암호를 변경합니다. Shell에서 파일을 편집하는 데 도움이 필요한 경우 강사에게 도움을 요청하세요. 암호와 같은 비밀은 Key Vault에 더 안전하게 저장하는 것이 좋습니다. 
 
-1. From the Cloud Shell pane, run the following to create the resource group that will be hosting the virtual machines (replace the <ph id="ph1">`[Azure_region]`</ph> placeholder with the name of an Azure region where you intend to deploy Azure virtual machines). Type each command line separately and execute them separately:
+1. Cloud Shell 창에서 다음을 실행하여 가상 머신을 호스트할 리소스 그룹을 만듭니다(`[Azure_region]` 자리 표시자를 Azure 가상 머신을 배포하려는 Azure 지역의 이름으로 바꾸기). 각 명령줄을 개별적으로 입력하고 별도로 실행합니다.
 
    ```powershell
    $location = '[Azure_region]'
@@ -73,7 +73,7 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 1. Cloud Shell을 최소화하지만 닫지는 않습니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Do not wait for the deployment to complete but instead proceed to the next task. The deployment should take about 5 minutes.
+    >**참고**: 배포가 완료될 때까지 기다리지 말고 다음 작업을 진행하세요. 배포는 5분 정도 걸립니다.
 
 #### <a name="task-2-create-a-recovery-services-vault"></a>작업 2: Recovery Services 자격 증명 모음 만들기
 
@@ -94,7 +94,7 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 1. **검토 + 만들기**를 클릭하고, 유효성 검사를 통과했는지 확인하고, **만들기**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the deployment to complete. The deployment should take less than 1 minute.
+    >**참고**: 배포가 완료될 때까지 기다립니다. 배포에 걸리는 시간은 1분 미만입니다.
 
 1. 배포가 완료되면 **리소스로 이동**을 클릭합니다.
 
@@ -102,7 +102,7 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 1. **az104-10-rsv1 - 속성** 블레이드의 **백업 구성** 레이블에서 **업데이트** 링크를 클릭합니다.
 
-1. Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일의 백업 및 복원을 위해 Azure Recovery Services 사용을 평가해야 합니다.
+1. **백업 구성** 블레이드에서 **저장소 복제 유형**을 **로컬 중복** 또는 **지역 중복**으로 설정할 수 있습니다. **지역 중복**의 기본 설정을 그대로 놔두고 블레이드를 닫습니다.
 
     >**참고**: 이 설정은 기존 백업 항목이 없는 경우에만 구성할 수 있습니다.
 
@@ -145,7 +145,7 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 1. **가상 머신 선택** 블레이드에서 **az-104-10-vm0**을 선택하고 **확인**을 클릭한 후 **백업** 블레이드에서 **백업 사용**을 클릭합니다.
 
-    >또한 Recovery Services 자격 증명 모음에 저장된 데이터를 우발적이거나 악의적인 데이터 손실로부터 보호하는 방법을 식별하려고 합니다.
+    >**참고**: 백업 사용 설정이 완료될 때까지 기다립니다. 이 작업은 2분 정도 걸립니다.
 
 1. **az104-10-rsv1** Recovery Services 자격 증명 모음 블레이드로 다시 이동하고, **보호된 항목** 섹션에서 **백업 항목**을 클릭한 다음, **Azure 가상 머신** 항목을 클릭합니다.
 
@@ -163,7 +163,7 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 1. **az104-10-vm1** 블레이드에서 **연결**을 클릭하고 드롭다운 메뉴에서 **RDP**를 클릭하고 **RDP로 연결** 블레이드에서 **RDP 파일 다운로드**를 클릭하고 프롬프트를 따라 원격 데스크톱 세션을 시작합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This step refers to connecting via Remote Desktop from a Windows computer. On a Mac, you can use Remote Desktop Client from the Mac App Store and on Linux computers you can use an open source RDP client software.
+    >**참고**: 이 단계는 Windows 컴퓨터에서 원격 데스크톱을 통해 연결하는 것을 말합니다. Mac에서는 Mac App Store에서 원격 데스크톱 클라이언트를 사용할 수 있고 Linux 컴퓨터에서는 오픈 소스 RDP 클라이언트 소프트웨어를 사용할 수 있습니다.
 
     >**참고**: 대상 가상 머신에 연결할 때 경고 프롬프트는 무시해도 괜찮습니다.
 
@@ -194,11 +194,11 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
     >**참고**: **Microsoft Azure Recovery Services 에이전트 설치 마법사**의 **Microsoft 업데이트 옵트인** 페이지에서 **Microsoft 업데이트를 사용하지 않음** 설치 옵션을 선택합니다.
 
-1. On the <bpt id="p1">**</bpt>Installation<ept id="p1">**</ept> page of the <bpt id="p2">**</bpt>Microsoft Azure Recovery Services Agent Setup Wizard<ept id="p2">**</ept>, click <bpt id="p3">**</bpt>Proceed to Registration<ept id="p3">**</ept>. This will start <bpt id="p1">**</bpt>Register Server Wizard<ept id="p1">**</ept>.
+1. **Microsoft Azure Recovery Services 에이전트 설정 마법사**의 **설치** 페이지에서 **등록 진행**을 클릭합니다. 이렇게 하면 **서버 등록 마법사**가 시작됩니다.
 
 1. Azure Portal을 표시하는 웹 브라우저 창으로 전환하여 **인프라 준비** 블레이드에서 **이미 다운로드 완료 또는 최신 복구 서버 에이전트 사용** 체크박스를 선택하고 **다운로드**를 클릭합니다.
 
-1. When prompted, whether to open or save the vault credentials file, click <bpt id="p1">**</bpt>Save<ept id="p1">**</ept>. This will save the vault credentials file to the local Downloads folder.
+1. 보관 자격 증명 파일을 열거나 저장할지 여부를 묻는 메시지가 표시되면 **저장**을 클릭합니다. 그러면 자격 증명 모음 자격 증명 파일이 로컬 다운로드 폴더에 저장됩니다.
 
 1. **서버 등록 마법사** 창으로 다시 전환하여 **자격 증명 모음 식별** 페이지에서 **찾아보기**를 클릭합니다.
 
@@ -216,7 +216,7 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
     >**참고**: 프로덕션 환경에서는 백업하는 서버가 아닌 안전한 위치에 암호 파일을 저장해야 합니다.
 
-1. On the <bpt id="p1">**</bpt>Server Registration<ept id="p1">**</ept> page of the <bpt id="p2">**</bpt>Register Server Wizard<ept id="p2">**</ept>, review the warning regarding the location of the passphrase file, ensure that the <bpt id="p3">**</bpt>Launch Microsoft Azure Recovery Services Agent<ept id="p3">**</ept> checkbox is selected and click <bpt id="p4">**</bpt>Close<ept id="p4">**</ept>. This will automatically open the <bpt id="p1">**</bpt>Microsoft Azure Backup<ept id="p1">**</ept> console.
+1. **서버 등록 마법사**의 **서버 등록** 페이지에서 암호 파일의 위치에 대한 경고를 검토하고 **Microsoft Azure Recovery Services 에이전트 실행** 체크박스가 선택됐는지 확인한 후 **닫기**를 클릭합니다. 그러면 **Microsoft Azure Backup** 콘솔이 자동으로 열립니다.
 
 1. **Microsoft Azure Backup** 콘솔의 **작업** 창에서 **백업 예약**을 클릭합니다.
 
@@ -234,7 +234,7 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 1. **초기 백업 유형 선택** 페이지에서 기본값을 수락하고 **다음**을 클릭합니다.
 
-1. On the <bpt id="p1">**</bpt>Confirmation<ept id="p1">**</ept> page, click <bpt id="p2">**</bpt>Finish<ept id="p2">**</ept>. When the backup schedule is created, click <bpt id="p1">**</bpt>Close<ept id="p1">**</ept>.
+1. **확인** 페이지에서 **마침**을 클릭합니다. 백업 일정이 만들어지면 **닫기**를 클릭합니다.
 
 1. **Microsoft Azure Backup** 콘솔의 작업 창에서 **지금 백업**을 클릭합니다.
 
@@ -260,7 +260,7 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 1. **az104-10-vm1**에 대한 원격 데스크톱 세션 내에서 파일 탐색기를 열고, **C:\\Windows\\System32\\drivers\\etc\\** 폴더로 이동하고, **hosts** 파일을 삭제합니다.
 
-1. Open Microsoft Azure Backup and click <bpt id="p1">**</bpt>Recover data<ept id="p1">**</ept> in the <bpt id="p2">**</bpt>Actions<ept id="p2">**</ept> pane. This will start <bpt id="p1">**</bpt>Recover Data Wizard<ept id="p1">**</ept>.
+1. Microsoft Azure Backup을 열고 **작업** 창에서 **데이터 복구**를 클릭합니다. 이렇게 하면 **데이터 복구 마법사**가 시작됩니다.
 
 1. **데이터 복구 마법사**의 **시작** 페이지에서 **서버(az104-10-vm1)** 옵션이 선택되었는지 확인하고 **다음**을 클릭합니다.
 
@@ -268,7 +268,7 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 1. **볼륨 및 날짜 선택** 페이지의 **볼륨 선택** 드롭다운 목록에서 **C:\\** 를 선택하고, 사용 가능한 백업의 기본 선택을 그대로 사용하고, **탑재**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the mount operation to complete. This might take about 2 minutes.
+    >**참고**: 탑재 작업이 완료될 때까지 기다립니다. 2분 정도 걸릴 수 있습니다.
 
 1. **파일 찾아보기 및 복구** 페이지에서 복구 볼륨의 드라이브 문자를 기록하고 robocopy 사용 관련 팁을 검토합니다.
 
@@ -294,7 +294,7 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 1. **az104-10-vm0** 블레이드에서 **연결**을 클릭하고 드롭다운 메뉴에서 **RDP**를 클릭한 다음 **RDP와 연결** 블레이드에서 **RDP 파일 다운로드**를 클릭하여 원격 데스크톱 세션을 시작하라는 프롬프트를 따릅니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This step refers to connecting via Remote Desktop from a Windows computer. On a Mac, you can use Remote Desktop Client from the Mac App Store and on Linux computers you can use an open source RDP client software.
+    >**참고**: 이 단계는 Windows 컴퓨터에서 원격 데스크톱을 통해 연결하는 것을 말합니다. Mac에서는 Mac App Store에서 원격 데스크톱 클라이언트를 사용할 수 있고 Linux 컴퓨터에서는 오픈 소스 RDP 클라이언트 소프트웨어를 사용할 수 있습니다.
 
     >**참고**: 대상 가상 머신에 연결할 때 경고 프롬프트는 무시해도 괜찮습니다.
 
@@ -366,11 +366,11 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 1. **백업 항목(Azure Backup 에이전트)** 블레이드에서 **az104-10-vm1**의 백업을 나타내는 항목을 클릭합니다.
 
-1. On the <bpt id="p1">**</bpt>C:<ph id="ph1">\\</ph> on az104-10-vm1.<ept id="p1">**</ept> blade, select <bpt id="p1">**</bpt>View details<ept id="p1">**</ept> for <bpt id="p2">**</bpt>az104-10-vm1.<ept id="p2">**</ept> .
+1. **az104-10-vm1의 C:\\** 블레이드에서 **az104-10-vm1**에 대한 **세부 정보 보기**를 선택합니다. .
 
 1. 세부 정보 블레이드에서 **az104-10-vm1**을 클릭합니다.
 
-1. On the <bpt id="p1">**</bpt>az104-10-vm1.<ept id="p1">**</ept> Protected Servers blade, click <bpt id="p1">**</bpt>Delete<ept id="p1">**</ept>.
+1. **az104-10-vm1**에서 보호된 서버 블레이드에서 **삭제**를 클릭합니다.
 
 1. **삭제** 블레이드에서 다음 설정을 지정합니다.
 
@@ -440,9 +440,9 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 #### <a name="clean-up-resources"></a>리소스 정리
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+>**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>:  Don't worry if the lab resources cannot be immediately removed. Sometimes resources have dependencies and take a longer time to delete. It is a common Administrator task to monitor resource usage, so just periodically review your resources in the Portal to see how the cleanup is going. 
+>**참고**:  랩 리소스를 즉시 제거할 수 없어도 걱정하지 마세요. 리소스에 종속성이 있고 삭제하는 데 시간이 더 오래 걸리는 경우가 있습니다. 리소스 사용량을 모니터링하는 것은 일반적인 관리자 작업이므로 포털에서 리소스를 주기적으로 검토하여 정리가 어떻게 진행되고 있는지 확인합니다. 
 
 1. Azure Portal의 **Cloud Shell** 창에서 **PowerShell** 세션을 엽니다.
 

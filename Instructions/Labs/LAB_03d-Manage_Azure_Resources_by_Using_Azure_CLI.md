@@ -9,7 +9,9 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-Now that you explored the basic Azure administration capabilities associated with provisioning resources and organizing them based on resource groups by using the Azure portal, Azure Resource Manager templates, and Azure PowerShell, you need to carry out the equivalent task by using Azure CLI. To avoid installing Azure CLI, you will leverage Bash environment available in Azure Cloud Shell.
+Azure Portal, Azure Resource Manager 템플릿 및 Azure PowerShell을 사용하여 리소스 그룹을 기반으로 리소스를 구성하고 프로비전하는 것과 관련된 기본적인 Azure 관리 기능을 살펴보았습니다. 이제 Azure CLI를 사용하여 동일한 작업을 수행해야 합니다. Azure CLI를 설치하지 않으려면 Azure Cloud Shell에서 사용할 수 있는 Bash 환경을 활용합니다.
+
+                **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%207)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
 ## <a name="objectives"></a>목표
 
@@ -106,9 +108,9 @@ Now that you explored the basic Azure administration capabilities associated wit
 
 #### <a name="clean-up-resources"></a>리소스 정리
 
- > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+ > **참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
 
- > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>:  Don't worry if the lab resources cannot be immediately removed. Sometimes resources have dependencies and take a long time to delete. It is a common Administrator task to monitor resource usage, so just periodically review your resources in the Portal to see how the cleanup is going. 
+ > **참고**:  랩 리소스를 즉시 제거할 수 없어도 걱정하지 마세요. 리소스에 종속성이 있고 삭제하는 데 시간이 오래 걸리는 경우가 있습니다. 리소스 사용량을 모니터링하는 것은 일반적인 관리자 작업이므로 포털에서 리소스를 주기적으로 검토하여 정리가 어떻게 진행되고 있는지 확인합니다. 
 
 1. Azure Portal의 **Cloud Shell** 창에서 **Bash** 세션을 시작합니다.
 

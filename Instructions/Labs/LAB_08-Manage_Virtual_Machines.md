@@ -9,9 +9,9 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-You were tasked with identifying different options for deploying and configuring Azure virtual machines. First, you need to determine different compute and storage resiliency and scalability options you can implement when using Azure virtual machines. Next, you need to investigate compute and storage resiliency and scalability options that are available when using Azure virtual machine scale sets. You also want to explore the ability to automatically configure virtual machines and virtual machine scale sets by using the Azure Virtual Machine Custom Script extension.
+Azure 가상 머신의 배포 및 구성을 위한 다양한 옵션을 식별하는 작업을 수행해야 합니다. 먼저 Azure 가상 머신을 사용할 경우 구현할 수 있는 다양한 컴퓨팅 및 스토리지 복원력과 확장성 옵션을 결정해야 합니다. 다음으로 Azure 가상 머신 확장 집합을 사용할 경우 사용할 수 있는 컴퓨팅 및 스토리지 복원력과 확장성 옵션을 조사해야 합니다. 또한 Azure 가상 머신 사용자 지정 스크립트 확장을 사용하여 가상 머신 및 가상 머신 확장 집합을 자동으로 구성하는 기능을 탐색하고자 합니다.
 
-대화형 가이드 형식으로 이 랩을 미리 보려면 **[여기를 클릭하세요](https://mslabs.cloudguides.com/en-us/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2012)** .
+                **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2012)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
 ## <a name="objectives"></a>목표
 
@@ -95,11 +95,16 @@ You were tasked with identifying different options for deploying and configuring
 
     | 설정 | 값 |
     | --- | --- |
-    | 부트 진단 | **사용자 지정 스토리지 계정으로 사용하도록 설정** |
-    | 진단 스토리지 계정 | 기본값 수락 |
     | 패치 오케스트레이션 옵션 | **수동 업데이트** |  
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: If necessary, select an existing storage account in the dropdown list or create a new storage account. Record the name of the storage account. You will use it in the next task.
+1. **다음: 모니터링 >** 을 클릭하고, **가상 머신 만들기** 블레이드의 **모니터링** 탭에서 다음 설정을 지정합니다(다른 설정은 기본값으로 유지).
+
+    | 설정 | 값 |
+    | --- | --- |
+    | 부트 진단 | **사용자 지정 스토리지 계정으로 사용하도록 설정** |
+    | 진단 스토리지 계정 | **기본값 수락** |
+
+    >**참고**: 필요한 경우 드롭다운 목록에서 기존 스토리지 계정을 선택하거나 새 스토리지 계정을 만듭니다. 스토리지 계정 이름을 기록합니다. 이 이름은 다음 작업에서 사용합니다.
 
 1. **다음: 고급 >** 을 클릭하고, **가상 머신 만들기** 블레이드의 **고급** 탭에서 아무것도 수정하지 말고 사용 가능한 설정을 검토하고, **검토 + 만들기**를 클릭합니다.
 
@@ -129,7 +134,7 @@ You were tasked with identifying different options for deploying and configuring
 
 1. **검토 + 만들기**를 클릭하고 **검토 + 만들기** 블레이드에서 **만들기**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for both deployments to complete before you proceed to the next task. This might take about 5 minutes.
+    >**참고**: 다음 작업으로 진행하기 전에 두 배포가 모두 완료될 때까지 기다립니다. 5분 정도 걸릴 수 있습니다.
 
 #### <a name="task-2-configure-azure-virtual-machines-by-using-virtual-machine-extensions"></a>작업 2: 가상 머신 확장을 사용하여 Azure 가상 머신 구성
 
@@ -172,11 +177,11 @@ You were tasked with identifying different options for deploying and configuring
 
 1. **사용자 지정 배포** 블레이드에서 **템플릿 편집**을 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Disregard the message stating <bpt id="p2">**</bpt>The resource group is in a location that is not supported by one or more resources in the template. Please choose a different resource group<ept id="p2">**</ept>. This is expected and can be ignored in this case.
+    >**참고**: **템플릿에 있는 하나 이상의 리소스가 지원하지 않는 위치에 리소스 그룹이 있습니다. 다른 리소스 그룹을 선택하세요.** 라는 메시지는 무시합니다. 예상된 결과이고 이 경우 무시해도 됩니다.
 
 1. **템플릿 편집** 블레이드에서 템플릿 콘텐츠를 표시하는 섹션에 줄 **20**(`"resources": [` 줄 바로 아래)부터 다음 코드를 삽입합니다.
 
-   ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: If you are using a tool that pastes the code in line by line intellisense may add extra brackets causing validation errors. You may want to paste the code into notepad first and then paste it into line 20.
+   >**참고**: 코드를 한 줄씩 붙여넣는 도구를 사용하는 경우 Intellisense가 유효성 검사 오류를 일으키는 괄호를 추가할 수 있습니다. 코드를 먼저 메모장에 붙여넣은 다음 20번째 줄에 붙여넣으세요.
 
    ```json
         {
@@ -204,7 +209,7 @@ You were tasked with identifying different options for deploying and configuring
 
 1. **저장**을 클릭하고, **사용자 지정 템플릿** 블레이드로 돌아와서 **검토 + 만들기**를 클릭하고 **검토 + 만들기** 블레이드에서 **만들기**를 클릭합니다.
 
-    >Azure 가상 머신의 배포 및 구성을 위한 다양한 옵션을 식별하는 작업을 수행해야 합니다.
+    >**참고**: 템플릿 배포가 완료될 때까지 기다립니다. **az104-08-vm0** 및 **az104-08-vm1** 가상 머신의 **확장** 블레이드에서 진행 상황을 모니터링할 수 있습니다. 작업은 3분 이내에 완료됩니다.
 
 1. 사용자 지정 스크립트 확장 기반 구성이 성공했는지 확인하려면 **운영** 섹션에서 **az104-08-vm1** 블레이드를 다시 탐색한 후 **실행 명령**을 클릭하고 명령 목록에서 **RunPowerShellScript**를 클릭합니다.
 
@@ -274,7 +279,7 @@ You were tasked with identifying different options for deploying and configuring
 
 1. **사용자 지정 배포** 블레이드에서 **템플릿 편집**을 클릭합니다.
 
-    >먼저 Azure 가상 머신을 사용할 경우 구현할 수 있는 다양한 컴퓨팅 및 스토리지 복원력과 확장성 옵션을 결정해야 합니다.
+    >**참고**: **템플릿에 있는 하나 이상의 리소스가 지원하지 않는 위치에 리소스 그룹이 있습니다. 다른 리소스 그룹을 선택하세요.** 라는 메시지는 무시합니다. 예상된 결과이고 이 경우 무시해도 됩니다.
 
 1. **템플릿 편집** 블레이드의 템플릿 콘텐츠를 표시하는 섹션에서 줄 **30** `"vmSize": "Standard_D2s_v3"`을 다음 줄로 바꿉니다.
 
@@ -306,14 +311,14 @@ You were tasked with identifying different options for deploying and configuring
                     ]
    ```
 
-    >다음으로 Azure 가상 머신 확장 집합을 사용할 경우 사용할 수 있는 컴퓨팅 및 스토리지 복원력과 확장성 옵션을 조사해야 합니다.
+    >**참고**: 코드를 한 줄씩 붙여넣는 도구를 사용하는 경우 Intellisense가 유효성 검사 오류를 일으키는 괄호를 추가할 수 있습니다. 코드를 먼저 메모장에 붙여넣은 다음 49번째 줄에 붙여넣습니다.
 
     >**참고**: 템플릿의 이 섹션에서는 두 개의 관리 디스크를 만들고 Azure Portal을 통한 첫 번째 가상 머신의 스토리지 구성과 유사하게 **az104-08-vm1**에 연결합니다.
 
 
 1. **저장**을 클릭하고, **사용자 지정 배포** 블레이드에서 **검토 + 만들기**를 클릭하고, **검토 + 만들기** 블레이드에서 **만들기**를 클릭합니다.
 
-    >또한 Azure 가상 머신 사용자 지정 스크립트 확장을 사용하여 가상 머신 및 가상 머신 확장 집합을 자동으로 구성하는 기능을 탐색하고자 합니다.
+    >**참고**: 템플릿 배포가 완료될 때까지 기다립니다. **az104-08-vm1** 가상 머신의 **디스크** 블레이드에서 진행 상황을 모니터링할 수 있습니다. 작업은 3분 이내에 완료됩니다.
 
 1. **az104-08-vm1** 블레이드로 돌아와서, **작업** 섹션에서 **실행 명령**을 클릭하고, 명령 목록에서 **RunPowerShellScript**를 클릭합니다.
 
@@ -449,7 +454,7 @@ You were tasked with identifying different options for deploying and configuring
 
 1. **가상 머신 확장 집합 만들기** 블레이드의 **검토 + 만들기** 탭에서 유효성 검사가 통과되었는지 확인하고 **만들기**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the virtual machine scale set deployment to complete. This should take about 5 minutes.
+    >**참고**: 가상 머신 확장 집합 배포가 완료될 때까지 기다립니다. 이 작업은 5분 정도 걸립니다.
 
 #### <a name="task-6-configure-azure-virtual-machine-scale-sets-by-using-virtual-machine-extensions"></a>작업 6: 가상 머신 확장을 사용하여 Azure 가상 머신 확장 집합 구성
 
@@ -582,7 +587,7 @@ You were tasked with identifying different options for deploying and configuring
 
 1. 변경 사항을 저장하고 **az10408vmss0** 블레이드의 **설정** 섹션에서 **인스턴스**를 클릭합니다. 그런 다음 가상 머신 확장 집합의 인스턴스 옆에 있는 체크박스를 선택하고 **업그레이드**를 클릭한 다음 확인을 요청하면 **예**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: The disk attached in the previous step is a raw disk. Before it can be used, it is necessary to create a partition, create a filesystem, and mount it. To accomplish this, you will use Azure virtual machine Custom Script extension. First, you will need to remove the existing Custom Script Extension.
+    >**참고**: 이전 단계에서 연결된 디스크는 원시 디스크입니다. 사용하려면 먼저 파티션과 파일 시스템을 만든 후 탑재해야 합니다. 이를 위해 Azure 가상 머신 사용자 지정 스크립트 확장을 사용합니다. 먼저 기존 사용자 지정 스크립트 확장을 제거해야 합니다.
 
 1. **az10408vmss0** 블레이드의 **설정** 섹션에서 **확장**을 클릭하고 **CustomScriptExtension**을 클릭한 다음 **제거**를 클릭합니다.
 
@@ -616,9 +621,9 @@ You were tasked with identifying different options for deploying and configuring
 
 #### <a name="clean-up-resources"></a>리소스 정리
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+>**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>:  Don't worry if the lab resources cannot be immediately removed. Sometimes resources have dependencies and take a longer time to delete. It is a common Administrator task to monitor resource usage, so just periodically review your resources in the Portal to see how the cleanup is going. 
+>**참고**:  랩 리소스를 즉시 제거할 수 없어도 걱정하지 마세요. 리소스에 종속성이 있고 삭제하는 데 시간이 더 오래 걸리는 경우가 있습니다. 리소스 사용량을 모니터링하는 것은 일반적인 관리자 작업이므로 포털에서 리소스를 주기적으로 검토하여 정리가 어떻게 진행되고 있는지 확인합니다. 
 1. Azure Portal의 **Cloud Shell** 창에서 **PowerShell** 세션을 엽니다.
 
 1. 다음 명령을 실행하여 az104-08-configure_VMSS_disks.ps1을 제거합니다.

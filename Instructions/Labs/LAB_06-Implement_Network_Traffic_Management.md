@@ -9,9 +9,11 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-You were tasked with testing managing network traffic targeting Azure virtual machines in the hub and spoke network topology, which Contoso considers implementing in its Azure environment (instead of creating the mesh topology, which you tested in the previous lab). This testing needs to include implementing connectivity between spokes by relying on user defined routes that force traffic to flow via the hub, as well as traffic distribution across virtual machines by using layer 4 and layer 7 load balancers. For this purpose, you intend to use Azure Load Balancer (layer 4) and Azure Application Gateway (layer 7).
+(이전 랩에서 테스트한 메시 토폴로지를 만드는 대신) Contoso가 Azure 환경에서 구현하는 것을 고려하는 허브 및 스포크 네트워크 토폴로지에서 Azure 가상 머신을 대상으로 하는 네트워크 트래픽 관리를 테스트해야 합니다. 이 테스트에는 허브를 통해 트래픽이 흐르도록 하는 사용자 정의 경로에 의존하여 스포크 간의 연결을 구현하고 계층 4 및 계층 7 부하 분산 장치를 사용하여 가상 머신 전반의 트래픽 분포를 구현해야 합니다. 이 목적을 위해 Azure Load Balancer(계층 4) 및 Azure Application Gateway(계층 7)를 사용하려고 합니다.
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This lab, by default, requires total of 8 vCPUs available in the Standard_Dsv3 series in the region you choose for deployment, since it involves deployment of four Azure VMs of Standard_D2s_v3 SKU. If your students are using trial accounts, with the limit of 4 vCPUs, you can use a VM size that requires only one vCPU (such as Standard_B1s).
+                **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2010)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
+
+>**참고**: 이 랩은 기본적으로 Standard_D2s_v3 SKU의 4개의 Azure VM 배포가 포함되기 때문에, 배포를 위해 선택한 지역의 Standard_Dsv3 시리즈에서 사용할 수 있는 총 8개의 vCPU가 필요합니다. 학생이 4개의 vCPU 한도가 있는 평가판 계정을 사용하는 경우, vCPU가 하나만 필요한 VM 크기(예: Standard_B1s)를 사용할 수 있습니다.
 
 ## <a name="objectives"></a>목표
 
@@ -31,13 +33,13 @@ You were tasked with testing managing network traffic targeting Azure virtual ma
 ![이미지](../media/lab06.png)
 
 
-## <a name="instructions"></a>지침
+## <a name="instructions"></a>Instructions
 
 ### <a name="exercise-1"></a>연습 1
 
 #### <a name="task-1-provision-the-lab-environment"></a>작업 1: 랩 환경 프로비전
 
-In this task, you will deploy four virtual machines into the same Azure region. The first two will reside in a hub virtual network, while each of the remaining two will reside in a separate spoke virtual network.
+이 작업에서는 동일한 Azure 지역에 4개의 가상 머신을 배포합니다. 처음 두 개는 허브 가상 네트워크에 상주하고 나머지 각각은 별도의 스포크 가상 네트워크에 상주합니다.
 
 1. [Azure Portal](https://portal.azure.com)에 로그인합니다.
 
@@ -49,7 +51,7 @@ In this task, you will deploy four virtual machines into the same Azure region. 
 
 1. Cloud Shell 창의 도구 모음에서 **파일 업로드/다운로드** 아이콘을 클릭하고, 드롭다운 메뉴에서 **업로드**를 클릭하고, **\\Allfiles\\Labs\\06\\az104-06-vms-loop-template.json** and **\\Allfiles\\Labs\\06\\az104-06-vms-loop-parameters.json** 파일을 Cloud Shell 홈 디렉터리에 업로드합니다.
 
-1. Edit the <bpt id="p1">**</bpt>Parameters<ept id="p1">**</ept> file you just uploaded and change the password. If you need help editing the file in the Shell please ask your instructor for assistance. As a best practice, secrets, like passwords, should be more securely stored in the Key Vault. 
+1. 방금 업로드한 **Parameters** 파일을 편집하고 암호를 변경합니다. Shell에서 파일을 편집하는 데 도움이 필요한 경우 강사에게 도움을 요청하세요. 암호와 같은 비밀은 Key Vault에 보다 안전하게 저장되는 것이 가장 좋습니다. 
 
 1. Cloud Shell 창에서 다음을 실행하여 랩 환경을 호스트할 첫 번째 리소스 그룹을 만듭니다(‘[Azure_region]’ 자리 표시자를 Azure 가상 머신을 배포할 Azure 지역 이름으로 바꾸기). “(Get-AzLocation).Location” cmdlet을 사용하면 지역 목록을 확인할 수 있습니다.
 
@@ -77,14 +79,14 @@ In this task, you will deploy four virtual machines into the same Azure region. 
       -TemplateParameterFile $HOME/az104-06-vms-loop-parameters.json
    ```
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the deployment to complete before proceeding to the next step. This should take about 5 minutes.
+    >**참고**: 배포가 완료될 때까지 기다린 후 다음 작업을 진행하세요. 이 작업은 5분 정도 걸립니다.
 
     >**참고**: VM 크기를 사용할 수 없다는 오류가 발생하면 강사에게 도움을 요청하고 다음 단계를 시도하세요.
     > 1. Cloud Shell의 `{}` 단추를 클릭하고, 왼쪽 사이드바에서 **az104-06-vms-loop-parameters.json**을 선택하고, `vmSize` 매개 변수 값을 기록해 둡니다.
-    > 1. (이전 랩에서 테스트한 메시 토폴로지를 만드는 대신) Contoso가 Azure 환경에서 구현하는 것을 고려하는 허브 및 스포크 네트워크 토폴로지에서 Azure 가상 머신을 대상으로 하는 네트워크 트래픽 관리를 테스트해야 합니다.
+    > 1. ‘az104-06-rg1’ 리소스 그룹이 배포된 위치를 확인합니다. CloudShell에서 `az group show -n az104-06-rg1 --query location`을 실행하여 가져올 수 있습니다.
     > 1. CloudShell에서 `az vm list-skus --location <Replace with your location> -o table --query "[? contains(name,'Standard_D2s')].name"`을 실행합니다.
-    > 1. 이 테스트에는 허브를 통해 트래픽이 흐르도록 하는 사용자 정의 경로에 의존하여 스포크 간의 연결을 구현하고 계층 4 및 계층 7 부하 분산 장치를 사용하여 가상 머신 전반의 트래픽 분포를 구현해야 합니다.
-    > 1. 이 목적을 위해 Azure Load Balancer(계층 4) 및 Azure Application Gateway(계층 7)를 사용하려고 합니다.
+    > 1. `vmSize` 매개 변수 값을 방금 실행한 명령에서 반환된 값 중 하나로 바꿉니다. 반환된 값이 없는 경우 배포할 다른 지역을 선택해야 할 수 있습니다. "Standard_B1s"와 같은 다른 제품군 이름도 선택 가능합니다.
+    > 1. 이제 `New-AzResourceGroupDeployment` 명령을 다시 실행하여 템플릿을 다시 배포합니다. 위쪽 단추를 몇 번 눌러 마지막으로 실행된 명령을 가져올 수 있습니다.
 
 1. Cloud Shell 창에서 다음을 실행하여 이전 단계에서 배포한 Azure VM에 Network Watcher 확장 프로그램을 설치합니다.
 
@@ -105,7 +107,7 @@ In this task, you will deploy four virtual machines into the same Azure region. 
    }
    ```
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the deployment to complete before proceeding to the next step. This should take about 5 minutes.
+    >**참고**: 배포가 완료될 때까지 기다린 후 다음 작업을 진행하세요. 이 작업은 5분 정도 걸립니다.
 
 
 
@@ -181,7 +183,7 @@ In this task, you will deploy four virtual machines into the same Azure region. 
     | 원격 가상 네트워크에서 전달된 트래픽 | **허용(기본값)** |
     | 가상 네트워크 게이트웨이 | **없음(기본값)** |
 
-    >**참고**: 이 랩은 기본적으로 Standard_D2s_v3 SKU의 4개의 Azure VM 배포가 포함되기 때문에, 배포를 위해 선택한 지역의 Standard_Dsv3 시리즈에서 사용할 수 있는 총 8개의 vCPU가 필요합니다.
+    >**참고**: 이 단계에서 하나는 az104-06-vnet01에서 az104-06-vnet3으로, 다른 하나는 az104-06-vnet3에서 az104-06-vnet01로 두 개의 전역 피어링을 설정합니다. 이렇게 하면 허브 및 스포크 토폴로지 설정(두 개의 스포크 가상 네트워크를 갖춘)이 완료됩니다.
 
     >**참고**: 이 랩의 뒷부분에서 구현할 스포크 가상 네트워크 간의 라우팅을 용이하게 하려면 **전달된 트래픽**을 사용하도록 설정해야 합니다.
 
@@ -210,7 +212,7 @@ In this task, you will deploy four virtual machines into the same Azure region. 
 
     > **참고**: **10.62.0.4는**는 **az104-06-vm2**의 개인 IP 주소를 나타냅니다.
 
-1. 학생이 4개의 vCPU 한도가 있는 평가판 계정을 사용하는 경우, vCPU가 하나만 필요한 VM 크기(예: Standard_B1s)를 사용할 수 있습니다.
+1. **확인**을 클릭하고 연결 확인 결과가 반환될 때까지 기다립니다. 상태가 **연결할 수 있음**인지 확인합니다. 네트워크 경로를 검토하고 VM 간에 중간 홉 없이 직접 연결되었는지 확인합니다.
 
     > **참고**: 허브 가상 네트워크가 첫 번째 스포크 가상 네트워크로 직접 피어링하기 때문에 예상된 결과입니다.
 
@@ -229,7 +231,7 @@ In this task, you will deploy four virtual machines into the same Azure region. 
 
     > **참고**: **10.63.0.4**는 **az104-06-vm3**의 개인 IP 주소를 나타냅니다.
 
-1. Click <bpt id="p1">**</bpt>Check<ept id="p1">**</ept> and wait until results of the connectivity check are returned. Verify that the status is <bpt id="p1">**</bpt>Reachable<ept id="p1">**</ept>. Review the network path and note that the connection was direct, with no intermediate hops in between the VMs.
+1. **확인**을 클릭하고 연결 확인 결과가 반환될 때까지 기다립니다. 상태가 **연결할 수 있음**인지 확인합니다. 네트워크 경로를 검토하고 VM 간에 중간 홉 없이 직접 연결되었는지 확인합니다.
 
     > **참고**: 허브 가상 네트워크는 두 번째 스포크 가상 네트워크로 직접 피어링하므로 예상된 결과입니다.
 
@@ -246,7 +248,7 @@ In this task, you will deploy four virtual machines into the same Azure region. 
     | 프로토콜 | **TCP** |
     | 대상 포트 | **3389** |
 
-1. Click <bpt id="p1">**</bpt>Check<ept id="p1">**</ept> and wait until results of the connectivity check are returned. Note that the status is <bpt id="p1">**</bpt>Unreachable<ept id="p1">**</ept>.
+1. **확인**을 클릭하고 연결 확인 결과가 반환될 때까지 기다립니다. 상태는 **연결할 수 없음**입니다.
 
     > **참고**: 두 스포크 가상 네트워크가 서로 피어링되지 않기 때문에 예상된 결과입니다(가상 네트워크 피어링은 전이되지 않음).
 
@@ -308,9 +310,9 @@ In this task, you will deploy four virtual machines into the same Azure region. 
     | 이름 | **az104-06-rt23** |
     | 게이트웨이 경로 전파 | **아니요** |
 
-1. Click <bpt id="p1">**</bpt>Review and Create<ept id="p1">**</ept>. Let validation occur, and click <bpt id="p1">**</bpt>Create<ept id="p1">**</ept> to submit your deployment.
+1. **검토 후 만들기**를 클릭합니다. 유효성 검사가 완료될 때까지 기다리고 **만들기**를 클릭하여 배포를 제출합니다.
 
-   > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the route table to be created. This should take about 3 minutes.
+   > **참고**: 라우팅 테이블이 만들어질 때까지 기다립니다. 이 작업은 3분 정도 걸립니다.
 
 1. **리소스로 이동**을 클릭합니다.
 
@@ -351,9 +353,9 @@ In this task, you will deploy four virtual machines into the same Azure region. 
     | 이름 | **az104-06-rt32** |
     | 게이트웨이 경로 전파 | **아니요** |
 
-1. Click Review and Create. Let validation occur, and hit Create to submit your deployment.
+1. 검토 후 만들기를 클릭합니다. 유효성 검사가 완료될 때까지 기다리고 만들기를 클릭하여 배포를 제출합니다.
 
-   > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the route table to be created. This should take about 3 minutes.
+   > **참고**: 라우팅 테이블이 만들어질 때까지 기다립니다. 이 작업은 3분 정도 걸립니다.
 
 1. **리소스로 이동**을 클릭합니다.
 
@@ -397,7 +399,7 @@ In this task, you will deploy four virtual machines into the same Azure region. 
     | 프로토콜 | **TCP** |
     | 대상 포트 | **3389** |
 
-1. Click <bpt id="p1">**</bpt>Check<ept id="p1">**</ept> and wait until results of the connectivity check are returned. Verify that the status is <bpt id="p1">**</bpt>Reachable<ept id="p1">**</ept>. Review the network path and note that the traffic was routed via <bpt id="p1">**</bpt>10.60.0.4<ept id="p1">**</ept>, assigned to the <bpt id="p2">**</bpt>az104-06-nic0<ept id="p2">**</ept> network adapter. If status is <bpt id="p1">**</bpt>Unreachable<ept id="p1">**</ept>, you should stop and then start az104-06-vm0.
+1. **확인**을 클릭하고 연결 확인 결과가 반환될 때까지 기다립니다. 상태가 **연결할 수 있음**인지 확인합니다. 네트워크 경로를 검토하고 트래픽이 **10.60.0.4**를 통해 라우팅되고 **az104-06-nic0** 네트워크 어댑터에 할당되어있습니다. 상태가 **연결할 수 없음**이면 az104-06-vm0을 중지한 다음, 시작해야 합니다.
 
     > **참고**: 스포크 가상 네트워크 간의 트래픽이 라우터로 작동하는 허브 가상 네트워크에 있는 가상 머신을 통해 라우팅되므로 예상된 결과입니다.
 
@@ -416,84 +418,70 @@ In this task, you will deploy four virtual machines into the same Azure region. 
     | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
     | Resource group | **az104-06-rg1** |
     | Name | **az104-06-lb4** |
-    | 지역| 이 랩에서 다른 모든 리소스를 배포한 Azure 지역의 이름 |
-    | SKU | **표준** |
-    | Type | **공용** |
+    | 지역 | 이 랩에서 다른 모든 리소스를 배포한 Azure 지역의 이름 |
+    | SKU  | **표준** |
+    | 유형 | **공용** |
+    | 서비스 계층 | **Regional** |
     
-1. **프런트 엔드 IP 구성** 탭에서 **프런트 엔드 IP 구성 추가**를 클릭하고 **추가**를 클릭하기 전에 다음 설정을 사용합니다.   
+1. **프런트 엔드 IP 구성** 탭에서 **프런트 엔드 IP 구성 추가**를 클릭하고 다음 설정을 사용한 다음 **확인**, **추가**를 차례로 클릭합니다. 완료되면 **다음: 백 엔드 풀**을 클릭합니다. 
      
     | 설정 | 값 |
     | --- | --- |
     | 이름 | 고유한 이름 |
+    | IP 버전 | IPv4 |
+    | IP 유형 | IP 주소 |
     | 공용 IP 주소 | **새로 만들기** |
-    | 공용 IP 주소 이름 | **az104-06-pip4** |
+    | 이름 | **az104-06-pip4** |
+    | 가용성 영역 | **영역 없음** | 
 
-1. Click <bpt id="p1">**</bpt>Review and Create<ept id="p1">**</ept>. Let validation occur, and hit <bpt id="p1">**</bpt>Create<ept id="p1">**</ept> to submit your deployment.
-
-    > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the Azure load balancer to be provisioned. This should take about 2 minutes.
-
-1. 배포 블레이드에서 **리소스로 이동**을 클릭합니다.
-
-1. **az104-06-lb4** 부하 분산 장치 블레이드의 **설정** 섹션에서 **백 엔드 풀**을 클릭한 다음 **+추가**를 클릭합니다.
-
-1. 다음 설정을 사용하여 백 엔드 풀을 추가합니다(다른 설정은 기본값으로 유지).
+1. **백 엔드 풀** 탭에서 **백 엔드 풀 추가**를 클릭합니다(다른 설정은 기본값으로 유지). **+ 추가**를 (두 번) 클릭한 다음 **다음:인바운드 규칙**을 클릭합니다. 
 
     | 설정 | 값 |
     | --- | --- |
     | Name | **az104-06-lb4-be1** |
     | 가상 네트워크 | **az104-06-vnet01** |
+    | 백 엔드 풀 구성 | **NIC** | 
     | IP 버전 | **IPv4** |
-    | 가상 머신 | **az104-06-vm0** |
-    | 가상 머신 IP 주소 | **ipconfig1(10.60.0.4)** |
-    | 가상 머신 | **az104-06-vm1** |
-    | 가상 머신 IP 주소 | **ipconfig1(10.60.1.4)** |
+    | **추가**를 클릭하여 가상 머신을 추가합니다. |  |
+    | az104-06-vm0 | **확인란 선택** |
+    | az104-06-vm1 | **확인란 선택** |
 
-1. **추가**를 클릭합니다.
 
-1. 백 엔드 풀이 생성되면 **설정** 섹션에서 **상태 프로브**를 클릭한 다음 **+ 추가**를 클릭합니다.
-
-1. 다음 설정을 사용하여 상태 프로브를 추가합니다.
-
-    | 설정 | 값 |
-    | --- | --- |
-    | Name | **az104-06-lb4-hp1** |
-    | 프로토콜 | **TCP** |
-    | 포트 | **80** |
-    | 간격 | **5** |
-    | 비정상 임계값 | **2** |
-
-1. **추가**를 클릭합니다.
-
-1. 상태 프로브가 만들어질 때까지 기다렸다가 **설정** 섹션에서 **부하 분산 규칙**을 클릭한 다음 **+ 추가**를 클릭합니다.
-
-1. 다음 설정을 사용하여 부하 분산 규칙을 추가합니다(다른 설정은 기본값으로 유지).
+1. **인바운드 규칙** 탭에서 **부하 분산 규칙 추가**를 클릭합니다. 다음 설정을 사용하여 부하 분산 규칙을 추가합니다(다른 설정은 기본값으로 유지). 완료되면 **추가**를 클릭합니다.
 
     | 설정 | 값 |
     | --- | --- |
     | Name | **az104-06-lb4-lbrule1** |
     | IP 버전 | **IPv4** |
-    | 프런트 엔드 IP 주소 | **드롭다운 목록에서 LoadBalancerFrontEnd 선택**
+    | 프런트 엔드 IP 주소 | **az104-06-pip4** |
+    | 백 엔드 풀 | **az104-06-lb4-be1** |    
     | 프로토콜 | **TCP** |
     | 포트 | **80** |
     | 백 엔드 포트 | **80** |
-    | 백 엔드 풀 | **az104-06-lb4-be1** |
-    | 상태 프로브 | **az104-06-lb4-hp1** |
+    | 상태 프로브 | **새로 만들기** |
+    | Name | **az104-06-lb4-hp1** |
+    | 프로토콜 | **TCP** |
+    | 포트 | **80** |
+    | 간격 | **5** |
+    | 비정상 임계값 | **2** |
+    | 상태 프로브 만들기 창 닫기 | **확인** | 
     | 세션 지속성 | **없음** |
     | 유휴 제한 시간(분) | **4** |
     | TCP 재설정 | **사용 안 함** |
-    | 부동 IP(Direct Server Return) | **사용 안 함** |
+    | 부동 IP | **사용 안 함** |
+    | 아웃바운드 SNAT(Source Network Address Translation) | **권장** |
 
-1. **추가**를 클릭합니다.
+1. 시간이 있으므로 다른 탭을 검토한 다음 **검토 후 만들기**를 클릭합니다. 유효성 검사 오류가 없는지 확인하고 **만들기**를 클릭합니다. 
 
-1. 부하 분산 규칙이 만들어질 때까지 기다렸다가 **설정** 섹션에서 **프런트 엔드 IP 구성**을 클릭하고 **공용 IP 주소**의 값을 기록해 둡니다.
+1. 부하 분산 장치가 배포되기를 기다린 다음 **리소스로 이동**을 클릭합니다.  
 
-1. 다른 브라우저 창을 시작하고 이전 단계에서 식별한 IP 주소로 이동합니다.
+1. 부하 부산 장치 리소스 페이지에서 **프런트 엔드 IP 구성**을 선택합니다. IP 주소를 복사합니다.
 
-1. 브라우저 창에 **az104-06-vm0의 Hello World** 또는 **az104-06-vm1의 Hello World** 메시지가 표시되는지 확인합니다.
+1. 다른 브라우저 탭을 열고 IP 주소로 이동합니다. 브라우저 창에 **az104-06-vm0의 Hello World** 또는 **az104-06-vm1의 Hello World** 메시지가 표시되는지 확인합니다.
 
-1. 다른 브라우저 창을 열어서 이번에는 InPrivate 모드를 사용하여 대상 VM이 메시지에 표시된 대로 변경되는지 확인합니다.
+1. 창을 새로 고쳐 메시지가 다른 가상 머신으로 변경되었는지 확인합니다. 이는 가상 머신을 통해 회전하는 부하 분산 장치를 나타냅니다.
 
-    > **참고**: 브라우저 창을 새로 고치거나 InPrivate 모드를 사용하여 다시 열어야 할 수도 있습니다.
+    > **참고**: InPrivate 모드에서 브라우저 창을 두 번 이상 새로 고치거나 새로 열어야 할 수 있습니다.
 
 #### <a name="task-6-implement-azure-application-gateway"></a>작업 6: Azure Application Gateway 구현
 
@@ -514,11 +502,11 @@ In this task, you will deploy four virtual machines into the same Azure region. 
 
 1. 페이지 맨 아래에 있는 **저장**
 
-    > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This subnet will be used by the Azure Application Gateway instances, which you will deploy later in this task. The Application Gateway requires a dedicated subnet of /27 or larger size.
+    > **참고**: 이 서브넷은 Azure Application Gateway 인스턴스에서 사용되며 이 작업의 후반부에서 배포합니다. Application Gateway에는 27 또는 그 이상 크기의 전용 서브넷이 필요합니다.
 
 1. Azure Portal에서 **Application Gateway**를 검색하여 선택하고 **Application Gateway** 블레이드에서 **+ 만들기**를 클릭합니다.
 
-1. **Application Gateway 만들기** 블레이드의 **기본** 탭에서 다음 설정을 지정합니다(다른 설정은 기본값으로 유지).
+1. **기본 사항** 탭에서 다음 설정을 지정합니다(다른 설정은 기본값으로 유지).
 
     | 설정 | 값 |
     | --- | --- |
@@ -526,35 +514,35 @@ In this task, you will deploy four virtual machines into the same Azure region. 
     | Resource group | **az104-06-rg1** |
     | Application Gateway 이름 | **az104-06-appgw5** |
     | 지역 | 이 랩에서 다른 모든 리소스를 배포한 Azure 지역의 이름 |
-    | 서비스 계층 | **표준 V2** |
+    | 계층 | **표준 V2** |
     | 자동 크기 조정 사용 | **아니요** |
+    | 인스턴트 수 | **2** |
+    | 가용성 영역 | **없음** |
     | HTTP2 | **사용 안 함** |
     | 가상 네트워크 | **az104-06-vnet01** |
-    | 서브넷 | **subnet-appgw** |
+    | 서브넷 | **subnet-appgw (10.60.3.224/27)** |
 
-1. **다음: 프런트 엔드 >** 를 클릭하고, **애플리케이션 게이트웨이 만들기** 블레이드의 **프런트 엔드** 탭에서 **새로 추가**를 클릭하고, 다음 설정을 지정합니다(다른 설정은 기본값으로 유지).
+1. **다음: 프런트 엔드 >** 를 클릭하고 다음 설정을 지정합니다(다른 설정은 기본값으로 유지). 완료한 경우 **확인**을 클릭합니다. 
 
     | 설정 | 값 |
     | --- | --- |
     | 프런트 엔드 IP 주소 유형 | **공용** |
-    | 공용 IP 주소| 새 공용 IP 주소 **az104-06-pip5**의 이름 |
+    | 공용 IP 주소| **새로 추가** | 
+    | 이름 | **az104-06-pip5** |
+    | 가용성 영역 | **없음** |
 
-1. **다음: 백 엔드 >** 를 클릭하고, **애플리케이션 게이트웨이 만들기** 블레이드의 **백 엔드** 탭에서 **백 엔드 풀 추가**를 클릭하고, **백 엔드 풀 추가** 블레이드에서 다음 설정을 지정합니다(다른 설정은 기본값으로 유지).
+1. **다음: 백 엔드 >** 를 클릭한 다음 **백 엔드 풀 추가**를 클릭합니다. 다음 설정을 지정합니다(다른 설정은 기본값으로 유지). 완료되면 **추가**를 클릭합니다.
 
     | 설정 | 값 |
     | --- | --- |
     | Name | **az104-06-appgw5-be1** |
     | 대상 없이 백 엔드 풀 추가 | **아니요** |
-    | 대상 형식 | **IP 주소 또는 FQDN** |
-    | 대상 | **10.62.0.4** |
-    | 대상 형식 | **IP 주소 또는 FQDN** |
-    | 대상 | **10.63.0.4** |
+    | IP 주소 또는 FQDN | **10.62.0.4** | 
+    | IP 주소 또는 FQDN | **10.63.0.4** |
 
     > **참고**: 대상은 스포크 가상 네트워크 **az104-06-vm2** 및 **az104-06-vm3**에서 가상 머신의 개인 IP 주소를 나타냅니다.
 
-1. **추가**, **다음: 구성 >** 을 차례로 클릭하고 **애플리케이션 게이트웨이 만들기** 블레이드의 **구성** 탭에서 **+ 라우팅 규칙 추가**를 클릭합니다.
-
-1. **라우팅 규칙 추가** 블레이드의 **수신기** 탭에서 다음 설정을 지정합니다.
+1. **다음: 구성 >** 을 클릭한 다음 **+ 라우팅 규칙 추가**를 클릭합니다. 다음 설정을 지정합니다.
 
     | 설정 | 값 |
     | --- | --- |
@@ -567,49 +555,42 @@ In this task, you will deploy four virtual machines into the same Azure region. 
     | 수신기 유형 | **기본** |
     | 오류 페이지 URL | **아니요** |
 
-1. **라우팅 규칙 추가** 블레이드의** 백 엔드 대상** 탭으로 전환하고 다음 설정을 지정합니다(다른 설정은 기본값으로 유지).
+1. **백 엔드 대상** 탭으로 전환하고 다음 설정을 지정합니다(다른 설정은 기본값으로 유지). 완료되면 **추가**를 두 번 클릭합니다.  
 
     | 설정 | 값 |
     | --- | --- |
     | 대상 형식 | **백 엔드 풀** |
     | 백 엔드 대상 | **az104-06-appgw5-be1** |
-
-1. **백 엔드 설정** 텍스트 상자 아래의 **새로 추가**를 클릭하고 **백 엔드 설정 추가** 블레이드에서 다음 설정을 지정합니다(다른 설정은 기본값으로 유지).
-
-    | 설정 | 값 |
-    | --- | --- |
-    | HTTP 설정 이름 | **az104-06-appgw5-http1** |
+    | 백 엔드 설정 | **새로 추가** |
+    | 백 엔드 설정 이름 | **az104-06-appgw5-http1** |
     | 백 엔드 프로토콜 | **HTTP** |
     | 백 엔드 포트 | **80** |
-    | 쿠키 기반 선호도 | **사용 안함** |
-    | 연결 드레이닝 | **사용 안함** |
-    | 요청 시간 초과(초) | **20** |
-
-1. **HTTP 설정 추가** 블레이드에서 **추가**를 클릭하고 **라우팅 규칙 추가** 블레이드로 돌아와서 **추가**를 클릭합니다.
+    | 추가 설정 | **기본값 사용** |
+    | 호스트 이름 | **기본값 사용** |
 
 1. **다음: 태그 >** , **다음: 검토 + 만들기>** 를 차례로 클릭한 후에 **만들기**를 클릭합니다.
 
-    > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the Application Gateway instance to be created. This might take about 8 minutes.
+    > **참고**: Application Gateway 인스턴스가 만들어질 때까지 기다리세요. 8분 정도 걸릴 수 있습니다.
 
 1. Azure Portal에서 **애플리케이션 게이트웨이**를 선택합니다. 그리고 **애플리케이션 게이트웨이** 블레이드에서 **az104-06-appgw5**를 클릭합니다.
 
-1. **az104-06-appgw5** Application Gateway 블레이드에서 **프런트 엔드 공용 IP 주소**의 값을 기록하세요.
+1. **az104-06-appgw5** Application Gateway 블레이드에서 **프런트 엔드 공용 IP 주소**의 값을 복사합니다.
 
 1. 다른 브라우저 창을 시작하고 이전 단계에서 식별한 IP 주소로 이동합니다.
 
 1. 브라우저 창에 **Hello World from az104-06-vm2** 또는 **Hello World from az104-06-vm3** 메시지가 표시되는지 확인합니다.
 
-1. 다른 브라우저 창을 열어 이번에는 InPrivate 모드를 사용하여 대상 VM이 웹 페이지에 표시된 메시지대로 변경되는지 확인합니다.
+1. 창을 새로 고쳐 메시지가 다른 가상 머신으로 변경되었는지 확인합니다. 
 
-    > **참고**: 브라우저 창을 새로 고치거나 InPrivate 모드를 사용하여 다시 열어야 할 수도 있습니다.
+    > **참고**: InPrivate 모드에서 브라우저 창을 두 번 이상 새로 고치거나 새로 열어야 할 수 있습니다.
 
     > **참고**: 여러 가상 네트워크에서 가상 머신을 대상으로 하는 것은 일반적인 구성은 아닙니다. 그러나 Application Gateway가 동일한 가상 네트워크의 가상 머신 간 부하를 분산하는 Azure Load Balancer와는 달리 여러 가상 네트워크(및 다른 Azure 지역 혹은 심지어 Azure 외부의 엔드포인트)에서 가상 머신을 대상으로 할 수 있다는 점을 설명하기 위한 것입니다.
 
 #### <a name="clean-up-resources"></a>리소스 정리
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+>**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>:  Don't worry if the lab resources cannot be immediately removed. Sometimes resources have dependencies and take a longer time to delete. It is a common Administrator task to monitor resource usage, so just periodically review your resources in the Portal to see how the cleanup is going. 
+>**참고**:  랩 리소스를 즉시 제거할 수 없어도 걱정하지 마세요. 리소스에 종속성이 있고 삭제하는 데 시간이 더 오래 걸리는 경우가 있습니다. 리소스 사용량을 모니터링하는 것은 일반적인 관리자 작업이므로 포털에서 리소스를 주기적으로 검토하여 정리가 어떻게 진행되고 있는지 확인합니다. 
 
 1. Azure Portal의 **Cloud Shell** 창에서 **PowerShell** 세션을 엽니다.
 
@@ -634,6 +615,6 @@ In this task, you will deploy four virtual machines into the same Azure region. 
 + 랩 환경 프로비전
 + 허브 및 스포크 네트워크 토폴로지 구성
 + 가상 네트워크 피어링의 전이성 테스트
-+ 작업 4: 허브 및 스포크 토폴로지에서 라우팅 구성
-+ 작업 5: Azure Load Balancer 구현
-+ 작업 6: Azure Application Gateway 구현
++ 허브 및 스포크 토폴로지에서 라우팅 구성
++ Azure Load Balancer 구현
++ Azure Application Gateway 구현

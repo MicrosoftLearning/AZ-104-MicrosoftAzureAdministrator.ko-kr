@@ -10,7 +10,9 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-You need to explore Azure virtual networking capabilities. To start, you plan to create a virtual network in Azure that will host a couple of Azure virtual machines. Since you intend to implement network-based segmentation, you will deploy them into different subnets of the virtual network. You also want to make sure that their private and public IP addresses will not change over time. To comply with Contoso security requirements, you need to protect public endpoints of Azure virtual machines accessible from Internet. Finally, you need to implement DNS name resolution for Azure virtual machines both within the virtual network and from Internet.
+Azure 가상 네트워킹 기능을 탐색해야 합니다. 시작으로 Azure에서 몇 개의 Azure 가상 머신을 호스트하는 가상 네트워크를 만들 계획을 합니다. 네트워크 기반 세분화를 구현하려는 경우 가상 네트워크의 다른 서브넷에 배포합니다. 또한 개인 IP 주소와 공용 IP 주소가 시간이 지남에 따라 변경되지 않도록 해야 합니다. Contoso 보안 요구 사항을 준수하려면 인터넷에서 액세스할 수 있는 Azure 가상 머신의 공용 엔드포인트를 보호해야 합니다. 마지막으로 가상 네트워크와 인터넷 모두에서 Azure 가상 머신에 대한 DNS 이름 확인을 구현해야 합니다.
+
+                **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%208)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
 ## <a name="objectives"></a>목표
 
@@ -29,7 +31,7 @@ You need to explore Azure virtual networking capabilities. To start, you plan to
 
 ![이미지](../media/lab04.png)
 
-## <a name="instructions"></a>지침
+## <a name="instructions"></a>Instructions
 
 ### <a name="exercise-1"></a>연습 1
 
@@ -63,9 +65,9 @@ You need to explore Azure virtual networking capabilities. To start, you plan to
     | 서브넷 이름 | **subnet0** |
     | 서브넷 주소 범위 | **10.40.0.0/24** |
 
-1. Accept the defaults and click <bpt id="p1">**</bpt>Review and Create<ept id="p1">**</ept>. Let validation occur, and hit <bpt id="p1">**</bpt>Create<ept id="p1">**</ept> again to submit your deployment.
+1. 기본값을 그대로 적용하고 **검토 후 만들기**를 클릭합니다. 유효성 검사가 완료될 때까지 기다리고 **만들기**를 다시 클릭하여 배포를 제출합니다.
 
-    ><bpt id="p1">**</bpt>Note:<ept id="p1">**</ept> Wait for the virtual network to be provisioned. This should take less than a minute.
+    >**참고:** 가상 네트워크가 프로비전될 때까지 기다립니다. 1분 미만이 소요됩니다.
 
 1. **리소스로 이동**을 클릭합니다.
 
@@ -96,7 +98,7 @@ You need to explore Azure virtual networking capabilities. To start, you plan to
 
     >**참고**: 각 파일을 별도로 업로드해야 할 수 있습니다.
 
-1. Edit the Parameters file, and change the password. If you need help editing the file in the Shell please ask your instructor for assistance. As a best practice, secrets, like passwords, should be more securely stored in the Key Vault. 
+1. 매개 변수 파일을 편집하고 암호를 변경합니다. Shell에서 파일을 편집하는 데 도움이 필요한 경우 강사에게 도움을 요청하세요. 암호와 같은 비밀은 Key Vault에 보다 안전하게 저장되는 것이 가장 좋습니다. 
 
 1. Cloud Shell 창에서 다음을 실행하여 템플릿 및 매개 변수 파일을 사용하여 두 개의 가상 머신을 배포합니다.
 
@@ -109,16 +111,16 @@ You need to explore Azure virtual networking capabilities. To start, you plan to
       -TemplateParameterFile $HOME/az104-04-vms-loop-parameters.json
    ```
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This method of deploying ARM templates uses Azure PowerShell. You can perform the same task by running the equivalent Azure CLI command <bpt id="p1">**</bpt>az deployment create<ept id="p1">**</ept> (for more information, refer to <bpt id="p2">[</bpt>Deploy resources with Resource Manager templates and Azure CLI<ept id="p2">](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-cli)</ept>.
+    >**참고**: 이 ARM 템플릿 배포 방법에서는 Azure PowerShell을 사용합니다. 동등한 Azure CLI 명령 **az deployment create**를 실행하여 동일한 작업을 수행할 수 있습니다(자세한 내용은 [Resource Manager 템플릿 및 Azure CLI를 사용한 리소스 배포](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-cli) 참조).
 
-    >Azure 가상 네트워킹 기능을 탐색해야 합니다.
+    >**참고**: 다음 작업으로 진행하기 전에 배포가 완료될 때까지 기다립니다. 이 작업은 2분 정도 걸립니다.
 
     >**참고**: VM 크기를 사용할 수 없다는 오류가 발생하면 강사에게 도움을 요청하고 다음 단계를 시도하세요.
     > 1. CloudShell의 `{}` 단추를 클릭하고 왼쪽 사이드바에서 **az104-04-vms-loop-parameters.json**을 선택하고 `vmSize` 매개 변수 값을 기록해 둡니다.
-    > 1. 시작으로 Azure에서 몇 개의 Azure 가상 머신을 호스트하는 가상 네트워크를 만들 계획을 합니다.
-    > 1. 네트워크 기반 세분화를 구현하려는 경우 가상 네트워크의 다른 서브넷에 배포합니다.
+    > 1. ‘az104-04-rg1’ 리소스 그룹이 배포된 위치를 확인합니다. CloudShell에서 `az group show -n az104-04-rg1 --query location`을 실행하여 가져올 수 있습니다.
+    > 1. CloudShell에서 `az vm list-skus --location <Replace with your location> -o table --query "[? contains(name,'Standard_D2s')].name"`을 실행합니다. 나열된 SKU가 없는 경우(즉, 결과가 없음) 해당 지역에 모든 D2S 가상 머신을 배포할 수 없습니다. D2S 가상 머신을 배포할 수 있는 지역을 찾아야 합니다. 적절한 위치를 선택한 다음 AZ104-04-rg1 리소스 그룹을 삭제하고 랩을 다시 시작합니다.
     > 1. `vmSize` 매개 변수 값을 방금 실행한 명령에서 반환된 값 중 하나로 바꿉니다.
-    > 1. 또한 개인 IP 주소와 공용 IP 주소가 시간이 지남에 따라 변경되지 않도록 해야 합니다.
+    > 1. 이제 `New-AzResourceGroupDeployment` 명령을 다시 실행하여 템플릿을 다시 배포합니다. 위쪽 단추를 몇 번 눌러 마지막으로 실행된 명령을 가져올 수 있습니다.
 
 1. Cloud Shell 창을 닫습니다.
 
@@ -149,7 +151,7 @@ You need to explore Azure virtual networking capabilities. To start, you plan to
 
 1. **ipconfig1** 블레이드에서 **할당**을 **정적**으로 설정하고 **IP 주소**의 기본값을 **10.40.0.4**로 설정한 상태로 둡니다.
 
-1. Contoso 보안 요구 사항을 준수하려면 인터넷에서 액세스할 수 있는 Azure 가상 머신의 공용 엔드포인트를 보호해야 합니다.
+1. **ipconfig1** 블레이드로 돌아가서 변경 내용을 저장합니다. 작업 저장이 완료될 때까지 기다렸다가 다음 단계를 진행해야 합니다.
 
 1. **az104-04-vnet1** 블레이드로 다시 돌아갑니다.
 
@@ -186,11 +188,11 @@ You need to explore Azure virtual networking capabilities. To start, you plan to
 
 1. 연결이 실패하는지 확인합니다.
 
-    >마지막으로 가상 네트워크와 인터넷 모두에서 Azure 가상 머신에 대한 DNS 이름 확인을 구현해야 합니다.
+    >**참고**: 기본적으로 표준 SKU의 공용 IP 주소는 할당된 네트워크 인터페이스가 네트워크 보안 그룹에 의해 보호될 것을 요구하기 때문에 이 연결 실패는 예상된 결과입니다. 원격 데스크탑에 연결하려면 인터넷에서 인바운드 RDP 트래픽을 명시적으로 허용하는 네트워크 보안 그룹을 만들고 이 그룹을 두 가상 머신의 네트워크 인터페이스에 할당합니다.
 
 1. **az104-04-vm0** 및 **az104-04-vm1** 가상 머신을 중지합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This is done for lab expediency. If the virtual machines are running when a network security group is attached to their network interface, it can can take over 30 minutes for the attachment to take effect. Once the network security group has been created and attached, the virtual machines will be restarted, and the attachment will be in effect immediately.
+    >**참고**: 이 작업은 랩 편의성을 위해 수행됩니다. 네트워크 보안 그룹이 네트워크 인터페이스에 연결될 때 가상 머신이 실행되고 있으면 첨부 파일이 적용되는 데 30분 이상 걸릴 수 있습니다. 네트워크 보안 그룹이 만들어지고 연결되면 가상 머신이 다시 시작되고 첨부 파일이 즉시 적용됩니다.
 
 1. Azure Portal에서 **네트워크 보안 그룹**을 검색하여 선택하고 **네트워크 보안 그룹** 블레이드에서 **+ 만들기**를 클릭합니다.
 
@@ -203,9 +205,9 @@ You need to explore Azure virtual networking capabilities. To start, you plan to
     | Name | **az104-04-nsg01** |
     | 지역 | 이 랩에서 다른 모든 리소스를 배포한 Azure 지역의 이름 |
 
-1. Click <bpt id="p1">**</bpt>Review and Create<ept id="p1">**</ept>. Let validation occur, and hit <bpt id="p1">**</bpt>Create<ept id="p1">**</ept> to submit your deployment.
+1. **검토 후 만들기**를 클릭합니다. 유효성 검사가 완료될 때까지 기다리고 **만들기**를 클릭하여 배포를 제출합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the deployment to complete. This should take about 2 minutes.
+    >**참고**: 배포가 완료될 때까지 기다리세요. 이 작업은 2분 정도 걸립니다.
 
 1. 배포 블레이드에서 **리소스로 이동**을 클릭하여 **az104-04-nsg01** 네트워크 보안 그룹 블레이드를 엽니다.
 
@@ -237,13 +239,13 @@ You need to explore Azure virtual networking capabilities. To start, you plan to
 
 1. **az104-04-vm0** 블레이드에서 **연결**을 클릭하고, **RDP**를 클릭하고, **RDP와 연결** 블레이드에서 공용 IP 주소를 사용하여 **RDP 파일 다운로드**를 클릭하고 프롬프트를 따라 원격 데스크톱 세션을 시작합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This step refers to connecting via Remote Desktop from a Windows computer. On a Mac, you can use Remote Desktop Client from the Mac App Store and on Linux computers you can use an open source RDP client software.
+    >**참고**: 이 단계는 Windows 컴퓨터에서 원격 데스크톱을 통해 연결하는 것을 말합니다. Mac에서는 Mac App Store에서 원격 데스크톱 클라이언트를 사용할 수 있고 Linux 컴퓨터에서는 오픈 소스 RDP 클라이언트 소프트웨어를 사용할 수 있습니다.
 
     >**참고**: 대상 가상 머신에 연결할 때 경고 프롬프트는 무시해도 괜찮습니다.
 
 1. 메시지가 표시되면 parameters 파일에서 사용자 및 암호로 로그인합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Leave the Remote Desktop session open. You will need it in the next task.
+    >**참고**: 원격 데스크톱 세션을 열린 상태로 둡니다. 다음 작업에서 필요합니다.
 
 #### <a name="task-5-configure-azure-dns-for-internal-name-resolution"></a>작업 5: 내부 이름 확인용 Azure DNS 구성
 
@@ -259,9 +261,9 @@ You need to explore Azure virtual networking capabilities. To start, you plan to
     | 리소스 그룹 | **az104-04-rg1** |
     | 이름 | **contoso.org** |
 
-1. Click <bpt id="p1">**</bpt>Review and Create<ept id="p1">**</ept>. Let validation occur, and hit <bpt id="p1">**</bpt>Create<ept id="p1">**</ept> again to submit your deployment.
+1. **검토 후 만들기**를 클릭합니다. 유효성 검사가 완료될 때까지 기다리고 **만들기**를 다시 클릭하여 배포를 제출합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the private DNS zone to be created. This should take about 2 minutes.
+    >**참고**: 프라이빗 DNS 영역이 만들어질 때까지 기다립니다. 이 작업은 2분 정도 걸립니다.
 
 1. **리소스로 이동**을 클릭하여 **contoso.org** DNS 프라이빗 영역 블레이드를 엽니다.
 
@@ -278,7 +280,7 @@ You need to explore Azure virtual networking capabilities. To start, you plan to
 
 1. **확인**을 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note:<ept id="p1">**</ept> Wait for the virtual network link to be created. This should take less than 1 minute.
+    >**참고:** 가상 네트워크 링크가 만들어질 때까지 기다립니다. 이는 1분 이내에 완료됩니다.
 
 1. **contoso.org** 프라이빗 DNS 영역 블레이드의 사이드바에서 **개요**를 클릭합니다.
 
@@ -315,9 +317,9 @@ You need to explore Azure virtual networking capabilities. To start, you plan to
     | 리소스 그룹 | **az104-04-rg1** |
     | 이름 | 이 작업의 앞부분에서 확인한 DNS 도메인 이름 |
 
-1. Click <bpt id="p1">**</bpt>Review and Create<ept id="p1">**</ept>. Let validation occur, and hit <bpt id="p1">**</bpt>Create<ept id="p1">**</ept> again to submit your deployment.
+1. **검토 후 만들기**를 클릭합니다. 유효성 검사가 완료될 때까지 기다리고 **만들기**를 다시 클릭하여 배포를 제출합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the DNS zone to be created. This should take about 2 minutes.
+    >**참고**: DNS 영역이 만들어질 때까지 기다립니다. 이 작업은 2분 정도 걸립니다.
 
 1. **리소스로 이동**을 클릭하여 새로 만들어진 DNS 영역의 블레이드를 엽니다.
 
@@ -373,9 +375,9 @@ You need to explore Azure virtual networking capabilities. To start, you plan to
 
 #### <a name="clean-up-resources"></a>리소스 정리
 
- > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+ > **참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
 
- > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>:  Don't worry if the lab resources cannot be immediately removed. Sometimes resources have dependencies and take a longer time to delete. It is a common Administrator task to monitor resource usage, so just periodically review your resources in the Portal to see how the cleanup is going. 
+ > **참고**:  랩 리소스를 즉시 제거할 수 없어도 걱정하지 마세요. 리소스에 종속성이 있고 삭제하는 데 시간이 더 오래 걸리는 경우가 있습니다. 리소스 사용량을 모니터링하는 것은 일반적인 관리자 작업이므로 포털에서 리소스를 주기적으로 검토하여 정리가 어떻게 진행되고 있는지 확인합니다. 
 
 1. Azure Portal의 **Cloud Shell** 창에서 **PowerShell** 세션을 엽니다.
 

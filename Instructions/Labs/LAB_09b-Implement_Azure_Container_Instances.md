@@ -9,7 +9,9 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-Contoso wants to find a new platform for its virtualized workloads. You identified a number of container images that can be leveraged to accomplish this objective. Since you want to minimize container management, you plan to evaluate the use of Azure Container Instances for deployment of Docker images.
+Contoso는 가상화된 워크로드에 대한 새로운 플랫폼을 찾고자 합니다. 이 목표를 달성하기 위해 활용할 수 있는 여러 컨테이너 이미지를 식별했습니다. 컨테이너 관리를 최소화할 목적으로 Docker 이미지 배포에 대한 Azure Container Instances 사용을 평가할 계획입니다.
+
+                **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2014)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
 ## <a name="objectives"></a>목표
 
@@ -24,7 +26,7 @@ Contoso wants to find a new platform for its virtualized workloads. You identifi
 
 ![이미지](../media/lab09b.png)
 
-## <a name="instructions"></a>지침
+## <a name="instructions"></a>Instructions
 
 ### <a name="exercise-1"></a>연습 1
 
@@ -53,13 +55,13 @@ Contoso wants to find a new platform for its virtualized workloads. You identifi
     | --- | --- |
     | DNS 이름 레이블 | 유효하고 전역적으로 고유한 DNS 호스트 이름 |
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Your container will be publicly reachable at dns-name-label.region.azurecontainer.io. If you receive a <bpt id="p1">**</bpt>DNS name label not available<ept id="p1">**</ept> error message, specify a different value.
+    >**참고**: dns-name-label.region.azurecontainer.io에서 컨테이너에 공개적으로 연결할 수 있습니다. **DNS 이름 레이블을 사용할 수 없음** 오류 메시지가 표시되면, 다른 값을 지정하세요.
 
 1. **다음: 고급 >** , 변경하지 않고 **컨테이너 인스턴스 만들기** 블레이드의 **고급** 탭에서 설정을 검토하고 **검토 + 만들기**를 클릭한 다음, 유효성 검사를 통과했는지 확인하고 **만들기**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the deployment to complete. This should take about 3 minutes.
+    >**참고**: 배포가 완료될 때까지 기다리세요. 이 작업은 3분 정도 걸립니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: While you wait, you may be interested in viewing the <bpt id="p2">[</bpt>code behind the sample application<ept id="p2">](https://github.com/Azure-Samples/aci-helloworld)</ept>. To view it, browse the <ph id="ph1">\\</ph>app folder.
+    >**참고**: 기다리는 동안 [샘플 애플리케이션에 있는 코드](https://github.com/Azure-Samples/aci-helloworld)를 확인할 수 있습니다. 이 코드를 보려면 \\앱 폴더를 찾아보세요.
 
 #### <a name="task-2-review-the-functionality-of-the-azure-container-instance"></a>작업 2: Azure Container Instance의 기능 검토
 
@@ -79,9 +81,9 @@ Contoso wants to find a new platform for its virtualized workloads. You identifi
 
 #### <a name="clean-up-resources"></a>리소스 정리
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+>**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
 
->Contoso는 가상화된 워크로드에 대한 새로운 플랫폼을 찾고자 합니다. 
+>**참고**:  랩 리소스를 즉시 제거할 수 없어도 걱정하지 마세요. 리소스에 종속성이 있고 삭제하는 데 시간이 오래 걸리는 경우가 있습니다. 리소스 사용량을 모니터링하는 것은 일반적인 관리자 작업이므로 포털에서 리소스를 주기적으로 검토하여 정리가 어떻게 진행되고 있는지 확인합니다. 
 
 1. Azure Portal의 **Cloud Shell** 창에서 **PowerShell** 세션을 엽니다.
 

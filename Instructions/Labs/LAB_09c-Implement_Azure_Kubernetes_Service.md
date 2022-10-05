@@ -9,9 +9,9 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-Contoso has a number of multi-tier applications that are not suitable to run by using Azure Container Instances. In order to determine whether they can be run as containerized workloads, you want to evaluate using Kubernetes as the container orchestrator. To further minimize management overhead, you want to test Azure Kubernetes Service, including its simplified deployment experience and scaling capabilities.
+Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적합하지 않은 많은 다중 계층 애플리케이션이 있습니다. 컨테이너화된 워크로드로 실행할 수 있는지 여부를 확인하기 위해 Kubernetes를 컨테이너 오케스트레이터로 사용하여 평가하려고 합니다. 관리 오버헤드를 더욱 최소화하기 위해 간소화된 배포 환경 및 스케일링 기능을 포함하여 Azure Kubernetes Service를 테스트하려고 합니다.
 
-대화형 가이드 형식으로 이 랩을 미리 보려면 **[여기를 클릭하세요](https://mslabs.cloudguides.com/en-us/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2015)** .
+                **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2015)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
 ## <a name="objectives"></a>목표
 
@@ -82,12 +82,12 @@ Contoso has a number of multi-tier applications that are not suitable to run by 
     | ---- | ---- |
     | 가상 노드 사용 | **사용 안 함**(기본값) |
 
-1. **다음: 액세스 >** 를 클릭하고, **Kubernetes 클러스터 만들기** 블레이드의 **액세스** 탭에서 다음 설정을 지정합니다(다른 설정은 기본값으로 유지).
+1. **다음: 액세스 >** 를 클릭하고 **Kubernetes 클러스터 만들기** 블레이드의 **액세스** 탭에서 설정을 기본값으로 유지합니다.
 
     | 설정 | 값 |
     | ---- | ---- |
-    | 인증 방법 | **시스템 할당 관리 ID**(기본값 - 변경 없음) | 
-    | RBAC(역할 기반 액세스 제어) | **Enabled** |
+    | 리소스 ID | **시스템 할당 관리 ID** |
+    | 인증 방법 | **Kubernetes RBAC가 있는 로컬 계정** |
 
 1. **다음: 네트워킹 >** 을 클릭하고, **Kubernetes 클러스터 만들기** 블레이드의 **네트워킹** 탭에서 다음 설정을 지정합니다(다른 설정은 기본값으로 유지).
 
@@ -98,9 +98,9 @@ Contoso has a number of multi-tier applications that are not suitable to run by 
 
 1. **다음: 통합 >** 을 클릭하고, **Kubernetes 클러스터 만들기** 블레이드의 **통합** 탭에서 **컨테이너 모니터링**을 **사용 안 함**으로 설정하고, **검토 + 만들기**를 클릭하고, 유효성 검사를 통과했는지 확인하고, **만들기**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: In production scenarios, you would want to enable monitoring. Monitoring is disabled in this case since it is not covered in the lab.
+    >**참고**: 프로덕션 시나리오에서 모니터링을 활성화합니다. 이 경우 모니터링은 랩에서 다루지 않으므로 사용하지 않습니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the deployment to complete. This should take about 10 minutes.
+    >**참고**: 배포가 완료될 때까지 기다립니다. 이 작업은 10분 정도 걸립니다.
 
 #### <a name="task-3-deploy-pods-into-the-azure-kubernetes-service-cluster"></a>작업 3: Azure Kubernetes Service 클러스터에 Pod 배포
 
@@ -166,9 +166,9 @@ Contoso has a number of multi-tier applications that are not suitable to run by 
     kubectl get service
     ```
 
-1. Re-run the command until the value in the <bpt id="p1">**</bpt>EXTERNAL-IP<ept id="p1">**</ept> column for the <bpt id="p2">**</bpt>nginx-deployment<ept id="p2">**</ept> entry changes from <bpt id="p3">**</bpt><ph id="ph1">\&lt;pending\&gt;</ph><ept id="p3">**</ept> to a public IP address. Note the public IP address in the <bpt id="p1">**</bpt>EXTERNAL-IP<ept id="p1">**</ept> column for <bpt id="p2">**</bpt>nginx-deployment<ept id="p2">**</ept>.
+1. **nginx-deployment** 항목에 대한 **EXTERNAL-IP** 열의 값이 **\<pending\>** 에서 공용 IP 주소로 변경될 때까지 명령을 다시 실행합니다. **nginx-deployment**에 대한 **EXTERNAL-IP** 열의 공용 IP 주소를 기록합니다.
 
-1. Open a browser window and navigate to the IP address you obtained in the previous step. Verify that the browser page displays the <bpt id="p1">**</bpt>Welcome to nginx!<ept id="p1">**</ept> message.
+1. 브라우저 창을 열고 이전 단계에서 식별한 IP 주소로 이동합니다. 브라우저 페이지에 **nginx에 오신 것을 환영합니다!** 메시지가 표시되는지 메시지로 응답합니다.
 
 #### <a name="task-4-scale-containerized-workloads-in-the-azure-kubernetes-service-cluster"></a>작업 4: Azure Kubernetes Service 클러스터에서 컨테이너화된 워크로드 크기 조정
 
@@ -198,7 +198,7 @@ Contoso has a number of multi-tier applications that are not suitable to run by 
     az aks scale --resource-group $RESOURCE_GROUP --name $AKS_CLUSTER --node-count 2
     ```
 
-    > Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적합하지 않은 많은 다중 계층 애플리케이션이 있습니다.
+    > **참고**: 추가 노드의 프로비전이 완료될 때까지 기다립니다. 3분 정도 걸릴 수 있습니다. 실패하면 `az aks scale` 명령을 다시 실행합니다.
 
 1. **Cloud Shell** 창에서 다음 명령을 실행하여 클러스터 스케일링이 잘 수행되었는지 확인합니다.
 
@@ -240,9 +240,9 @@ Contoso has a number of multi-tier applications that are not suitable to run by 
 
 #### <a name="clean-up-resources"></a>리소스 정리
 
->컨테이너화된 워크로드로 실행할 수 있는지 여부를 확인하기 위해 Kubernetes를 컨테이너 오케스트레이터로 사용하여 평가하려고 합니다.
+>**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
 
->관리 오버헤드를 더욱 최소화하기 위해 간소화된 배포 환경 및 스케일링 기능을 포함하여 Azure Kubernetes Service를 테스트하려고 합니다. 
+>**참고**:  랩 리소스를 즉시 제거할 수 없어도 걱정하지 마세요. 리소스에 종속성이 있고 삭제하는 데 시간이 오래 걸리는 경우가 있습니다. 리소스 사용량을 모니터링하는 것은 일반적인 관리자 작업이므로 포털에서 리소스를 주기적으로 검토하여 정리가 어떻게 진행되고 있는지 확인합니다. 
 
 1. Azure Portal의 **Cloud Shell** 창에서 **Bash** 세션을 시작합니다.
 

@@ -9,9 +9,9 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-You need to explore the basic Azure administration capabilities associated with provisioning resources and organizing them based on resource groups, including moving resources between resource groups. You also want to explore options for protecting disk resources from being accidentally deleted, while still allowing for modifying their performance characteristics and size.
+리소스 프로비저닝, 그리고 리소스 그룹 간 리소스 이동 등 리소스 그룹을 기준으로 리소스를 정리하는 것과 관련된 기본 Azure 관리 기능을 살펴봐야 합니다. 또한, 디스크 리소스가 실수로 삭제되지 않도록 보호하는 동시에 성능 특성과 크기를 수정할 수 있는 옵션을 알아봅니다.
 
-대화형 가이드 형식으로 이 랩을 미리 보려면 **[여기를 클릭하세요](https://mslabs.cloudguides.com/en-us/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%204)** .
+                **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%204)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
 ## <a name="objectives"></a>목표
 
@@ -54,7 +54,7 @@ You need to explore the basic Azure administration capabilities associated with 
 
 1. **검토 + 만들기**를 클릭한 다음, **만들기**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait until the disk is created. This should take less than a minute.
+    >**참고**: 디스크가 만들어질 때까지 기다립니다. 1분 미만이 소요됩니다.
 
 #### <a name="task-2-move-resources-between-resource-groups"></a>작업 2: 리소스 그룹 간 리소스 이동 
 
@@ -68,9 +68,9 @@ You need to explore the basic Azure administration capabilities associated with 
 
     >**참고**: 이 방법으로 동시에 여러 리소스를 이동할 수 있습니다. 
 
-1. Below the <bpt id="p1">**</bpt>Resource group<ept id="p1">**</ept> text box, click <bpt id="p2">**</bpt>Create new<ept id="p2">**</ept> then type <bpt id="p3">**</bpt>az104-03a-rg2<ept id="p3">**</ept> in the text box. On the Review tab, select the checkbox <bpt id="p1">**</bpt>I understand that tools and scripts associated with moved resources will not work until I update them to use new resource IDs<ept id="p1">**</ept>, and click <bpt id="p2">**</bpt>Move<ept id="p2">**</ept>.
+1. **리소스 그룹** 텍스트 상자 아래에서 **새로 만들기**를 클릭한 다음 텍스트 상자에 **az104-03a-rg2**를 입력합니다. 검토 탭에서 **이동된 리소스와 관련된 도구 및 스크립트가 새 리소스 아이디를 사용하도록 업데이트할 때까지 작동하지 않는다는 것을 알고 있음** 체크박스를 선택하고 **이동**을 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Do not wait for the move to complete but instead proceed to the next task. The move might take about 10 minutes. You can determine that the operation was completed by monitoring activity log entries of the source or target resource group. Revisit this step once you complete the next task.
+    >**참고**: 이동이 완료될 때까지 기다리지 말고 다음 작업으로 진행합니다. 이동에는 약 10분이 소요될 수 있습니다. 원본 또는 대상 리소스 그룹의 활동 로그 항목을 모니터링하여 작업이 완료되었는지 확인할 수 있습니다. 다음 작업을 완료하면 이 단계를 수행합니다.
 
 #### <a name="task-3-implement-resource-locks"></a>작업 3: 리소스 잠금 구현
 
@@ -114,13 +114,13 @@ You need to explore the basic Azure administration capabilities associated with 
 
 1. **az104-03a-rg3** 리소스 그룹의 리소스 목록으로 돌아가 **az104-03a-disk2** 리소스를 나타내는 항목을 클릭합니다. 
 
-1. On the <bpt id="p1">**</bpt>az104-03a-disk2<ept id="p1">**</ept> blade, in the <bpt id="p2">**</bpt>Settings<ept id="p2">**</ept> section, click <bpt id="p3">**</bpt>Size + performance<ept id="p3">**</ept>, set the disk type and size to <bpt id="p4">**</bpt>Premium SSD<ept id="p4">**</ept> and <bpt id="p5">**</bpt>64 GiB<ept id="p5">**</ept>, respectively, and click <bpt id="p6">**</bpt>Resize<ept id="p6">**</ept> to apply the change. Verify that the change was successful.
+1. **az104-03a-disk2** 블레이드의 **설정** 섹션에서 **크기 + 성능**을 클릭하고 디스크 유형과 크기를 각각 **프리미엄 SSD** 및 **64GiB**로 설정한 후에 **크기 조정**을 클릭하여 변경 내용을 적용합니다. 변경이 성공했는지 확인합니다.
 
     >**참고**: 리소스 그룹 수준 잠금은 삭제 작업에만 적용되므로 예상된 결과입니다. 
 
 #### <a name="clean-up-resources"></a>리소스 정리
 
-   >리소스 프로비저닝, 그리고 리소스 그룹 간 리소스 이동 등 리소스 그룹을 기준으로 리소스를 정리하는 것과 관련된 기본 Azure 관리 기능을 살펴봐야 합니다.
+   >**참고**: 이 랩에서 배포한 리소스는 삭제하지 마세요. 이 모듈의 다음 랩에서 필요합니다. 이 랩에서 만든 리소스 잠금만 제거합니다.
 
 1. **az104-03a-rg3** 리소스 그룹 블레이드로 이동하여 **잠금** 블레이드를 표시하고 **삭제** 잠금 항목의 오른쪽에 있는 **삭제** 링크를 클릭하여 **az104-03a-delete-lock** 잠금을 제거합니다.
 
