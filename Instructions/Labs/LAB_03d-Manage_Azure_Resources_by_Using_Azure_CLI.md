@@ -23,6 +23,10 @@ Azure Portal, Azure Resource Manager 템플릿 및 Azure PowerShell을 사용하
 
 ## <a name="estimated-timing-20-minutes"></a>예상 소요 시간: 20분
 
+## <a name="architecture-diagram"></a>아키텍처 다이어그램
+
+![이미지](../media/lab03d.png)
+
 ## <a name="instructions"></a>Instructions
 
 ### <a name="exercise-1"></a>연습 1
