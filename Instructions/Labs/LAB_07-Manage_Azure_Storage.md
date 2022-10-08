@@ -9,7 +9,9 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-You need to evaluate the use of Azure storage for storing files residing currently in on-premises data stores. While majority of these files are not accessed frequently, there are some exceptions. You would like to minimize cost of storage by placing less frequently accessed files in lower-priced storage tiers. You also plan to explore different protection mechanisms that Azure Storage offers, including network access, authentication, authorization, and replication. Finally, you want to determine to what extent Azure Files service might be suitable for hosting your on-premises file shares.
+현재 온-프레미스 데이터 저장소에 있는 파일을 저장하는 데 Azure Storage를 사용하는 안을 평가해야 합니다. 이러한 파일의 대부분은 몇 가지 예외를 제외하고는 자주 액세스하지 않습니다. 사용자는 자주 액세스하지 않는 파일을 저렴한 스토리지 계층에 배치하여 스토리지 비용을 최소화하려고 합니다. 또한 네트워크 액세스, 인증, 권한 부여 및 복제를 포함하여 Azure Storage가 제공하는 다양한 보호 메커니즘을 알아볼 계획입니다. 마지막으로 Azure Files 서비스가 온-프레미스 파일 공유를 호스트하는 데 어느 정도 적합한지를 결정해야 합니다.
+
+                **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2011)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
 ## <a name="objectives"></a>목표
 
@@ -29,7 +31,7 @@ You need to evaluate the use of Azure storage for storing files residing current
 ![이미지](../media/lab07.png)
 
 
-## <a name="instructions"></a>지침
+## <a name="instructions"></a>Instructions
 
 ### <a name="exercise-1"></a>연습 1
 
@@ -47,7 +49,7 @@ You need to evaluate the use of Azure storage for storing files residing current
 
 1. Cloud Shell 창의 도구 모음에서 **파일 업로드/다운로드** 아이콘을 클릭한 다음, 드롭다운 메뉴에서 **업로드**를 클릭하여 파일 **\\Allfiles\\Labs\\07\\az104-07-vm-template.json** 및 **\\Allfiles\\Labs\\07\\az104-07-vm-parameters.json**을 Cloud Shell 홈 디렉터리에 업로드합니다.
 
-1. Edit the <bpt id="p1">**</bpt>Parameters<ept id="p1">**</ept> file you just uploaded and change the password. If you need help editing the file in the Shell please ask your instructor for assistance. As a best practice, secrets, like passwords, should be more securely stored in the Key Vault. 
+1. 방금 업로드한 **Parameters** 파일을 편집하고 암호를 변경합니다. Shell에서 파일을 편집하는 데 도움이 필요한 경우 강사에게 도움을 요청하세요. 암호와 같은 비밀은 Key Vault에 보다 안전하게 저장되는 것이 가장 좋습니다. 
 
 1. Cloud Shell 창에서 다음을 실행하여 가상 머신을 호스트할 리소스 그룹을 만듭니다(‘[Azure_region]’ 자리 표시자를 Azure 가상 머신을 배포하려는 Azure 지역의 이름으로 바꿈).
 
@@ -80,10 +82,10 @@ You need to evaluate the use of Azure storage for storing files residing current
 
     >**참고**: VM 크기를 사용할 수 없다는 오류가 발생하면 강사에게 도움을 요청하고 다음 단계를 시도하세요.
     > 1. CloudShell의 `{}` 단추를 클릭하고, 왼쪽 사이드바에서 **az104-07-vm-parameters.json**을 선택하고, `vmSize` 매개 변수 값을 기록해 둡니다.
-    > 1. Check the location in which the 'az104-04-rg1' resource group is deployed. You can run <ph id="ph1">`az group show -n az104-04-rg1 --query location`</ph> in your CloudShell to get it.
+    > 1. ‘az104-04-rg1’ 리소스 그룹이 배포된 위치를 확인합니다. CloudShell에서 `az group show -n az104-04-rg1 --query location`을 실행하여 가져올 수 있습니다.
     > 1. CloudShell에서 `az vm list-skus --location <Replace with your location> -o table --query "[? contains(name,'Standard_D2s')].name"`을 실행합니다.
     > 1. `vmSize` 매개 변수 값을 방금 실행한 명령에서 반환된 값 중 하나로 바꿉니다.
-    > 1. Now redeploy your templates by running the <ph id="ph1">`New-AzResourceGroupDeployment`</ph> command again. You can press the up button a few times which would bring the last executed command.
+    > 1. 이제 `New-AzResourceGroupDeployment` 명령을 다시 실행하여 템플릿을 다시 배포합니다. 위쪽 단추를 몇 번 눌러 마지막으로 실행된 명령을 가져올 수 있습니다.
 
 1. Cloud Shell 창을 닫습니다.
 
@@ -110,17 +112,15 @@ You need to evaluate the use of Azure storage for storing files residing current
 
 1. **스토리지 계정 만들기** 블레이드의 **데이터 보호** 탭에서 사용 가능한 옵션을 검토하고 기본값을 수락하고 **검토 + 만들기**를 클릭한 다음 유효성 검사 프로세스가 완료될 때까지 기다렸다가 **만들기**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the Storage account to be created. This should take about 2 minutes.
+    >**참고**: 스토리지 계정이 만들어질 때까지 기다립니다. 이 작업은 2분 정도 걸립니다.
 
 1. 배포 블레이드에서 **리소스로 이동**을 클릭하여 Azure Storage 계정 블레이드를 표시합니다.
 
-1. 스토리지 계정 블레이드의 **데이터 관리** 섹션에서 **지역 복제**를 클릭하고 보조 위치를 기록합니다. 
+1. 스토리지 계정 블레이드의 **데이터 관리** 섹션에서 **중복**을 클릭하고 보조 위치를 기록합니다. 
 
-1. 스토리지 계정 블레이드의 **설정** 섹션에서 **구성**을 선택한 다음 **복제** 드롭다운 목록에서 **LRS(로컬 중복 스토리지)** 를 선택하고 변경 사항을 저장합니다.
+1. **중복** 드롭다운 목록에서 **LRS(로컬 중복 스토리지)** 를 선택하고 변경 내용을 저장합니다. 이때 스토리지 계정은 기본 위치만 있습니다.
 
-1. **지역 복제** 블레이드로 다시 전환합니다. 이 시점에서 스토리지 계정은 기본 위치만 있음을 확인하세요.
-
-1. 스토리지 계정의**구성** 블레이드를 다시 표시하고 **Blob 액세스 계층(기본값)** 을 **쿨**로 설정하고 변경 사항을 저장합니다.
+1. 스토리지 계정 블레이드의 **설정** 섹션에서 **구성**을 선택합니다. **Blob 액세스 계층(기본값)** 을 **쿨**로 설정하고 변경 내용을 저장합니다.
 
     > **참고**: 쿨 액세스 계층은 자주 액세스하지 않는 데이터에 최적입니다.
 
@@ -161,7 +161,7 @@ You need to evaluate the use of Azure storage for storing files residing current
 
 1. **라이선스/LICENSE** 블레이드에서 사용 가능한 옵션을 검토합니다.
 
-    > 현재 온-프레미스 데이터 저장소에 있는 파일을 저장하는 데 Azure Storage를 사용하는 안을 평가해야 합니다.
+    > **참고**: Blob을 다운로드하고, 액세스 계층을 변경하고(현재 **핫**으로 설정되어 있음), 임대를 확보해 상태를 **잠금**으로 변경하고(현재는 **잠금 해제**로 설정되어 있음), Blob이 수정 또는 삭제되지 않도록 보호하고, 사용자 지정 메타데이터를 할당할 수 있습니다(임의의 키 및 값 쌍을 지정하여). 또한 먼저 다운로드하지 않고 Azure Portal 인터페이스 내에서 직접 파일을 **편집**할 수 있습니다. 스냅샷을 만들고 SAS 토큰을 생성할 수도 있습니다(다음 작업에서 이 옵션을 알아봅니다).
 
 #### <a name="task-4-manage-authentication-and-authorization-for-azure-storage"></a>작업 4: Azure Storage에 대한 인증 및 권한 부여 관리
 
@@ -196,17 +196,17 @@ You need to evaluate the use of Azure storage for storing files residing current
 
 1. InPrivate 모드를 사용하여 다른 브라우저 창을 열고 이전 단계에서 복사한 URL로 이동합니다.
 
-    > 이러한 파일의 대부분은 몇 가지 예외를 제외하고는 자주 액세스하지 않습니다.
+    > **참고**: Microsoft Edge를 사용하는 경우 **MIT 라이선스(MIT)** 페이지가 표시되어야 합니다. Chrome, Microsoft Edge(Chromium) 또는 Firefox를 사용하는 경우 파일을 다운로드하여 메모장으로 열어 파일의 내용을 볼 수 있어야 합니다.
 
     > **참고**: 이것은 이제 새로 생성된 SAS 토큰을 기반으로 액세스 권한이 부여되므로 예상된 결과입니다.
 
-    > 사용자는 자주 액세스하지 않는 파일을 저렴한 스토리지 계층에 배치하여 스토리지 비용을 최소화하려고 합니다.
+    > **참고**: Blob SAS URL을 저장합니다. 이 랩의 후반부에서 필요합니다.
 
 1. InPrivate 브라우저 창을 닫고 Azure Storage 컨테이너의 **라이선스/LICENSE** 블레이드가 표시된 브라우저 창으로 돌아가서 다시 **az104-07-container** 블레이드로 이동합니다.
 
 1. **인증 방법** 레이블 옆에 있는 **Azure AD 사용자 계정으로 전환 ** 링크를 클릭합니다.
 
-    > 또한 네트워크 액세스, 인증, 권한 부여 및 복제를 포함하여 Azure Storage가 제공하는 다양한 보호 메커니즘을 알아볼 계획입니다.  
+    > **참고**: 인증 방법을 변경할 때 오류가 나타날 수 있습니다(“현재의 Azure AD 사용자 계정으로는 데이터를 나열할 수 있는 권한이 없습니다” 오류). 이것은 예상된 것입니다.  
 
     > **참고**: 이 시점에서는 인증 방법을 변경할 권한이 없습니다.
 
@@ -242,7 +242,7 @@ You need to evaluate the use of Azure storage for storing files residing current
 
 1. 새로 만든 파일 공유를 클릭한 다음 **연결**을 클릭합니다.
 
-1. 마지막으로 Azure Files 서비스가 온-프레미스 파일 공유를 호스트하는 데 어느 정도 적합한지를 결정해야 합니다.
+1. **연결** 블레이드에서 **Windows** 탭이 선택되어 있는지 확인합니다. 아래에 **스크립트 표시** 레이블이 있는 단추가 있습니다. 단추를 클릭하면 스크립트가 있는 회색 텍스트 상자의 오른쪽 아래에 있는 페이지 아이콘 위로 마우스를 가져와 **클립보드에 복사**를 클릭합니다.
 
 1. Azure Portal에서 **가상 머신**을 검색하여 선택하고 가상 머신 목록에서 **az104-07-vm0**을 클릭합니다.
 
@@ -282,7 +282,7 @@ You need to evaluate the use of Azure storage for storing files residing current
 
 1. InPrivate 모드를 사용하여 다른 브라우저 창을 열고 이전 작업에서 생성한 Blob SAS URL로 이동합니다.
 
-    > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: If you did not record the SAS URL from task 4, you should generate a new one with the same configuration. Use Task 4 steps 4-6 as a guide for generating a new blob SAS URL. 
+    > **참고**: 작업 4에서 SAS URL을 기록하지 않은 경우 동일한 구성으로 새 URL을 생성해야 합니다. 새 BLOB SAS URL을 생성하기 위한 가이드로 작업 4단계 4-6을 사용합니다. 
 
 1. **MIT 라이선스(MIT)** 페이지의 콘텐츠가 표시됩니다.
 
@@ -301,15 +301,15 @@ You need to evaluate the use of Azure storage for storing files residing current
    ```
 1. 다운로드 시도가 실패하였는지 확인합니다.
 
-    > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: You should receive the message stating <bpt id="p2">**</bpt>AuthorizationFailure: This request is not authorized to perform this operation<ept id="p2">**</ept>. This is expected, since you are connecting from the IP address assigned to an Azure VM hosting the Cloud Shell instance.
+    > **참고**: 다음 메시지가 표시되어야 합니다. **AuthorizationFailure: 이 요청으로 해당 작업을 수행할 수 없습니다**. 이것은 Cloud Shell 인스턴스를 호스트하는 Azure VM에 할당된 IP 주소에서 연결하기 때문에 예상된 결과입니다.
 
 1. Cloud Shell 창을 닫습니다.
 
 #### <a name="clean-up-resources"></a>리소스 정리
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+>**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>:  Don't worry if the lab resources cannot be immediately removed. Sometimes resources have dependencies and take a long time to delete. It is a common Administrator task to monitor resource usage, so just periodically review your resources in the Portal to see how the cleanup is going. You might also try to delete the Resource Group where the resources reside. That is a quick Administrator shortcut. If you have concerns speak to your instructor.
+>**참고**:  랩 리소스를 즉시 제거할 수 없어도 걱정하지 마세요. 리소스에 종속성이 있고 삭제하는 데 시간이 오래 걸리는 경우가 있습니다. 리소스 사용량을 모니터링하는 것은 일반적인 관리자 작업이므로 포털에서 리소스를 주기적으로 검토하여 정리가 어떻게 진행되고 있는지 확인합니다. 리소스가 있는 리소스 그룹을 삭제하려고 할 수도 있습니다. 빠른 관리자 바로 가기입니다. 문제가 있는 경우 강사에게 문의하세요.
 
 1. Azure Portal의 **Cloud Shell** 창에서 **PowerShell** 세션을 엽니다.
 

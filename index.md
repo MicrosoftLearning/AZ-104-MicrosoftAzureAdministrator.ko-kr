@@ -4,13 +4,13 @@ permalink: index.html
 layout: home
 ---
 
-# 콘텐츠 디렉터리
+# <a name="content-directory"></a>콘텐츠 디렉터리
 
-필요한 랩 파일은 [여기에서 다운로드](https://github.com/MicrosoftLearning/AZ-104KO-MicrosoftAzureAdministrator/archive/master.zip)할 수 있습니다.
+필요한 랩 파일은 [여기에서 다운로드](https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/archive/master.zip)할 수 있습니다.
 
 아래에는 각 랩 연습의 하이퍼링크 목록이 나와 있습니다.
 
-## 랩
+## <a name="labs"></a>랩
 
 {% assign labs = site.pages | where_exp:"page", "page.url contains '/Instructions/Labs'" %}
 | 모듈 | 랩 |

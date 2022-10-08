@@ -9,7 +9,9 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-Contoso has its datacenters in Boston, New York, and Seattle offices connected via a mesh wide-area network links, with full connectivity between them. You need to implement a lab environment that will reflect the topology of the Contoso's on-premises networks and verify its functionality.
+Contoso는 보스턴, 뉴욕 및 시애틀 지사에 있는 메시 광역 네트워크 링크를 통해 연결된 데이터 센터를 보유하고 있으며, 이들 사이의 전체 연결이 가능합니다. Contoso 온-프레미스 네트워크의 토폴로지를 반영하고 그 기능을 확인하는 랩 환경을 구현해야 합니다.
+
+                **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%209)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
 ## <a name="objectives"></a>목표
 
@@ -41,9 +43,9 @@ Contoso has its datacenters in Boston, New York, and Seattle offices connected v
 
 1. Cloud Shell 창의 도구 모음에서 **파일 업로드/다운로드** 아이콘을 클릭하고, 드롭다운 메뉴에서 **업로드**를 클릭하고, **\\Allfiles\\Labs\\05\\az104-05-vnetvm-loop-template.json** 및 **\\Allfiles\\Labs\\05\\az104-05-vnetvm-loop-parameters.json** 파일을 Cloud Shell 홈 디렉터리에 업로드합니다.
 
-1. Edit the <bpt id="p1">**</bpt>Parameters<ept id="p1">**</ept> file you just uploaded and change the password. If you need help editing the file in the Shell please ask your instructor for assistance. As a best practice, secrets, like passwords, should be more securely stored in the Key Vault. 
+1. 방금 업로드한 **Parameters** 파일을 편집하고 암호를 변경합니다. Shell에서 파일을 편집하는 데 도움이 필요한 경우 강사에게 도움을 요청하세요. 암호와 같은 비밀은 Key Vault에 보다 안전하게 저장되는 것이 가장 좋습니다. 
 
-1. From the Cloud Shell pane, run the following to create the resource group that will be hosting the lab environment. The first two virtual networks and a pair of virtual machines will be deployed in [Azure_region_1]. The third virtual network and the third virtual machine will be deployed in the same resource group but another [Azure_region_2]. (replace the [Azure_region_1] and [Azure_region_2] placeholder, including the square brackets, with the names of two different Azure regions where you intend to deploy these Azure virtual machines. An example is $location1 = 'eastus'. You can use Get-AzLocation to list all locations.):
+1. Cloud Shell 창에서 다음을 실행하여 랩 환경을 호스트할 리소스 그룹을 만듭니다. 처음 두 개의 가상 네트워크와 한 쌍의 가상 머신이 [Azure_region_1]에 배포됩니다. 세 번째 가상 네트워크와 세 번째 가상 머신이 같은 리소스 그룹의 다른 지역인 [Azure_region_2]에 배포됩니다. ([Azure_region_1] 및 [Azure_region_2] 자리 표시자를 해당 Azure 가상 머신을 배포할 서로 다른 두 Azure 지역의 이름으로 바꿉니다. 예를 들어, $location 1 = ‘eastus’입니다. Get-AzLocation을 사용하여 모든 위치를 나열할 수 있습니다.)
 
    ```powershell
    $location1 = 'eastus'
@@ -55,7 +57,7 @@ Contoso has its datacenters in Boston, New York, and Seattle offices connected v
    New-AzResourceGroup -Name $rgName -Location $location1
    ```
 
-   ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: The regions used above were tested and known to work when this lab was last officially reviewed. If you would prefer to use different locations, or they no longer work, you will need to identify two different regions that Standard D2Sv3 virtual machines can be deployed into.
+   >**참고**: 위에서 사용한 지역은 테스트되었으며 이 랩이 마지막으로 공식적인 검토가 완료되었을 때 작동하는 것으로 알려져 있습니다. 다른 위치를 사용하거나 더 이상 작동하지 않는 경우 표준 D2Sv3 가상 머신을 배포할 수 있는 두 개의 다른 지역을 식별해야 합니다.
    >
    >Cloud Shell의 PowerShell 세션에서 Azure 지역을 식별하려면 **(Get-AzLocation).Location**을 실행합니다.
    >
@@ -63,7 +65,7 @@ Contoso has its datacenters in Boston, New York, and Seattle offices connected v
    >
    >```az vm list-skus --location <Replace with your location> -o table --query "[? contains(name,'Standard_D2s')].name" ```
    >
-   >If the command returns no results, then you need to choose another region. Once you have identified two suitable regions, you can adjust the regions in the code block above.
+   >명령이 결과를 반환하지 않으면 다른 지역을 선택해야 합니다. 두 개의 적합한 지역을 식별한 후에는 위의 코드 블록에서 지역을 조정할 수 있습니다.
 
 1. Cloud Shell 창에서 세 개의 가상 네트워크를 만들고 업로드한 템플릿 및 매개 변수 파일을 사용하여 가상 머신을 배포합니다.
 
@@ -76,7 +78,7 @@ Contoso has its datacenters in Boston, New York, and Seattle offices connected v
       -location2 $location2
    ```
 
-    >Contoso는 보스턴, 뉴욕 및 시애틀 지사에 있는 메시 광역 네트워크 링크를 통해 연결된 데이터 센터를 보유하고 있으며, 이들 사이의 전체 연결이 가능합니다.
+    >**참고**: 배포가 완료될 때까지 기다린 후 다음 작업을 진행하세요. 이 작업은 2분 정도 걸립니다.
 
 1. Cloud Shell 창을 닫습니다.
 
@@ -209,7 +211,7 @@ Contoso has its datacenters in Boston, New York, and Seattle offices connected v
 
 1. **az104-05-vm0** 블레이드에서 **연결**을 클릭하고, 드롭다운 메뉴에서 **RDP**를 클릭하고, **RDP와 연결** 블레이드에서 **RDP 파일 다운로드**를 클릭하고, 프롬프트에 따라 원격 데스크톱 세션을 시작합니다.
 
-    >Contoso 온-프레미스 네트워크의 토폴로지를 반영하고 그 기능을 확인하는 랩 환경을 구현해야 합니다.
+    >**참고**: 이 단계는 Windows 컴퓨터에서 원격 데스크톱을 통해 연결하는 것을 말합니다. Mac에서는 Mac App Store에서 원격 데스크톱 클라이언트를 사용할 수 있고 Linux 컴퓨터에서는 오픈 소스 RDP 클라이언트 소프트웨어를 사용할 수 있습니다.
 
     >**참고**: 대상 가상 머신에 연결할 때 경고 프롬프트는 무시해도 괜찮습니다.
 
@@ -239,7 +241,7 @@ Contoso has its datacenters in Boston, New York, and Seattle offices connected v
 
 1. **az104-05-vm1** 블레이드에서 **연결**을 클릭하고, 드롭다운 메뉴에서 **RDP**를 클릭하고, **RDP와 연결** 블레이드에서 **RDP 파일 다운로드**를 클릭하고, 프롬프트에 따라 원격 데스크톱 세션을 시작합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This step refers to connecting via Remote Desktop from a Windows computer. On a Mac, you can use Remote Desktop Client from the Mac App Store and on Linux computers you can use an open source RDP client software.
+    >**참고**: 이 단계는 Windows 컴퓨터에서 원격 데스크톱을 통해 연결하는 것을 말합니다. Mac에서는 Mac App Store에서 원격 데스크톱 클라이언트를 사용할 수 있고 Linux 컴퓨터에서는 오픈 소스 RDP 클라이언트 소프트웨어를 사용할 수 있습니다.
 
     >**참고**: 대상 가상 머신에 연결할 때 경고 프롬프트는 무시해도 괜찮습니다.
 
@@ -259,9 +261,9 @@ Contoso has its datacenters in Boston, New York, and Seattle offices connected v
 
 #### <a name="clean-up-resources"></a>리소스 정리
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+>**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>:  Don't worry if the lab resources cannot be immediately removed. Sometimes resources have dependencies and take a longer time to delete. It is a common Administrator task to monitor resource usage, so just periodically review your resources in the Portal to see how the cleanup is going. 
+>**참고**:  랩 리소스를 즉시 제거할 수 없어도 걱정하지 마세요. 리소스에 종속성이 있고 삭제하는 데 시간이 더 오래 걸리는 경우가 있습니다. 리소스 사용량을 모니터링하는 것은 일반적인 관리자 작업이므로 포털에서 리소스를 주기적으로 검토하여 정리가 어떻게 진행되고 있는지 확인합니다. 
 
 1. Azure Portal의 **Cloud Shell** 창에서 **PowerShell** 세션을 엽니다.
 

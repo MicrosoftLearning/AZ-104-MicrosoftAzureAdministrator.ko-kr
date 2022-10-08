@@ -9,7 +9,9 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-You need to evaluate the use of Azure Web apps for hosting Contoso's web sites, hosted currently in the company's on-premises data centers. The web sites are running on Windows servers using PHP runtime stack. You also need to determine how you can implement DevOps practices by leveraging Azure web apps deployment slots.
+현재 회사의 온-프레미스 데이터 센터에서 호스팅되는 Contoso의 웹 사이트를 호스팅하기 위해 Azure 웹앱의 사용을 평가해야 합니다. 웹 사이트는 PHP 런타임 스택을 사용하여 Windows 서버에서 실행되고 있습니다. 또한 Azure 웹앱 배포 슬롯을 활용하여 DevOps 사례를 구현할 수 있는 방법을 결정해야 합니다.
+
+                **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2013)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
 ## <a name="objectives"></a>목표
 
@@ -28,7 +30,7 @@ You need to evaluate the use of Azure Web apps for hosting Contoso's web sites, 
 
 ![이미지](../media/lab09a.png)
 
-## <a name="instructions"></a>지침
+## <a name="instructions"></a>Instructions
 
 ### <a name="exercise-1"></a>연습 1
 
@@ -53,9 +55,9 @@ You need to evaluate the use of Azure Web apps for hosting Contoso's web sites, 
     | 지역 | Azure 웹앱을 프로비전할 수 있는 Azure 지역의 이름 |
     | App Service 플랜 | 기본 구성 수락 |
 
-1. Click <bpt id="p1">**</bpt>Review + create<ept id="p1">**</ept>. On the <bpt id="p1">**</bpt>Review + create<ept id="p1">**</ept> tab of the <bpt id="p2">**</bpt>Create Web App<ept id="p2">**</ept> blade, ensure that the validation passed and click <bpt id="p3">**</bpt>Create<ept id="p3">**</ept>.
+1. **검토 + 만들기**를 클릭합니다. **웹앱 만들기** 블레이드의 **검토 + 만들기** 탭에서 유효성 검사를 통과했는지 확인하고 **만들기**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait until the web app is created before you proceed to the next task. This should take about a minute.
+    >**참고**: 웹앱이 만들어질 때까지 기다린 후 다음 작업으로 진행합니다. 약 1분 정도 소요됩니다.
 
 1. 배포 블레이드에서 **리소스로 이동**을 클릭합니다.
 
@@ -149,7 +151,7 @@ You need to evaluate the use of Azure Web apps for hosting Contoso's web sites, 
 
 1. 스테이징 슬롯 블레이드에서 **개요**를 클릭한 다음 **URL** 링크를 클릭하여 새 브라우저 탭에 기본 웹 페이지를 표시합니다.
 
-1. Verify that the browser page displays the <bpt id="p1">**</bpt>Hello World!<ept id="p1">**</ept> message and close the new tab.
+1. 브라우저 페이지에 **Hello World!** 가 표시되는지 확인합니다. 메시지를 표시하고 새 탭을 닫습니다.
 
 #### <a name="task-5-swap-the-staging-slots"></a>작업 5: 스테이징 슬롯 교환
 
@@ -163,7 +165,7 @@ You need to evaluate the use of Azure Web apps for hosting Contoso's web sites, 
 
 1. 웹앱의 프로덕션 슬롯 블레이드의 **개요**를 클릭한 다음 **URL** 링크를 클릭하여 브라우저 탭에 웹사이트 홈페이지를 표시합니다.
 
-1. Verify the default web page has been replaced with the <bpt id="p1">**</bpt>Hello World!<ept id="p1">**</ept> page.
+1. 기본 웹 페이지가 **Hello World!** 로 대체되었는지 확인합니다. 페이지에서 사용할 수 있는 바로 가기 키를 보여 줍니다.
 
 #### <a name="task-6-configure-and-test-autoscaling-of-the-azure-web-app"></a>작업 6: Azure 웹앱의 자동 크기 조정 구성 및 테스트
 
@@ -239,9 +241,9 @@ You need to evaluate the use of Azure Web apps for hosting Contoso's web sites, 
 
 #### <a name="clean-up-resources"></a>리소스 정리
 
->현재 회사의 온-프레미스 데이터 센터에서 호스팅되는 Contoso의 웹 사이트를 호스팅하기 위해 Azure 웹앱의 사용을 평가해야 합니다.
+>**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
 
->웹 사이트는 PHP 런타임 스택을 사용하여 Windows 서버에서 실행되고 있습니다. 
+>**참고**:  랩 리소스를 즉시 제거할 수 없어도 걱정하지 마세요. 리소스에 종속성이 있고 삭제하는 데 시간이 오래 걸리는 경우가 있습니다. 리소스 사용량을 모니터링하는 것은 일반적인 관리자 작업이므로 포털에서 리소스를 주기적으로 검토하여 정리가 어떻게 진행되고 있는지 확인합니다. 
 
 1. Azure Portal의 **Cloud Shell** 창에서 **PowerShell** 세션을 엽니다.
 

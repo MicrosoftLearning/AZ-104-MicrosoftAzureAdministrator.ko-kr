@@ -15,7 +15,9 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 
 - 적절하게 태그가 지정된 인프라 리소스만 인프라 리소스 그룹에 추가할 수 있도록 합니다.
 
-- 모든 비준수 리소스를 수정합니다. 
+- 모든 비준수 리소스를 수정합니다.
+
+                **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%203)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
 ## <a name="objectives"></a>목표
 
@@ -31,7 +33,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 
 ![이미지](../media/lab02b.png)
 
-## <a name="instructions"></a>지침
+## <a name="instructions"></a>Instructions
 
 ### <a name="exercise-1"></a>연습 1
 
@@ -70,7 +72,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
     | Name | **역할** |
     | 값 | **인프라** |
 
-1. Navigate back to the storage account blade. Review the <bpt id="p1">**</bpt>Overview<ept id="p1">**</ept> information and note that the new tag was not automatically assigned to the storage account. 
+1. 스토리지 계정 블레이드로 돌아갑니다. **개요** 정보를 검토하고 새 태그가 스토리지 계정에 자동으로 할당되지 않았다는 점에 유의하세요. 
 
 #### <a name="task-2-enforce-tagging-via-an-azure-policy"></a>작업 2: Azure Policy를 통한 강제 태그 지정
 
@@ -78,7 +80,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 
 1. Azure Portal에서 **정책**을 찾아서 선택합니다. 
 
-1. In the <bpt id="p1">**</bpt>Authoring<ept id="p1">**</ept> section, click <bpt id="p2">**</bpt>Definitions<ept id="p2">**</ept>. Take a moment to browse through the list of built-in policy definitions that are available for you to use. List all built-in policies that involve the use of tags by selecting the <bpt id="p1">**</bpt>Tags<ept id="p1">**</ept> entry (and de-selecting all other entries) in the <bpt id="p2">**</bpt>Category<ept id="p2">**</ept> drop-down list. 
+1. **작성** 섹션에서 **정의**를 클릭합니다. 잠시 시간을 내어 사용할 수 있는 기본 제공 정책 정의 목록을 탐색합니다. **범주** 드롭다운 목록에서 **태그** 항목을 선택(그리고 다른 모든 항목을 선택 해제)하여 태그 사용을 포함하는 모든 기본 제공 정책을 나열합니다. 
 
 1. **리소스에 대한 태그 및 값 필요** 기본 제공 정책을 나타내는 항목을 클릭하고 해당 정의를 검토합니다.
 
@@ -91,17 +93,17 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
     | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
     | 리소스 그룹 | 이전 작업에서 식별한 Cloud Shell 계정을 포함하는 리소스 그룹의 이름 |
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: A scope determines the resources or resource groups where the policy assignment takes effect. You could assign policies on the management group, subscription, or resource group level. You also have the option of specifying exclusions, such as individual subscriptions, resource groups, or resources (depending on the assignment scope). 
+    >**참고**: 범위는 정책 할당이 적용되는 리소스 또는 리소스 그룹을 결정합니다. 관리 그룹, 구독 또는 리소스 그룹 수준에 정책을 할당할 수 있습니다. 또한 개별 구독, 리소스 그룹 또는 리소스와 같은 제외를 지정하는 옵션도 있습니다(할당 범위에 따라 다름). 
 
 1. 다음 설정을 지정하여 할당의 **기본** 속성을 구성합니다(다른 설정은 기본값으로 유지).
 
     | 설정 | 값 |
     | --- | --- |
     | 할당 이름 | **인프라 값이 있는 역할 태그 필요**|
-    | Description | **Cloud Shell 리소스 그룹의 모든 리소스에 대해 인프라 값이 있는 역할 태그 필요**|
+    | 설명 | **Cloud Shell 리소스 그룹의 모든 리소스에 대해 인프라 값이 있는 역할 태그 필요**|
     | 정책 적용 | 사용 |
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: The <bpt id="p2">**</bpt>Assignment name<ept id="p2">**</ept> is automatically populated with the policy name you selected, but you can change it. You can also add an optional <bpt id="p1">**</bpt>Description<ept id="p1">**</ept>. <bpt id="p1">**</bpt>Assigned by<ept id="p1">**</ept> is automatically populated based on the user name creating the assignment. 
+    >**참고**: 선택한 정책 이름이 **할당 이름**에 자동으로 채워지지만, 할당 이름을 변경할 수 있습니다. 선택적인 **설명**을 추가할 수도 있습니다. **할당자**는 할당을 만드는 사용자 이름에 따라 자동으로 채워집니다. 
 
 1. **다음**을 클릭하고 **매개 변수**를 다음 값으로 설정합니다.
 
@@ -130,11 +132,11 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
     | --- | --- |
     | 스토리지 계정 이름 | 문자로 시작하며 3~24개의 소문자와 숫자로 이루어진 전역적으로 고유한 조합 |
 
-1. Once you create the deployment, you should see the <bpt id="p1">**</bpt>Deployment failed<ept id="p1">**</ept> message in the <bpt id="p2">**</bpt>Notifications<ept id="p2">**</ept> list of the portal. From the <bpt id="p1">**</bpt>Notifications<ept id="p1">**</ept> list, navigate to the deployment overview and click the <bpt id="p2">**</bpt>Deployment failed. Click here for details<ept id="p2">**</ept> message to identify the reason for the failure. 
+1. 배포를 만들면 포털의 **알림** 목록에 **배포 실패** 메시지가 표시됩니다. **알림** 목록에서 배포 개요로 이동하고 **배포 실패. 자세한 내용을 보려면 여기를 클릭하세요.** 메시지를 클릭하여 실패의 원인을 식별합니다. 
 
     >**참고**: 오류 메시지에서 리소스 배포가 정책상 허용되지 않는 것인지를 확인합니다. 
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: By clicking the <bpt id="p2">**</bpt>Raw Error<ept id="p2">**</ept> tab, you can find more details about the error, including the name of the role definition <bpt id="p3">**</bpt>Require Role tag with Infra value<ept id="p3">**</ept>. The deployment failed because the storage account you attempted to create did not have a tag named <bpt id="p1">**</bpt>Role<ept id="p1">**</ept> with its value set to <bpt id="p2">**</bpt>Infra<ept id="p2">**</ept>.
+    >**참고**: **원시적 오류** 탭을 클릭하면 **인프라 값이 있는 역할 태그 필요** 역할 정의의 이름을 포함하여 오류에 대한 자세한 내용을 찾을 수 있습니다. 만들려고 시도한 스토리지 계정에 해당 값이 **인프라**로 설정된 **역할**이라는 태그가 없기 때문에 배포에 실패했습니다.
 
 #### <a name="task-3-apply-tagging-via-an-azure-policy"></a>작업 3: Azure Policy를 통한 태그 지정 적용
 
@@ -174,7 +176,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
     | 설정 | 값 |
     | --- | --- |
     | 수정 작업 만들기 | 사용 |
-    | 수정해야 하는 정책 | **누락된 경우 구독에서 태그 상속** |
+    | 수정해야 하는 정책 | **없는 경우 리소스 그룹에서 태그 상속** |
 
     >**참고**: 이 정책 정의에는 **수정** 효과가 포함됩니다.
 
@@ -200,9 +202,9 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 
 #### <a name="task-4-clean-up-resources"></a>작업 4: 리소스 정리
 
-   ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges, although keep in mind that Azure policies do not incur extra cost.
+   >**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. Azure 정책에는 추가 비용이 발생하지 않지만 사용하지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
    
-   ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>:  Don't worry if the lab resources cannot be immediately removed. Sometimes resources have dependencies and take a longer time to delete. It is a common Administrator task to monitor resource usage, so just periodically review your resources in the Portal to see how the cleanup is going. 
+   >**참고**:  랩 리소스를 즉시 제거할 수 없어도 걱정하지 마세요. 리소스에 종속성이 있고 삭제하는 데 시간이 더 오래 걸리는 경우가 있습니다. 리소스 사용량을 모니터링하는 것은 일반적인 관리자 작업이므로 포털에서 리소스를 주기적으로 검토하여 정리가 어떻게 진행되고 있는지 확인합니다. 
 
 1. 포털에서 **정책**을 검색하여 선택합니다.
 
@@ -210,9 +212,9 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 
 1. 포털에서 **스토리지 계정**을 검색하여 선택합니다.
 
-1. In the list of storage accounts, select the resource group corresponding to the storage account you created in the last task of this lab. Select <bpt id="p1">**</bpt>Tags<ept id="p1">**</ept> and click <bpt id="p2">**</bpt>Delete<ept id="p2">**</ept> (Trash can to the right) to the <bpt id="p3">**</bpt>Role:Infra<ept id="p3">**</ept> tag and press <bpt id="p4">**</bpt>Apply<ept id="p4">**</ept>. 
+1. 이 랩의 마지막 작업에서 만든 스토리지 계정에 해당하는 리소스 그룹을 스토리지 계정 목록에서 선택합니다. **태그**를 선택하고, **Role:Infra**에 대한 **삭제**(오른쪽 휴지통)를 클릭하고, **적용**을 누릅니다. 
 
-1. Click <bpt id="p1">**</bpt>Overview<ept id="p1">**</ept> and click <bpt id="p2">**</bpt>Delete<ept id="p2">**</ept> on the top of the storage account blade. When prompted for the confirmation, in the <bpt id="p1">**</bpt>Delete storage account<ept id="p1">**</ept> blade, type the name of the storage account to confirm and click <bpt id="p2">**</bpt>Delete<ept id="p2">**</ept>. 
+1. **개요**를 클릭하고 스토리지 계정 블레이드 위쪽에서 **삭제**를 클릭합니다. 확인 메시지가 표시되면 **스토리지 계정 삭제** 블레이드에서 확인할 스토리지 계정의 이름을 입력하고 **삭제**를 클릭합니다. 
 
 #### <a name="review"></a>검토
 

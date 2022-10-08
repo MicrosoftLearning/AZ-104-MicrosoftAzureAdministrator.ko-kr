@@ -10,7 +10,7 @@ lab:
 ## <a name="lab-scenario"></a>랩 시나리오
 이제 Azure Portal을 사용하여 리소스 프로비저닝 및 리소스 그룹에 기반한 리소스 구성과 관련된 기본 Azure 관리 기능을 살펴보았으므로 Azure Resource Manager 템플릿을 사용하여 동등한 작업을 수행해야 합니다.
 
-대화형 가이드 형식으로 이 랩을 미리 보려면 **[여기를 클릭하세요](https://mslabs.cloudguides.com/en-us/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%205)** .
+                **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%205)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
 ## <a name="objectives"></a>목표
 
@@ -32,8 +32,6 @@ lab:
 
 #### <a name="task-1-review-an-arm-template-for-deployment-of-an-azure-managed-disk"></a>작업 1: Azure 관리 디스크 배포에 사용할 ARM 템플릿 검토
 
-이 작업에서는 Azure Resource Manager 템플릿을 사용하여 Azure 디스크 리소스를 만듭니다.
-
 1. [**Azure Portal**](http://portal.azure.com)에 로그인합니다.
 
 1. Azure Portal에서 **리소스 그룹**을 검색하고 선택합니다. 
@@ -52,7 +50,7 @@ lab:
 
 1. **Microsoft.ManagedDisk-* XXXXXXXXX* \| 템플릿** 블레이드에서 **입력**을 클릭합니다.
 
-1. Note the value of the <bpt id="p1">**</bpt>location<ept id="p1">**</ept> parameter. You will need it in the next task.
+1. **location** 매개 변수의 값을 메모해 둡니다. 다음 작업에서 필요합니다.
 
 1. 랩 컴퓨터의 **다운로드** 폴더에 다운로드한 콘텐츠의 압축을 풉니다.
 
@@ -83,7 +81,7 @@ lab:
    },      
    ```
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: These parameters are removed since they are not applicable to the current deployment. In particular, sourceResourceId, sourceUri, osType, and hyperVGeneration parameters are applicable to creating an Azure disk from an existing VHD file.
+    >**참고**: 이러한 매개 변수는 현재 배포에 적용할 수 없으므로 제거됩니다. 특히 sourceResourceId, sourceUri, osType 및 hyperVGeneration 매개 변수는 기존 VHD 파일에서 Azure 디스크를 만드는 데 적용할 수 있습니다.
 
 1. 변경 내용을 **저장**합니다.
 
@@ -122,7 +120,7 @@ lab:
 
 #### <a name="clean-up-resources"></a>리소스 정리
 
-   ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Do not delete resources you deployed in this lab. You will reference them in the next lab of this module.
+   >**참고**: 이 랩에서 배포한 리소스는 삭제하지 마세요. 이 모듈의 다음 랩에서 참조해야 합니다.
 
 #### <a name="review"></a>검토
 
