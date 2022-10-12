@@ -27,7 +27,11 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
 ## <a name="estimated-timing-50-minutes"></a>예상 소요 시간: 50분
 
-## <a name="instructions"></a>지침
+## <a name="architecture-diagram"></a>아키텍처 다이어그램
+
+![이미지](../media/lab10.png)
+
+## <a name="instructions"></a>Instructions
 
 ### <a name="exercise-1"></a>연습 1
 
@@ -85,7 +89,7 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
     | 설정 | 값 |
     | --- | --- |
-    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
     | Resource group | 새 리소스 그룹 **az104-10-rg1**의 이름 |
     | 자격 증명 모음 이름 | **az104-10-rsv1** |
     | 지역 | 이전 작업에서 두 가상 머신을 배포한 지역의 이름 |
