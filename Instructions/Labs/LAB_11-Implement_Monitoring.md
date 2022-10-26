@@ -27,7 +27,11 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 
 ## <a name="estimated-timing-45-minutes"></a>예상 소요 시간: 45분
 
-## <a name="instructions"></a>지침
+## <a name="architecture-diagram"></a>아키텍처 다이어그램
+
+![이미지](../media/lab11.png)
+
+## <a name="instructions"></a>Instructions
 
 ### <a name="exercise-1"></a>연습 1
 
@@ -93,7 +97,7 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 
     | 설정 | 값 |
     | --- | --- |
-    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
     | Resource group | 새 리소스 그룹 **az104-11-rg1**의 이름 |
     | Log Analytics 작업 영역 | 고유한 이름 |
     | 지역 | 이전 작업에서 가상 머신을 배포한 Azure 지역의 이름 |
@@ -220,7 +224,7 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 
     | 설정 | 값 |
     | --- | --- |
-    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
     | Resource group | **az104-11-rg1** |
     | 작업 그룹 이름 | **az104-11-ag1** |
     | 표시 이름 | **az104-11-ag1** |
