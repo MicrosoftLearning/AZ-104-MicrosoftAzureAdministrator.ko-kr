@@ -33,7 +33,7 @@ lab:
 ![이미지](../media/lab06.png)
 
 
-## <a name="instructions"></a>Instructions
+## <a name="instructions"></a>지침
 
 ### <a name="exercise-1"></a>연습 1
 
@@ -201,7 +201,7 @@ lab:
 
     | 설정 | 값 |
     | --- | --- |
-    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
     | Resource group | **az104-06-rg1** |
     | 소스 형식 | **가상 머신** |
     | 가상 머신 | **az104-06-vm0** |
@@ -220,7 +220,7 @@ lab:
 
     | 설정 | 값 |
     | --- | --- |
-    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
     | Resource group | **az104-06-rg1** |
     | 소스 형식 | **가상 머신** |
     | 가상 머신 | **az104-06-vm0** |
@@ -239,7 +239,7 @@ lab:
 
     | 설정 | 값 |
     | --- | --- |
-    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
     | Resource group | **az104-06-rg1** |
     | 소스 형식 | **가상 머신** |
     | 가상 머신 | **az104-06-vm2** |
@@ -304,7 +304,7 @@ lab:
 
     | 설정 | 값 |
     | --- | --- |
-    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
     | Resource group | **az104-06-rg1** |
     | 위치 | 가상 네트워크를 만든 Azure 지역의 이름 |
     | 이름 | **az104-06-rt23** |
@@ -347,7 +347,7 @@ lab:
 
     | 설정 | 값 |
     | --- | --- |
-    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
     | Resource group | **az104-06-rg1** |
     | 지역 | 가상 네트워크를 만든 Azure 지역의 이름 |
     | 이름 | **az104-06-rt32** |
@@ -390,7 +390,7 @@ lab:
 
     | 설정 | 값 |
     | --- | --- |
-    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
     | Resource group | **az104-06-rg1** |
     | 소스 형식 | **가상 머신** |
     | 가상 머신 | **az104-06-vm2** |
@@ -415,8 +415,8 @@ lab:
 
     | 설정 | 값 |
     | --- | --- |
-    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-    | Resource group | **az104-06-rg1** |
+    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | Resource group | **az104-06-rg4** |
     | Name | **az104-06-lb4** |
     | 지역 | 이 랩에서 다른 모든 리소스를 배포한 Azure 지역의 이름 |
     | SKU  | **표준** |
@@ -510,11 +510,11 @@ lab:
 
     | 설정 | 값 |
     | --- | --- |
-    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-    | Resource group | **az104-06-rg1** |
+    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | Resource group | **az104-06-rg6** |
     | Application Gateway 이름 | **az104-06-appgw5** |
     | 지역 | 이 랩에서 다른 모든 리소스를 배포한 Azure 지역의 이름 |
-    | 계층 | **표준 V2** |
+    | 서비스 계층 | **표준 V2** |
     | 자동 크기 조정 사용 | **아니요** |
     | 인스턴트 수 | **2** |
     | 가용성 영역 | **없음** |
