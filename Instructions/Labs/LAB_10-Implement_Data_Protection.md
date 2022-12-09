@@ -31,7 +31,7 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
 ![이미지](../media/lab10.png)
 
-## <a name="instructions"></a>Instructions
+## <a name="instructions"></a>지침
 
 ### <a name="exercise-1"></a>연습 1
 

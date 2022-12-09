@@ -31,7 +31,7 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 
 ![이미지](../media/lab11.png)
 
-## <a name="instructions"></a>Instructions
+## <a name="instructions"></a>지침
 
 ### <a name="exercise-1"></a>연습 1
 
