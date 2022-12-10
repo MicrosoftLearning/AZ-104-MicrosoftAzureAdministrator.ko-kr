@@ -28,7 +28,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 
 ![이미지](../media/lab09c.png)
 
-## <a name="instructions"></a>Instructions
+## <a name="instructions"></a>지침
 
 ### <a name="exercise-1"></a>연습 1
 
@@ -64,7 +64,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 
     | 설정 | 값 |
     | ---- | ---- |
-    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
     | Resource group | 새 리소스 그룹 **az104-09c-rg1**의 이름 |
     | 클러스터 사전 설정 구성 | **Dev/Test ($)** |
     | Kubernetes 클러스터 이름 | **az104-9c-aks1** |
@@ -86,7 +86,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 
     | 설정 | 값 |
     | ---- | ---- |
-    | 리소스 ID | **시스템 할당 관리 ID** | 
+    | 리소스 ID | **시스템 할당 관리 ID** |
     | 인증 방법 | **Kubernetes RBAC가 있는 로컬 계정** |
 
 1. **다음: 네트워킹 >** 을 클릭하고, **Kubernetes 클러스터 만들기** 블레이드의 **네트워킹** 탭에서 다음 설정을 지정합니다(다른 설정은 기본값으로 유지).

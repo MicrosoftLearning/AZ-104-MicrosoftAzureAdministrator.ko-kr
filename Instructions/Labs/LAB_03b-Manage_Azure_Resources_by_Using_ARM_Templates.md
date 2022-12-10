@@ -26,7 +26,7 @@ lab:
 
 ![이미지](../media/lab03b.png)
 
-## <a name="instructions"></a>Instructions
+## <a name="instructions"></a>지침
 
 ### <a name="exercise-1"></a>연습 1
 

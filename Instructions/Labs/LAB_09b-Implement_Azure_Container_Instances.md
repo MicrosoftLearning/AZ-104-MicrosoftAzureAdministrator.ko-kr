@@ -26,7 +26,7 @@ Contoso는 가상화된 워크로드에 대한 새로운 플랫폼을 찾고자 
 
 ![이미지](../media/lab09b.png)
 
-## <a name="instructions"></a>Instructions
+## <a name="instructions"></a>지침
 
 ### <a name="exercise-1"></a>연습 1
 
@@ -42,7 +42,7 @@ Contoso는 가상화된 워크로드에 대한 새로운 플랫폼을 찾고자 
 
     | 설정 | 값 |
     | ---- | ---- |
-    | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
+    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
     | Resource group | 새 리소스 그룹 **az104-09b-rg1**의 이름 |
     | 컨테이너 이름 | **az104-9b-c1** |
     | 지역 | Azure Container Instances를 프로비전할 수 있는 지역 이름 |
