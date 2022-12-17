@@ -28,7 +28,7 @@ Contoso 사용자가 Azure AD를 사용하여 인증할 수 있도록 하려면 
 ## <a name="architecture-diagram"></a>아키텍처 다이어그램
 ![이미지](../media/lab01.png)
 
-## <a name="instructions"></a>Instructions
+## <a name="instructions"></a>지침
 
 ### <a name="exercise-1"></a>연습 1
 
@@ -241,7 +241,7 @@ Contoso 사용자가 Azure AD를 사용하여 인증할 수 있도록 하려면 
     | 설정 | 값 |
     | --- | --- |
     | Name | **az104-01b-aaduser1** |
-    | 전자 메일 주소 | 이 작업의 앞부분에서 복사한 사용자 주체 이름 |
+    | 메일 주소 | 이 작업의 앞부분에서 복사한 사용자 주체 이름 |
     | 사용 위치 | **미국** |
     | 직함 | **랩 관리자** |
     | department | **IT** |

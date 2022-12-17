@@ -40,7 +40,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 ![이미지](../media/lab02a.png)
 
 
-## <a name="instructions"></a>Instructions
+## <a name="instructions"></a>지침
 
 ### <a name="exercise-1"></a>연습 1
 
