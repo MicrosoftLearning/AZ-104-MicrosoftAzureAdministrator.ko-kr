@@ -4,16 +4,16 @@ lab:
   module: Administer Virtual Machines
 ---
 
-# <a name="lab-08---manage-virtual-machines"></a>랩 08 - 가상 머신 관리
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 08 - 가상 머신 관리
+# 학생용 랩 매뉴얼
 
-## <a name="lab-scenario"></a>랩 시나리오
+## 랩 시나리오
 
 Azure 가상 머신의 배포 및 구성을 위한 다양한 옵션을 식별하는 작업을 수행해야 합니다. 먼저 Azure 가상 머신을 사용할 경우 구현할 수 있는 다양한 컴퓨팅 및 스토리지 복원력과 확장성 옵션을 결정해야 합니다. 다음으로 Azure 가상 머신 확장 집합을 사용할 경우 사용할 수 있는 컴퓨팅 및 스토리지 복원력과 확장성 옵션을 조사해야 합니다. 또한 Azure 가상 머신 사용자 지정 스크립트 확장을 사용하여 가상 머신 및 가상 머신 확장 집합을 자동으로 구성하는 기능을 탐색하고자 합니다.
 
                 **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2012)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
-## <a name="objectives"></a>목표
+## 목표
 
 이 랩에서는 다음을 수행합니다.
 
@@ -25,18 +25,18 @@ Azure 가상 머신의 배포 및 구성을 위한 다양한 옵션을 식별하
 + 작업 6: 가상 머신 확장을 사용하여 Azure 가상 머신 확장 집합 구성
 + 작업 7: Azure 가상 머신 확장 집합에 사용할 컴퓨팅 및 스토리지 크기 조정(선택 사항)
 
-## <a name="estimated-timing-50-minutes"></a>예상 소요 시간: 50분
+## 예상 소요 시간: 50분
 
-## <a name="architecture-diagram"></a>아키텍처 다이어그램
+## 아키텍처 다이어그램
 
 ![이미지](../media/lab08.png)
 
 
-## <a name="instructions"></a>지침
+## Instructions
 
-### <a name="exercise-1"></a>연습 1
+### 연습 1
 
-#### <a name="task-1-deploy-zone-resilient-azure-virtual-machines-by-using-the-azure-portal-and-an-azure-resource-manager-template"></a>작업 1: Azure Portal과 Azure Resource Manager 템플릿을 사용하여 영역 복원력이 있는 Azure 가상 머신 배포
+#### 작업 1: Azure Portal과 Azure Resource Manager 템플릿을 사용하여 영역 복원력이 있는 Azure 가상 머신 배포
 
 이 작업에서는 Azure Portal 및 Azure Resource Manager 템플릿을 사용하여 Azure 가상 머신을 다른 가용성 영역에 배포합니다.
 
@@ -136,7 +136,7 @@ Azure 가상 머신의 배포 및 구성을 위한 다양한 옵션을 식별하
 
     >**참고**: 다음 작업으로 진행하기 전에 두 배포가 모두 완료될 때까지 기다립니다. 5분 정도 걸릴 수 있습니다.
 
-#### <a name="task-2-configure-azure-virtual-machines-by-using-virtual-machine-extensions"></a>작업 2: 가상 머신 확장을 사용하여 Azure 가상 머신 구성
+#### 작업 2: 가상 머신 확장을 사용하여 Azure 가상 머신 구성
 
 이 작업에서는 사용자 지정 스크립트 가상 머신 확장을 사용하여 이전 작업에서 배포한 두 Azure 가상 머신에 Windows Server 웹 서버 역할을 설치합니다.
 
@@ -223,7 +223,7 @@ Azure 가상 머신의 배포 및 구성을 위한 다양한 옵션을 식별하
 
     >**참고**: **az104-08-vm0**에 연결하고 `Invoke-WebRequest -URI http://10.80.0.5 -UseBasicParsing`을 실행하여 **az104-08-vm1**에서 호스트된 웹 사이트에 액세스할 수 있습니다.
 
-#### <a name="task-3-scale-compute-and-storage-for-azure-virtual-machines"></a>작업 3: Azure 가상 머신에 사용할 컴퓨팅 및 스토리지 크기 조정
+#### 작업 3: Azure 가상 머신에 사용할 컴퓨팅 및 스토리지 크기 조정
 
 이 작업에서는 데이터 디스크를 연결하고 구성하여 크기를 변경하고 스토리지를 확장하여 Azure 가상 머신의 컴퓨팅을 확장합니다.
 
@@ -262,7 +262,7 @@ Azure 가상 머신의 배포 및 구성을 위한 다양한 옵션을 식별하
    ```powershell
    New-StoragePool -FriendlyName storagepool1 -StorageSubsystemFriendlyName "Windows Storage*" -PhysicalDisks (Get-PhysicalDisk -CanPool $true)
 
-   New-VirtualDisk -StoragePoolFriendlyName storagepool1 -FriendlyName virtualdisk1 -Size 2046GB -ResiliencySettingName Simple -ProvisioningType Fixed
+   New-VirtualDisk -StoragePoolFriendlyName storagepool1 -FriendlyName virtualdisk1 -Size 64GB -ResiliencySettingName Simple -ProvisioningType Fixed
 
    Initialize-Disk -VirtualDisk (Get-VirtualDisk -FriendlyName virtualdisk1)
 
@@ -336,7 +336,7 @@ Azure 가상 머신의 배포 및 구성을 위한 다양한 옵션을 식별하
 
     > **참고**: 명령이 성공적으로 완료되었다는 확인을 기다립니다.
 
-#### <a name="task-4-register-the-microsoftinsights-and-microsoftalertsmanagement-resource-providers"></a>작업 4: Microsoft.Insights 및 Microsoft.AlertsManagement 리소스 공급자 등록
+#### 작업 4: Microsoft.Insights 및 Microsoft.AlertsManagement 리소스 공급자 등록
 
 1. Azure Portal에서 오른쪽 상단의 아이콘을 클릭하여 **Azure Cloud Shell**을 엽니다.
 
@@ -352,7 +352,7 @@ Azure 가상 머신의 배포 및 구성을 위한 다양한 옵션을 식별하
    Register-AzResourceProvider -ProviderNamespace Microsoft.AlertsManagement
    ```
 
-#### <a name="task-5-deploy-zone-resilient-azure-virtual-machine-scale-sets-by-using-the-azure-portal"></a>작업 5: Azure Portal을 사용하여 영역 복원력이 있는 Azure 가상 머신 확장 집합 배포
+#### 작업 5: Azure Portal을 사용하여 영역 복원력이 있는 Azure 가상 머신 확장 집합 배포
 
 이 작업에서는 Azure Portal을 사용하여 가용성 영역 전반에 Azure Virtual Machine Scale Sets를 배포합니다.
 
@@ -456,7 +456,7 @@ Azure 가상 머신의 배포 및 구성을 위한 다양한 옵션을 식별하
 
     >**참고**: 가상 머신 확장 집합 배포가 완료될 때까지 기다립니다. 이 작업은 5분 정도 걸립니다.
 
-#### <a name="task-6-configure-azure-virtual-machine-scale-sets-by-using-virtual-machine-extensions"></a>작업 6: 가상 머신 확장을 사용하여 Azure 가상 머신 확장 집합 구성
+#### 작업 6: 가상 머신 확장을 사용하여 Azure 가상 머신 확장 집합 구성
 
 이 작업에서는 사용자 지정 스크립트 가상 머신 확장을 사용하여 이전 작업에서 배포한 Azure 가상 머신 확장 집합의 인스턴스에 Windows Server 웹 서버 역할을 설치합니다.
 
@@ -497,7 +497,7 @@ Azure 가상 머신의 배포 및 구성을 위한 다양한 옵션을 식별하
 
     >**참고**: 브라우저 페이지에 Azure 가상 머신 확장 집합 **az10408vmss0**의 인스턴스 중 하나의 이름이 표시되는지 확인합니다.
 
-#### <a name="task-7-scale-compute-and-storage-for-azure-virtual-machine-scale-sets"></a>작업 7: Azure 가상 머신 확장 집합에 사용할 컴퓨팅 및 스토리지 크기 조정
+#### 작업 7: Azure 가상 머신 확장 집합에 사용할 컴퓨팅 및 스토리지 크기 조정
 
 이 작업에서는 가상 머신 확장 집합 인스턴스의 크기를 변경하고 자동 크기 조정 설정을 구성하고 디스크를 연결합니다.
 
@@ -619,7 +619,7 @@ Azure 가상 머신의 배포 및 구성을 위한 다양한 옵션을 식별하
 
 1. **az10408vmss0** 블레이드의 **설정** 섹션에서 **인스턴스**를 클릭하고 가상 머신 확장 집합의 인스턴스 옆에 있는 체크박스를 선택합니다. 그런 다음 **업그레이드**를 클릭하고 확인을 요청하면 **예**를 클릭합니다.
 
-#### <a name="clean-up-resources"></a>리소스 정리
+#### 리소스 정리
 
 >**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
 
@@ -646,7 +646,7 @@ Azure 가상 머신의 배포 및 구성을 위한 다양한 옵션을 식별하
 
     >**참고**: 이 명령은 -AsJob 매개 변수에 의해 결정되어 비동기로 실행되므로, 동일한 PowerShell 세션 내에서 이 명령을 실행한 직후 다른 PowerShell 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지는 몇 분 정도 걸립니다.
 
-#### <a name="review"></a>검토
+#### 검토
 
 이 랩에서는 다음을 수행합니다.
 
