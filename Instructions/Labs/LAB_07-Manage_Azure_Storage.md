@@ -4,16 +4,16 @@ lab:
   module: Administer Azure Storage
 ---
 
-# <a name="lab-07---manage-azure-storage"></a>랩 07 - Azure Storage 관리
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 07 - Azure Storage 관리
+# 학생용 랩 매뉴얼
 
-## <a name="lab-scenario"></a>랩 시나리오
+## 랩 시나리오
 
 현재 온-프레미스 데이터 저장소에 있는 파일을 저장하는 데 Azure Storage를 사용하는 안을 평가해야 합니다. 이러한 파일의 대부분은 몇 가지 예외를 제외하고는 자주 액세스하지 않습니다. 사용자는 자주 액세스하지 않는 파일을 저렴한 스토리지 계층에 배치하여 스토리지 비용을 최소화하려고 합니다. 또한 네트워크 액세스, 인증, 권한 부여 및 복제를 포함하여 Azure Storage가 제공하는 다양한 보호 메커니즘을 알아볼 계획입니다. 마지막으로 Azure Files 서비스가 온-프레미스 파일 공유를 호스트하는 데 어느 정도 적합한지를 결정해야 합니다.
 
                 **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2011)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
-## <a name="objectives"></a>목표
+## 목표
 
 이 랩에서는 다음을 수행합니다.
 
@@ -24,18 +24,18 @@ lab:
 + 작업 5: Azure Files 공유 만들기 및 구성
 + 작업 6: Azure Storage에 대한 네트워크 액세스 관리
 
-## <a name="estimated-timing-40-minutes"></a>예상 소요 시간: 40분
+## 예상 소요 시간: 40분
 
-## <a name="architecture-diagram"></a>아키텍처 다이어그램
+## 아키텍처 다이어그램
 
 ![이미지](../media/lab07.png)
 
 
-## <a name="instructions"></a>지침
+## Instructions
 
-### <a name="exercise-1"></a>연습 1
+### 연습 1
 
-#### <a name="task-1-provision-the-lab-environment"></a>작업 1: 랩 환경 프로비전
+#### 작업 1: 랩 환경 프로비전
 
 이 작업에서는 이 랩의 후반부에서 사용할 Azure 가상 머신을 배포합니다.
 
@@ -48,8 +48,6 @@ lab:
     >**참고**: **Cloud Shell**을 처음 시작했는데 **탑재된 스토리지 없음**이라는 메시지가 표시되면 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 클릭합니다.
 
 1. Cloud Shell 창의 도구 모음에서 **파일 업로드/다운로드** 아이콘을 클릭한 다음, 드롭다운 메뉴에서 **업로드**를 클릭하여 파일 **\\Allfiles\\Labs\\07\\az104-07-vm-template.json** 및 **\\Allfiles\\Labs\\07\\az104-07-vm-parameters.json**을 Cloud Shell 홈 디렉터리에 업로드합니다.
-
-1. 방금 업로드한 **Parameters** 파일을 편집하고 암호를 변경합니다. Shell에서 파일을 편집하는 데 도움이 필요한 경우 강사에게 도움을 요청하세요. 암호와 같은 비밀은 Key Vault에 보다 안전하게 저장되는 것이 가장 좋습니다. 
 
 1. Cloud Shell 창에서 다음을 실행하여 가상 머신을 호스트할 리소스 그룹을 만듭니다(‘[Azure_region]’ 자리 표시자를 Azure 가상 머신을 배포하려는 Azure 지역의 이름으로 바꿈).
 
@@ -70,6 +68,8 @@ lab:
     
 1. Cloud Shell 창에서 다음을 실행하여 업로드된 템플릿 및 매개 변수 파일을 사용해 가상 머신을 배포합니다.
 
+    >**참고**: 관리 암호를 입력하라는 메시지가 표시됩니다.
+
    ```powershell
    New-AzResourceGroupDeployment `
       -ResourceGroupName $rgName `
@@ -89,7 +89,7 @@ lab:
 
 1. Cloud Shell 창을 닫습니다.
 
-#### <a name="task-2-create-and-configure-azure-storage-accounts"></a>작업 2: Azure Storage 계정 만들기 및 구성
+#### 작업 2: Azure Storage 계정 만들기 및 구성
 
 이 작업에서는 Azure Storage 계정을 만들고 구성합니다.
 
@@ -100,7 +100,7 @@ lab:
     | 설정 | 값 |
     | --- | --- |
     | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-    | Resource group | **새** 리소스 그룹 **az104-07-rg1**의 이름 |
+    | 리소스 그룹 | **새** 리소스 그룹 **az104-07-rg1**의 이름 |
     | 스토리지 계정 이름 | 3~24자 사이의 문자와 숫자로 구성된 전역적으로 고유한 이름 |
     | 지역 | Azure Storage 계정을 만들 수 있는 Azure 지역의 이름  |
     | 성능 | **Standard** |
@@ -124,7 +124,7 @@ lab:
 
     > **참고**: 쿨 액세스 계층은 자주 액세스하지 않는 데이터에 최적입니다.
 
-#### <a name="task-3-manage-blob-storage"></a>작업 3: Blob Storage 관리
+#### 작업 3: Blob Storage 관리
 
 이 작업에서는 Blob 컨테이너를 만들고 Blob을 업로드합니다.
 
@@ -145,7 +145,6 @@ lab:
 
     | 설정 | 값 |
     | --- | --- |
-    | 인증 유형 | **계정 키**  |
     | Blob 유형 | **블록 Blob** |
     | 블록 크기 | **4MB** |
     | 액세스 계층 | **핫** |
@@ -163,7 +162,7 @@ lab:
 
     > **참고**: Blob을 다운로드하고, 액세스 계층을 변경하고(현재 **핫**으로 설정되어 있음), 임대를 확보해 상태를 **잠금**으로 변경하고(현재는 **잠금 해제**로 설정되어 있음), Blob이 수정 또는 삭제되지 않도록 보호하고, 사용자 지정 메타데이터를 할당할 수 있습니다(임의의 키 및 값 쌍을 지정하여). 또한 먼저 다운로드하지 않고 Azure Portal 인터페이스 내에서 직접 파일을 **편집**할 수 있습니다. 스냅샷을 만들고 SAS 토큰을 생성할 수도 있습니다(다음 작업에서 이 옵션을 알아봅니다).
 
-#### <a name="task-4-manage-authentication-and-authorization-for-azure-storage"></a>작업 4: Azure Storage에 대한 인증 및 권한 부여 관리
+#### 작업 4: Azure Storage에 대한 인증 및 권한 부여 관리
 
 이 작업에서는 Azure Storage에 대한 인증 및 권한 부여를 구성합니다.
 
@@ -226,7 +225,7 @@ lab:
 
     > **참고**: 이 변경 사항이 적용되는 데 5분 정도 소요될 수 있습니다.
 
-#### <a name="task-5-create-and-configure-an-azure-files-shares"></a>작업 5: Azure Files 공유 만들기 및 구성
+#### 작업 5: Azure Files 공유 만들기 및 구성
 
 이 작업에서는 Azure Files 공유를 만들고 구성합니다.
 
@@ -268,7 +267,7 @@ lab:
 
 1. **az104-07-folder**를 클릭하고 **az104-07-file.txt**가 파일 목록에 나타나는지 확인합니다.
 
-#### <a name="task-6-manage-network-access-for-azure-storage"></a>작업 6: Azure Storage에 대한 네트워크 액세스 관리
+#### 작업 6: Azure Storage에 대한 네트워크 액세스 관리
 
 이 작업에서는 Azure Storage에 대한 네트워크 액세스를 구성합니다.
 
@@ -305,7 +304,7 @@ lab:
 
 1. Cloud Shell 창을 닫습니다.
 
-#### <a name="clean-up-resources"></a>리소스 정리
+#### 리소스 정리
 
 >**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
 
@@ -327,7 +326,7 @@ lab:
 
     >**참고**: 이 명령은 -AsJob 매개 변수에 의해 결정되어 비동기로 실행되므로, 동일한 PowerShell 세션 내에서 이 명령을 실행한 직후 다른 PowerShell 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지는 몇 분 정도 걸립니다.
 
-#### <a name="review"></a>검토
+#### 검토
 
 이 랩에서는 다음을 수행합니다.
 

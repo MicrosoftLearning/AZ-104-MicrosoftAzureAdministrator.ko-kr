@@ -4,16 +4,16 @@ lab:
   module: Administer Intersite Connectivity
 ---
 
-# <a name="lab-05---implement-intersite-connectivity"></a>랩 05 - 사이트 간 연결 구현
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 05 - 사이트 간 연결 구현
+# 학생용 랩 매뉴얼
 
-## <a name="lab-scenario"></a>랩 시나리오
+## 랩 시나리오
 
 Contoso는 보스턴, 뉴욕 및 시애틀 지사에 있는 메시 광역 네트워크 링크를 통해 연결된 데이터 센터를 보유하고 있으며, 이들 사이의 전체 연결이 가능합니다. Contoso 온-프레미스 네트워크의 토폴로지를 반영하고 그 기능을 확인하는 랩 환경을 구현해야 합니다.
 
                 **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%209)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
-## <a name="objectives"></a>목표
+## 목표
 
 이 랩에서는 다음을 수행합니다.
 
@@ -21,15 +21,15 @@ Contoso는 보스턴, 뉴욕 및 시애틀 지사에 있는 메시 광역 네트
 + 작업 2: 로컬 및 전역 가상 네트워크 피어링을 구성합니다.
 + 작업 3: 사이트 간 연결을 테스트합니다.
 
-## <a name="estimated-timing-30-minutes"></a>예상 소요 시간: 30분
+## 예상 소요 시간: 30분
 
-## <a name="architecture-diagram"></a>아키텍처 다이어그램
+## 아키텍처 다이어그램
 
 ![이미지](../media/lab05.png)
 
-### <a name="instructions"></a>지침
+### 지침
 
-#### <a name="task-1-provision-the-lab-environment"></a>작업 1: 랩 환경 프로비전
+#### 작업 1: 랩 환경 프로비전
 
 이 작업에서는 세 개의 가상 머신을 각각 별도의 가상 네트워크에 배포하고 그 중 두 개는 동일한 Azure 지역에, 나머지 하나는 다른 Azure 지역에 배포합니다.
 
@@ -41,9 +41,7 @@ Contoso는 보스턴, 뉴욕 및 시애틀 지사에 있는 메시 광역 네트
 
     >**참고**: **Cloud Shell**을 처음 시작했는데 **탑재된 스토리지 없음**이라는 메시지가 표시되면 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 클릭합니다.
 
-1. Cloud Shell 창의 도구 모음에서 **파일 업로드/다운로드** 아이콘을 클릭하고, 드롭다운 메뉴에서 **업로드**를 클릭하고, **\\Allfiles\\Labs\\05\\az104-05-vnetvm-loop-template.json** 및 **\\Allfiles\\Labs\\05\\az104-05-vnetvm-loop-parameters.json** 파일을 Cloud Shell 홈 디렉터리에 업로드합니다.
-
-1. 방금 업로드한 **Parameters** 파일을 편집하고 암호를 변경합니다. Shell에서 파일을 편집하는 데 도움이 필요한 경우 강사에게 도움을 요청하세요. 암호와 같은 비밀은 Key Vault에 보다 안전하게 저장되는 것이 가장 좋습니다. 
+1. Cloud Shell 창의 도구 모음에서 **파일 업로드/다운로드** 아이콘을 클릭하고, 드롭다운 메뉴에서 **업로드**를 클릭하고, **\\Allfiles\\Labs\\05\\az104-05-vnetvm-loop-template.json** 및 **\\Allfiles\\Labs\\05\\az104-05-vnetvm-loop-parameters.json** 파일을 Cloud Shell 홈 디렉터리에 업로드합니다. 
 
 1. Cloud Shell 창에서 다음을 실행하여 랩 환경을 호스트할 리소스 그룹을 만듭니다. 처음 두 개의 가상 네트워크와 한 쌍의 가상 머신이 [Azure_region_1]에 배포됩니다. 세 번째 가상 네트워크와 세 번째 가상 머신이 같은 리소스 그룹의 다른 지역인 [Azure_region_2]에 배포됩니다. ([Azure_region_1] 및 [Azure_region_2] 자리 표시자를 해당 Azure 가상 머신을 배포할 서로 다른 두 Azure 지역의 이름으로 바꿉니다. 예를 들어, $location 1 = ‘eastus’입니다. Get-AzLocation을 사용하여 모든 위치를 나열할 수 있습니다.)
 
@@ -68,6 +66,8 @@ Contoso는 보스턴, 뉴욕 및 시애틀 지사에 있는 메시 광역 네트
    >명령이 결과를 반환하지 않으면 다른 지역을 선택해야 합니다. 두 개의 적합한 지역을 식별한 후에는 위의 코드 블록에서 지역을 조정할 수 있습니다.
 
 1. Cloud Shell 창에서 세 개의 가상 네트워크를 만들고 업로드한 템플릿 및 매개 변수 파일을 사용하여 가상 머신을 배포합니다.
+    
+    >**참고**: 관리 암호를 입력하라는 메시지가 표시됩니다.
 
    ```powershell
    New-AzResourceGroupDeployment `
@@ -82,7 +82,7 @@ Contoso는 보스턴, 뉴욕 및 시애틀 지사에 있는 메시 광역 네트
 
 1. Cloud Shell 창을 닫습니다.
 
-#### <a name="task-2-configure-local-and-global-virtual-network-peering"></a>작업 2: 로컬 및 전역 가상 네트워크 피어링을 구성합니다.
+#### 작업 2: 로컬 및 전역 가상 네트워크 피어링을 구성합니다.
 
 이 작업에서는 이전 작업에서 배포된 가상 네트워크 간의 로컬 및 글로벌 피어링을 구성합니다.
 
@@ -201,7 +201,7 @@ Contoso는 보스턴, 뉴욕 및 시애틀 지사에 있는 메시 광역 네트
    Add-AzVirtualNetworkPeering -Name 'az104-05-vnet2_to_az104-05-vnet1' -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.Id
    ``` 
 
-#### <a name="task-3-test-intersite-connectivity"></a>작업 3: 사이트 간 연결을 테스트합니다.
+#### 작업 3: 사이트 간 연결을 테스트합니다.
 
 이 작업에서는 이전 작업의 로컬 및 전역 피어링을 통해 연결된 세 개의 가상 네트워크에서 가상 머신 간의 연결을 테스트합니다.
 
@@ -259,7 +259,7 @@ Contoso는 보스턴, 뉴욕 및 시애틀 지사에 있는 메시 광역 네트
 
 1. 출력 명령을 검사하여 연결되었는지 확인합니다.
 
-#### <a name="clean-up-resources"></a>리소스 정리
+#### 리소스 정리
 
 >**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
 
@@ -281,7 +281,7 @@ Contoso는 보스턴, 뉴욕 및 시애틀 지사에 있는 메시 광역 네트
 
     >**참고**: 이 명령은 -AsJob 매개 변수에 의해 결정되어 비동기로 실행되므로, 동일한 PowerShell 세션 내에서 이 명령을 실행한 직후 다른 PowerShell 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지는 몇 분 정도 걸립니다.
 
-#### <a name="review"></a>검토
+#### 검토
 
 이 랩에서는 다음을 수행합니다.
 
