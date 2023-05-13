@@ -4,16 +4,16 @@ lab:
   module: Administer Monitoring
 ---
 
-# <a name="lab-11---implement-monitoring"></a>랩 11 - 모니터링 구현
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 11 - 모니터링 구현
+# 학생용 랩 매뉴얼
 
-## <a name="lab-scenario"></a>랩 시나리오
+## 랩 시나리오
 
 Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azure 기능을 평가해야 하며, 특히 Azure 가상 머신에 중점을 두어야 합니다. 이를 위해 Log Analytics를 포함하여 Azure Monitor의 기능을 검사하려고 합니다.
 
                 **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2017)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
-## <a name="objectives"></a>목표
+## 목표
 
 이 랩에서는 다음을 수행합니다.
 
@@ -25,17 +25,17 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 + 작업 6: Azure Monitor 기능 검토
 + 작업 7: Azure Log Analytics 기능 검토
 
-## <a name="estimated-timing-45-minutes"></a>예상 소요 시간: 45분
+## 예상 소요 시간: 45분
 
-## <a name="architecture-diagram"></a>아키텍처 다이어그램
+## 아키텍처 다이어그램
 
 ![이미지](../media/lab11.png)
 
-## <a name="instructions"></a>지침
+### Instructions
 
-### <a name="exercise-1"></a>연습 1
+## 연습 1
 
-#### <a name="task-1-provision-the-lab-environment"></a>작업 1: 랩 환경 프로비전
+## 작업 1: 랩 환경 프로비전
 
 이 작업에서는 모니터링 시나리오를 테스트하는 데 사용할 가상 머신을 배포합니다.
 
@@ -48,8 +48,6 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
     >**참고**: **Cloud Shell**을 처음 시작했는데 **탑재된 스토리지 없음**이라는 메시지가 표시되면 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 클릭합니다.
 
 1. Cloud Shell 창의 도구 모음에서 **파일 업로드/다운로드** 아이콘을 클릭한 다음, 드롭다운 메뉴에서 **업로드**를 클릭하여 파일 **\\Allfiles\\Labs\\11\\az104-11-vm-template.json** 및 **\\Allfiles\\Labs\\11\\az104-11-vm-parameters.json**을 Cloud Shell 홈 디렉터리에 업로드합니다.
-
-1. 방금 업로드한 매개 변수 파일을 편집하고 암호를 변경합니다. Shell에서 파일을 편집하는 데 도움이 필요한 경우 강사에게 도움을 요청하세요. 암호와 같은 비밀은 Key Vault에 보다 안전하게 저장되는 것이 가장 좋습니다. 
 
 1. Cloud Shell 창에서 다음을 실행하여 가상 머신을 호스팅할 리소스 그룹을 만듭니다(`[Azure_region]` 자리 표시자를 Azure 가상 머신을 배포하려는 Azure 지역의 이름으로 바꾸기).
 
@@ -65,6 +63,8 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 
 1. Cloud Shell 창에서 다음을 실행하여 첫 번째 가상 네트워크를 만들고 업로드한 템플릿 및 매개 변수 파일을 사용하여 가상 머신을 배포합니다.
 
+    >**참고**: 관리 암호를 입력하라는 메시지가 표시됩니다.
+    
    ```powershell
    New-AzResourceGroupDeployment `
       -ResourceGroupName $rgName `
@@ -75,7 +75,7 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 
     >**참고**: 배포가 완료될 때까지 기다리지 말고 다음 작업을 진행하세요. 배포는 3분 정도 걸립니다.
 
-#### <a name="task-2-register-the-microsoftinsights-and-microsoftalertsmanagement-resource-providers"></a>작업 2: Microsoft.Insights 및 Microsoft.AlertsManagement 리소스 공급자를 등록합니다.
+## 작업 2: Microsoft.Insights 및 Microsoft.AlertsManagement 리소스 공급자를 등록합니다.
 
 1. Cloud Shell 창에서 다음을 실행하여 Microsoft.Insights와 Microsoft.AlertsManagement 리소스 공급자를 등록합니다.
 
@@ -87,7 +87,7 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 
 1. Cloud Shell 창을 최소화합니다(닫지 않습니다).
 
-#### <a name="task-3-create-and-configure-an-azure-log-analytics-workspace-and-azure-automation-based-solutions"></a>작업 3: Azure Log Analytics 작업 영역 및 Azure 자동화 기반 솔루션 만들기 및 구성
+## 작업 3: Azure Log Analytics 작업 영역 및 Azure 자동화 기반 솔루션 만들기 및 구성
 
 이 작업에서는 Azure Log Analytics 작업 영역 및 Azure 자동화 기반 솔루션을 만들고 구성합니다.
 
@@ -98,7 +98,7 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
     | 설정 | 값 |
     | --- | --- |
     | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-    | Resource group | 새 리소스 그룹 **az104-11-rg1**의 이름 |
+    | 리소스 그룹 | 새 리소스 그룹 **az104-11-rg1**의 이름 |
     | Log Analytics 작업 영역 | 고유한 이름 |
     | 지역 | 이전 작업에서 가상 머신을 배포한 Azure 지역의 이름 |
 
@@ -114,7 +114,7 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
     | --- | --- |
     | Automation 계정 이름 | 고유한 이름 |
     | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-    | Resource group | **az104-11-rg1** |
+    | 리소스 그룹 | **az104-11-rg1** |
     | 지역 | [작업 영역 매핑 설명서](https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings)에 따라 결정되는 Azure 지역의 이름 |
 
     >**참고**: [작업 영역 매핑 설명서](https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings)를 기반으로 Azure 지역을 지정해야 합니다.
@@ -135,7 +135,7 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 
     >**참고**: 설치가 완료될 때까지 기다립니다. 5분 정도 걸릴 수 있습니다.
 
-#### <a name="task-4-review-default-monitoring-settings-of-azure-virtual-machines"></a>작업 4: Azure 가상 머신의 기본 모니터링 설정 검토
+## 작업 4: Azure 가상 머신의 기본 모니터링 설정 검토
 
 이 작업에서는 Azure 가상 머신의 기본 모니터링 설정을 검토합니다.
 
@@ -153,15 +153,15 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 
 1. **메트릭** 드롭다운 목록에서 **백분율 CPU**를 선택하고 **집계** 드롭다운 목록에서 **평균**을 선택하고 결과 차트를 검토합니다.
 
-#### <a name="task-5-configure-azure-virtual-machine-diagnostic-settings"></a>작업 5: Azure 가상 머신 진단 설정 구성
+## 작업 5: Azure 가상 머신 진단 설정 구성
 
 이 작업에서는 Azure 가상 머신 진단 설정을 구성합니다.
 
 1. **az104-11-vm0** 블레이드의 **모니터링** 섹션에서 **진단 설정**을 클릭합니다.
 
-1. **az104-11-vm0 \| 진단 설정** 블레이드의 **개요** 탭에서 **게스트 수준 모니터링 사용**을 클릭합니다.
+1. **az104-11-vm0**  진단 설정 **블레이드의 \|개요** 탭에서 **진단 스토리지 계정**을 선택한 다음 **게스트 수준 모니터링 사용**을 클릭합니다.
 
-    >**참고**: 작업이 적용될 때까지 기다리세요. 3분 정도 걸릴 수 있습니다.
+    >**참고**: 진단 설정 확장이 설치될 때까지 기다립니다. 3분 정도 걸릴 수 있습니다.
 
 1. **az104-11-vm0 \| 진단 설정** 블레이드의 **성능 카운터** 탭으로 전환하고 사용 가능한 카운터를 검토합니다.
 
@@ -171,11 +171,11 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 
     >**참고**: 기본적으로 로그 수집에는 애플리케이션 로그 및 시스템 로그의 위험, 오류, 경고 항목과 보안 로그의 감사 실패 항목이 포함됩니다. 여기에서도 자세한 구성 설정을 위해 **사용자 지정** 보기로 전환할 수 있습니다.
 
-1. **az104-11-vm0** 블레이드의 **모니터링** 섹션에서 **Log Analytics 에이전트**를 클릭한 다음 **사용**을 클릭합니다.
+1. **az104-11-vm0** 블레이드의 **모니터링** 섹션에서 **로그**를 클릭한 다음 **사용**을 클릭합니다.
 
-1. **az104-11-vm0 - 로그** 블레이드에서 이 랩의 앞부분에서 만든 Log Analytics 작업 영역이 **Log Analytics 작업 영역 선택** 드롭다운 목록에서 선택되었는지 확인하고 **사용**을 클릭합니다.
+1. **az104-11-vm0 - 로그** 블레이드에서 **Azure Monitor 에이전트(권장)** 가 선택되어 있는지 확인하고 **구성**을 클릭합니다.  
 
-    >**참고**: 작업이 완료될 때까지 기다리지 않고 다음 단계로 진행하세요. 해당 작업에는 약 5분이 소요됩니다.
+    >**참고**: 작업이 완료될 때까지 기다리지 말고 다음 단계로 진행하세요. 해당 작업에는 약 5분이 소요됩니다.
 
 1. **az104-11-vm0 \| 로그** 블레이드의 **모니터링** 섹션에서 **메트릭**을 클릭합니다.
 
@@ -191,7 +191,7 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 
 1. **메트릭** 드롭다운 목록에서 **메모리\\사용 가능한 바이트 수**를 선택하고 **집계** 드롭다운 목록에서 **최댓값**을 선택한 후에 표시되는 차트를 검토합니다.
 
-#### <a name="task-6-review-azure-monitor-functionality"></a>작업 6: Azure Monitor 기능 검토
+## 작업 6: Azure Monitor 기능 검토
 
 1. Azure Portal에서 **모니터**를 검색하여 선택하고 **모니터 \| 개요** 블레이드에서 **메트릭**을 클릭합니다.
 
@@ -225,7 +225,7 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
     | 설정 | 값 |
     | --- | --- |
     | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-    | Resource group | **az104-11-rg1** |
+    | 리소스 그룹 | **az104-11-rg1** |
     | 작업 그룹 이름 | **az104-11-ag1** |
     | 표시 이름 | **az104-11-ag1** |
 
@@ -280,7 +280,7 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 
 1. **모든 경고** 블레이드에서 생성된 경고를 검토합니다.
 
-#### <a name="task-7-review-azure-log-analytics-functionality"></a>작업 7: Azure Log Analytics 기능 검토
+## 작업 7: Azure Log Analytics 기능 검토
 
 1. Azure Portal에서 **모니터** 블레이드로 돌아가서 **로그**를 클릭합니다.
 
@@ -315,7 +315,7 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 
     >**참고**: 업데이트 데이터를 사용할 수 있게 되기까지 몇 분 정도 기다려야 할 수 있습니다.
 
-#### <a name="clean-up-resources"></a>리소스 정리
+## 리소스 정리
 
 >**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
 
@@ -337,7 +337,7 @@ Azure 리소스의 성능 및 구성에 대한 인사이트를 제공하는 Azur
 
     >**참고**: 이 명령은 -AsJob 매개 변수에 의해 결정되어 비동기로 실행되므로, 동일한 PowerShell 세션 내에서 이 명령을 실행한 직후 다른 PowerShell 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지는 몇 분 정도 걸립니다.
 
-#### <a name="review"></a>검토
+## 검토
 
 이 랩에서는 다음을 수행합니다.
 

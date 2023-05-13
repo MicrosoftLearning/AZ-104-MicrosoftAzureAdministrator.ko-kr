@@ -4,16 +4,16 @@ lab:
   module: Administer Azure Resources
 ---
 
-# <a name="lab-03a---manage-azure-resources-by-using-the-azure-portal"></a>랩 03a - Azure Portal을 사용하여 Azure 리소스 관리
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 03a - Azure Portal을 사용하여 Azure 리소스 관리
+# 학생용 랩 매뉴얼
 
-## <a name="lab-scenario"></a>랩 시나리오
+## 랩 시나리오
 
 리소스 프로비저닝, 그리고 리소스 그룹 간 리소스 이동 등 리소스 그룹을 기준으로 리소스를 정리하는 것과 관련된 기본 Azure 관리 기능을 살펴봐야 합니다. 또한, 디스크 리소스가 실수로 삭제되지 않도록 보호하는 동시에 성능 특성과 크기를 수정할 수 있는 옵션을 알아봅니다.
 
                 **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%204)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
-## <a name="objectives"></a>목표
+## 목표
 
 이 랩에서는 다음 작업을 수행합니다.
 
@@ -21,17 +21,17 @@ lab:
 + 작업 2: 리소스 그룹 간 리소스 이동
 + 작업 3: 리소스 잠금 구현 및 테스트
 
-## <a name="estimated-timing-20-minutes"></a>예상 소요 시간: 20분
+## 예상 소요 시간: 20분
 
-## <a name="architecture-diagram"></a>아키텍처 다이어그램
+## 아키텍처 다이어그램
 
 ![이미지](../media/lab03a.png)
 
-## <a name="instructions"></a>지침
+### Instructions
 
-### <a name="exercise-1"></a>연습 1
+## 연습 1
 
-#### <a name="task-1-create-resource-groups-and-deploy-resources-to-resource-groups"></a>작업 1: 리소스 그룹을 만들고 리소스 그룹에 리소스 배포
+## 작업 1: 리소스 그룹을 만들고 리소스 그룹에 리소스 배포
 
 이 작업에서는 Azure Portal을 사용하여 리소스 그룹을 만들고 리소스 그룹에 디스크를 만듭니다.
 
@@ -56,7 +56,7 @@ lab:
 
     >**참고**: 디스크가 만들어질 때까지 기다립니다. 1분 미만이 소요됩니다.
 
-#### <a name="task-2-move-resources-between-resource-groups"></a>작업 2: 리소스 그룹 간 리소스 이동 
+## 작업 2: 리소스 그룹 간 리소스 이동 
 
 본 작업에서는 이전 작업에서 만든 디스크 리소스를 새 리소스 그룹으로 이동합니다. 
 
@@ -72,7 +72,7 @@ lab:
 
     >**참고**: 이동이 완료될 때까지 기다리지 말고 다음 작업으로 진행합니다. 이동에는 약 10분이 소요될 수 있습니다. 원본 또는 대상 리소스 그룹의 활동 로그 항목을 모니터링하여 작업이 완료되었는지 확인할 수 있습니다. 다음 작업을 완료하면 이 단계를 수행합니다.
 
-#### <a name="task-3-implement-resource-locks"></a>작업 3: 리소스 잠금 구현
+## 작업 3: 리소스 잠금 구현
 
 이 작업에서는 디스크 리소스를 포함하는 Azure 리소스 그룹에 리소스 잠금을 적용합니다.
 
@@ -118,13 +118,13 @@ lab:
 
     >**참고**: 리소스 그룹 수준 잠금은 삭제 작업에만 적용되므로 예상된 결과입니다. 
 
-#### <a name="clean-up-resources"></a>리소스 정리
+## 리소스 정리
 
    >**참고**: 이 랩에서 배포한 리소스는 삭제하지 마세요. 이 모듈의 다음 랩에서 필요합니다. 이 랩에서 만든 리소스 잠금만 제거합니다.
 
 1. **az104-03a-rg3** 리소스 그룹 블레이드로 이동하여 **잠금** 블레이드를 표시하고 **삭제** 잠금 항목의 오른쪽에 있는 **삭제** 링크를 클릭하여 **az104-03a-delete-lock** 잠금을 제거합니다.
 
-#### <a name="review"></a>검토
+## 검토
 
 이 랩에서는 다음을 수행합니다.
 
