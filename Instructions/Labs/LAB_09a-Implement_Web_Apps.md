@@ -4,16 +4,16 @@ lab:
   module: Administer Serverless Computing
 ---
 
-# <a name="lab-09a---implement-web-apps"></a>랩 09a - 웹앱 구현
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 09a - 웹앱 구현
+# 학생용 랩 매뉴얼
 
-## <a name="lab-scenario"></a>랩 시나리오
+## 랩 시나리오
 
 현재 회사의 온-프레미스 데이터 센터에서 호스팅되는 Contoso의 웹 사이트를 호스팅하기 위해 Azure 웹앱의 사용을 평가해야 합니다. 웹 사이트는 PHP 런타임 스택을 사용하여 Windows 서버에서 실행되고 있습니다. 또한 Azure 웹앱 배포 슬롯을 활용하여 DevOps 사례를 구현할 수 있는 방법을 결정해야 합니다.
 
                 **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2013)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
-## <a name="objectives"></a>목표
+## 목표
 
 이 랩에서는 다음을 수행합니다.
 
@@ -24,17 +24,17 @@ lab:
 + 작업 5: 스테이징 슬롯 교환
 + 작업 6: Azure 웹앱의 자동 크기 조정 구성 및 테스트
 
-## <a name="estimated-timing-30-minutes"></a>예상 소요 시간: 30분
+## 예상 소요 시간: 30분
 
-## <a name="architecture-diagram"></a>아키텍처 다이어그램
+## 아키텍처 다이어그램
 
 ![이미지](../media/lab09a.png)
 
-## <a name="instructions"></a>지침
+### Instructions
 
-### <a name="exercise-1"></a>연습 1
+## 연습 1
 
-#### <a name="task-1-create-an-azure-web-app"></a>작업 1: Azure 웹앱 만들기
+## 작업 1: Azure 웹앱 만들기
 
 이 작업에서는 Azure 웹앱을 만듭니다.
 
@@ -61,7 +61,7 @@ lab:
 
 1. 배포 블레이드에서 **리소스로 이동**을 클릭합니다.
 
-#### <a name="task-2-create-a-staging-deployment-slot"></a>작업 2: 스테이징 배포 슬롯 만들기
+## 작업 2: 스테이징 배포 슬롯 만들기
 
 이 작업에서는 스테이징 배포 슬롯을 만듭니다.
 
@@ -84,7 +84,7 @@ lab:
 
 1. 스테이징 슬롯 블레이드를 검토하고 URL이 프로덕션 슬롯에 할당된 URL과 다르다는 것에 유의합니다.
 
-#### <a name="task-3-configure-web-app-deployment-settings"></a>작업 3: 웹앱 배포 설정 구성
+## 작업 3: 웹앱 배포 설정 구성
 
 이 작업에서는 웹앱 배포 설정을 구성합니다.
 
@@ -107,7 +107,7 @@ lab:
 
     >**참고:** 이 랩의 다음 작업에서 이 자격 증명이 필요합니다.
 
-#### <a name="task-4-deploy-code-to-the-staging-deployment-slot"></a>작업 4: 스테이징 배포 슬롯에 코드 배포
+## 작업 4: 스테이징 배포 슬롯에 코드 배포
 
 이 작업에서는 준비 배포 슬롯에 코드를 배포합니다.
 
@@ -151,7 +151,7 @@ lab:
 
 1. 브라우저 페이지에 **Hello World!** 가 표시되는지 확인합니다. 메시지를 표시하고 새 탭을 닫습니다.
 
-#### <a name="task-5-swap-the-staging-slots"></a>작업 5: 스테이징 슬롯 교환
+## 작업 5: 스테이징 슬롯 교환
 
 이 작업에서는 스테이징 슬롯을 프로덕션 슬롯으로 전환합니다.
 
@@ -165,7 +165,7 @@ lab:
 
 1. 기본 웹 페이지가 **Hello World!** 로 대체되었는지 확인합니다. 페이지에서 사용할 수 있는 바로 가기 키를 보여 줍니다.
 
-#### <a name="task-6-configure-and-test-autoscaling-of-the-azure-web-app"></a>작업 6: Azure 웹앱의 자동 크기 조정 구성 및 테스트
+## 작업 6: Azure 웹앱의 자동 크기 조정 구성 및 테스트
 
 이 작업에서는 Azure 웹앱의 자동 크기 조정을 구성하고 테스트합니다.
 
@@ -237,7 +237,7 @@ lab:
 
 1. Cloud Shell 창을 닫습니다.
 
-#### <a name="clean-up-resources"></a>리소스 정리
+## 리소스 정리
 
 >**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
 
@@ -259,7 +259,7 @@ lab:
 
     >**참고**: 이 명령은 -AsJob 매개 변수에 의해 결정되어 비동기로 실행되므로, 동일한 PowerShell 세션 내에서 이 명령을 실행한 직후 다른 PowerShell 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지는 몇 분 정도 걸립니다.
 
-#### <a name="review"></a>검토
+## 검토
 
 이 랩에서는 다음을 수행합니다.
 
