@@ -4,16 +4,16 @@ lab:
   module: Administer Azure Resources
 ---
 
-# <a name="lab-03c---manage-azure-resources-by-using-azure-powershell"></a>랩 03c - Azure PowerShell을 사용하여 Azure 리소스 관리
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 03c - Azure PowerShell을 사용하여 Azure 리소스 관리
+# 학생용 랩 매뉴얼
 
-## <a name="lab-scenario"></a>랩 시나리오
+## 랩 시나리오
 
 이제 Azure Portal 및 Azure Resource Manager 템플릿을 사용하여 리소스 프로비전 및 리소스 그룹에 기반한 리소스 구성과 관련된 기본 Azure 관리 기능을 살펴보았으므로 Azure PowerShell을 사용하여 동등한 작업을 수행해야 합니다. Azure PowerShell 모듈을 설치하지 않으려면 Azure Cloud Shell에서 사용할 수 있는 PowerShell 환경을 활용합니다.
 
                 **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%206)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
-## <a name="objectives"></a>목표
+## 목표
 
 이 랩에서는 다음을 수행합니다.
 
@@ -21,19 +21,19 @@ lab:
 + 작업 2: Azure PowerShell을 사용하여 리소스 그룹 및 Azure 관리 디스크 만들기
 + 작업 3: Azure PowerShell을 사용하여 관리 디스크 구성
 
-## <a name="estimated-timing-20-minutes"></a>예상 소요 시간: 20분
+## 예상 소요 시간: 20분
 
-## <a name="architecture-diagram"></a>아키텍처 다이어그램
+## 아키텍처 다이어그램
 
 ![이미지](../media/lab03c.png)
 
-## <a name="instructions"></a>Instructions
+### Instructions
 
 > **참고**:  만든 가상 머신 또는 사용자 계정에 대해 항상 사용자 고유의 보안 암호를 만듭니다. 가상 머신을 만든 경우 포털에서 **암호 재설정**을 사용하여 암호를 업데이트합니다. 
 
-### <a name="exercise-1"></a>연습 1
+## 연습 1
 
-#### <a name="task-1-start-a-powershell-session-in-azure-cloud-shell"></a>작업 1: Azure Cloud Shell에서 PowerShell 세션 시작하기
+## 작업 1: Azure Cloud Shell에서 PowerShell 세션 시작하기
 
 이 작업에서는 Cloud Shell에서 PowerShell 세션을 엽니다. 
 
@@ -47,7 +47,7 @@ lab:
 
 1. Cloud Shell 창의 왼쪽 상단 모서리에 있는 드롭다운 메뉴에 **PowerShell**이 나타나는지 확인합니다.
 
-#### <a name="task-2-create-a-resource-group-and-an-azure-managed-disk-by-using-azure-powershell"></a>작업 2: Azure PowerShell을 사용하여 리소스 그룹 및 Azure 관리 디스크 만들기
+## 작업 2: Azure PowerShell을 사용하여 리소스 그룹 및 Azure 관리 디스크 만들기
 
 이 작업에서는 Cloud Shell 내에 있는 Azure PowerShell 세션을 사용하여 리소스 그룹 및 Azure 관리 디스크를 만듭니다.
 
@@ -88,7 +88,7 @@ lab:
    Get-AzDisk -ResourceGroupName $rgName -Name $diskName
    ```
 
-#### <a name="task-3-configure-the-managed-disk-by-using-azure-powershell"></a>작업 3: Azure PowerShell을 사용하여 관리 디스크 구성
+## 작업 3: Azure PowerShell을 사용하여 관리 디스크 구성
 
 본 작업에서는 Cloud Shell 내에서 Azure PowerShell 세션을 사용하여 Azure 관리 디스크의 구성을 관리합니다. 
 
@@ -122,11 +122,11 @@ lab:
    (Get-AzDisk -ResourceGroupName $rgName -Name $diskName).Sku
    ```
 
-#### <a name="clean-up-resources"></a>리소스 정리
+## 리소스 정리
 
    >**참고**: 이 랩에서 배포한 리소스는 삭제하지 마세요. 이 모듈의 다음 랩에서 참조해야 합니다.
 
-#### <a name="review"></a>검토
+## 검토
 
 이 랩에서는 다음을 수행합니다.
 

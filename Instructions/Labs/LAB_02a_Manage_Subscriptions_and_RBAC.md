@@ -4,14 +4,14 @@ lab:
   module: Administer Governance and Compliance
 ---
 
-# <a name="lab-02a---manage-subscriptions-and-rbac"></a>랩 02a - 구독 및 RBAC 관리
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 02a - 구독 및 RBAC 관리
+# 학생용 랩 매뉴얼
 
-## <a name="lab-requirements"></a>랩 요구 사항
+## 랩 요구 사항
 
 이 랩에서는 Azure Active Directory(Azure AD) 사용자를 만들고, 사용자 지정 Azure RBAC(역할 기반 액세스 제어) 역할을 만들고, 해당 역할을 Azure AD 사용자에게 할당하기 위한 사용 권한이 필요합니다. 모든 랩 호스터가 이 기능을 제공하는 것은 아닙니다. 이 랩에서 사용 가능한지 여부는 강사에게 문의하세요.
 
-## <a name="lab-scenario"></a>랩 시나리오
+## 랩 시나리오
 
 Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구현하는 작업을 맡았습니다.
 
@@ -24,7 +24,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 
                 **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%202)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다.
 
-## <a name="objectives"></a>목표
+## 목표
 
 이 랩에서는 다음을 수행합니다.
 
@@ -33,18 +33,18 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 + 작업 3: RBAC 역할 할당
 
 
-## <a name="estimated-timing-30-minutes"></a>예상 소요 시간: 30분
+## 예상 소요 시간: 30분
 
-## <a name="architecture-diagram"></a>아키텍처 다이어그램
+## 아키텍처 다이어그램
 
 ![이미지](../media/lab02a.png)
 
 
-## <a name="instructions"></a>지침
+### Instructions
 
-### <a name="exercise-1"></a>연습 1
+## 연습 1
 
-#### <a name="task-1-implement-management-groups"></a>작업 1: 관리 그룹 구현
+## 작업 1: 관리 그룹 구현
 
 이 작업에서는 관리 그룹을 만들고 구성합니다. 
 
@@ -81,7 +81,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 
     >**참고**: **az104-02-mg1 \| 구독** 블레이드에서 Azure 구독의 ID를 클립보드에 복사합니다. 다음 작업에서 필요합니다.
 
-#### <a name="task-2-create-custom-rbac-roles"></a>작업 2: 사용자 지정 RBAC 역할 만들기
+## 작업 2: 사용자 지정 RBAC 역할 만들기
 
 이 작업에서는 사용자 지정 RBAC 역할의 정의를 만듭니다.
 
@@ -124,7 +124,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 
 1. Cloud Shell 창을 닫습니다.
 
-#### <a name="task-3-assign-rbac-roles"></a>작업 3: RBAC 역할 할당
+## 작업 3: RBAC 역할 할당
 
 이 작업에서는, Azure Active Directory 사용자를 만들고 사용자에게 이전 작업에서 만든 RBAC 역할을 할당하여 사용자가 RBAC 역할 정의에 지정된 작업을 수행할 수 있는지 확인합니다.
 
@@ -167,7 +167,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 
 1. 지원 요청 만들기로 진행하지 마세요. 대신 Azure Portal에서 az104-02-aaduser1 사용자로 로그아웃하고 InPrivate 브라우저 창을 닫습니다.
 
-#### <a name="task-4-clean-up-resources"></a>작업 4: 리소스 정리
+## 작업 4: 리소스 정리
 
    >**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 이 랩에서 만든 리소스는 추가 비용이 들지 않지만 사용하지 않는 리소스를 제거하면 예상하지 못한 비용이 발생하지 않습니다
 
@@ -209,7 +209,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 1. **관리 그룹** 블레이드로 다시 돌아가서 **az104-02-mg1** 관리 그룹의 오른쪽에 있는 **줄임표** 아이콘을 클릭하고 **삭제**를 클릭합니다.
   >                **참고**: **테넌트 루트 관리 그룹**을 삭제할 수 없는 경우 **Azure 구독**이 관리 그룹에 속해 있을 수 있습니다. **테넌트 루트 관리 그룹**에서**Azure 구독**을 이동한 다음 그룹을 삭제해야 합니다.
 
-#### <a name="review"></a>검토
+## 검토
 
 이 랩에서는 다음을 수행합니다.
 

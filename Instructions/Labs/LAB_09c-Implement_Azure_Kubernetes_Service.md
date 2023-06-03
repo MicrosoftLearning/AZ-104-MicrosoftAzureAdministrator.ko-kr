@@ -4,16 +4,16 @@ lab:
   module: Administer Serverless Computing
 ---
 
-# <a name="lab-09c---implement-azure-kubernetes-service"></a>랩 09c - Azure Kubernetes Service 구현
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 09c - Azure Kubernetes Service 구현
+# 학생용 랩 매뉴얼
 
-## <a name="lab-scenario"></a>랩 시나리오
+## 랩 시나리오
 
 Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적합하지 않은 많은 다중 계층 애플리케이션이 있습니다. 컨테이너화된 워크로드로 실행할 수 있는지 여부를 확인하기 위해 Kubernetes를 컨테이너 오케스트레이터로 사용하여 평가하려고 합니다. 관리 오버헤드를 더욱 최소화하기 위해 간소화된 배포 환경 및 스케일링 기능을 포함하여 Azure Kubernetes Service를 테스트하려고 합니다.
 
                 **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2015)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
-## <a name="objectives"></a>목표
+## 목표
 
 이 랩에서는 다음을 수행합니다.
 
@@ -22,17 +22,17 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 + 작업 3: Azure Kubernetes Service 클러스터에 Pod 배포
 + 작업 4: Azure Kubernetes Service 클러스터에서 컨테이너화된 워크로드 크기 조정
 
-## <a name="estimated-timing-40-minutes"></a>예상 소요 시간: 40분
+## 예상 소요 시간: 40분
 
-## <a name="architecture-diagram"></a>아키텍처 다이어그램
+## 아키텍처 다이어그램
 
 ![이미지](../media/lab09c.png)
 
-## <a name="instructions"></a>지침
+### Instructions
 
-### <a name="exercise-1"></a>연습 1
+## 연습 1
 
-#### <a name="task-1-register-the-microsoftkubernetes-and-microsoftkubernetesconfiguration-resource-providers"></a>작업 1: Microsoft.Kubernetes 및 Microsoft.KubernetesConfiguration 리소스 공급자를 등록합니다.
+## 작업 1: Microsoft.Kubernetes 및 Microsoft.KubernetesConfiguration 리소스 공급자를 등록합니다.
 
 이 작업에서는 Azure Kubernetes Service 클러스터를 배포하는 데 필요한 리소스 공급자를 등록합니다.
 
@@ -54,7 +54,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 
 1. Cloud Shell 창을 닫습니다.
 
-#### <a name="task-2-deploy-an-azure-kubernetes-service-cluster"></a>작업 2: Azure Kubernetes Service 클러스터 배포
+## 작업 2: Azure Kubernetes Service 클러스터 배포
 
 이 작업에서는 Azure Portal을 사용하여 Azure Kubernetes 서비스 클러스터를 배포합니다.
 
@@ -94,15 +94,22 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
     | 설정 | 값 |
     | ---- | ---- |
     | 네트워크 구성 | **kubenet** |
-    | DNS 이름 접두사 | 유효하고 전역적으로 고유한 DNS 접두사|
+    | DNS 이름 접두사 | **유효하고 전역적으로 고유한 DNS 접두사** |
 
-1. **다음: 통합 >** 을 클릭하고, **Kubernetes 클러스터 만들기** 블레이드의 **통합** 탭에서 **컨테이너 모니터링**을 **사용 안 함**으로 설정하고, **검토 + 만들기**를 클릭하고, 유효성 검사를 통과했는지 확인하고, **만들기**를 클릭합니다.
+1. **다음: 통합 >** , **Kubernetes 클러스터 만들기** 블레이드의 **통합** 탭에서 다음 설정을 지정합니다(다른 설정은 기본 값으로 유지).
+
+    | 설정 | 값 |
+    | ---- | ---- |
+    | 컨테이너 모니터링 | 사용 안 함 |
+    | 권장 경고 규칙 사용 | **선택 취소** |
+    
+1.  **검토 + 만들기**를 클릭하고, 유효성 검사를 통과했는지 확인하고, **만들기**를 클릭합니다.
 
     >**참고**: 프로덕션 시나리오에서 모니터링을 활성화합니다. 이 경우 모니터링은 랩에서 다루지 않으므로 사용하지 않습니다.
 
     >**참고**: 배포가 완료될 때까지 기다립니다. 이 작업은 10분 정도 걸립니다.
 
-#### <a name="task-3-deploy-pods-into-the-azure-kubernetes-service-cluster"></a>작업 3: Azure Kubernetes Service 클러스터에 Pod 배포
+## 작업 3: Azure Kubernetes Service 클러스터에 Pod 배포
 
 이 작업에서는 Azure Kubernetes Service 클러스터에 Pod를 배포합니다.
 
@@ -170,7 +177,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 
 1. 브라우저 창을 열고 이전 단계에서 식별한 IP 주소로 이동합니다. 브라우저 페이지에 **nginx에 오신 것을 환영합니다!** 메시지가 표시되는지 메시지로 응답합니다.
 
-#### <a name="task-4-scale-containerized-workloads-in-the-azure-kubernetes-service-cluster"></a>작업 4: Azure Kubernetes Service 클러스터에서 컨테이너화된 워크로드 크기 조정
+## 작업 4: Azure Kubernetes Service 클러스터에서 컨테이너화된 워크로드 크기 조정
 
 이 작업에서는 Pod 갯수와 클러스터 노드 갯수를 가로로 조정합니다.
 
@@ -238,7 +245,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 
 1. **Cloud Shell** 창을 닫습니다.
 
-#### <a name="clean-up-resources"></a>리소스 정리
+## 리소스 정리
 
 >**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
 
@@ -260,7 +267,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 
     >**참고**: 명령은 비동기적으로 실행되므로(--nowait 매개 변수에 의해 결정됨) 동일한 Bash 세션 내에서 즉시 다른 Azure CLI 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지 몇 분 정도 걸립니다.
 
-#### <a name="review"></a>검토
+## 검토
 
 이 랩에서는 다음을 수행합니다.
 
