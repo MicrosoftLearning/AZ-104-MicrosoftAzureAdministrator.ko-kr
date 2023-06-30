@@ -1,6 +1,6 @@
 ---
 lab:
-  title: 05 - 사이트 간 연결 구현
+  title: '랩 05: 사이트 간 연결 구현'
   module: Administer Intersite Connectivity
 ---
 
@@ -27,7 +27,7 @@ Contoso는 보스턴, 뉴욕 및 시애틀 지사에 있는 메시 광역 네트
 
 ![이미지](../media/lab05.png)
 
-### Instructions
+### 지침
 
 ## 연습 1
 

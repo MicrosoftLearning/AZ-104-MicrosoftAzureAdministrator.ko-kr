@@ -1,6 +1,6 @@
 ---
 lab:
-  title: 09b - Azure Container Instances 구현
+  title: '랩 09b: Azure Container Instances 구현'
   module: Administer Serverless Computing
 ---
 
@@ -17,7 +17,7 @@ Contoso는 가상화된 워크로드에 대한 새로운 플랫폼을 찾고자 
 
 이 랩에서는 다음을 수행합니다.
 
-- 작업 1: Azure Container Instance를 사용하여 Docker 이미지 배포
+- 작업 1: Docker 이미지를 사용하여 Azure Container Instance 배포
 - 작업 2: Azure Container Instance의 기능 검토
 
 ## 예상 소요 시간: 20분
@@ -26,11 +26,11 @@ Contoso는 가상화된 워크로드에 대한 새로운 플랫폼을 찾고자 
 
 ![이미지](../media/lab09b.png)
 
-### Instructions
+### 지침
 
 ## 연습 1
 
-## 작업 1: Azure Container Instance를 사용하여 Docker 이미지 배포
+## 작업 1: Docker 이미지를 사용하여 Azure Container Instance 배포
 
 이 작업에서는 웹 애플리케이션에 대한 새 컨테이너 인스턴스를 만듭니다.
 

@@ -1,6 +1,6 @@
 ---
 lab:
-  title: 03a - Azure Portal을 사용하여 Azure 리소스 관리
+  title: '랩 03a: Azure Portal을 사용하여 Azure 리소스 관리'
   module: Administer Azure Resources
 ---
 
@@ -27,7 +27,7 @@ lab:
 
 ![이미지](../media/lab03a.png)
 
-### Instructions
+### 지침
 
 ## 연습 1
 

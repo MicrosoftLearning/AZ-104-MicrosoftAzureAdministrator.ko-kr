@@ -1,6 +1,6 @@
 ---
 lab:
-  title: 02a - 구독과 RBAC 관리
+  title: '랩 02a: 구독 및 RBAC 관리'
   module: Administer Governance and Compliance
 ---
 
@@ -40,7 +40,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 ![이미지](../media/lab02a.png)
 
 
-### Instructions
+### 지침
 
 ## 연습 1
 

@@ -1,6 +1,6 @@
 ---
 lab:
-  title: 03b - ARM 템플릿을 사용하여 Azure 리소스 관리
+  title: '랩 03b: ARM 템플릿을 사용하여 Azure 리소스 관리'
   module: Administer Azure Resources
 ---
 
@@ -26,7 +26,7 @@ lab:
 
 ![이미지](../media/lab03b.png)
 
-### Instructions
+### 지침
 
 ## 연습 1
 
@@ -102,7 +102,9 @@ lab:
     | 디스크 크기(GB) | **32** |
     | 옵션 만들기 | **empty** |
     | 디스크 암호화 집합 유형 | **EncryptionAtRestWithPlatformKey** |
+    | 데이터 액세스 인증 모드 | 없음 |
     | 네트워크 액세스 정책 | **AllowAll** |
+    | 공용 네트워크 액세스 | 사용 안 함 |
 
 1. **검토 + 생성**를 선택한 다음, **생성**를 선택합니다.
 

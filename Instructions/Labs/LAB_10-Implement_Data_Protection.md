@@ -1,6 +1,6 @@
 ---
 lab:
-  title: 10 – 데이터 보호 구현
+  title: '랩 10: 데이터 보호 구현'
   module: Administer Data Protection
 ---
 
@@ -31,7 +31,7 @@ Azure 가상 머신 및 온-프레미스 컴퓨터에서 호스팅되는 파일�
 
 ![이미지](../media/lab10.png)
 
-### Instructions
+### 지침
 
 ## 연습 1
 

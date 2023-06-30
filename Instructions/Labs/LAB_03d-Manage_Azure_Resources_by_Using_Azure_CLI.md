@@ -1,19 +1,19 @@
 ---
 lab:
-  title: 03d - Azure CLI를 사용하여 Azure 리소스 관리
+  title: '랩 03d: Azure CLI를 사용하여 Azure 리소스 관리'
   module: Administer Azure Resources
 ---
 
-# <a name="lab-03d---manage-azure-resources-by-using-azure-cli"></a>랩 03d - Azure CLI를 사용하여 Azure 리소스 관리
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 03d - Azure CLI를 사용하여 Azure 리소스 관리
+# 학생용 랩 매뉴얼
 
-## <a name="lab-scenario"></a>랩 시나리오
+## 랩 시나리오
 
 Azure Portal, Azure Resource Manager 템플릿 및 Azure PowerShell을 사용하여 리소스 그룹을 기반으로 리소스를 구성하고 프로비전하는 것과 관련된 기본적인 Azure 관리 기능을 살펴보았습니다. 이제 Azure CLI를 사용하여 동일한 작업을 수행해야 합니다. Azure CLI를 설치하지 않으려면 Azure Cloud Shell에서 사용할 수 있는 Bash 환경을 활용합니다.
 
                 **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%207)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
-## <a name="objectives"></a>목표
+## 목표
 
 이 랩에서는 다음을 수행합니다.
 
@@ -21,17 +21,17 @@ Azure Portal, Azure Resource Manager 템플릿 및 Azure PowerShell을 사용하
 + 작업 2: Azure CLI를 사용하여 리소스 그룹 및 Azure 관리 디스크 만들기
 + 작업 3: Azure CLI를 사용하여 관리 디스크 구성
 
-## <a name="estimated-timing-20-minutes"></a>예상 소요 시간: 20분
+## 예상 소요 시간: 20분
 
-## <a name="architecture-diagram"></a>아키텍처 다이어그램
+## 아키텍처 다이어그램
 
 ![이미지](../media/lab03d.png)
 
-## <a name="instructions"></a>지침
+### 지침
 
-### <a name="exercise-1"></a>연습 1
+## 연습 1
 
-#### <a name="task-1-start-a-bash-session-in-azure-cloud-shell"></a>작업 1: Azure Cloud Shell에서 Bash 세션을 시작합니다.
+## 작업 1: Azure Cloud Shell에서 Bash 세션을 시작합니다.
 
 이 작업에서는 Cloud Shell에서 Bash 세션을 엽니다. 
 
@@ -45,7 +45,7 @@ Azure Portal, Azure Resource Manager 템플릿 및 Azure PowerShell을 사용하
 
 1. Cloud Shell 창의 왼쪽 상단 모서리에 있는 드롭다운 메뉴에 **Bash**가 나타나는지 확인합니다.
 
-#### <a name="task-2-create-a-resource-group-and-an-azure-managed-disk-by-using-azure-cli"></a>작업 2: Azure CLI를 사용하여 리소스 그룹 및 Azure 관리 디스크 만들기
+## 작업 2: Azure CLI를 사용하여 리소스 그룹 및 Azure 관리 디스크 만들기
 
 이 작업에서는 Cloud Shell 내에 있는 Azure CLI 세션을 사용하여 리소스 그룹 및 Azure 관리 디스크를 만듭니다.
 
@@ -82,7 +82,7 @@ Azure Portal, Azure Resource Manager 템플릿 및 Azure PowerShell을 사용하
    az disk show --resource-group $RGNAME --name $DISKNAME
    ```
 
-#### <a name="task-3-configure-the-managed-disk-by-using-azure-cli"></a>작업 3: Azure CLI를 사용하여 관리 디스크 구성
+## 작업 3: Azure CLI를 사용하여 관리 디스크 구성
 
 이 작업에서는 Cloud Shell 내에 있는 Azure CLI 세션을 사용하여 Azure 관리 디스크의 구성을 관리합니다. 
 
@@ -110,7 +110,7 @@ Azure Portal, Azure Resource Manager 템플릿 및 Azure PowerShell을 사용하
    az disk show --resource-group $RGNAME --name $DISKNAME --query sku
    ```
 
-#### <a name="clean-up-resources"></a>리소스 정리
+## 리소스 정리
 
  > **참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
 
@@ -132,7 +132,7 @@ Azure Portal, Azure Resource Manager 템플릿 및 Azure PowerShell을 사용하
 
     >**참고**: 명령은 비동기적으로 실행되므로(--nowait 매개 변수에 의해 결정됨) 동일한 Bash 세션 내에서 즉시 다른 Azure CLI 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지 몇 분 정도 걸립니다.
 
-#### <a name="review"></a>검토
+## 검토
 
 이 랩에서는 다음을 수행합니다.
 

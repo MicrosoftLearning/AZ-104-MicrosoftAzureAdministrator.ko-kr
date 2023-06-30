@@ -1,6 +1,6 @@
 ---
 lab:
-  title: 07 - Azure 스토리지 관리
+  title: '랩 07: Azure Storage 관리'
   module: Administer Azure Storage
 ---
 
@@ -31,7 +31,7 @@ lab:
 ![이미지](../media/lab07.png)
 
 
-### Instructions
+### 지침
 
 ## 연습 1
 
@@ -100,7 +100,7 @@ lab:
     | 설정 | 값 |
     | --- | --- |
     | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-    | 리소스 그룹 | **새** 리소스 그룹 **az104-07-rg1**의 이름 |
+    | Resource group | **새** 리소스 그룹 **az104-07-rg1**의 이름 |
     | 스토리지 계정 이름 | 3~24자 사이의 문자와 숫자로 구성된 전역적으로 고유한 이름 |
     | 지역 | Azure Storage 계정을 만들 수 있는 Azure 지역의 이름  |
     | 성능 | **Standard** |
