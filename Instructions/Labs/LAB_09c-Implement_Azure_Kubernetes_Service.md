@@ -1,6 +1,6 @@
 ---
 lab:
-  title: 09c - Azure Kubernetes Service 구현
+  title: '랩 09c: Azure Kubernetes Service 구현'
   module: Administer Serverless Computing
 ---
 
@@ -28,7 +28,7 @@ Contoso에는 Azure Container Instances를 사용하여 실행하기에는 적�
 
 ![이미지](../media/lab09c.png)
 
-### Instructions
+### 지침
 
 ## 연습 1
 
