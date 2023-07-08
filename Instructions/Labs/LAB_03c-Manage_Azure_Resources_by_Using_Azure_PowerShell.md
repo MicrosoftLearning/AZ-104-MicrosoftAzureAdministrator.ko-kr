@@ -1,6 +1,6 @@
 ---
 lab:
-  title: 03c - Azure PowerShell을 사용하여 Azure 리소스 관리
+  title: '랩 03c: Azure PowerShell 사용하여 Azure 리소스 관리'
   module: Administer Azure Resources
 ---
 
