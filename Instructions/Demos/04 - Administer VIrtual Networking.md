@@ -10,7 +10,7 @@ demo:
 
 본 데모에서는 가상 네트워크를 만듭니다.
 
-**참조**: [빠른 시작: 가상 네트워크 만들기 - Azure Portalk](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+**참조**: [빠른 시작: 가상 네트워크 만들기 - Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
 ## 포털에서 가상 네트워크 만들기
 
