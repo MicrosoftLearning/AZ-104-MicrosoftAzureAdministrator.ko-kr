@@ -1,6 +1,6 @@
 ---
 lab:
-  title: '랩 09d: 포털에서 컨테이너 앱 배포'
+  title: '랩 09c: 포털에서 컨테이너 앱 배포'
   module: Administer PaaS Compute Options
 ---
 
@@ -16,7 +16,7 @@ Azure Container Apps를 사용하면 서버리스 플랫폼에서 마이크로�
 
 컨테이너 앱을 만들려면 Azure Portal 홈 페이지에서 시작합니다.
 
-1. 위쪽 검색 창에서 **Container Apps**를 검색합니다.
+1. `Container Apps` 위쪽 검색 창에서 을 검색합니다.
 1. 검색 결과에서 **Container Apps**를 선택합니다.
 1. **만들기** 단추를 선택합니다.
 
@@ -29,8 +29,8 @@ Azure Container Apps를 사용하면 서버리스 플랫폼에서 마이크로�
     | 설정 | 작업 |
     |---|---|
     | Subscription | Azure 구독을 선택합니다. |
-    | Resource group | **새로 만들기**를 선택하고, **my-container-apps**를 입력합니다. |
-    | 컨테이너 앱 이름 |  **my-container-app**을 입력합니다. |
+    | Resource group | **새로 만들기**를 선택하고 `az104-09c-rg1`을 입력합니다. |
+    | 컨테이너 앱 이름 |  `my-container-app`를 입력합니다. |
 
 #### 환경 만들기
 
@@ -47,7 +47,7 @@ Azure Container Apps를 사용하면 서버리스 플랫폼에서 마이크로�
 
     | 설정 | 값 |
     |--|--|
-    | 환경 이름 | **my-environment**를 입력합니다. |
+    | 환경 이름 | `my-environment`를 입력합니다. |
     | 영역 중복 | **사용 안 함**을 선택합니다. |
 
 1. **모니터링** 탭을 선택하여 Log Analytics 작업 영역을 만듭니다.
@@ -55,9 +55,9 @@ Azure Container Apps를 사용하면 서버리스 플랫폼에서 마이크로�
 
     | 설정 | 값 |
     |--|--|
-    | Name | **my-container-apps-logs**를 입력합니다. |
+    | 속성 | `my-container-apps-logs`을 입력합니다. |
   
-    *위치* 필드는 *미국 중부*로 미리 채워져 있습니다.
+    *위치* 필드는 사용자의 지역으로 미리 채워져 있습니다.
 
 1. **확인**을 선택합니다.
 
@@ -76,7 +76,7 @@ Azure Container Apps를 사용하면 서버리스 플랫폼에서 마이크로�
    
 ### 배포 확인
 
-**리소스로 이동**을 선택하여 새 컨테이너 앱을 봅니다.  *애플리케이션 URL* 옆에 있는 링크를 선택하여 애플리케이션을 봅니다. *Azure Container Apps* 시작 메시지가 있는지 확인합니다.
+**리소스로 이동**을 선택하여 새 컨테이너 앱을 봅니다.  *애플리케이션 URL* 옆에 있는 링크를 선택하여 애플리케이션을 봅니다. *Azure Container Apps 시작* 메시지가 있는지 확인합니다.
 
 ## 리소스 정리
 
@@ -84,6 +84,6 @@ Azure Container Apps를 사용하면 서버리스 플랫폼에서 마이크로�
 
 1. *개요* 섹션에서 **my-container-apps** 리소스 그룹을 선택합니다.
 1. 리소스 그룹 *개요* 위쪽에서 **리소스 그룹 삭제** 단추를 선택합니다.
-1. *"my-container-apps"를 삭제하시겠습니까?* 확인 대화 상자에서 **my-container-apps**라는 리소스 그룹 이름을 입력합니다.
+1. 리소스 그룹 이름을 입력하고 앱을 삭제할지 확인합니다. 
 1. **삭제**를 선택합니다.
 1. 리소스 그룹을 삭제하는 프로세스를 완료하는 데 몇 분 정도 걸릴 수 있습니다.
