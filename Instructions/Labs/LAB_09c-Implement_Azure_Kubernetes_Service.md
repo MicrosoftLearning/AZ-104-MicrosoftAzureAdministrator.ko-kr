@@ -1,7 +1,7 @@
 ---
 lab:
   title: '랩 09c: Azure Kubernetes Service 구현'
-  module: Administer Serverless Computing
+  module: Administer PaaS Compute Options
 ---
 
 # 랩 09c - Azure Kubernetes Service 구현

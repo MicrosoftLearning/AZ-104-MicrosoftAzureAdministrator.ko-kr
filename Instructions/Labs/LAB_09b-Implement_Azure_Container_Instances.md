@@ -1,7 +1,7 @@
 ---
 lab:
   title: '랩 09b: Azure Container Instances 구현'
-  module: Administer Serverless Computing
+  module: Administer PaaS Compute Options
 ---
 
 # 랩 09b - Azure Container Instances 구현
