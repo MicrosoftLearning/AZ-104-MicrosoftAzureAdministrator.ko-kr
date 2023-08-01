@@ -38,7 +38,7 @@ Azure Container Apps를 사용하면 서버리스 플랫폼에서 마이크로�
     | 설정 | 작업 |
     |---|---|
     | Subscription | Azure 구독을 선택합니다. |
-    | Resource group | **새로 만들기**를 선택하고 `az104-09c-rg1`을 입력합니다. |
+    | 리소스 그룹 | **새로 만들기**를 선택하고 `az104-09c-rg1`을 입력합니다. |
     | 컨테이너 앱 이름 |  `my-container-app`를 입력합니다. |
 
 #### 환경 만들기
@@ -90,7 +90,7 @@ Azure Container Apps를 사용하면 서버리스 플랫폼에서 마이크로�
 
 1. *애플리케이션 URL* 옆에 있는 링크를 선택하여 애플리케이션을 봅니다.
 
-1. *Azure Container Apps 앱이 라이브** 메시지를 수신했는지 확인합니다.
+1. **Azure Container Apps 앱이 라이브 메시지인지** 확인합니다.
 
 ## 리소스 정리
 
