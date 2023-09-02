@@ -564,7 +564,7 @@ Azure 가상 머신의 배포 및 구성을 위한 다양한 옵션을 식별하
    ```powershell
    $rgName = 'az104-08-rg02'
 
-   $lbpipName = 'az10408vmss0-ip'
+   $lbpipName = 'az10408vmss0-lb-publicip'
 
    $pip = (Get-AzPublicIpAddress -ResourceGroupName $rgName -Name $lbpipName).IpAddress
    ```
