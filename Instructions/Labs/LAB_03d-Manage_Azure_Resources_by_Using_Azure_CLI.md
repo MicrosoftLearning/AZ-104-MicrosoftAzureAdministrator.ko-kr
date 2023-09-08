@@ -13,6 +13,8 @@ Azure Portal, Azure Resource Manager 템플릿 및 Azure PowerShell을 사용하
 
                 **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%207)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
+>**참고:** 이 랩을 완료하려면 랩 03b가 필요합니다.
+
 ## 목표
 
 이 랩에서는 다음을 수행합니다.
@@ -27,7 +29,7 @@ Azure Portal, Azure Resource Manager 템플릿 및 Azure PowerShell을 사용하
 
 ![이미지](../media/lab03d.png)
 
-### 지침
+### Instructions
 
 ## 연습 1
 
@@ -95,7 +97,7 @@ Azure Portal, Azure Resource Manager 템플릿 및 Azure PowerShell을 사용하
 1. 변경이 적용되었는지 확인하려면 다음 명령을 실행합니다.
 
    ```sh
-   az disk show --resource-group $RGNAME --name $DISKNAME --query diskSizeGb
+   az disk show --resource-group $RGNAME --name $DISKNAME --query diskSizeGB
    ```
 
 1. Cloud Shell 내의 Bash 세션에서 디스크 성능 SKU를 **Premium_LRS**로 변경하려면 다음 명령을 실행합니다.
