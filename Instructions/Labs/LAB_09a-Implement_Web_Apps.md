@@ -50,10 +50,10 @@ lab:
     | Resource group | 새 리소스 그룹 **az104-09a-rg1**의 이름 |
     | 웹앱 이름 | 전역으로 고유한 이름 |
     | 게시 | **코드** |
-    | 런타임 스택 | **PHP 8.0** |
+    | 런타임 스택 | **PHP 8.2** |
     | 운영 체제 | **Linux** |
     | 지역 | Azure 웹앱을 프로비전할 수 있는 Azure 지역의 이름 |
-    | App Service 플랜 | 기본 구성 수락 |
+    | 가격 책정 계획 | 기본 구성 수락 |
 
 1. **검토 + 만들기**를 클릭합니다. **웹앱 만들기** 블레이드의 **검토 + 만들기** 탭에서 유효성 검사를 통과했는지 확인하고 **만들기**를 클릭합니다.
 
@@ -94,9 +94,9 @@ lab:
     
 1. **설정** 탭의 **소스** 드롭다운 목록에서 **로컬 Git**를 선택하고 **저장** 단추를 클릭합니다.
 
-1. **배포 센터** 블레이드에서 **Git Clone Url** 항목을 메모장에 복사합니다.
+1. **배포 센터** 블레이드에서 **Git Clone Uri** 항목을 메모장에 복사합니다.
 
-    >**참고:** 이 랩의 다음 작업에는 Git Clone URL 값이 필요합니다.
+    >**참고:** 이 랩의 다음 작업에서 Git Clone Uri 값이 필요합니다.
 
 1. **배포 센터** 블레이드에서 **로컬 Git/FTPS 자격 증명** 탭을 선택하고, **사용자 범위** 섹션에서 다음 설정을 지정하고 **저장**을 클릭합니다.
 
@@ -131,15 +131,15 @@ lab:
    Set-Location -Path $HOME/php-docs-hello-world/
    ```
 
-1. Cloud Shell 창에서 다음을 실행하여 원격 Git을 추가합니다(이전 작업에서 식별한 `[deployment_user_name]` 및 `[git_clone_url]` 자리 표시자를 각각 **배포 자격 증명** 사용자 이름 및 **Git Clone Url** 값으로 바꿔야 함).
+1. Cloud Shell 창에서 다음을 실행하여 원격 git을 추가합니다(및 `[git_clone_uri]` 자리 표시자를 이전 작업에서 식별한 **배포 자격 증명** 사용자 이름 및 **Git Clone Uri** 값으로 바꿔 `[deployment_user_name]` 야 합니다).
 
    ```powershell
-   git remote add [deployment_user_name] [git_clone_url]
+   git remote add [deployment_user_name] [git_clone_uri]
    ```
 
     >**참고**: `git remote add` 뒤에 오는 값은 **배포 자격 증명** 사용자 이름과 일치하지 않아도 되지만 고유해야 합니다.
 
-1. Cloud Shell 창에서 샘플 웹앱 코드를 로컬 리포지토리에서 Azure 웹앱 스테이징 배포 슬롯으로 푸시하려면 다음 명령을 실행합니다(`[deployment_user_name]` 자리 표시자를 이전 작업에서 식별한 **배포 자격 증명** 사용자 이름의 값으로 바꿔야 함).
+1. Cloud Shell 창에서 다음을 실행하여 로컬 리포지토리의 샘플 웹앱 코드를 Azure 웹앱 스테이징 배포 슬롯으로 푸시합니다(자리 표시자 값을 **배포 자격 증명** 사용자 이름 및 암호 및 이전 작업에서 식별한 앱 이름 값으로 바꿔야 합니다.)
 
    ```powershell
     git push https://<deployment-username>:<deployment-password>@<app-name>.scm.azurewebsites.net/<app-name>.git master
