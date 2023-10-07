@@ -1,6 +1,6 @@
 ---
 lab:
-  title: '랩 02a: 구독 및 RBAC 관리(리브랜딩 테스트)'
+  title: '랩 02a: 구독 및 RBAC 관리'
   module: Administer Governance and Compliance
 ---
 
@@ -9,7 +9,7 @@ lab:
 
 ## 랩 요구 사항
 
-이 랩에는 사용자를 만들고, 사용자 지정 AZURE RBAC(역할 기반 Access Control) 역할을 만들고, 이러한 역할을 사용자에게 할당할 수 있는 권한이 필요합니다. 모든 랩 호스터가 이 기능을 제공하는 것은 아닙니다. 이 랩에서 사용 가능한지 여부는 강사에게 문의하세요.
+이 랩에는 사용자를 만들고, 사용자 지정 AZURE RBAC(역할 기반 Access Control) 역할을 만들고, 사용자에게 이러한 역할을 할당할 수 있는 권한이 필요합니다. 모든 랩 호스터가 이 기능을 제공하는 것은 아닙니다. 이 랩에서 사용 가능한지 여부는 강사에게 문의하세요.
 
 ## 랩 시나리오
 
@@ -40,7 +40,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 ![이미지](../media/lab02aentra.png)
 
 
-### Instructions
+### 지침
 
 ## 연습 1
 
@@ -54,9 +54,9 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 
 1. **관리 그룹** 블레이드 상단에 있는 메시지를 검토합니다. **디렉터리 관리자로 등록되어 있지만 루트 관리 그룹에 액세스하는 데 필요한 사용 권한을 가지고 있지 않습니다**라는 메시지가 표시되면 다음 단계를 따릅니다.
 
-    1. Azure Portal **Microsoft Entra ID**를 검색하여 선택합니다.
+    1. Azure Portal에서 **Microsoft Entra ID**를 검색하여 선택합니다.
     
-    1.  테넌트 속성을 표시하는 블레이드의 왼쪽 세로 메뉴에 있는 **관리** 섹션에서 **속성을** 선택합니다.
+    1.  테넌트 속성을 표시하는 블레이드의 왼쪽 세로 메뉴에서 **관리** 섹션에서 **속성을** 선택합니다.
     
     1.  테넌트 **속성** 블레이드의 **Azure 리소스에 대한 액세스 관리** 섹션에서 **예를** 선택한 다음 **, 저장**을 선택합니다.
     
@@ -181,7 +181,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 
 1. Azure Portal에서 **Cloud Shell**내의 **PowerShell** 세션을 시작합니다.
 
-1. Cloud Shell 창에서 다음을 실행하여 사용자 지정 역할 정의 할당을 제거합니다(자리 표시자를 이 작업 앞부분에서 복사한 **az104-02-aaduser1** 사용자 계정의 **개체 ID** 특성 값으로 바꿉 `[object_ID]` 니다.)
+1. Cloud Shell 창에서 다음을 실행하여 사용자 지정 역할 정의 할당을 제거합니다(자리 표시자를 이 작업 앞부분에서 복사한 **az104-02-aaduser1** 사용자 계정의 **개체 ID** 특성 값으로 바꿉 `[object_ID]` 니다).
 
    ```powershell
    
@@ -196,7 +196,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
    Remove-AzRoleDefinition -Name 'Support Request Contributor (Custom)' -Force
    ```
 
-1. Azure Portal Microsoft Entra **ID**의 **사용자 - 모든 사용자** 블레이드로 돌아가**서 az104-02-aaduser1** 사용자 계정을 삭제합니다.
+1. Azure Portal **Microsoft Entra ID**의 **사용자 - 모든 사용자** 블레이드로 돌아가**서 az104-02-aaduser1** 사용자 계정을 삭제합니다.
 
 1. Azure Portal에서 **관리 그룹** 블레이드로 돌아갑니다. 
 
