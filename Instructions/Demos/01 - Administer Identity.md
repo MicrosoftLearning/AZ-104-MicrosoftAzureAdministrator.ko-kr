@@ -14,9 +14,9 @@ demo:
 
 또는 이러한 빠른 시작 중 하나를 사용할 수 있습니다. 
 
-**참조**: [빠른 시작 - Microsoft Entra ID에서 새 테넌트 만들기 & 액세스](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+**참조**: [빠른 시작 - Microsoft Entra ID에서 새 테넌트를 만들기 & 액세스](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
-**참조**: [빠른 시작 - 구성원이 있는 그룹 만들기 및 모든 그룹 및 멤버 보기](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-view-azure-portal)
+**참조**: [빠른 시작 - 멤버가 있는 그룹 만들기 및 모든 그룹 및 멤버 보기](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-view-azure-portal)
 
 ## 사용자 및 그룹 계정 구성
 
@@ -40,7 +40,7 @@ demo:
 
 2.   **새 사용자**및 **새 게스트 사용자** 에 대한 선택 사항을 설명합니다.
 
-3.   **새 사용자를 선택하고 사용자**  **만들기와 사용자** 초대의 차이점을 설명 **합니다**.
+3.   **새 사용자를 선택하고 사용자**  **만들기와 사용자**  **초대**의 차이점에 대해 설명합니다.
 
 4.   **ID**,  **그룹 및 역할**,  **설정** 및 **작업 정보** 매개 변수를 검토하는 **새 사용자를** 만듭니다.
 
@@ -48,7 +48,7 @@ demo:
 
 **그룹 계정을 살펴봅니다.**
 
-1.   **Microsoft Entra ID** 페이지로 돌아가서 **그룹** 블레이드를 선택합니다.
+1.   **Microsoft Entra ID** 페이지로 돌아가 **서 그룹** 블레이드를 선택합니다.
 
 2.   **새 그룹을** 만들거나 검토할 기존 그룹을 선택합니다.
 
