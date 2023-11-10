@@ -1,6 +1,6 @@
 ---
 lab:
-  title: '랩 02b: Azure Policy 통해 거버넌스 관리'
+  title: '랩 02b: Azure Policy를 통해 거버넌스 관리'
   module: Administer Governance and Compliance
 ---
 
@@ -17,7 +17,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 
 - 모든 비준수 리소스를 수정합니다.
 
-                **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%203)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
+**참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%203)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
 ## 목표
 
@@ -33,7 +33,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
 
 ![이미지](../media/lab02b.png)
 
-### 지침
+### Instructions
 
 ## 연습 1
 
@@ -100,7 +100,7 @@ Contoso에서 Azure 리소스 관리를 개선하기 위해 다음 기능을 구
     | 설정 | 값 |
     | --- | --- |
     | 할당 이름 | **인프라 값이 있는 역할 태그 필요**|
-    | Description | **Cloud Shell 리소스 그룹의 모든 리소스에 대해 인프라 값이 있는 역할 태그 필요**|
+    | 설명 | **Cloud Shell 리소스 그룹의 모든 리소스에 대해 인프라 값이 있는 역할 태그 필요**|
     | 정책 적용 | 사용 |
 
     >**참고**: 선택한 정책 이름이 **할당 이름**에 자동으로 채워지지만, 할당 이름을 변경할 수 있습니다. 선택적인 **설명**을 추가할 수도 있습니다. **할당자**는 할당을 만드는 사용자 이름에 따라 자동으로 채워집니다. 
