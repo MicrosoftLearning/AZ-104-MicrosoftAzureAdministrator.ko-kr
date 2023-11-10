@@ -6,7 +6,7 @@ layout: home
 
 # 콘텐츠 디렉터리
 
-필요한 랩 파일은 [여기에서 다운로드](https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/archive/master.zip)할 수 있습니다.
+필수 랩 파일은 여기에서 다운로드할 [수 있습니다.](https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/archive/master.zip)
 
 ## 랩
 

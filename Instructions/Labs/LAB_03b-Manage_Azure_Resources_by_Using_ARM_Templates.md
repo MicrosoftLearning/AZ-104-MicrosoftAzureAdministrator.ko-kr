@@ -10,7 +10,7 @@ lab:
 ## 랩 시나리오
 이제 Azure Portal을 사용하여 리소스 프로비저닝 및 리소스 그룹에 기반한 리소스 구성과 관련된 기본 Azure 관리 기능을 살펴보았으므로 Azure Resource Manager 템플릿을 사용하여 동등한 작업을 수행해야 합니다.
 
-                **참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%205)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
+**참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%205)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
 
 ## 목표
 
@@ -26,7 +26,7 @@ lab:
 
 ![이미지](../media/lab03b.png)
 
-### 지침
+### Instructions
 
 ## 연습 1
 
@@ -93,7 +93,7 @@ lab:
 
     | 설정 | 값 |
     | --- |--- |
-    | Subscription | *이 랩에서 사용 중인 Azure 구독의 이름* |
+    | 구독 | *이 랩에서 사용 중인 Azure 구독의 이름* |
     | 리소스 그룹 | **새** 리소스 그룹 **az104-03b-rg1**의 이름 |
     | 지역 | 이 랩에서 사용 중인 구독에서 사용할 수 있는 모든 Azure 지역의 이름 |
     | 디스크 이름 | **az104-03b-disk1** |

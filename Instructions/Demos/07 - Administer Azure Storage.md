@@ -1,11 +1,11 @@
 ---
 demo:
-  title: '데모 07: Azure Storage 관리'
+  title: '데모 07: 관리 Azure Storage 등록'
   module: Administer Azure Storage
 ---
 
 
-# 07 - Azure Storage 관리
+# 07 - Azure Storage 관리 등록
 
 ## 스토리지 계정 구성
 
@@ -13,15 +13,15 @@ demo:
 
 **참조**: [스토리지 계정 만들기](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal)
 
-1. Azure 포털을 사용합니다.
+1. Azure Portal 사용
 
-1. 스토리지 계정의 목적을 검토합니다. 
+1. 스토리지 계정의 용도를 검토합니다. 
    
-1. **스토리지 계정을** 검색하여 선택합니다. 
+1. 스토리지 계정을** 검색하고 선택합니다**. 
  
 1. 기본 스토리지 계정을 만듭니다. 
 
-    - 스토리지 계정 이름을 지정하는 데 필요한 요구 사항과 Azure에서 이름이 고유해야 하는 필요성에 대해 설명합니다. 
+    - 스토리지 계정 이름 지정에 대한 요구 사항과 Azure에서 고유한 이름을 지정해야 하는 필요성에 대해 설명합니다. 
 
     - 다양한 스토리지 종류를 검토합니다. 예를 들어 범용 v2입니다. 
 
@@ -44,7 +44,7 @@ demo:
 
 1. Blob Storage의 용도를 검토합니다. 
 
-1. Blob 컨테이너를 만듭니다. 컨테이너에 대한 액세스 수준을 검토합니다. 예를 들어 프라이빗(익명 액세스 없음)입니다. 
+1. Blob 컨테이너를 만듭니다. 컨테이너에 대한 액세스 수준을 검토합니다. 예를 들어 private(익명 액세스 없음)입니다. 
 
 1. 컨테이너에 Blob을 업로드합니다. 시간이 지남에 따라 고급 설정을 검토합니다. 예를 들어 Blob 형식 및 Blob 크기입니다. 
 
@@ -65,28 +65,28 @@ demo:
 
 ## Azure Files 구성 
 
-이 데모에서는 파일 공유 및 스냅샷으로 작업합니다.
+이 데모에서는 파일 공유 및 스냅샷 작업합니다.
 
 **참고:** 이러한 단계에는 스토리지 계정이 필요합니다.
 
-**참조**: [Azure 파일 공유 관리를 위한 빠른 시작](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-portal?tabs=azure-portal)
+**참조**: [Azure 파일 공유를 관리하기 위한 빠른 시작](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-portal?tabs=azure-portal)
 
-1. 파일 공유의 목적을 검토합니다. 
+1. 파일 공유의 용도를 검토합니다. 
 
-1. 스토리지 계정에 액세스하고 **파일을** 클릭합니다.
+1. 스토리지 계정에 액세스하고 파일을 ** 클릭합니다**.
 
 1. 파일 공유 만들기. 할당량을 검토하고, 파일을 업로드하고, 디렉터리를 추가하여 정보를 구성합니다. 
 
-1. 파일 공유 스냅샷 만듭니다. 스냅샷을 사용하는 시기와 백업과 어떻게 다른지 검토합니다. 시간이 지남에 따라 파일을 업로드하고, 스냅샷, 파일을 삭제하고, 스냅샷 복원합니다.
+1. 파일 공유 스냅샷 만듭니다. 스냅샷 사용하는 시기와 백업과 다른 방법을 검토합니다. 시간이 지남에 따라 파일을 업로드하고, 스냅샷 수행하고, 파일을 삭제하고, 스냅샷 복원합니다.
 
 
 ## 스토리지 도구(선택 사항)
 
-이 데모에서는 몇 가지 일반적인 Azure Storage 도구를 검토합니다. 
+이 데모에서는 몇 가지 일반적인 Azure 스토리지 도구를 검토합니다. 
 
 **참조**: [Storage Explorer 시작](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)
 
-1. Storage Explorer 설치하거나 스토리지 브라우저를 사용합니다.
+1. Storage Explorer를 설치하거나 스토리지 브라우저를 사용합니다.
 
 1. 스토리지 리소스를 찾아보고 만드는 방법을 검토합니다. 예를 들어 Blob 컨테이너를 추가합니다. 
 
@@ -94,7 +94,7 @@ demo:
 
 1. AzCopy를 사용하는 시기를 설명합니다. 도움말, **azcopy /?** 를 확인합니다.
 
-1.  **샘플** 섹션 아래로 스크롤합니다. 시간이 지남에 따라 예제를 시도해 보세요. 
+1. 샘플 ** 섹션을**아래로 스크롤합니다. 시간이 지남에 따라 예제를 시도해 보세요. 
     
 
 
