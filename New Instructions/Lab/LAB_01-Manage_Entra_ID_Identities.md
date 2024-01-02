@@ -22,7 +22,7 @@ lab:
 
 이 항목에 유용할 수 있는 대화형 랩 시뮬레이션이 있습니다. 시뮬레이션을 사용하면 비슷한 시나리오를 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 이 랩 사이에는 차이점이 있지만, 대부분의 핵심 개념은 동일합니다. Azure 구독은 필요하지 않습니다. 
 
-+ [Entra ID ID*를 관리합니다](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%201). 사용자를 만들고 구성하고 그룹에 할당합니다. Azure 테넌트를 만들고 게스트 계정을 관리합니다. 
++ [Entra ID ID를 관리합니다](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%201). 사용자를 만들고 구성하고 그룹에 할당합니다. Azure 테넌트를 만들고 게스트 계정을 관리합니다. 
 
 ## 아키텍처 다이어그램
 ![랩 01 아키텍처의 다이어그램.](../media/az104-lab01-user-and-groups2.png)
@@ -113,7 +113,7 @@ lab:
 
 1. **선택한 구성원 없음**을 클릭합니다.
 
-1. **구성원** 추가 블레이드에서 사용자 계정을 검색합니다. ****az104-user1**을 선택하고** 그룹에 추가합니다. 
+1. **멤버** 추가 블레이드에서 az104-user1**을 검색하여 선택하고 **그룹에 추가합니다. 
 
 1. 만들기**를 클릭하여 **그룹 만들기를 완료합니다. 
 
