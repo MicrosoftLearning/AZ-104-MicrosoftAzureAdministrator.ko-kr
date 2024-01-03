@@ -42,23 +42,27 @@ lab:
 
 이 작업에서는 템플릿을 사용하여 가상 머신을 배포합니다. VM은 다른 백업 시나리오를 테스트하는 데 사용됩니다.
 
-1. 필요한 경우 Allfiles\\Labs\\10 az104-10-vms-edge-template.json**\\ 및 **\\Allfiles\\Labs\\10\\az104-10-vms-edge-parameters.json** 랩 파일을 컴퓨터에 다운로드**\\합니다.
+1. 필요한 경우 Allfiles\\Labs\\10 az104-10-vms-edge-template.json**\\ 및 **\\Allfiles\\Labs\\10\\az104-10-vms-edge-parameters.json** 랩 파일을 다운로드**\\합니다.
 
 1. **Azure Portal** - `https://portal.azure.com`에 로그인합니다.
 
-1. Azure Portal에서 검색하여 선택합니다 `Deploy a custom template`.
+1. `Deploy a custom template`을 검색하고 선택합니다.
 
 1. 사용자 지정 배포 페이지에서 편집기**에서 고유한 템플릿 빌드를 선택합니다**.
 
 1. 템플릿 편집 페이지에서 파일** 로드를 선택합니다**.
 
-1. Allfiles\\Labs\\10 az104-10-vms-edge-template.json\\** 파일을 찾아 선택하고 열기**를 선택합니다**.**\\
+1. Allfiles\\Lab10 az104-10-vms-edge-template.json\\** 파일을 찾아 선택하고 열기**를 선택합니다**.**\\
+2. 
+   >**참고:** 잠시 템플릿을 검토하세요. 생성되는 가상 머신 및 가상 네트워크는 몇 대인가요? 
 
 1. **저장**을 선택합니다.
 
 1. 사용자 지정 배포 페이지에서 매개 변수** 편집을 선택합니다**.
 
-1. 매개 변수 편집 페이지에서 파일** 로드를 선택합니다**. Allfiles\\Labs\\10 az104-10-vms-edge-parameters.json\\** 파일을 찾아 선택하고 열기**를 선택합니다**.**\\
+1. 매개 변수 편집 페이지에서 파일** 로드를 선택합니다**. Allfiles\Lab10 az104-10-vms-edge-parameters.json\\** 파일을 찾아 선택하고 열기**를 선택합니다**.**\\
+   
+   >**참고:** 관리자가 변경할 수 있는 매개 변수를 결정할 수 있습니다. 이 경우 변경할 수 있는 유연성이 많이 있습니다. 
 
 1. **저장**을 선택합니다.
 
@@ -73,6 +77,8 @@ lab:
     | 암호      | 복잡한 암호 제공 |
 
 1. **검토 + 만들기**, **만들기**를 차례로 선택합니다.
+
+    >**참고:** 템플릿이 배포되기를 기다린 다음 리소스로 이동을** 선택합니다**. 하나의 가상 네트워크에 하나의 가상 머신이 있어야 합니다. 
 
 ## 작업 2: Recovery Services 자격 증명 모음 만들기
 
