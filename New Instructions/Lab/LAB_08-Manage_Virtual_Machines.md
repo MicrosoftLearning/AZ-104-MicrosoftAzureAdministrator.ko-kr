@@ -386,7 +386,7 @@ lab:
 
     >**Did you know?** When you use Azure to stop your virtual machine, the status is *deallocated*. This means that any non-static public IPs are released, and you stop paying for the VM’s compute costs.
 
-## Review the main points of the lab
+## Key takeaways
 
 Congratulations on completing the lab. Here are the main takeaways for this lab. 
 

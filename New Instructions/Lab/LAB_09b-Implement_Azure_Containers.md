@@ -134,7 +134,7 @@ Azure Container Apps는 관리되는 Kubernetes 클러스터의 개념을 한 �
 
 1. Azure Container Apps 앱이 **라이브** 메시지인지 확인합니다.
 
-## 랩의 기본 지점 검토
+## 핵심 내용
 
 랩을 완료한 것을 축하합니다. 다음은 이 랩에 대한 기본 설명입니다. 
 

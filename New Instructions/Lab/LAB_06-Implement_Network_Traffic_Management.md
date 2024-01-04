@@ -16,7 +16,7 @@ lab:
 
 ## 랩 시나리오
 
-조직에서는 최근 허브 및 스포크 네트워크 토폴로지에서 Azure 가상 머신에 대한 네트워크 트래픽 관리를 완료했습니다. 이제 계층 4 및 계층 7 부하 분산 장치를 사용하여 가상 머신 간에 트래픽 분산을 테스트하려고 합니다. 이 목적을 위해 Azure Load Balancer(계층 4) 및 Azure Application Gateway(계층 7)를 사용하려고 합니다.
+조직에 공개 웹 사이트가 있습니다. 들어오는 공용 요청의 부하를 여러 가상 머신에서 분산해야 합니다. 또한 다른 가상 머신의 이미지와 비디오를 제공해야 합니다. 구현 및 Azure Load Balancer 및 Azure 애플리케이션 게이트웨이를 계획합니다. 모든 리소스는 동일한 지역에 있습니다. 
 
 ## 대화형 랩 시뮬레이션
 
@@ -38,7 +38,7 @@ lab:
 
 이 작업에서는 템플릿을 사용하여 연결된 가상 네트워크 인터페이스 카드 함께 하나의 가상 네트워크, 하나의 네트워크 보안 그룹 및 2개의 가상 머신을 배포합니다. VM은 az104-vnet1**이라는 **허브 가상 네트워크에 상주합니다.
 
-1. 필요한 경우 Allfiles Lab06\\az104-06-vms-loop-template.json** 및\\** Allfiles\\Labs\\06\\az104-06-vms-loop-parameters.json** 랩 파일을 컴퓨터에 다운로드\\**합니다.\\
+1. 필요한 경우 Allfiles Lab06 az104-06-vms-loop-template.json** 랩 파일을 다운로드\\**합니다.\\\\ 
 
 1. **Azure Portal** - `https://portal.azure.com`에 로그인합니다.
 
@@ -188,7 +188,7 @@ lab:
     | 원본 포트           | *Blank*         |
     | 진단 테스트      | *Defaults*      |
 
-    ![커넥트ion 문제 해결 설정을 보여 주는 Azure Portal](../media/az104-lab05-connection-troubleshoot.png)
+    ![커넥트ion 문제 해결 설정을 보여 주는 Azure Portal](../media/az104-lab06-connection-troubleshoot.png)
 
 1. **진단 테스트 실행**을 선택합니다.
 
@@ -196,7 +196,7 @@ lab:
 
 ## 작업 3: Azure 애플리케이션 게이트웨이 구현
 
-이 작업에서는 스포크 가상 네트워크의 두 Azure 가상 머신 앞에 Azure Application Gateway를 구현합니다. Application Gateway는 백 엔드 풀에 정의된 리소스에 계층 7 부하 분산, WAF(웹 애플리케이션 방화벽), SSL 종료 및 엔드투엔드 암호화를 제공합니다. 
+이 작업에서는 두 Azure 가상 머신 앞에 Azure 애플리케이션 게이트웨이를 구현합니다. Application Gateway는 백 엔드 풀에 정의된 리소스에 계층 7 부하 분산, WAF(웹 애플리케이션 방화벽), SSL 종료 및 엔드투엔드 암호화를 제공합니다. Application Gateway는 이미지를 하나의 가상 머신으로 라우팅하고 다른 가상 머신으로 비디오를 라우팅합니다. 
 
 ## 아키텍처 다이어그램 - Application Gateway
 
@@ -290,7 +290,7 @@ lab:
 
 1. **경로 기반 규칙을 만들려면 여러 대상을 추가합니다**를 선택합니다. 두 개의 규칙을 만듭니다.
 
-**규칙 1 - 이미지 백 엔드로 라우팅**
+    **규칙 - 이미지 백 엔드로 라우팅**
 
     | 설정 | 값 |
     | --- | --- |
@@ -299,7 +299,7 @@ lab:
     | 백 엔드 설정 | **appgw-settings** |
     | 백 엔드 대상 | `az104-appgw-images` |
 
-**규칙 2 - 비디오 백 엔드로 라우팅**
+    **규칙 - 비디오 백 엔드로 라우팅**
 
     | 설정 | 값 |
     | --- | --- |
@@ -316,24 +316,23 @@ lab:
 
 1. Azure Portal에서 az104-appgw**를 검색하고 선택합니다**.
 
+1. Application Gateway**에서 **백 엔드 상태를** 선택합니다**.
+
+1. 백 엔드 풀의 두 서버가 모두 정상으로 표시되는 **지 확인합니다**. 
+
 1. **az104-appgw** Application Gateway 블레이드에서 프런트 엔드 공용 IP 주소**의 **값을 복사합니다.
 
-1. 다른 브라우저 창을 시작하고 이 URL을 테스트합니다. - `http://<frontend ip address>/image/`.
+1. 다른 브라우저 창을 시작하고 URL을 테스트합니다. - `http://<frontend ip address>/image/`.
 
 1. 이미지 서버(vm1)로 리디렉션되었는지 확인합니다. 
 
-1. 다른 브라우저 창을 시작하고 이 URL을 테스트합니다. - `http://<frontend ip address>/video/`.
+1. 다른 브라우저 창을 시작하고 URL을 테스트합니다. - `http://<frontend ip address>/video/`.
 
 1. 이미지 서버(vm2)로 리디렉션되었는지 확인합니다. 
 
 > **참고**: InPrivate 모드에서 브라우저 창을 두 번 이상 새로 고치거나 새로 열어야 할 수 있습니다.
 
-1. Application Gateway**에서 **백 엔드 상태를** 선택합니다**.
-
-1. 백 엔드 풀의 두 서버가 모두 정상으로 표시되는 **지 확인합니다**. 
-
-
-## 랩의 기본 지점 검토
+## 핵심 내용
 
 랩을 완료한 것을 축하합니다. 다음은 이 랩에 대한 기본 설명입니다. 
 
