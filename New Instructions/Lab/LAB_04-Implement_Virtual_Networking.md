@@ -20,6 +20,8 @@
 
 이 항목에 유용할 수 있는 몇 가지 대화형 랩 시뮬레이션이 있습니다. 시뮬레이션을 사용하면 비슷한 시나리오를 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 이 랩 사이에는 차이점이 있지만, 대부분의 핵심 개념은 동일합니다. Azure 구독은 필요하지 않습니다. 
 
++ [네트워크 트래픽](https://mslearn.cloudguides.com/en-us/guides/AZ-900%20Exam%20Guide%20-%20Azure%20Fundamentals%20Exercise%2013)을 보호합니다. 가상 머신, 가상 네트워크 및 네트워크 보안 그룹을 만듭니다. 트래픽을 허용하고 허용하지 않도록 네트워크 보안 그룹 규칙을 추가합니다.
+  
 + [간단한 가상 네트워크를](https://mslearn.cloudguides.com/en-us/guides/AZ-900%20Exam%20Guide%20-%20Azure%20Fundamentals%20Exercise%204) 만듭니다. 두 개의 가상 머신이 있는 가상 네트워크를 만듭니다. 가상 머신이 통신할 수 있음을 보여 줍니다. 
 
 + [Azure](https://mslabs.cloudguides.com/guides/AZ-700%20Lab%20Simulation%20-%20Design%20and%20implement%20a%20virtual%20network%20in%20Azure)에서 가상 네트워크를 디자인하고 구현합니다. 리소스 그룹을 만들고 서브넷을 사용하여 가상 네트워크를 만듭니다.  
@@ -164,7 +166,7 @@
     | 구독 | *구독* |
     | 리소스 그룹 | **az104-rg4** |
     | 이름 | `asg-web` |
-    | 지역 | **(미국) 미국 동부**  |
+    | 지역 | **서유럽**  |
 
 1. 검토 + 만들기를 클릭한 **다음 유효성 검사 후 만들기**를 클릭합니다**.**
 
@@ -234,7 +236,5 @@
 고유한 구독으로 작업하는 경우 랩 리소스를 삭제하는 데 1분이 소요됩니다. 이렇게 하면 리소스가 해제되고 비용이 최소화됩니다. 랩 리소스를 삭제하는 가장 쉬운 방법은 랩 리소스 그룹을 삭제하는 것입니다. 
 
 + Azure Portal에서 리소스 그룹을 선택하고, 리소스 그룹 삭제를 선택하고 **, **리소스 그룹** 이름을** 입력한 다음, 삭제**를 클릭합니다**.
-
 + Azure PowerShell 사용. `Remove-AzResourceGroup -Name resourceGroupName` 
-
 + CLI `az group delete --name resourceGroupName`를 사용하여 .

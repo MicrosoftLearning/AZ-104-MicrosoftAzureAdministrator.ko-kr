@@ -347,7 +347,5 @@ lab:
 고유한 구독으로 작업하는 경우 랩 리소스를 삭제하는 데 1분이 소요됩니다. 이렇게 하면 리소스가 해제되고 비용이 최소화됩니다. 랩 리소스를 삭제하는 가장 쉬운 방법은 랩 리소스 그룹을 삭제하는 것입니다. 
 
 + Azure Portal에서 리소스 그룹을 선택하고, 리소스 그룹 삭제를 선택하고 **, **리소스 그룹** 이름을** 입력한 다음, 삭제**를 클릭합니다**.
-
 + Azure PowerShell 사용. `Remove-AzResourceGroup -Name resourceGroupName` 
-
 + CLI `az group delete --name resourceGroupName`를 사용하여 .
