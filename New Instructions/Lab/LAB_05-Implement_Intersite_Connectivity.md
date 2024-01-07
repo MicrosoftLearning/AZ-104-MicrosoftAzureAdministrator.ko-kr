@@ -12,7 +12,7 @@ lab:
 
 이 랩에는 Azure 구독이 필요합니다. 구독 유형은 이 랩의 기능 가용성에 영향을 줄 수 있습니다. 지역을 변경할 수 있지만 단계는 미국** 동부를 사용하여 **작성됩니다. 
 
-## 예상 소요 시간: 30분
+## 예상 시간: 40분
 
 ## 랩 시나리오 
 
@@ -126,7 +126,7 @@ lab:
 
 ## 작업 3: 가상 머신 간의 연결 테스트
 
-이 작업에서는 서로 다른 가상 네트워크의 가상 머신 간의 연결을 테스트합니다.
+이 작업에서는 서로 다른 가상 네트워크의 가상 머신 간의 연결을 테스트합니다. 계속하기 전에 두 가상 머신이 모두 배포되고 실행 중인지 확인합니다. 
 
 ### CoreServicesVM의 개인 IP 주소 확인
 
@@ -136,7 +136,7 @@ lab:
    
 ### ManufacturingVM에서 CoreServicesVM**에 대한 **연결을 테스트합니다.
 
-1. 포털에서 가상 머신을 선택하고 선택합니다 `ManufacturingVM` .
+1. 가상 머신으로 `ManufacturingVM` 전환합니다.
 
 1. **작업** 섹션에서 실행 명령** 블레이드를 **선택합니다.
 
@@ -171,6 +171,7 @@ lab:
     |                                      | 피어링 링크 이름                             | `CoreServicesVnet-to-ManufacturingVnet` |
     |                                      | CoreServicesVNet이 피어된 가상 네트워크에 액세스하도록 허용            | 선택됨(기본값)                       |
     |                                      | CoreServicesVNet이 피어된 가상 네트워크에서 전달된 트래픽을 수신하도록 허용 | 선택됨                       |
+    |                                      | CoreServicesVNet의 게이트웨이가 피어된 가상 네트워크로 트래픽을 전달하도록 허용 | 선택되지 않음(기본값) |
     |                                      | CoreServicesVNet이 피어된 가상 네트워크의 원격 게이트웨이를 사용하도록 설정       | 선택되지 않음(기본값)                        |
     | 원격 가상 네트워크               |                                               |                                       |
     |                                      | 피어링 링크 이름                             | `ManufacturingVnet-to-CoreServicesVnet` |
@@ -180,6 +181,7 @@ lab:
     |                                      | 가상 네트워크                               | **ManufacturingVnet**                     |
     |                                      | ManufacturingVNet이 CoreServicesVNet에 액세스하도록 허용  | 선택됨(기본값)                       |
     |                                      | ManufacturingVNet이 CoreServicesVNet에서 전달된 트래픽을 수신하도록 허용 | 선택됨                        |
+   |                                      | CoreServicesVNet의 게이트웨이가 피어된 가상 네트워크로 트래픽을 전달하도록 허용 | 선택되지 않음(기본값) |
     |                                      | CoreServicesVNet의 원격 게이트웨이를 사용하도록 ManufacturingVNet 사용       | 선택되지 않음(기본값)                        |
 
 1. 설정을 검토하고 추가**를 선택합니다**.
@@ -188,7 +190,7 @@ lab:
  
 1. CoreServicesVnet | 피어링에서 **CoreServicesVnet-to-ManufacturingVnet** 피어링이 표시되는지 확인합니다. 페이지를 **새로 고쳐 피어링 상태** **커넥트**.
 
-1. ManufacturingVnet**으로 **전환하고 ManufacturingVnet-CoreServicesVnet** 피어링이 나열되었는지 확인**합니다. **피어링 상태 커넥트** **있는지 확인합니다**.
+1. ManufacturingVnet**으로 **전환하고 ManufacturingVnet-CoreServicesVnet** 피어링이 나열되었는지 확인**합니다. **피어링 상태 커넥트** **있는지 확인합니다**. 페이지를 **새로 고침**해야 할 수도 있습니다. 
 
  
 ## 작업 5: VM 간 연결 테스트
