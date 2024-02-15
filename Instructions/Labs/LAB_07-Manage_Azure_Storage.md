@@ -285,17 +285,17 @@ lab:
 
     > **참고**: 작업 4에서 SAS URL을 기록하지 않은 경우 동일한 구성으로 새 URL을 생성해야 합니다. 새 BLOB SAS URL을 생성하기 위한 가이드로 작업 4단계 4-6을 사용합니다. 
 
-1. **MIT 라이선스(MIT)** 페이지의 콘텐츠가 표시됩니다.
+1. LICENSE.txt 파일을 다운로드할 수 있어야 합니다.
 
     > **참고**: 클라이언트 IP 주소에서 연결하므로 이것은 예상한 것입니다.
 
 1. InPrivate 모드 브라우저 창을 닫고 Azure Storage 계정의 **네트워킹** 블레이드를 표시하는 브라우저 창으로 돌아갑니다.
 
-1. Azure Portal에서 오른쪽 상단의 아이콘을 클릭하여 **Azure Cloud Shell**을 엽니다.
+1. Azure Portal에서 **가상 머신**을 검색하여 선택하고 가상 머신 목록에서 **az104-07-vm0**을 클릭합니다.
 
-1. **Bash**와 **PowerShell** 중에서 선택하라는 메시지가 표시되면 **PowerShell**을 선택합니다.
+1. **az104-07-vm0** 블레이드의 **작업** 섹션에서 **실행 명령**을 클릭합니다.
 
-1. Cloud Shell 창에서 다음 명령을 실행하여 스토리지 계정의 **az104-07-container** 컨테이너에서 LICENSE Blob 다운로드를 시도합니다(`[blob SAS URL]` 자리 표시자를 이전 작업에서 생성한 Blob SAS URL로 바꿈).
+1. **명령 스크립트** 실행 블레이드에서 PowerShell 스크립트** 창에서 **다음을 실행하여 스토리지 계정의 az104-07 컨테이너 컨테이너**에서 **LICENSE Blob 다운로드를 시도합니다(자리 표시자를 이전 작업에서 생성한 Blob SAS URL로 바꿉 `[blob SAS URL]` 니다.)
 
    ```powershell
    Invoke-WebRequest -URI '[blob SAS URL]'
@@ -303,8 +303,6 @@ lab:
 1. 다운로드 시도가 실패하였는지 확인합니다.
 
     > **참고**: 다음 메시지가 표시되어야 합니다. **AuthorizationFailure: 이 요청으로 해당 작업을 수행할 수 없습니다**. 이것은 Cloud Shell 인스턴스를 호스트하는 Azure VM에 할당된 IP 주소에서 연결하기 때문에 예상된 결과입니다.
-
-1. Cloud Shell 창을 닫습니다.
 
 ## 리소스 정리
 
