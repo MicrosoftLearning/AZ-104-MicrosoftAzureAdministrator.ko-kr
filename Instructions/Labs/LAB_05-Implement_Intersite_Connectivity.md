@@ -1,281 +1,305 @@
 ---
 lab:
-  title: '랩 05: 사이트 간 커넥트 구현'
+  title: '랩 05: 사이트 간 연결 구현'
   module: Administer Intersite Connectivity
 ---
 
 # 랩 05 - 사이트 간 연결 구현
-# 학생용 랩 매뉴얼
 
-## 랩 시나리오
+## 랩 소개
 
-Contoso는 보스턴, 뉴욕 및 시애틀 지사에 있는 메시 광역 네트워크 링크를 통해 연결된 데이터 센터를 보유하고 있으며, 이들 사이의 전체 연결이 가능합니다. Contoso 온-프레미스 네트워크의 토폴로지를 반영하고 그 기능을 확인하는 랩 환경을 구현해야 합니다.
+이 랩에서는 가상 네트워크 간의 통신을 살펴봅니다. 가상 네트워크 피어링을 구현하고 연결을 테스트합니다. 또한 사용자 지정 경로를 만듭니다. 
 
-**참고:** **[대화형 랩 시뮬레이션](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%209)** 을 사용하여 이 랩을 원하는 속도로 클릭할 수 있습니다. 대화형 시뮬레이션과 호스트된 랩 간에 약간의 차이가 있을 수 있지만 보여주는 핵심 개념과 아이디어는 동일합니다. 
+이 랩을 수행하려면 Azure 구독이 필요합니다. 구독 유형은 이 랩의 기능 가용성에 영향을 미칠 수 있습니다. 지역을 변경할 수 있지만 단계는 **미국 동부**를 사용하여 작성됩니다. 
 
-## 목표
+## 예상 소요 시간: 50분
+    
+## 랩 시나리오 
 
-이 랩에서는 다음을 수행합니다.
+조직은 제조 부서를 포함하여 비즈니스의 다른 부분에서 핵심 IT 앱 및 서비스(예: DNS 및 보안 서비스)를 분할합니다. 그러나 일부 시나리오에서는 핵심 영역의 앱 및 서비스가 제조 영역의 앱 및 서비스와 통신해야 합니다. 이 랩에서는 분할된 영역 간의 연결을 구성합니다. 이는 프로덕션과 개발을 분리하거나 한 자회사를 다른 자회사와 분리하는 일반적인 시나리오입니다.  
 
-+ 작업 1: 랩 환경 프로비전
-+ 작업 2: 로컬 및 전역 가상 네트워크 피어링을 구성합니다.
-+ 작업 3: 사이트 간 연결을 테스트합니다.
+## 대화형 랩 시뮬레이션
 
-## 예상 소요 시간: 30분
+이 항목에 유용할 수 있는 몇 가지 대화형 랩 시뮬레이션이 있습니다. 시뮬레이션을 통해 고유의 속도에 맞춰 유사한 시나리오를 클릭할 수 있습니다. 대화형 시뮬레이션과 이 랩에는 차이점이 있지만 핵심 개념은 대부분 동일합니다. Azure 구독은 필요하지 않습니다. 
+
++ [전역 가상 네트워크 피어링을 사용해 Azure Virtual Network 2개를 연결합니다](https://mslabs.cloudguides.com/guides/AZ-700%20Lab%20Simulation%20-%20Connect%20two%20Azure%20virtual%20networks%20using%20global%20virtual%20network%20peering). 서로 다른 가상 네트워크에 있는 두 가상 머신 간의 연결을 테스트합니다. 가상 네트워크 피어링을 만들고 다시 테스트합니다.
+
++ [가상 네트워크에 대한 모니터링 구성](https://learn.microsoft.com/training/modules/configure-monitoring-virtual-networks/). Azure Network Watcher 연결 모니터, 흐름 로그, NSG 진단 및 패킷 캡처를 사용하여 Azure IaaS 네트워크 리소스 전반의 연결을 모니터링하는 방법을 파악합니다.
+
++ [사이트 간 연결을 구현합니다](https://mslabs.cloudguides.com/en-us/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%209). 템플릿을 실행하여 여러 가상 머신으로 가상 네트워크 인프라를 만듭니다. 가상 네트워크 피어링을 구성하고 연결을 테스트합니다. 
 
 ## 아키텍처 다이어그램
 
-![이미지](../media/lab05.png)
+![랩 05 - 아키텍처 다이어그램](../media/az104-lab05-architecture.png)
 
-### Instructions
+## 작업 기술
 
-## 연습 1
++ 작업 1: 가상 네트워크에서 가상 머신을 만듭니다.
++ 작업 2: 다른 가상 네트워크에 가상 머신을 만듭니다.
++ 작업 3: Network Watcher를 사용하여 가상 머신 간의 연결을 테스트합니다. 
++ 작업 4: 서로 다른 가상 네트워크 간에 가상 네트워크 피어링을 구성합니다.
++ 작업 5: Azure PowerShell을 사용하여 가상 머신 간의 연결을 테스트합니다.
++ 작업 6: 사용자 지정 경로를 만듭니다. 
 
-## 작업 1: 랩 환경 프로비전
+## 작업 1:  핵심 서비스 가상 머신 및 가상 네트워크 만들기
 
-이 작업에서는 세 개의 가상 머신을 각각 별도의 가상 네트워크에 배포하고 그 중 두 개는 동일한 Azure 지역에, 나머지 하나는 다른 Azure 지역에 배포합니다.
+이 작업에서는 가상 머신을 사용하여 핵심 서비스 가상 네트워크를 만듭니다. 
 
-1. [Azure Portal](https://portal.azure.com)에 로그인합니다.
+1. **Azure Portal** - `https://portal.azure.com`에 로그인합니다.
 
-1. Azure Portal에서 오른쪽 상단의 아이콘을 클릭하여 **Azure Cloud Shell**을 엽니다.
+1. `Virtual Machines`을 검색하고 선택합니다.
 
-1. **Bash**와 **PowerShell** 중에서 선택하라는 메시지가 표시되면 **PowerShell**을 선택합니다.
+1. 가상 머신 페이지에서 **만들기**를 선택한 다음 **Azure Virtual Machine**을 선택합니다.
 
-    >**참고**: **Cloud Shell**을 처음 시작했는데 **탑재된 스토리지 없음**이라는 메시지가 표시되면 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 클릭합니다.
-
-1. Cloud Shell 창의 도구 모음에서 **파일 업로드/다운로드** 아이콘을 클릭하고, 드롭다운 메뉴에서 **업로드**를 클릭하고, **\\Allfiles\\Labs\\05\\az104-05-vnetvm-loop-template.json** 및 **\\Allfiles\\Labs\\05\\az104-05-vnetvm-loop-parameters.json** 파일을 Cloud Shell 홈 디렉터리에 업로드합니다. 
-
-1. Cloud Shell 창에서 다음을 실행하여 랩 환경을 호스트할 리소스 그룹을 만듭니다. 처음 두 개의 가상 네트워크와 한 쌍의 가상 머신이 [Azure_region_1]에 배포됩니다. 세 번째 가상 네트워크와 세 번째 가상 머신이 같은 리소스 그룹의 다른 지역인 [Azure_region_2]에 배포됩니다. ([Azure_region_1] 및 [Azure_region_2] 자리 표시자를 해당 Azure 가상 머신을 배포할 서로 다른 두 Azure 지역의 이름으로 바꿉니다. 예를 들어, $location 1 = ‘eastus’입니다. Get-AzLocation을 사용하여 모든 위치를 나열할 수 있습니다.)
-
-   ```powershell
-   $location1 = 'eastus'
-
-   $location2 = 'westus'
-
-   $rgName = 'az104-05-rg1'
-
-   New-AzResourceGroup -Name $rgName -Location $location1
-   ```
-
-   >**참고**: 위에서 사용한 지역은 테스트되었으며 이 랩이 마지막으로 공식적인 검토가 완료되었을 때 작동하는 것으로 알려져 있습니다. 다른 위치를 사용하거나 더 이상 작동하지 않는 경우 표준 D2Sv3 가상 머신을 배포할 수 있는 두 개의 다른 지역을 식별해야 합니다.
-   >
-   >Cloud Shell의 PowerShell 세션에서 Azure 지역을 식별하려면 **(Get-AzLocation).Location**을 실행합니다.
-   >
-   >사용하려는 두 지역을 식별한 후 각 지역의 Cloud Shell 내에서 아래 명령을 실행하여 표준 D2Sv3 가상 머신을 배포할 수 있는지 확인합니다
-   >
-   >```az vm list-skus --location <Replace with your location> -o table --query "[? contains(name,'Standard_D2s')].name" ```
-   >
-   >명령이 결과를 반환하지 않으면 다른 지역을 선택해야 합니다. 두 개의 적합한 지역을 식별한 후에는 위의 코드 블록에서 지역을 조정할 수 있습니다.
-
-1. Cloud Shell 창에서 세 개의 가상 네트워크를 만들고 업로드한 템플릿 및 매개 변수 파일을 사용하여 가상 머신을 배포합니다.
-    
-    >**참고**: 관리 암호를 입력하라는 메시지가 표시됩니다.
-
-   ```powershell
-   New-AzResourceGroupDeployment `
-      -ResourceGroupName $rgName `
-      -TemplateFile $HOME/az104-05-vnetvm-loop-template.json `
-      -TemplateParameterFile $HOME/az104-05-vnetvm-loop-parameters.json `
-      -location1 $location1 `
-      -location2 $location2
-   ```
-
-    >**참고**: 배포가 완료될 때까지 기다린 후 다음 작업을 진행하세요. 이 작업은 2분 정도 걸립니다.
-
-1. Cloud Shell 창을 닫습니다.
-
-## 작업 2: 로컬 및 전역 가상 네트워크 피어링을 구성합니다.
-
-이 작업에서는 이전 작업에서 배포된 가상 네트워크 간의 로컬 및 글로벌 피어링을 구성합니다.
-
-1. Azure Portal에서 **가상 네트워크**를 검색하여 선택합니다.
-
-1. 이전 작업에서 만든 가상 네트워크를 검토하고 처음 두 개가 동일한 Azure 지역에 있고 나머지 하나가 다른 Azure 지역에 있는지 확인합니다.
-
-    >**참고**: 세 개의 가상 네트워크 배포에 사용된 템플릿은 가상 네트워크 세 개의 IP 주소 범위가 겹치지 않도록 합니다.
-
-1. 가상 네트워크 목록에서 **az104-05-vnet0**을 클릭합니다.
-
-1. **az104-05-vnet0** 가상 네트워크 블레이드의 **설정** 섹션에서 **피어링**을 클릭한 다음 **+ 추가**를 클릭합니다.
-
-1. 다음 설정을 사용하여 피어링을 추가하고(다른 설정은 기본값으로 유지) **추가**를 클릭합니다.
-
-    | 설정 | 값|
+1. 기본 사항 탭에서 다음 정보를 사용하여 양식을 작성한 후 **다음: 디스크 >** 를 클릭합니다. 지정되지 않은 설정은 기본값을 그대로 둡니다.
+ 
+    | 설정 | 값 | 
     | --- | --- |
-    | 이 가상 네트워크: 피어링 링크 이름 | **az104-05-vnet0_to_az104-05-vnet1** |
-    | 액세스, 전달된 트래픽 및 게이트웨이를 허용하는 설정 | **처음 세 개의 상자만 검사** |
-    | 원격 가상 네트워크: 피어링 링크 이름 | **az104-05-vnet1_to_az104-05-vnet0** |
-    | 가상 네트워크 배포 모델 | **리소스 관리자** |
-    | 리소스 ID를 알고 있음 | 선택 안 함 |
-    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-    | 가상 네트워크 | **az104-05-vnet1** |
-    | 현재 가상 네트워크 액세스 허용 |  **상자가 검사(기본값)** |
-    | 액세스, 전달된 트래픽 및 게이트웨이를 허용하는 설정 | **처음 세 개의 상자만 검사** |
+    | 구독 |  *구독* |
+    | 리소스 그룹 |  `az104-rg5`(필요한 경우 **새로 만들기**. )
+    | 가상 머신 이름 |    `CoreServicesVM` |
+    | 지역 | **(미국) 미국 동부** |
+    | 가용성 옵션 | 인프라 중복 필요 없음 |
+    | 보안 유형 | **Standard** |
+    | 이미지 | **Windows Server 2019 Datacenter: x64 Gen2**(다른 선택 사항 확인) |
+    | 크기 | **Standard_DS2_v3** |
+    | 사용자 이름 | `localadmin` | 
+    | 암호 | **복잡한 암호 제공** |
+    | 퍼블릭 인바운드 포트 | **없음** |
 
-    >**참고**: 이 단계에서 하나는 az104-05-vnet0에서 az104-05-vnet1로, 다른 하나는 az104-05-vnet1에서 az104-05-vnet0으로인 두 개의 로컬 피어링을 설정합니다.
+    ![기본 가상 머신 만들기 페이지의 스크린샷. ](../media/az104-lab05-createcorevm.png)
+   
+1. **디스크** 탭에서 기본값을 사용한 후 **다음: 네트워킹 >** 을 선택합니다.
 
-    >**참고**: 이전 작업에서 만든 가상 네트워크가 Azure Portal 인터페이스에 표시되지 않는 문제가 발생할 경우, Cloud Shell에서 다음 PowerShell 명령을 실행하여 피어링을 구성할 수 있습니다.
-    
-   ```powershell
-   $rgName = 'az104-05-rg1'
+1. **네트워킹** 탭의 가상 네트워크에서 **새로 만들기**를 선택합니다.
 
-   $vnet0 = Get-AzVirtualNetwork -Name 'az104-05-vnet0' -ResourceGroupName $rgname
+1. 다음 정보를 사용하여 가상 네트워크를 구성한 다음 **확인**을 선택합니다. 필요한 경우 기존 정보를 제거하거나 바꿉니다.
 
-   $vnet1 = Get-AzVirtualNetwork -Name 'az104-05-vnet1' -ResourceGroupName $rgname
-
-   Add-AzVirtualNetworkPeering -Name 'az104-05-vnet0_to_az104-05-vnet1' -VirtualNetwork $vnet0 -RemoteVirtualNetworkId $vnet1.Id
-
-   Add-AzVirtualNetworkPeering -Name 'az104-05-vnet1_to_az104-05-vnet0' -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet0.Id
-   ``` 
-
-1. **az104-05-vnet0** 가상 네트워크 블레이드의 **설정** 섹션에서 **피어링**을 클릭한 다음 **+ 추가**를 클릭합니다.
-
-1. 다음 설정을 사용하여 피어링을 추가하고(다른 설정은 기본값으로 유지) **추가**를 클릭합니다.
-
-    | 설정 | 값|
+    | 설정 | 값 | 
     | --- | --- |
-    | 이 가상 네트워크: 피어링 링크 이름 | **az104-05-vnet0_to_az104-05-vnet2** |
-    | 원격 가상 네트워크 액세스 허용 |**상자가 검사(기본값)** |
-    | 원격 가상 네트워크: 피어링 링크 이름 | **az104-05-vnet2_to_az104-05-vnet0** |
-    | 가상 네트워크 배포 모델 | **리소스 관리자** |
-    | 리소스 ID를 알고 있음 | 선택 안 함 |
-    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-    | 가상 네트워크 | **az104-05-vnet2** |
-    | 현재 가상 네트워크 액세스 허용 |**상자가 검사(기본값)** |
+    | 속성 | `CoreServicesVNet`(새로 만들기) |
+    | 주소 범위 | `10.0.0.0/16`  |
+    | 서브넷 이름 | `Core` | 
+    | 서브넷 주소 범위 | `10.0.0.0/24` |
 
-    >**참고**: 이 단계에서 하나는 az104-05-vnet0에서 az104-05-vnet2로, 다른 하나는 az104-05-vnet2에서 az104-05-vnet0으로인 두 개의 전역 피어링을 설정합니다.
+1. **모니터링** 탭을 선택합니다. 부트 진단에 대해 **사용 안 함**을 선택합니다.
 
-    >**참고**: 이전 작업에서 만든 가상 네트워크가 Azure Portal 인터페이스에 표시되지 않는 문제가 발생할 경우, Cloud Shell에서 다음 PowerShell 명령을 실행하여 피어링을 구성할 수 있습니다.
-    
-   ```powershell
-   $rgName = 'az104-05-rg1'
+1. **검토 + 만들기**를 선택한 후 **만들기**를 선택합니다.
 
-   $vnet0 = Get-AzVirtualNetwork -Name 'az104-05-vnet0' -ResourceGroupName $rgname
+1. 리소스가 만들어질 때까지 기다릴 필요가 없습니다. 계속해서 다음 작업을 진행합니다.
 
-   $vnet2 = Get-AzVirtualNetwork -Name 'az104-05-vnet2' -ResourceGroupName $rgname
+    >**참고:** 이 작업에서 가상 머신을 만들 때 가상 네트워크도 만들었다는 사실을 확인했나요? 가상 네트워크 인프라를 만든 다음 가상 머신을 추가할 수도 있습니다. 
 
-   Add-AzVirtualNetworkPeering -Name 'az104-05-vnet0_to_az104-05-vnet2' -VirtualNetwork $vnet0 -RemoteVirtualNetworkId $vnet2.Id
+## 작업 2: 다른 가상 네트워크에 가상 머신 만들기
 
-   Add-AzVirtualNetworkPeering -Name 'az104-05-vnet2_to_az104-05-vnet0' -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet0.Id
-   ``` 
+이 작업에서는 가상 머신을 사용하여 제조 서비스 가상 네트워크를 만듭니다. 
 
-1. **가상 네트워크** 블레이드로 돌아가 가상 네트워크 목록에서 **az104-05-vnet1**을 클릭합니다.
+1. Azure Portal에서 **Virtual Machines**를 검색하여 이동합니다.
 
-1. **az104-05-vnet1** 가상 네트워크 블레이드의 **설정** 섹션에서 **피어링**을 클릭한 다음, **+ 추가**를 클릭합니다.
+1. 가상 머신 페이지에서 **만들기**를 선택한 다음 **Azure Virtual Machine**을 선택합니다.
 
-1. 다음 설정을 사용하여 피어링을 추가하고(다른 설정은 기본값으로 유지) **추가**를 클릭합니다.
-
-    | 설정 | 값|
+1. 기본 사항 탭에서 다음 정보를 사용하여 양식을 작성한 후 **다음: 디스크 >** 를 클릭합니다. 지정되지 않은 설정은 기본값을 그대로 둡니다.
+ 
+    | 설정 | 값 | 
     | --- | --- |
-    | 이 가상 네트워크: 피어링 링크 이름 | **az104-05-vnet1_to_az104-05-vnet2** |
-    | 원격 가상 네트워크 액세스 허용 | **상자가 검사(기본값)** |
-    | 원격 가상 네트워크: 피어링 링크 이름 | **az104-05-vnet2_to_az104-05-vnet1** |
-    | 가상 네트워크 배포 모델 | **리소스 관리자** |
-    | 리소스 ID를 알고 있음 | 선택 안 함 |
-    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-    | 가상 네트워크 | **az104-05-vnet2** |
-    | 현재 가상 네트워크 액세스 허용 | **상자가 검사(기본값)** |
+    | 구독 |  *구독* |
+    | 리소스 그룹 |  `az104-rg5` |
+    | 가상 머신 이름 |    `ManufacturingVM` |
+    | 지역 | **(미국) 미국 동부** |
+    | 보안 유형 | **Standard** |
+    | 가용성 옵션 | 인프라 중복 필요 없음 |
+    | 이미지 | **Windows Server 2019 Datacenter: x64 Gen2** |
+    | 크기 | **Standard_DS2_v3** | 
+    | 사용자 이름 | `localadmin` | 
+    | 암호 | **복잡한 암호 제공** |
+    | 퍼블릭 인바운드 포트 | **없음** |
 
-    >**참고**: 이 단계에서 하나는 az104-05-vnet1에서 az104-05-vnet2로, 다른 하나는 az104-05-vnet2에서 az104-05-vnet1로 두 개의 글로벌 피어링을 설정합니다.
+1. **디스크** 탭에서 기본값을 사용한 후 **다음: 네트워킹 >** 을 선택합니다.
 
-    >**참고**: 이전 작업에서 만든 가상 네트워크가 Azure Portal 인터페이스에 표시되지 않는 문제가 발생할 경우, Cloud Shell에서 다음 PowerShell 명령을 실행하여 피어링을 구성할 수 있습니다.
-    
-   ```powershell
-   $rgName = 'az104-05-rg1'
+1. 네트워킹 탭에서 가상 네트워크에 대해 **새로 만들기**를 선택합니다.
 
-   $vnet1 = Get-AzVirtualNetwork -Name 'az104-05-vnet1' -ResourceGroupName $rgname
+1. 다음 정보를 사용하여 가상 네트워크를 구성한 다음 **확인**을 선택합니다.  필요한 경우 기존 주소 범위를 제거하거나 바꿉니다.
 
-   $vnet2 = Get-AzVirtualNetwork -Name 'az104-05-vnet2' -ResourceGroupName $rgname
+    | 설정 | 값 | 
+    | --- | --- |
+    | 속성 | `ManufacturingVNet` |
+    | 주소 범위 | `172.16.0.0/16`  |
+    | 서브넷 이름 | `Manufacturing` |
+    | 서브넷 주소 범위 | `172.16.0.0/24` |
 
-   Add-AzVirtualNetworkPeering -Name 'az104-05-vnet1_to_az104-05-vnet2' -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.Id
+1. **모니터링** 탭을 선택합니다. 부트 진단에 대해 **사용 안 함**을 선택합니다.
 
-   Add-AzVirtualNetworkPeering -Name 'az104-05-vnet2_to_az104-05-vnet1' -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.Id
-   ``` 
+1. **검토 + 만들기**를 선택한 후 **만들기**를 선택합니다.
 
-## 작업 3: 사이트 간 연결을 테스트합니다.
+## 작업 3: Network Watcher를 사용하여 가상 머신 간의 연결 테스트 
 
-이 작업에서는 이전 작업의 로컬 및 전역 피어링을 통해 연결된 세 개의 가상 네트워크에서 가상 머신 간의 연결을 테스트합니다.
 
-1. Azure Portal에서 **가상 머신**을 검색하여 선택합니다.
+이 작업에서는 피어링된 가상 네트워크의 리소스가 서로 통신할 수 있는지 확인합니다. Network Watcher는 연결을 테스트하는 데 사용됩니다. 계속하기 전에 두 가상 머신이 모두 배포되어 실행 중인지 확인합니다. 
 
-1. 가상 머신 목록에서 **az104-05-vm0**을 클릭합니다.
+1. Azure Portal에서 `Network Watcher`을 검색하여 선택합니다.
 
-1. **az104-05-vm0** 블레이드에서 **연결**을 클릭하고, 드롭다운 메뉴에서 **RDP**를 클릭하고, **RDP와 연결** 블레이드에서 **RDP 파일 다운로드**를 클릭하고, 프롬프트에 따라 원격 데스크톱 세션을 시작합니다.
+1. Network Watcher의 네트워크 진단 도구 메뉴에서 **연결 문제 해결**을 선택합니다.
 
-    >**참고**: 이 단계는 Windows 컴퓨터에서 원격 데스크톱을 통해 연결하는 것을 말합니다. Mac에서는 Mac App Store에서 원격 데스크톱 클라이언트를 사용할 수 있고 Linux 컴퓨터에서는 오픈 소스 RDP 클라이언트 소프트웨어를 사용할 수 있습니다.
+1. 다음 정보를 사용하여 **연결 문제 해결** 페이지의 필드를 완료합니다.
 
-    >**참고**: 대상 가상 머신에 연결할 때 경고 프롬프트는 무시해도 괜찮습니다.
+    | 필드 | 값 | 
+    | --- | --- |
+    | 소스 형식           | **가상 머신**   |
+    | 가상 머신       | **CoreServicesVM**    | 
+    | 대상 형식      | **가상 머신**   |
+    | 가상 머신       | **ManufacturingVM**   | 
+    | 기본 설정 IP 버전  | **둘 다**              | 
+    | 프로토콜              | **TCP**               |
+    | 대상 포트      | `3389`                |  
+    | 원본 포트           | *Blank*         |
+    | 진단 테스트      | *Defaults*      |
 
-1. 메시지가 표시되면 CloudShell을 **통해 가상 머신을 배포할 때 구성한 학생** 사용자 이름과 암호를 사용하여 로그인합니다. 
+    ![연결 문제 해결 설정을 보여 주는 Azure Portal](../media/az104-lab05-connection-troubleshoot.png)
 
-1. **az104-05-vm0**에 대한 원격 데스크톱 세션 내에서 **시작** 단추를 마우스 오른쪽 단추로 클릭하고 나타나는 메뉴에서 **Windows PowerShell(관리자)** 를 클릭합니다.
+1. **진단 테스트 실행**을 선택합니다.
 
-1. Windows PowerShell 콘솔 창에서 다음을 실행하여 TCP 포트 3389를 통해 **az104-05-vm1**(개인 IP 주소가 **10.51.0.4**)에 대한 연결을 테스트합니다.
+    >**참고**: 결과가 반환될 때까지 몇 분 정도 걸릴 수 있습니다. 결과가 수집되는 동안 화면 선택은 회색으로 표시됩니다. **연결 테스트**에 **UnReachable**이 표시됩니다. 이는 가상 머신이 서로 다른 가상 네트워크에 있기 때문에 중요합니다. 
 
-   ```powershell
-   Test-NetConnection -ComputerName 10.51.0.4 -Port 3389 -InformationLevel 'Detailed'
-   ```
+ 
+## 작업 4: 가상 네트워크 간의 가상 네트워크 피어링 구성
 
-    >**참고**: 테스트에서는 운영 체제 방화벽에 의해 기본적으로 허용되는 포트 TCP 3389를 사용합니다.
+이 작업에서는 가상 네트워크의 리소스 간 통신을 사용하도록 설정하는 가상 네트워크 피어링을 만듭니다. 
 
-1. 출력 명령을 검사하여 연결되었는지 확인합니다.
+1. Azure Portal에서 `CoreServicesVnet` 가상 네트워크를 선택합니다.
 
-1. Windows PowerShell 콘솔 창에서 다음을 실행하여 **az104-05-vm2**(개인 IP 주소가 **10.52.0.4**)에 대한 연결을 테스트합니다.
+1. CoreServicesVnet의 **설정**에서 **피어링**을 선택합니다.
 
-   ```powershell
-   Test-NetConnection -ComputerName 10.52.0.4 -Port 3389 -InformationLevel 'Detailed'
-   ```
+1. CoreServicesVnet | 피어링에서 **+ 추가**를 선택합니다.
 
-1. 랩 컴퓨터에서 Azure Portal로 다시 전환하여 **가상 머신** 블레이드로 다시 돌아옵니다.
+1. 다음 표의 정보를 사용하여 피어링을 만듭니다.
 
-1. 가상 머신 목록에서 **az104-05-vm1**을 클릭합니다.
+| **매개 변수**                                    | **값**                             |
+| --------------------------------------------- | ------------------------------------- |
+| **이 가상 네트워크**                                       |                                       |
+| 피어링 링크 이름                             | `CoreServicesVnet-to-ManufacturingVnet` |
+| CoreServicesVNet이 피어링된 가상 네트워크에 액세스하도록 허용            | 선택됨(기본값)                       |
+| CoreServicesVNet이 피어링된 가상 네트워크에서 전달된 트래픽을 수신하도록 허용 | 선택됨                       |
+| CoreServicesVNet의 게이트웨이가 피어링된 가상 네트워크로 트래픽을 전달하도록 허용 | 선택되지 않음(기본값) |
+| 피어링된 가상 네트워크의 원격 게이트웨이를 사용하기 위해 CoreServicesVNet 사용       | 선택되지 않음(기본값)                        |
+| **원격 가상 네트워크**                                   |                                       |
+| 피어링 링크 이름                             | `ManufacturingVnet-to-CoreServicesVnet` |
+| 가상 네트워크 배포 모델              | **리소스 관리자**                      |
+| 리소스 ID를 알고 있음                         | 선택 안 됨                          |
+| 구독                                  | *구독*    |
+| 가상 네트워크                               | **ManufacturingVnet**                     |
+| ManufacturingVNet이 CoreServicesVNet에 액세스하도록 허용  | 선택됨(기본값)                       |
+| ManufacturingVNet이 CoreServicesVNet에서 전달된 트래픽을 수신하도록 허용 | 선택됨                        |
+| CoreServicesVNet의 게이트웨이가 피어링된 가상 네트워크로 트래픽을 전달하도록 허용 | 선택되지 않음(기본값) |
+| CoreServicesVNet의 원격 게이트웨이를 사용하기 위해 ManufacturingVNet 사용       | 선택되지 않음(기본값)                        |
 
-1. **az104-05-vm1** 블레이드에서 **연결**을 클릭하고, 드롭다운 메뉴에서 **RDP**를 클릭하고, **RDP와 연결** 블레이드에서 **RDP 파일 다운로드**를 클릭하고, 프롬프트에 따라 원격 데스크톱 세션을 시작합니다.
+1. 설정을 검토하고 **추가**를 선택합니다.
 
-    >**참고**: 이 단계는 Windows 컴퓨터에서 원격 데스크톱을 통해 연결하는 것을 말합니다. Mac에서는 Mac App Store에서 원격 데스크톱 클라이언트를 사용할 수 있고 Linux 컴퓨터에서는 오픈 소스 RDP 클라이언트 소프트웨어를 사용할 수 있습니다.
+    ![피어링 페이지 스크린샷](../media/az104-lab05-peering.png)
+ 
+1. CoreServicesVnet | 피어링에서 **CoreServicesVnet-to-ManufacturingVnet** 피어링이 표시되는지 확인합니다. 페이지를 새로 고쳐 **피어링 상태**가 **연결됨**인지 확인합니다.
 
-    >**참고**: 대상 가상 머신에 연결할 때 경고 프롬프트는 무시해도 괜찮습니다.
+1. **ManufacturingVnet**으로 전환하고 **ManufacturingVnet-to-CoreServicesVnet** 피어링이 나열되어 있는지 확인합니다. **피어링 상태**가 **연결됨**이어야 합니다. 페이지를 **새로 고침**해야 할 수도 있습니다. 
 
-1. 메시지가 표시되면 parameters 파일의 **Student** 사용자 이름과 암호를 사용하여 로그인합니다. 
 
-1. **az104-05-vm1**에 대한 원격 데스크톱 세션 내에서 **시작** 단추를 마우스 오른쪽 단추로 클릭하고 나타나는 메뉴에서 **Windows PowerShell(관리자)** 을 클릭합니다.
+## 작업 5: Azure PowerShell을 사용하여 가상 머신 간의 연결 테스트
 
-1. Windows PowerShell 콘솔 창에서 다음을 실행하여 TCP 포트 3389를 통해 **az104-05-vm2**(개인 IP 주소가 **10.52.0.4**)에 대한 연결을 테스트합니다.
+이 작업에서는 서로 다른 가상 네트워크에 있는 가상 머신 간의 연결을 다시 테스트합니다. 
 
-   ```powershell
-   Test-NetConnection -ComputerName 10.52.0.4 -Port 3389 -InformationLevel 'Detailed'
-   ```
+### CoreServicesVM의 개인 IP 주소 확인
 
-    >**참고**: 테스트에서는 운영 체제 방화벽에 의해 기본적으로 허용되는 포트 TCP 3389를 사용합니다.
+1. Azure Portal에서 `CoreServicesVM` 가상 머신을 검색하여 선택합니다.
 
-1. 출력 명령을 검사하여 연결되었는지 확인합니다.
+1. **개요** 블레이드의 **네트워킹** 섹션에서 컴퓨터의 **개인 IP 주소**를 기록합니다. 연결을 테스트하려면 이 정보가 필요합니다.
+   
+### **ManufacturingVM**에서 CoreServicesVM에 대한 연결을 테스트합니다.
+
+>**유용한 정보** 연결을 확인하는 방법에는 여러 가지가 있습니다. 이 작업에서는 **명령 실행**을 사용합니다. Network Watcher를 계속 사용할 수도 있습니다. 또는 [원격 데스크톱 연결](https://learn.microsoft.com/azure/virtual-machines/windows/connect-rdp#connect-to-the-virtual-machine)을 사용하여 가상 머신에 액세스할 수 있습니다. 연결되면 **test-connection**을 사용합니다. RDP를 사용해 보세요. 
+
+1. `ManufacturingVM` 가상 머신으로 전환합니다.
+
+1. **작업** 블레이드에서 **명령 실행** 블레이드를 선택합니다.
+
+1. **RunPowerShellScript**를 선택하고 **Test-NetConnection** 명령을 실행합니다. **CoreServicesVM**의 개인 IP 주소를 사용해야 합니다.
+
+    ```Powershell
+    Test-NetConnection <CoreServicesVM private IP address> -port 3389
+    ```
+1. 스크립트 시간이 초과되는 데 몇 분 정도 걸릴 수 있습니다. 페이지 상단에는 *스크립트 실행 중*라는 정보 메시지가 표시됩니다.
+
+   
+1. 피어링이 구성되었으므로 연결 테스트가 성공해야 합니다. 이 그림에 나오는 컴퓨터 이름과 원격 주소는 다를 수 있습니다. 
+   
+   ![Test-NetConnection이 포함된 PowerShell 창이 성공했습니다.](../media/az104-lab05-success.png)
+
+## 작업 6: 사용자 지정 경로 만들기 
+
+이 작업에서는 경계 서브넷과 내부 핵심 서비스 서브넷 간의 네트워크 트래픽을 제어하려고 합니다. 가상 네트워크 어플라이언스가 핵심 서비스 서브넷에 설치되며 모든 트래픽은 해당 어플라이언스에 라우팅되어야 합니다. 
+
+1. `CoreServicesVnet`을 검색하여 선택합니다.
+
+1. **서브넷**을 선택한 다음 **+ 만들기**를 선택합니다. 변경 내용을 **저장**합니다. 
+
+    | 설정 | 값 | 
+    | --- | --- |
+    | 속성 | `perimeter` |
+    | 서브넷 주소 범위 | `10.0.1.0/24`  |
+
+   
+1. Azure Portal에서 `Route tables`를 검색하여 선택한 다음, **만들기**를 선택합니다. 
+
+    | 설정 | 값 | 
+    | --- | --- |
+    | 구독 | 구독 |
+    | 리소스 그룹 | `az104-rg5`  |
+    | 지역 | **미국 동부** |
+    | 이름 | `rt-CoreServices` |
+    | 게이트웨이 경로 전파 | **문제** |
+
+1. 경로 테이블이 배포된 후 **리소스로 이동**을 선택합니다.
+
+1. **경로**를 선택한 다음 **+ 추가**를 선택합니다. 향후 NVA에서 CoreServices 가상 네트워크로의 경로를 만듭니다. 
+
+    | 설정 | 값 | 
+    | --- | --- |
+    | 경로 이름 | `PerimetertoCore` |
+    | 대상 형식 | **IP 주소** |
+    | 대상 IP 주소 | `10.0.0.0/16`(핵심 서비스 가상 네트워크) |
+    | 다음 홉 유형 | **가상 어플라이언스**(다른 선택 사항 확인) |
+    | 다음 홉 주소 | `10.0.1.7`(향후 NVA) |
+
+1. 경로가 완료되면 **+ 추가**를 선택합니다. 마지막으로, 경로를 서브넷과 연결해야 합니다.
+
+1. **서브넷**을 선택한 다음 **연결**을 선택합니다. 구성을 완료합니다.
+
+    | 설정 | 값 | 
+    | --- | --- |
+    | 가상 네트워크 | **CoreServicesVnet** |
+    | 서브넷 | **핵심**
+           |    
+
+>**참고**: DMZ에서 새 NVA로 트래픽을 전달하기 위한 사용자 정의 경로를 만들었습니다.  
 
 ## 리소스 정리
 
->**참고**: 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용되지 않는 리소스를 제거하면 예기치 않은 요금이 발생하지 않습니다.
+**고유의 구독**으로 작업하는 경우 랩 리소스를 삭제해 보세요. 이렇게 하면 리소스가 확보되고 비용이 최소화됩니다. 랩 리소스를 삭제하려면 랩 리소스 그룹을 삭제하는 것이 가장 쉽습니다. 
 
->**참고**:  랩 리소스를 즉시 제거할 수 없어도 걱정하지 마세요. 리소스에 종속성이 있고 삭제하는 데 시간이 더 오래 걸리는 경우가 있습니다. 리소스 사용량을 모니터링하는 것은 일반적인 관리자 작업이므로 포털에서 리소스를 주기적으로 검토하여 정리가 어떻게 진행되고 있는지 확인합니다. 
++ Azure Portal에서 리소스 그룹을 선택하고 **리소스 그룹 삭제**, **리소스 그룹 이름 입력**을 선택한 다음 **삭제**를 클릭합니다.
++ Azure PowerShell 사용, `Remove-AzResourceGroup -Name resourceGroupName`.
++ CLI 사용, `az group delete --name resourceGroupName`.
 
-1. Azure Portal의 **Cloud Shell** 창에서 **PowerShell** 세션을 엽니다.
 
-1. 다음 명령을 실행하여 이 모듈의 전체 랩에서 생성된 모든 리소스 그룹을 나열합니다.
+## 핵심 내용
 
-   ```powershell
-   Get-AzResourceGroup -Name 'az104-05*'
-   ```
+축하합니다. 랩을 완료했습니다. 이 랩의 주요 내용은 다음과 같습니다. 
 
-1. 다음 명령을 실행하여 이 모듈의 랩 전체에서 만든 모든 리소스 그룹을 삭제합니다.
++ 기본적으로 서로 다른 가상 네트워크의 리소스는 통신할 수 없습니다.
++ 가상 네트워크 피어링을 사용하면 Azure에서 두 개 이상의 가상 네트워크를 원활하게 연결할 수 있습니다.
++ 피어링된 가상 네트워크는 연결을 위해 하나로 표시됩니다.
++ 피어링된 가상 네트워크에 있는 가상 머신 간의 트래픽은 Microsoft 백본 인프라를 사용합니다.
++ 시스템 정의 경로는 가상 네트워크의 각 서브넷에 대해 자동으로 만들어집니다. 사용자 정의 경로는 기본 시스템 경로를 재정의하거나 추가합니다. 
++ Azure Network Watcher는 Azure IaaS 리소스에 대한 메트릭과 로그를 모니터링하고, 진단하고, 볼 수 있는 도구 모음을 제공합니다.
 
-   ```powershell
-   Get-AzResourceGroup -Name 'az104-05*' | Remove-AzResourceGroup -Force -AsJob
-   ```
+## 자기 주도적 학습을 통해 자세히 알아보기
 
-    >**참고**: 이 명령은 -AsJob 매개 변수에 의해 결정되어 비동기로 실행되므로, 동일한 PowerShell 세션 내에서 이 명령을 실행한 직후 다른 PowerShell 명령을 실행할 수 있지만 리소스 그룹이 실제로 제거되기까지는 몇 분 정도 걸립니다.
-
-## 검토
-
-이 랩에서는 다음을 수행합니다.
-
-+ 랩 환경 프로비전
-+ 로컬 및 전역 가상 네트워크 피어링 구성
-+ 사이트 간 연결 테스트
++ [Azure Virtual Network에 서비스 배포하여 가상 네트워크 피어링을 사용하여 통합합니다](https://learn.microsoft.com/en-us/training/modules/integrate-vnets-with-vnet-peering/). 가상 네트워크 피어링을 사용하여 안전하며 복잡성을 최소로 하는 방법으로 가상 네트워크 간에 통신을 사용하도록 설정합니다.
++ [경로를 사용하여 Azure 배포에서 트래픽 흐름을 관리 및 제어합니다](https://learn.microsoft.com/training/modules/control-network-traffic-flow-with-routes/). 사용자 지정 경로를 구현하여 Azure 가상 네트워크 트래픽을 제어하는 방법을 알아봅니다.
