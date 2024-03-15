@@ -354,8 +354,8 @@ lab:
     -Location 'East US' `
     -Image 'Win2019Datacenter' `
     -Zone '1' `
-    -Size 'Standard_D2s_v3' 
-    -Credential '(Get-Credential)' 
+    -Size 'Standard_D2s_v3' ` 
+    -Credential (Get-Credential)
     ```
 
 1. 명령이 완료되면 **Get-AzVM**을 사용하여 리소스 그룹의 가상 머신을 나열합니다.
@@ -373,7 +373,7 @@ lab:
     ```powershell
     Stop-AzVM `
     -ResourceGroupName 'az104-rg8' `
-    -Name 'myPSVM' `
+    -Name 'myPSVM' 
     ```
 
 1. **-Status** 매개 변수와 함께 **Get-AzVM**을 사용하여 컴퓨터가 **할당 취소**되었는지 확인합니다.
