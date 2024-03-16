@@ -41,7 +41,7 @@ lab:
 
 이 작업에서는 모니터링 시나리오를 테스트하는 데 사용할 가상 머신을 배포합니다.
 
-1. 필요한 경우 **\\Allfiles\\Lab11\\az104-11-vm-template.json** 랩 파일을 컴퓨터에 다운로드합니다.
+1. **\\Allfiles\\Lab11\\az104-11-vm-template.json** 랩 파일을 컴퓨터에 다운로드합니다.
 
 1. **Azure Portal** - `https://portal.azure.com`에 로그인합니다.
 
