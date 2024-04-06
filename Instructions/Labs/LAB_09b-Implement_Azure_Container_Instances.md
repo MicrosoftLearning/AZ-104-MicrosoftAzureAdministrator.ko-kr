@@ -25,15 +25,14 @@ lab:
   
 + [Azure Container Instances을 구현합니다](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2014).  Azure Container Instances를 사용하여 Docker 이미지를 배포합니다. 
 
+## 아키텍처 다이어그램
+
+![작업 다이어그램.](../media/az104-lab09b-aci-architecture.png)
+
 ## 작업 기술
 
 - 작업 1: Docker 이미지를 사용하여 Azure Container Instance를 배포합니다.
 - 작업 2: Azure Container Instance의 배포를 테스트하고 확인합니다.
-
-
-## 아키텍처 다이어그램
-
-![작업 다이어그램.](../media/az104-lab09b-aci-architecture.png)
 
 ## 작업 1: Docker 이미지를 사용하여 Azure Container Instance 배포
 
