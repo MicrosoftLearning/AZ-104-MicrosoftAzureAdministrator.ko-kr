@@ -263,8 +263,8 @@ lab:
     | 속성 | 값    |
     |:---------|:---------|
     | Subscription | **구독 선택** |
-    | Resource group | **az04-rg4** |
-    | 이름 | `contoso.com`(예약된 경우 이름 조정) |
+    | Resource group | **az-104-rg4** |
+    | 속성 | `contoso.com`(예약된 경우 이름 조정) |
     | 지역 |**미국 동부**(정보 아이콘 검토) |
 
 1. **검토 만들기**, **만들기**를 차례로 선택합니다.
@@ -306,8 +306,8 @@ lab:
     | 속성 | 값    |
     |:---------|:---------|
     | Subscription | **구독 선택** |
-    | Resource group | **az04-rg4** |
-    | 이름 | `private.contoso.com`(이름을 바꿔야 하는 경우 조정) |
+    | Resource group | **az-104-rg4** |
+    | 속성 | `private.contoso.com`(이름을 바꿔야 하는 경우 조정) |
     | 지역 |**미국 동부** |
 
 1. **검토 만들기**, **만들기**를 차례로 선택합니다.
