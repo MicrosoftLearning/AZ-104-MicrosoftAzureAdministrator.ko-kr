@@ -418,6 +418,18 @@ lab:
 + Azure PowerShell 사용, `Remove-AzResourceGroup -Name resourceGroupName`.
 + CLI 사용, `az group delete --name resourceGroupName`.
 
+## Copilot을 사용하여 학습 확장
+Copilot은 Azure 스크립팅 도구를 사용하는 방법을 익히는 데 도움을 줍니다. 또한 Copilot은 랩에서 다루지 않는 영역이나 추가 정보가 필요한 영역을 지원할 수 있습니다. Edge 브라우저를 열고 Copilot(오른쪽 위)을 선택하거나 *copilot.microsoft.com*으로 이동하세요. 몇 분 정도 시간을 내어 이러한 프롬프트를 사용해 보세요.
+
++ Linux 가상 머신을 만드는 단계 및 Azure CLI 명령을 제공합니다. 
++ 가상 머신의 크기를 조정하고 성능을 높일 수 있는 방법을 검토합니다.
++ Azure Storage 수명 주기 관리 정책과 비용을 최적화하는 방법을 설명합니다.
+
+## 자기 주도적 학습을 통해 자세히 알아보기
+
++ [Azure에서 Windows 가상 머신을 만듭니다](https://learn.microsoft.com/training/modules/create-windows-virtual-machine-in-azure/). Azure Portal을 사용하여 Windows 가상 머신을 만듭니다. 원격 데스크톱을 사용하여 실행 중인 Windows 가상 머신에 연결
++ [Virtual Machine Scale Sets를 사용하여 확장성 있는 애플리케이션을 빌드합니다](https://learn.microsoft.com/training/modules/build-app-with-scale-sets/). 애플리케이션이 가상 머신 확장 집합을 사용하여 변경 사항에 맞게 자동으로 조정되는 한편 비용을 최소화하도록 지원하세요.
++ [Azure Bastion을 사용하여 Azure Portal을 통해 가상 머신에 연결](https://learn.microsoft.com/en-us/training/modules/connect-vm-with-azure-bastion/). Azure Portal 내에서 직접 Azure Virtual Machines에 안전하게 연결하여 기존 Jumpbox 솔루션을 효과적으로 바꾸고, 진단 로그를 사용하여 원격 세션을 모니터링하고, 사용자 세션 연결을 끊어 원격 세션을 관리하려면 Azure Bastion을 배포합니다.
 
 ## 핵심 내용
 
@@ -429,10 +441,3 @@ lab:
 + Azure Virtual Machine Scale Sets를 사용하면 부하 분산된 VM의 그룹을 만들고 관리할 수 있습니다.
 + 가상 머신 확장 집합의 가상 머신은 동일한 이미지와 구성에서 만들어집니다.
 + 가상 머신 규모 집합에서는 수요나 정의된 일정에 따라 VM 인스턴스 수가 자동으로 늘어나거나 줄어들 수 있습니다.
-
-## 자기 주도적 학습을 통해 자세히 알아보기
-
-+ [Azure에서 Windows 가상 머신을 만듭니다](https://learn.microsoft.com/training/modules/create-windows-virtual-machine-in-azure/). Azure Portal을 사용하여 Windows 가상 머신을 만듭니다. 원격 데스크톱을 사용하여 실행 중인 Windows 가상 머신에 연결
-+ [Virtual Machine Scale Sets를 사용하여 확장성 있는 애플리케이션을 빌드합니다](https://learn.microsoft.com/training/modules/build-app-with-scale-sets/). 애플리케이션이 가상 머신 확장 집합을 사용하여 변경 사항에 맞게 자동으로 조정되는 한편 비용을 최소화하도록 지원하세요.
-+ [Azure Bastion을 사용하여 Azure Portal을 통해 가상 머신에 연결](https://learn.microsoft.com/en-us/training/modules/connect-vm-with-azure-bastion/). Azure Portal 내에서 직접 Azure Virtual Machines에 안전하게 연결하여 기존 Jumpbox 솔루션을 효과적으로 바꾸고, 진단 로그를 사용하여 원격 세션을 모니터링하고, 사용자 세션 연결을 끊어 원격 세션을 관리하려면 Azure Bastion을 배포합니다.
-  

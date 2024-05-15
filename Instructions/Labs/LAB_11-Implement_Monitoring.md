@@ -249,6 +249,18 @@ lab:
 + Azure PowerShell 사용, `Remove-AzResourceGroup -Name resourceGroupName`.
 + CLI 사용, `az group delete --name resourceGroupName`.
 
+## Copilot을 사용하여 학습 확장
+Copilot은 Azure 스크립팅 도구를 사용하는 방법을 익히는 데 도움을 줍니다. 또한 Copilot은 랩에서 다루지 않는 영역이나 추가 정보가 필요한 영역을 지원할 수 있습니다. Edge 브라우저를 열고 Copilot(오른쪽 위)을 선택하거나 *copilot.microsoft.com*으로 이동하세요. 몇 분 정도 시간을 내어 이러한 프롬프트를 사용해 보세요.
+
++ 가상 머신이 다운될 때 Azure에서 경고해야 하는 기본 구성 단계는 무엇인가요?
++ Azure 경고가 트리거될 때 어떻게 알림을 받을 수 있나요?
++ 가상 머신 CPU 성능 정보를 제공하는 Azure Monitor 쿼리를 생성합니다.
+
+## 자기 주도적 학습을 통해 자세히 알아보기
+
++ [Azure에서 경고를 사용하여 인시던트 대응 방식을 개선합니다](https://learn.microsoft.com/en-us/training/modules/incident-response-with-alerting-on-azure/). Azure Monitor의 경고 기능을 통해 인프라의 사고 및 작업에 응답합니다.
++ [Azure Monitor를 사용하여 Azure virtual machines를 모니터링합니다](https://learn.microsoft.com/en-us/training/modules/monitor-azure-vm-using-diagnostic-data/). Azure Monitor를 사용하여 VM 호스트 및 클라이언트 메트릭과 로그를 수집하고 분석함으로써 Azure VM을 모니터링합니다.
+
 ## 핵심 내용
 
 축하합니다. 랩을 완료했습니다. 이 랩의 주요 내용은 다음과 같습니다. 
@@ -258,8 +270,3 @@ lab:
 + 경고 규칙은 데이터를 모니터링하고 지정된 리소스에서 문제가 발생하고 있음을 나타내는 신호를 캡처합니다.
 + 경고 규칙의 조건이 충족되면 경고이 트리거됩니다. 여러 작업(이메일, SMS, 푸시, 음성)이 트리거될 수 있습니다.
 + 작업 그룹에는 경고 알림을 받아야 하는 개인이 포함됩니다.
-
-## 자기 주도적 학습을 통해 자세히 알아보기
-
-+ [Azure에서 경고를 사용하여 인시던트 대응 방식을 개선합니다](https://learn.microsoft.com/en-us/training/modules/incident-response-with-alerting-on-azure/). Azure Monitor의 경고 기능을 통해 인프라의 사고 및 작업에 응답합니다.
-+ [Azure Monitor를 사용하여 Azure virtual machines를 모니터링합니다](https://learn.microsoft.com/en-us/training/modules/monitor-azure-vm-using-diagnostic-data/). Azure Monitor를 사용하여 VM 호스트 및 클라이언트 메트릭과 로그를 수집하고 분석함으로써 Azure VM을 모니터링합니다.

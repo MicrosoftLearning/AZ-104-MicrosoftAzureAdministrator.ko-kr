@@ -252,18 +252,15 @@ lab:
 + Azure Portal에서 리소스 그룹을 선택하고 **리소스 그룹 삭제**, **리소스 그룹 이름 입력**을 선택한 다음 **삭제**를 클릭합니다.
 + Azure PowerShell 사용, `Remove-AzResourceGroup -Name resourceGroupName`.
 + CLI 사용, `az group delete --name resourceGroupName`.
-  
-## 핵심 내용
 
-축하합니다. 랩을 완료했습니다. 이 랩의 주요 내용은 다음과 같습니다. 
+## Copilot을 사용하여 학습 확장
 
-+ Azure Resource Manager 템플릿을 사용하면 솔루션의 모든 리소스를 개별적으로 처리하는 대신 그룹으로 배포, 관리 및 모니터링할 수 있습니다.
-+ Azure Resource Manager 템플릿은 스크립트가 아닌 선언적으로 인프라를 관리할 수 있는 JSON(JavaScript Object Notation) 파일입니다.
-+ 템플릿에서 매개 변수를 인라인 값으로 전달하는 대신 매개 변수 값이 포함된 별도의 JSON 파일을 사용할 수 있습니다.
-+ Azure Resource Manager 템플릿은 Azure Portal, Azure PowerShell 및 CLI를 비롯한 다양한 방법으로 배포할 수 있습니다.
-+ Bicep은 Azure Resource Manager 템플릿의 대안입니다. Bicep은 선언적 구문을 사용하여 Azure 리소스를 배포합니다. 
+Copilot은 Azure 스크립팅 도구를 사용하는 방법을 익히는 데 도움을 줍니다. 또한 Copilot은 랩에서 다루지 않는 영역이나 추가 정보가 필요한 영역을 지원할 수 있습니다. Edge 브라우저를 열고 Copilot(오른쪽 위)을 선택하거나 *copilot.microsoft.com*으로 이동하세요. 몇 분 정도 시간을 내어 이러한 프롬프트를 사용해 보세요.
 
-Bicep는 간결한 구문, 신뢰할 수 있는 형식 안전성 및 코드 다시 사용에 대한 지원을 제공합니다. Bicep은 Azure에서 코드형 인프라 솔루션에 대한 최고의 제작 환경을 제공합니다.
++ Azure Resource Manager 템플릿 파일의 형식은 무엇인가요? 예를 들어, 각 구성 요소를 설명합니다. 
++ 기존 Azure Resource Manager 템플릿을 어떻게 사용하나요?
++ Azure Resource Manager 템플릿과 Azure Bicep 템플릿을 비교하고 대조해 보세요. 
+
 
 ## 자기 주도적 학습을 통해 자세히 알아보기
 
@@ -272,5 +269,16 @@ Bicep는 간결한 구문, 신뢰할 수 있는 형식 안전성 및 코드 다�
 + [Windows PowerShell을 사용하여 Azure 리소스를 관리합니다](https://learn.microsoft.com/training/modules/manage-azure-resources-windows-powershell/). 이 모듈에서는 클라우드 서비스 관리에 필요한 모듈을 설치하고 PowerShell 명령을 사용하여 Azure 가상 머신, Azure 구독 및 Azure Storage 계정과 같은 클라우드 리소스에서 간단한 관리 작업을 수행하는 방법을 설명합니다.
 + [Bash를 소개합니다](https://learn.microsoft.com/training/modules/bash-introduction/). Bash를 사용하여 IT 인프라를 관리합니다.
 + [첫 번째 Bicep 템플릿 빌드](https://learn.microsoft.com/training/modules/build-first-bicep-template/). Bicep 템플릿 내에서 Azure 리소스를 정의합니다. 배포의 일관성과 안정성을 개선하고 필요한 수동 작업을 줄이며 환경 간에 배포를 확장합니다. 템플릿은 매개 변수, 변수, 식 및 모듈을 사용하여 유연하고 재사용이 가능합니다.
+
+## 핵심 내용
+
+축하합니다. 랩을 완료했습니다. 이 랩의 주요 내용은 다음과 같습니다. 
+
++ Azure Resource Manager 템플릿을 사용하면 솔루션의 모든 리소스를 개별적으로 처리하는 대신 그룹으로 배포, 관리 및 모니터링할 수 있습니다.
++ Azure Resource Manager 템플릿은 스크립트가 아닌 선언적으로 인프라를 관리할 수 있는 JSON(JavaScript Object Notation) 파일입니다.
++ 템플릿에서 매개 변수를 인라인 값으로 전달하는 대신 매개 변수 값이 포함된 별도의 JSON 파일을 사용할 수 있습니다.
++ Azure Resource Manager 템플릿은 Azure Portal, Azure PowerShell 및 CLI를 비롯한 다양한 방법으로 배포할 수 있습니다.
++ Bicep은 Azure Resource Manager 템플릿의 대안입니다. Bicep은 선언적 구문을 사용하여 Azure 리소스를 배포합니다.
++ Bicep는 간결한 구문, 신뢰할 수 있는 형식 안전성 및 코드 다시 사용에 대한 지원을 제공합니다. Bicep은 Azure에서 코드형 인프라 솔루션에 대한 최고의 제작 환경을 제공합니다.
 
 
