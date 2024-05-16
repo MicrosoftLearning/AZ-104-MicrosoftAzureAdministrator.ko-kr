@@ -288,6 +288,18 @@ lab:
 + Azure PowerShell 사용, `Remove-AzResourceGroup -Name resourceGroupName`.
 + CLI 사용, `az group delete --name resourceGroupName`.
 
+## Copilot을 사용하여 학습 확장
+Copilot은 Azure 스크립팅 도구를 사용하는 방법을 익히는 데 도움을 줍니다. 또한 Copilot은 랩에서 다루지 않는 영역이나 추가 정보가 필요한 영역을 지원할 수 있습니다. Edge 브라우저를 열고 Copilot(오른쪽 위)을 선택하거나 *copilot.microsoft.com*으로 이동하세요. 몇 분 정도 시간을 내어 이러한 프롬프트를 사용해 보세요.
+
++ Azure PowerShell 또는 Azure CLI 명령을 사용하여 vnet1과 vnet2 간에 가상 네트워크 피어링을 추가하려면 어떻게 해야 하나요?
++ Azure에서 지원되는 다양한 Azure 및 타사 모니터링 도구를 강조 표시하는 테이블을 만듭니다. 각 도구를 사용하는 시기를 강조 표시합니다. 
++ Azure에서 사용자 지정 네트워크 경로는 언제 만드나요?
+
+## 자기 주도적 학습을 통해 자세히 알아보기
+
++ [Azure Virtual Network에 서비스 배포하여 가상 네트워크 피어링을 사용하여 통합합니다](https://learn.microsoft.com/en-us/training/modules/integrate-vnets-with-vnet-peering/). 가상 네트워크 피어링을 사용하여 안전하며 복잡성을 최소로 하는 방법으로 가상 네트워크 간에 통신을 사용하도록 설정합니다.
++ [경로를 사용하여 Azure 배포에서 트래픽 흐름을 관리 및 제어합니다](https://learn.microsoft.com/training/modules/control-network-traffic-flow-with-routes/). 사용자 지정 경로를 구현하여 Azure 가상 네트워크 트래픽을 제어하는 방법을 알아봅니다.
+
 
 ## 핵심 내용
 
@@ -299,8 +311,3 @@ lab:
 + 피어링된 가상 네트워크에 있는 가상 머신 간의 트래픽은 Microsoft 백본 인프라를 사용합니다.
 + 시스템 정의 경로는 가상 네트워크의 각 서브넷에 대해 자동으로 만들어집니다. 사용자 정의 경로는 기본 시스템 경로를 재정의하거나 추가합니다. 
 + Azure Network Watcher는 Azure IaaS 리소스에 대한 메트릭과 로그를 모니터링하고, 진단하고, 볼 수 있는 도구 모음을 제공합니다.
-
-## 자기 주도적 학습을 통해 자세히 알아보기
-
-+ [Azure Virtual Network에 서비스 배포하여 가상 네트워크 피어링을 사용하여 통합합니다](https://learn.microsoft.com/en-us/training/modules/integrate-vnets-with-vnet-peering/). 가상 네트워크 피어링을 사용하여 안전하며 복잡성을 최소로 하는 방법으로 가상 네트워크 간에 통신을 사용하도록 설정합니다.
-+ [경로를 사용하여 Azure 배포에서 트래픽 흐름을 관리 및 제어합니다](https://learn.microsoft.com/training/modules/control-network-traffic-flow-with-routes/). 사용자 지정 경로를 구현하여 Azure 가상 네트워크 트래픽을 제어하는 방법을 알아봅니다.
