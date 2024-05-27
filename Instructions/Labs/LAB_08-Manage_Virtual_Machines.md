@@ -343,7 +343,7 @@ lab:
 
 1. 아이콘(오른쪽 상단)을 사용하여 **Cloud Shell** 세션을 시작합니다. 또는 `https://shell.azure.com`으로 직접 이동합니다.
 
-1. 반드시 **PowerShell**을 선택합니다. 필요한 경우 **고급 설정 표시**를 사용하여 셸 스토리지를 구성합니다.
+1. 반드시 **PowerShell**을 선택합니다. 필요한 경우 셸 스토리지를 구성합니다.
 
 1. 다음 명령을 실행하여 가상 머신을 만듭니다. 메시지가 표시되면 VM의 사용자 이름과 암호를 제공합니다. 기다리는 동안 가상 머신 만들기와 관련된 모든 매개 변수에 대한 [New-AzVM](https://learn.microsoft.com/powershell/module/az.compute/new-azvm?view=azps-11.1.0) 명령 참조를 확인합니다.
 
@@ -384,7 +384,7 @@ lab:
 
 1. 아이콘(오른쪽 상단)을 사용하여 **Cloud Shell** 세션을 시작합니다. 또는 `https://shell.azure.com`으로 직접 이동합니다.
 
-1. 반드시 **Bash**를 선택합니다. 필요한 경우 **고급 설정 표시**를 사용하여 셸 스토리지를 구성합니다.
+1. 반드시 **Bash**를 선택합니다. 필요한 경우 셸 스토리지를 구성합니다.
 
 1. 다음 명령을 실행하여 가상 머신을 만듭니다. 메시지가 표시되면 VM의 사용자 이름과 암호를 제공합니다. 기다리는 동안 가상 머신 만들기와 관련된 모든 매개 변수에 대한 [az vm create](https://learn.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) 명령 참조를 확인합니다.
 
