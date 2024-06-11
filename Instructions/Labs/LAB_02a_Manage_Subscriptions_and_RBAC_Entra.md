@@ -157,6 +157,19 @@ lab:
 + Azure PowerShell 사용, `Remove-AzResourceGroup -Name resourceGroupName`.
 + CLI 사용, `az group delete --name resourceGroupName`.
   
+## Copilot을 사용하여 학습 확장
+
+Copilot은 Azure 스크립팅 도구를 사용하는 방법을 익히는 데 도움을 줍니다. 또한 Copilot은 랩에서 다루지 않는 영역이나 추가 정보가 필요한 영역을 지원할 수 있습니다. Edge 브라우저를 열고 Copilot(오른쪽 위)을 선택하거나 *copilot.microsoft.com*으로 이동하세요. 몇 분 정도 시간을 내어 이러한 프롬프트를 사용해 보세요.
++ Azure의 조직 구독에 대한 정보를 가져오고 "설명" 열의 각 명령을 설명하기 위해 중요한 PowerShell 및 CLI 명령을 강조 표시하는 두 개의 테이블을 만듭니다. 
++ Azure RBAC JSON 파일의 형식은 무엇인가요?
++ 사용자 지정 Azure RBAC 역할을 만들기 위한 기본 단계는 무엇인가요?
++ Azure RBAC 역할과 Microsoft Entra ID 역할의 차이점은 무엇인가요?
+
+## 자기 주도적 학습을 통해 자세히 알아보기
+
++ [Azure RBAC(Azure 역할 기반 액세스 제어)로 Azure 리소스를 보호합니다](https://learn.microsoft.com/training/modules/secure-azure-resources-with-rbac/). Azure RBAC를 사용하여 Azure의 리소스에 대한 액세스를 관리합니다.
++ [역할 기반 액세스 제어(RBAC)를 사용하여 Azure 리소스에 대한 사용자 지정 역할을 만듭니다](https://learn.microsoft.com/training/modules/create-custom-azure-roles-with-rbac/). 액세스 제어에 대한 역할 정의의 구조를 이해합니다. 사용자 지정 역할 권한을 정의하는 역할 속성을 식별합니다. Azure 사용자 지정 역할을 만들고 사용자에게 할당합니다.
+
 ## 핵심 내용
 
 축하합니다. 랩을 완료했습니다. 이 랩의 주요 내용은 다음과 같습니다. 
@@ -166,13 +179,7 @@ lab:
 + Azure에는 다양한 기본 제공 역할이 있습니다. 이러한 역할을 할당하여 리소스에 대한 액세스를 제어할 수 있습니다.
 + 새 역할을 만들거나 기존 역할을 사용자 지정할 수 있습니다.
 + 역할은 JSON 형식의 파일로 정의되며 *Actions*, *NotActions* 및 *AssignableScopes*를 포함합니다.
-+ 활동 로그를 사용하여 역할 할당을 모니터링할 수 있습니다. 
-
-## 자기 주도적 학습을 통해 자세히 알아보기
-
-+ [Azure RBAC(Azure 역할 기반 액세스 제어)로 Azure 리소스를 보호합니다](https://learn.microsoft.com/training/modules/secure-azure-resources-with-rbac/). Azure RBAC를 사용하여 Azure의 리소스에 대한 액세스를 관리합니다.
-+ [역할 기반 액세스 제어(RBAC)를 사용하여 Azure 리소스에 대한 사용자 지정 역할을 만듭니다](https://learn.microsoft.com/training/modules/create-custom-azure-roles-with-rbac/). 액세스 제어에 대한 역할 정의의 구조를 이해합니다. 사용자 지정 역할 권한을 정의하는 역할 속성을 식별합니다. Azure 사용자 지정 역할을 만들고 사용자에게 할당합니다.
-
++ 활동 로그를 사용하여 역할 할당을 모니터링할 수 있습니다.
 
 
 

@@ -263,8 +263,8 @@ lab:
     | 속성 | 값    |
     |:---------|:---------|
     | Subscription | **구독 선택** |
-    | Resource group | **az04-rg4** |
-    | 이름 | `contoso.com`(예약된 경우 이름 조정) |
+    | Resource group | **az-104-rg4** |
+    | 속성 | `contoso.com`(예약된 경우 이름 조정) |
     | 지역 |**미국 동부**(정보 아이콘 검토) |
 
 1. **검토 만들기**, **만들기**를 차례로 선택합니다.
@@ -306,8 +306,8 @@ lab:
     | 속성 | 값    |
     |:---------|:---------|
     | Subscription | **구독 선택** |
-    | Resource group | **az04-rg4** |
-    | 이름 | `private.contoso.com`(이름을 바꿔야 하는 경우 조정) |
+    | Resource group | **az-104-rg4** |
+    | 속성 | `private.contoso.com`(이름을 바꿔야 하는 경우 조정) |
     | 지역 |**미국 동부** |
 
 1. **검토 만들기**, **만들기**를 차례로 선택합니다.
@@ -343,7 +343,23 @@ lab:
 + Azure Portal에서 리소스 그룹을 선택하고 **리소스 그룹 삭제**, **리소스 그룹 이름 입력**을 선택한 다음 **삭제**를 클릭합니다.
 + Azure PowerShell 사용, `Remove-AzResourceGroup -Name resourceGroupName`.
 + CLI 사용, `az group delete --name resourceGroupName`.
- 
+
+## Copilot을 사용하여 학습 확장
+
+Copilot은 Azure 스크립팅 도구를 사용하는 방법을 익히는 데 도움을 줍니다. 또한 Copilot은 랩에서 다루지 않는 영역이나 추가 정보가 필요한 영역을 지원할 수 있습니다. Edge 브라우저를 열고 Copilot(오른쪽 위)을 선택하거나 *copilot.microsoft.com*으로 이동하세요. 몇 분 정도 시간을 내어 이러한 프롬프트를 사용해 보세요.
++ Azure에서 가상 네트워크를 배포하고 구성할 때 상위 10가지 모범 사례를 공유합니다.
++ Azure PowerShell 및 Azure CLI 명령을 사용하여 공용 IP 주소와 하나의 서브넷이 있는 가상 네트워크를 만들려면 어떻게 해야 하나요? 
++ Azure 네트워크 보안 그룹 인바운드 및 아웃바운드 규칙과 사용 방법을 설명합니다.
++ Azure 네트워크 보안 그룹과 Azure 애플리케이션 보안 그룹의 차이점은 무엇인가요? 각 그룹을 언제 사용해야 하는지에 대한 예를 공유합니다. 
++ Azure에 네트워크를 배포할 때 직면하는 네트워크 문제를 해결하는 방법에 대한 단계별 가이드를 제공합니다. 또한 문제 해결의 모든 단계에 사용되는 사고 과정을 공유합니다.
+
+## 자기 주도적 학습을 통해 자세히 알아보기
+
++ [Azure Virtual Network 소개](https://learn.microsoft.com/training/modules/introduction-to-azure-virtual-networks/). 가상 네트워크, 공용 및 개인 IP, DNS, 가상 네트워크 피어링, 라우팅, Azure Virtual NAT 등 핵심 Azure 네트워킹 인프라를 설계하고 구현합니다.
++ [IP 주소 지정 체계를 설계합니다](https://learn.microsoft.com/training/modules/design-ip-addressing-for-azure/). Azure 및 온-프레미스 가상 네트워크의 개인 IP 및 공용 IP 주소 지정 기능을 식별합니다.
++ [네트워크 보안 그룹 및 서비스 엔드포인트를 사용하여 Azure 리소스에 대한 액세스를 보호 및 격리합니다](https://learn.microsoft.com/training/modules/secure-and-isolate-with-nsg-and-service-endpoints/). 네트워크 보안 그룹과 서비스 엔드포인트를 통해 무단 네트워크 액세스로부터 가상 머신과 Azure 서비스를 보호할 수 있습니다.
++ [Azure DNS에서 도메인을 호스팅합니다](https://learn.microsoft.com/training/modules/host-domain-azure-dns/). 도메인 이름에 대한 DNS 영역을 만듭니다. 도메인을 IP 주소에 매핑하는 DNS 레코드를 만듭니다. 도메인 이름이 웹 서버로 확인되는지 테스트합니다.
+  
 ## 핵심 내용
 
 축하합니다. 랩을 완료했습니다. 이 랩의 주요 내용은 다음과 같습니다. 
@@ -354,11 +370,3 @@ lab:
 + 네트워크 보안 그룹에는 네트워크 트래픽을 허용하거나 거부하는 보안 규칙이 포함되어 있습니다. 필요에 따라 사용자 지정할 수 있는 기본 수신 및 발신 규칙이 있습니다.
 + 애플리케이션 보안 그룹은 웹 서버 또는 데이터베이스 서버와 같은 공통 함수를 가진 서버 그룹을 보호하는 데 사용됩니다.
 + Azure DNS는 이름 확인을 제공하는 DNS 도메인용 호스팅 서비스입니다. 공용 도메인에서 호스트 이름을 확인하기 위한 Azure DNS를 구성할 수 있습니다.  프라이빗 DNS 영역을 사용하여 Azure Virtual Network의 VM(가상 머신)에 DNS 이름을 할당할 수도 있습니다.
-
-## 자기 주도적 학습을 통해 자세히 알아보기
-
-+ [Azure Virtual Network 소개](https://learn.microsoft.com/training/modules/introduction-to-azure-virtual-networks/). 가상 네트워크, 공용 및 개인 IP, DNS, 가상 네트워크 피어링, 라우팅, Azure Virtual NAT 등 핵심 Azure 네트워킹 인프라를 설계하고 구현합니다.
-+ [IP 주소 지정 체계를 설계합니다](https://learn.microsoft.com/training/modules/design-ip-addressing-for-azure/). Azure 및 온-프레미스 가상 네트워크의 개인 IP 및 공용 IP 주소 지정 기능을 식별합니다.
-+ [네트워크 보안 그룹 및 서비스 엔드포인트를 사용하여 Azure 리소스에 대한 액세스를 보호 및 격리합니다](https://learn.microsoft.com/training/modules/secure-and-isolate-with-nsg-and-service-endpoints/). 네트워크 보안 그룹과 서비스 엔드포인트를 통해 무단 네트워크 액세스로부터 가상 머신과 Azure 서비스를 보호할 수 있습니다.
-+ [Azure DNS에서 도메인을 호스팅합니다](https://learn.microsoft.com/training/modules/host-domain-azure-dns/). 도메인 이름에 대한 DNS 영역을 만듭니다. 도메인을 IP 주소에 매핑하는 DNS 레코드를 만듭니다. 도메인 이름이 웹 서버로 확인되는지 테스트합니다.
-  

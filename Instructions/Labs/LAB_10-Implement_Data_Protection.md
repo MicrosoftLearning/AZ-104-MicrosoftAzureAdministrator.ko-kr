@@ -284,6 +284,18 @@ lab:
 + Azure PowerShell 사용, `Remove-AzResourceGroup -Name resourceGroupName`.
 + CLI 사용, `az group delete --name resourceGroupName`.
 
+## Copilot을 사용하여 학습 확장
+Copilot은 Azure 스크립팅 도구를 사용하는 방법을 익히는 데 도움을 줍니다. 또한 Copilot은 랩에서 다루지 않는 영역이나 추가 정보가 필요한 영역을 지원할 수 있습니다. Edge 브라우저를 열고 Copilot(오른쪽 위)을 선택하거나 *copilot.microsoft.com*으로 이동하세요. 몇 분 정도 시간을 내어 이러한 프롬프트를 사용해 보세요.
+
++ Azure Backup은 어떤 제품을 지원하나요?
++ Azure Backup을 사용하여 Azure 가상 머신을 백업하고 복원하는 단계를 요약합니다.
++ Azure PowerShell 또는 CLI를 사용하여 Azure Backup 작업의 상태를 확인하려면 어떻게 해야 하나요?
++ Azure 가상 머신 백업을 구성하기 위한 5가지 이상의 모범 사례를 제공합니다.  
+
+## 자기 주도적 학습을 통해 자세히 알아보기
+
++ [Azure Backup을 사용하여 가상 머신 보호](https://learn.microsoft.com/training/modules/protect-virtual-machines-with-azure-backup/) Azure Backup을 사용하여 온-프레미스 서버, 가상 머신, SQL Server, Azure 파일 공유 및 기타 워크로드를 보호할 수 있습니다.
++ [Azure Site Recovery를 사용하여 Azure 인프라 보호](https://learn.microsoft.com/en-us/training/modules/protect-infrastructure-with-site-recovery/). Azure Site Recovery를 사용하여 Azure 가상 머신의 복제, 장애 조치(failover), 장애 복구(failback)를 사용자 지정하여 Azure 인프라에 대한 재해 복구를 제공합니다.
 
 ## 핵심 내용
 
@@ -295,8 +307,3 @@ lab:
 + Azure Site Recovery는 가상 머신 및 애플리케이션에 대한 보호를 제공하는 재해 복구 솔루션입니다.
 + Azure Site Recovery는 워크로드를 보조 사이트에 복제하고, 가동 중단이나 재해가 발생하는 경우 보조 사이트로 장애 조치(failover)하고 가동 중지 시간을 최소화하면서 작업을 다시 시작할 수 있습니다.
 + Recovery Services 자격 증명 모음은 백업 데이터를 저장하고 관리 오버헤드를 최소화합니다.
-
-## 자기 주도적 학습을 통해 자세히 알아보기
-
-+ [Azure Backup을 사용하여 가상 머신 보호](https://learn.microsoft.com/training/modules/protect-virtual-machines-with-azure-backup/) Azure Backup을 사용하여 온-프레미스 서버, 가상 머신, SQL Server, Azure 파일 공유 및 기타 워크로드를 보호할 수 있습니다.
-+ [Azure Site Recovery를 사용하여 Azure 인프라 보호](https://learn.microsoft.com/en-us/training/modules/protect-infrastructure-with-site-recovery/). Azure Site Recovery를 사용하여 Azure 가상 머신의 복제, 장애 조치(failover), 장애 복구(failback)를 사용자 지정하여 Azure 인프라에 대한 재해 복구를 제공합니다.

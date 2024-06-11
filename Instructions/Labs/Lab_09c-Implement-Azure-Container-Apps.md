@@ -75,6 +75,15 @@ Azure Container Apps는 관리되는 Kubernetes 클러스터의 개념을 한 �
 + Azure PowerShell 사용, `Remove-AzResourceGroup -Name resourceGroupName`.
 + CLI 사용, `az group delete --name resourceGroupName`.
 
+## Copilot을 사용하여 학습 확장
+Copilot은 Azure 스크립팅 도구를 사용하는 방법을 익히는 데 도움을 줍니다. 또한 Copilot은 랩에서 다루지 않는 영역이나 추가 정보가 필요한 영역을 지원할 수 있습니다. Edge 브라우저를 열고 Copilot(오른쪽 위)을 선택하거나 *copilot.microsoft.com*으로 이동하세요. 몇 분 정도 시간을 내어 이러한 프롬프트를 사용해 보세요.
+
++ Azure 컨테이너 앱을 만들고 구성하는 단계를 요약합니다.
++ Azure Container Apps와 Azure Kubernetes Service를 비교하고 대조합니다.
+
+## 자기 주도적 학습을 통해 자세히 알아보기
+
++ [Azure Container Apps에서 Container Apps를 구성합니다](https://learn.microsoft.com/training/modules/configure-container-app-azure-container-apps/). Azure Container Apps의 기능을 살펴본 후 Azure Container Apps를 사용하여 Container Apps를 만들기, 구성, 크기 조정 및 관리하는 방법에 중점을 둡니다.
 
 
 ## 핵심 내용
@@ -85,7 +94,4 @@ Azure Container Apps는 관리되는 Kubernetes 클러스터의 개념을 한 �
 + Container Apps는 서버 구성, 컨테이너 오케스트레이션 및 배포 세부 정보를 제공합니다. 
 + ACA의 워크로드는 일반적으로 웹앱과 같이 장기 실행 프로세스입니다.
 
-## 자기 주도적 학습을 통해 자세히 알아보기
-
-+ [Azure Container Apps에서 Container Apps를 구성합니다](https://learn.microsoft.com/training/modules/configure-container-app-azure-container-apps/). Azure Container Apps의 기능을 살펴본 후 Azure Container Apps를 사용하여 Container Apps를 만들기, 구성, 크기 조정 및 관리하는 방법에 중점을 둡니다.
      

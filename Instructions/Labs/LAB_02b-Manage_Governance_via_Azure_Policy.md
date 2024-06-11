@@ -231,6 +231,8 @@ lab:
 
     ![메시지 삭제 실패 스크린샷](../media/az104-lab02b-failuretodelete.png) 
 
+    >**참고:** 리소스 그룹을 삭제하려면 잠금을 제거해야 합니다. 
+    
 ## 리소스 정리
 
 **고유의 구독**으로 작업하는 경우 랩 리소스를 삭제해 보세요. 이렇게 하면 리소스가 확보되고 비용이 최소화됩니다. 랩 리소스를 삭제하려면 랩 리소스 그룹을 삭제하는 것이 가장 쉽습니다. 
@@ -238,6 +240,17 @@ lab:
 + Azure Portal에서 리소스 그룹을 선택하고 **리소스 그룹 삭제**, **리소스 그룹 이름 입력**을 선택한 다음 **삭제**를 클릭합니다.
 + Azure PowerShell 사용, `Remove-AzResourceGroup -Name resourceGroupName`.
 + CLI 사용, `az group delete --name resourceGroupName`.
+
+## Copilot을 사용하여 학습 확장
+Copilot은 Azure 스크립팅 도구를 사용하는 방법을 익히는 데 도움을 줍니다. 또한 Copilot은 랩에서 다루지 않는 영역이나 추가 정보가 필요한 영역을 지원할 수 있습니다. Edge 브라우저를 열고 Copilot(오른쪽 위)을 선택하거나 *copilot.microsoft.com*으로 이동하세요. 몇 분 정도 시간을 내어 이러한 프롬프트를 사용해 보세요.
++ 리소스 그룹에서 리소스 잠금을 추가하고 삭제하기 위한 Azure PowerShell 및 CLI 명령은 무엇인가요?
++ Azure Policy와 Azure RBAC 간의 차이점을 표로 작성하고 예를 포함합니다.
++ Azure Policy를 적용하고 규정을 준수하지 않는 리소스를 수정하는 단계는 무엇인가요?
++ 특정 태그가 포함된 Azure 리소스 보고서를 가져오려면 어떻게 해야 하나요?
+
+## 자기 주도적 학습을 통해 자세히 알아보기
+
++ [엔터프라이즈 거버넌스 전략 디자인](https://learn.microsoft.com/training/modules/enterprise-governance/) RBAC 및 Azure Policy를 사용하여 Azure 솔루션에 대한 액세스를 제한하고 보안 목표에 적합한 방법을 결정합니다.
 
 ## 핵심 내용
 
@@ -247,10 +260,5 @@ lab:
 + Azure Policy는 리소스에 대한 규칙을 설정합니다. 정책 정의는 리소스 규정 준수 조건 및 조건 충족 시 미치는 영향을 설명합니다. 조건은 리소스 속성 필드 또는 값을 필요한 값과 비교합니다. 많은 기본 제공 정책 정의가 있으며 정책을 사용자 지정할 수 있습니다. 
 + Azure Policy 수정 작업 기능은 정의 및 할당에 따라 리소스를 준수 상태로 만드는 데 사용됩니다. 수정 또는 deployIfNotExist 정의 할당을 준수하지 않는 리소스는 수정 작업을 사용하여 규정 준수로 가져올 수 있습니다.
 + 구독, 리소스 그룹 또는 리소스에 대한 리소스 잠금을 구성할 수 있습니다. 잠금은 실수로 사용자가 삭제하거나 수정하는 것으로부터 리소스를 보호할 수 있습니다. 잠금은 모든 사용자 권한보다 우선합니다.
-+ Azure Policy는 배포 전 보안 방식입니다. RBAC 및 리소스 잠금은 배포 후 보안 방식입니다. 
-
-## 자기 주도적 학습을 통해 자세히 알아보기
-
-+ [엔터프라이즈 거버넌스 전략 디자인](https://learn.microsoft.com/training/modules/enterprise-governance/) RBAC 및 Azure Policy를 사용하여 Azure 솔루션에 대한 액세스를 제한하고 보안 목표에 적합한 방법을 결정합니다.
-  
++ Azure Policy는 배포 전 보안 방식입니다. RBAC 및 리소스 잠금은 배포 후 보안 방식입니다.
 

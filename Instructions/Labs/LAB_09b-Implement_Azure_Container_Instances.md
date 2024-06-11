@@ -95,6 +95,15 @@ lab:
 + Azure PowerShell 사용, `Remove-AzResourceGroup -Name resourceGroupName`.
 + CLI 사용, `az group delete --name resourceGroupName`.
 
+## Copilot을 사용하여 학습 확장
+Copilot은 Azure 스크립팅 도구를 사용하는 방법을 익히는 데 도움을 줍니다. 또한 Copilot은 랩에서 다루지 않는 영역이나 추가 정보가 필요한 영역을 지원할 수 있습니다. Edge 브라우저를 열고 Copilot(오른쪽 위)을 선택하거나 *copilot.microsoft.com*으로 이동하세요. 몇 분 정도 시간을 내어 이러한 프롬프트를 사용해 보세요.
+
++ Azure Container Instance를 만들고 구성하는 단계를 요약합니다.
++ Azure에서 서버리스 컨테이너를 실행할 수 있는 방법은 무엇인가요?
+
+## 자기 주도적 학습을 통해 자세히 알아보기
+
++ [Azure Container Instances에서 컨테이너 이미지를 실행합니다](https://learn.microsoft.com/training/modules/create-run-container-images-azure-container-instances/). Azure Container Instances를 사용하여 컨테이너를 신속하게 배포하고, 환경 변수를 설정하고, 컨테이너 재시작 정책을 지정하는 방법을 알아봅니다.
 
 ## 핵심 내용
 
@@ -104,9 +113,5 @@ lab:
 + ACI에서는 기본 인프라를 프로비전하거나 관리할 필요가 없습니다.
 + ACI는 Linux 컨테이너와 Windows 컨테이너를 모두 지원합니다.
 + ACI의 워크로드는 일반적으로 일종의 프로세스나 트리거에 의해 시작 및 중지되며 일반적으로 수명이 짧습니다. 
-
-## 자기 주도적 학습을 통해 자세히 알아보기
-
-+ [Azure Container Instances에서 컨테이너 이미지를 실행합니다](https://learn.microsoft.com/training/modules/create-run-container-images-azure-container-instances/). Azure Container Instances를 사용하여 컨테이너를 신속하게 배포하고, 환경 변수를 설정하고, 컨테이너 재시작 정책을 지정하는 방법을 알아봅니다.
 
     
