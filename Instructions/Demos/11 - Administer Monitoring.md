@@ -1,52 +1,52 @@
 ---
 demo:
-  title: '데모 11: 관리 모니터링 등록'
-  module: Administer Monitoring
+    title: 'Demonstration 11: Administer Monitoring'
+    module: 'Administer Monitoring'
 ---
 
-# 11 - 모니터링 관리
+# 11 - Administer Monitoring
 
-## Azure 경고 구성
+## Configure Azure Alerts
 
-이 데모에서는 경고 규칙을 만듭니다.
+In this demonstration, we will create an alert rule.
 
-**참조**: [Azure Monitor를 사용하여 메트릭 경고 만들기, 보기 및 관리](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-metric)
+**Reference**: [Create, view, and manage Metric Alerts Using Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-metric)
 
-**경고 규칙 만들기**
+**Create an alert rule**
 
-1. Azure Portal 사용
+1. Use the Azure portal.
 
-1. 모니터**를 검색하고 선택한 다음 **경고를** 선택합니다**.
+1. Search for and select **Monitor** and then **Alerts**.
 
-1. 경고 규칙의 범위를 선택합니다. 구독, 리소스 종류 또는 리소스 위치를 필터링하는 방법을 설명합니다.
+1. Select a scope for the alert rule. Discuss how You can filter by subscription, resource type, or resource location.
 
-1. 경고 규칙에 대한 조건을 설정합니다. 신호가 측정하려는 항목을 정의하는 방법을 설명합니다. 
+1. Set the conditions for the alert rule. Discuss how signals define what you want to measure. 
 
-1. 경고 규칙에 대한 작업을 설정합니다. 작업 그룹 및 사용 가능한 알림 유형을 검토합니다. 
+1. Set the actions for the alert rule. Review action groups and the type of notifications that are available. 
 
-1. 경고 규칙에 대한 세부 정보를 설정합니다. 심각도와 같은 일반적인 세부 정보를 검토합니다. 
+1. Set the details for the alert rule. Review common details like severity. 
 
-1. 경고 구성을 완료하고 발생한 경고를 검토합니다. 
+1. Finish configuring your alert and review any alerts which have fired. 
 
-## Log Analytics 구성
+## Configure Log Analytics
 
-이 데모에서는 Log Analytics 쿼리 언어로 작업합니다.
+In this demonstration, you will work with the Log Analytics query language.
 
-1. Azure Portal 사용
+1. Use the Azure portal.
 
-1. 모니터**를 검색하고 선택한 다음 **로그를** 선택합니다**.
+1. Search for and select **Monitor** and then **Logs**.
 
-1. 표시된 경우 시작 화면을 닫습니다.
+1. If shown, close the splash screen.
 
-1. 범위를 **선택하고 변경 내용을 적용** 합니다. 
+1. Select a scope and **apply** your changes. 
 
-1. 로그 정보가 테이블에서 어떻게 구성되는지 검토합니다. 여러 테이블을 찾습니다.
+1. Review how log information is organized in tables. Browse several of the tables.
 
-1. 쿼리** 탭으로 **이동합니다. 쿼리**를 선택하고 편집**기로 로드합니다. 이미 생성된 일반적인 쿼리 수에 대해 설명합니다.
+1. Move to the **queries** tab. Select a query and **load to editor**. Discuss how many common queries have already been created.
 
-1. KQL 구문을 간략하게 검토합니다. 
+1. Briefly review the KQL syntax. 
 
-1. 시간이 지남에 따라 즐겨찾기 및 **저장된 쿼리를** 실험**해 볼 수 있습니다**.
+1. As you have time, experiment with **Favorites** and **Saved Queries**.
 
 
 

@@ -1,67 +1,67 @@
 ---
 demo:
-  title: '데모 08: 관리 Azure Virtual Machines 등록'
-  module: Administer Azure Virtual Machines
+    title: 'Demonstration 08: Administer Azure Virtual Machines'
+    module: 'Administer Azure Virtual Machines'
 ---
 
 
-# 08 - Azure Virtual Machines 관리 등록
+# 08 - Administer Azure Virtual Machines
 
-## 데모 -- 포털에서 Virtual Machines 만들기
+## Demonstration -- Create Virtual Machines in the portal
 
-이 데모에서는 포털에서 Azure 가상 머신을 만들고 액세스합니다.
+In this demonstration, we will create and access an Azure virtual machine in the portal.
 
-**참조**
+**References**
 
-[빠른 시작 - Azure Portal에서 Windows VM 만들기](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
+[Quickstart - Create a Windows VM in the Azure portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
 
-[빠른 시작 - Azure Portal에서 Linux VM 만들기](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal)
+[Quickstart - Create a Linux VM in the Azure portal](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal)
 
-[Bastion을 사용하여 가상 머신에 커넥트](https://learn.microsoft.com/azure/bastion/tutorial-create-host-portal#connect)
+[Connect to a virtual machine with Bastion](https://learn.microsoft.com/azure/bastion/tutorial-create-host-portal#connect)
 
-**가상 머신 만들기**
+**Create the virtual machine**
 
-**참고: **이러한 단계는 몇몇 가상 머신 매개 변수만 다룹니다. 다른 영역을 자유롭게 탐색하고 다룰 수 있습니다. 대상 그룹에 따라 Windows 또는 Linux 가상 머신을 만들 수 있습니다.
+**Note:** These steps only cover a few virtual machine parameters. Feel free to explore and cover other areas. You can create either Windows or Linux virtual machine, depending on your audience.
 
-1. Azure Portal 사용
+1. Use the Azure portal.
 
-1. 가상 머신을 **검색합니다**. 
+1. Search for **Virtual machines**. 
 
-1. 기본 가상 머신을 만듭니다. 가용성 옵션, 이미지 및 인바운드 규칙을 검토합니다.
+1. Create a basic virtual machine. Review the availability options, images, and inbound rules.
 
-1. 보안 관리자 계정을 만드는 것의 중요성에 대해 설명합니다.
+1. Discuss the importance of creating a secure administrator account.
 
-1. 가상 머신을 만들고 리소스가 배포되기를 기다립니다.  
+1. Create the virtual machine and wait for the resource to deploy.  
 
-**가상 머신에 연결**
+**Connect to the virtual machine**
 
-1. 가상 머신에 **커넥트** 방법에는 여러 가지가 있습니다. 
+1. There are several ways to **Connect** to the virtual machine. 
 
-1. Windows 서버의 경우 빠른 시작에 표시된 대로 RDP**를 사용할 **수 있습니다. 
+1. For a Windows server you can use **RDP**, as shown in the QuickStart. 
 
-1. Linux 서버의 경우 빠른 시작에 표시된 대로 SSH**를 수행할 수 있습니다**. 
+1. For a Linux server you can **SSH**, as shown in the QuickStart. 
 
-1. 두 서버 모두 Bastion** 서비스(빠른 시작)에 **연결할 수 있습니다. Bastion이 RDP 또는 SSH에 선호되는 이유를 검토합니다. 
+1. For either server you can connect with the **Bastion** service (QuickStart). Review why Bastion is preferred to RDP or SSH. 
 
-## 가상 머신 가용성 구성
+## Configure Virtual Machine Availability
 
-이 데모에서는 가상 머신 크기 조정 옵션을 살펴봅니다.
+In this demonstration, we will explore virtual machine scaling options.
 
-**참조**
+**References**
 
-[Azure Portal을 사용하여 확장 집합에 가상 머신 만들기](https://learn.microsoft.com/azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal)
+[Create virtual machines in a scale set using Azure portal](https://learn.microsoft.com/azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal)
 
-1. Azure Portal을 사용합니다.
+1. Use the Azure Portal.
 
-1. Virtual Machine Scale Sets**를 검색하여 선택합니다**. 
+1. Search for and select **Virtual Machine Scale Sets**. 
 
-1. Virtual Machine Scale Sets를 **만듭니다**. 가상 머신 확장 집합의 용도를 검토합니다. Uniform 및 Flexible** 오케스트레이션 모드 간의 **차이점을 검토**합니다.** 선택 항목에 대해 설명하면 크기 조정 옵션에 영향을 줄 수 있습니다. 
+1. Create a **Virtual Machine Scale Sets**. Review the purpose of virtual machine scale sets. Review the difference between the **Uniform** and **Flexible** orchestration modes. Explain your selection can affect your scaling options. 
 
-1. 크기 조정 ** 탭으로**이동합니다. 
+1. Move to **Scaling** tab. 
 
-1. 수동 크기 조정  **및 **규모 감축 정책이** 사용되는 방법을**검토합니다. 
+1. Review how **Manual scale** and **Scale-in policy** is used. 
 
-1. 사용자 지정** 크기 조정 정책으로 **변경합니다. 
+1. Change to a **Custom** scaling policy. 
 
-1. 가상 머신 인스턴스에서 CPU 임계값(%)**을 사용하여 규모 확장 및 스케일링하는 방법을 **검토합니다. 
+1. Review how **CPU threshold (%)** is used to scale out and scale in the virtual machine instances. 
 

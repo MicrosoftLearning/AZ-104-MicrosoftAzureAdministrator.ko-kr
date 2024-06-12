@@ -1,70 +1,71 @@
 ---
 demo:
-  title: '데모 05: 관리사이트 간 커넥트성 등록'
-  module: Administer Intersite Connectivity
+    title: 'Demonstration 05: Administer Intersite Connectivity'
+    module: 'Administer Intersite Connectivity'
 ---
 
-# 05 - 사이트 간 커넥트 관리 등록
+# 05 - Administer Intersite Connectivity
 
-## VNet 피어링 구성
+## Configure VNet Peering
 
-**참고:** 이 데모의 경우 두 개의 가상 네트워크가 필요합니다.
+**Note:** For this demonstration you will need two virtual networks.
 
-**참조**: [VNet 피어링을 사용하여 가상 네트워크 커넥트 - 자습서](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-portal)
+**Reference**: [Connect virtual networks with VNet peering - tutorial](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-portal)
 
-**첫 번째 가상 네트워크에서 VNet 피어링 구성**
+**Configure VNet peering on the first virtual network**
 
-1. Azure ** Portal에서**첫 번째 가상 네트워크를 선택합니다. 피어링 값을 검토합니다. 
+1. In the **Azure portal**, select the first virtual network. Review the value of peering. 
 
-1. 설정 아래에서 ** 피어링을 ** **선택하고**+ 새 피어링을 추가**** 합니다.
+1. Under **Settings**, select **Peerings** and **+ Add** a new peering.
 
-1. 두 번째 가상 네트워크 피어링을 구성합니다. 정보 아이콘을 사용하여 다른 설정을 검토합니다. 
+1. Configure the peering the second virtual network. Use the information icons to review the different settings. 
 
-1. 피어링이 완료되면 피어링 상태** 검토**합니다. 
+1. When the peering is complete, review the **Peering status**. 
 
-**두 번째 가상 네트워크에서 VNet 피어링 확인**
+**Confirm VNet peering on the second virtual network**
 
-1. Azure ** Portal에서**두 번째 가상 네트워크를 선택합니다.
+1. In the **Azure portal**, select the second virtual network
 
-1.  **설정 아래에서** 피어링을 ** 선택합니다**.
+1. Under **Settings**, select **Peerings**.
 
-1. 피어링이 자동으로 만들어졌습니다.  **피어링 상태가 ****  커넥트.**
+1. Notice that a peering has automatically been created. Notice that the **Peering Status** is **Connected**.
 
-1. 랩에서 학생들은 피어링을 만들고 가상 머신 간의 연결을 테스트합니다. 
+1. In the lab, students will create peering and test the connection between virtual machines. 
 
-## 네트워크 라우팅 및 엔드포인트 구성
+## Configure Network Routing and Endpoints
 
-본 데모에서는 경로 테이블을 만들고, 사용자 지정 경로를 정의하고, 경로를 서브넷과 연결하는 방법을 배웁니다.
+In this demonstration, we will learn how to create a route table, define
+a custom route, and associate the route with a subnet.
 
-**참고:** 이 데모에는 하나 이상의 서브넷이 있는 가상 네트워크가 필요합니다.
+**Note:** This demonstration requires a virtual network with at least one subnet.
 
-**참조**: [네트워크 트래픽 라우팅 - 자습서 - Azure Portal](https://learn.microsoft.com/azure/virtual-network/tutorial-create-route-table-portal#create-a-route-table)
+**Reference**: [Route network traffic - tutorial - Azure portal](https://learn.microsoft.com/azure/virtual-network/tutorial-create-route-table-portal#create-a-route-table)
 
-**라우팅 테이블 만들기**
+**Create a routing table**
 
-1. 시간이 지남에 따라 자습서 다이어그램을 검토합니다. 사용자 정의 경로를 만들어야 하는 이유를 설명합니다. 
+1. As you have time review the tutorial diagram. Explain why you need to create a user-defined route. 
 
-1. Azure Portal에 액세스합니다.
+1. Access the Azure portal.
 
-1. **경로 테이블**을 검색하여 선택합니다. 게이트웨이 경로를** 전파해야 하는 시기를 **설명합니다. 
+1. Search for and select **Route tables**. Discuss when **propagate gateway routes** should be used. 
 
-1. 라우팅 테이블을 만들고 일반적이지 않은 설정을 설명합니다. 
+1. Create a routing table, explain any uncommon settings. 
 
-1. 새 라우팅 테이블이 배포될 때까지 기다립니다.
+1. Wait for the new routing table to be deployed.
 
-**경로 추가**
+**Add a route**
 
-1.  새 라우팅 테이블을 선택한 다음 경로를 선택합니다 ****.
+1.  Select your new routing table, and then select **Routes**.
 
-1.  새 **경로를** 만듭니다. 사용할 수 있는 다양한 **홉 유형** 에 대해 설명합니다. 
+1.  Create a new **route**. Discuss the different **hop types** that are available. 
 
-1.  새 경로를 만들고 리소스가 배포될 때까지 기다립니다.
+1.  Create the new route and wait for the resource to be deployed.
  
-**경로 테이블을 서브넷에 연결**
+**Associate a route table to a subnet**
 
-1.  라우팅 테이블과 연결할 서브넷으로 이동합니다.
+1.  Navigate to the subnet you want to associate with the routing table.
 
-1.  경로 테이블을 ** 선택하고**새 라우팅 테이블을 선택합니다. 
+1.  Select **Route table** and choose your new routing table. 
 
-1.  **변경 내용을 저장** 합니다.
+1.  **Save** your changes.
 
