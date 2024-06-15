@@ -1,65 +1,65 @@
 ---
 demo:
-  title: '데모 06: 관리네트워크 트래픽 관리 등록'
-  module: Administer Network Traffic Management
+    title: 'Demonstration 06: Administer Network Traffic Management'
+    module: 'Administer Network Traffic Management'
 ---
 
 
-# 06 - 관리 네트워크 트래픽 관리 등록
+# 06 - Administer Network Traffic Management
 
-## Azure Load Balancer 구성
+## Configure Azure Load Balancer
 
-이 데모에서는 공용 부하 분산 장치를 만드는 방법을 알아봅니다. 
+In this demonstration, we will learn how to create a public load balancer. 
 
-**참고:** 이 데모에는 하나 이상의 서브넷이 있는 가상 네트워크가 필요합니다. 
+**Note:** This demonstration requires a virtual network with at least one subnet. 
 
-**참조**: [빠른 시작: Azure Portal을 사용하여 VM 부하를 분산하는 공용 부하 분산 장치 만들기](https://learn.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)
+**Reference**: [Quickstart: Create a public load balancer to load balance VMs using the Azure portal](https://learn.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)
 
-**포털의 기능 선택 도움말 표시**
+**Show the portal's help me choose feature**
 
-1. Azure Portal에 액세스합니다.
+1. Access the Azure portal.
 
-1. 부하 분산을 검색하고 선택합니다 **. 선택**해 주세요.
+1. Search for and select **Load balancing - help me choose**.
 
-1. 마법사를 사용하여 다양한 시나리오를 연습합니다.
+1. Use the wizard to walk-through different scenarios.
    
-**부하 분산 장치 만들기**
+**Create a load balancer**
 
-1. Azure Portal에서 계속합니다.
+1. Continue in the Azure portal.
 
-1. 부하 분산** 장치를 검색하고 선택합니다**. **부하 분산 장치를 만듭니** 다. 
+1. Search for and select **Load balancer**. **Create** a load balancer. 
 
-1. 기본 사항 탭에서 **SKU **, **유형** 및 **계층에 대해 설명**합니다****.
+1. On the **Basics** tab, discuss **SKU**, **Type**, and **Tier**.
 
-1. 프런트 엔드 IP 구성** 탭에서 **공용 IP 주소 사용에 대해 설명합니다.
+1. On the **Frontend IP configuration** tab, discuss using a public IP address.
 
-1. 백 엔드 풀** 탭에서 **IP 주소 범위가 있는 가상 네트워크를 선택합니다.
+1. On the **Backend pools** tab, select the virtual network with IP address range.
 
-1. **인바운드 규칙** 탭에서 부하 분산 규칙을 만듭니다. 프로토콜 **, 포트****, **상태 프로브 및 **세션 지속성과 같은 **매개 변수에** 대해 설명합니다**. 
+1. On the **Inbound rules** tab, create a load balancing rule. Discuss parameters like **Protocol**, **Ports**, **Health probes**, and **Session persistence**. 
 
 
-## Azure Application Gateway 구성
+## Configure Azure Application Gateway
 
-이 데모에서는 Azure 애플리케이션 게이트웨이를 만드는 방법을 알아봅니다. 
+In this demonstration, we will learn how to create an Azure Application Gateway. 
 
-**참고**: 작업을 간단하게 유지하려면 구성을 진행하면서 새 가상 네트워크 및 서브넷을 만듭니다. 
+**Note**: To keep things simple, create new virtual networks and subnets as you go through the configuration. 
 
-**참조**: [빠른 시작: Azure 애플리케이션 Gateway를 사용하여 웹 트래픽 직접 - Azure Portal](https://learn.microsoft.com/azure/application-gateway/quick-create-portal)
+**Reference**: [Quickstart: Direct web traffic with Azure Application Gateway - Azure portal](https://learn.microsoft.com/azure/application-gateway/quick-create-portal)
 
-**Azure 애플리케이션 게이트웨이 만들기**
+**Create the Azure Application Gateway**
 
-1. Azure Portal에 액세스합니다.
+1. Access the Azure portal.
 
-1. Azure 애플리케이션 게이트웨이**를 검색하고 선택합니다**.
+1. Search for and select **Azure Application Gateway**.
 
-1. **새 게이트웨이를 만듭니** 다.
+1. **Create** a new gateway.
 
-1. 기본 사항 탭에서 **계층 **, **자동 크기 조정** 및 **인스턴스 수에 대해 설명**합니다**.**
+1. On the **Basics** tab, discuss **Tiers**, **Autoscaling**, and **Instance counts**.
 
-1. 프런트 엔드** 탭에서 **IP 주소 유형에 대해 설명합니다.
+1. On the **Frontends** tab, discuss the IP address types.
 
-1. 백 엔드 탭에서 **빈 백 엔드 풀을 사용하는 시기를 설명합니다** .
+1. On the **Backends** tab, discuss when to use an empty backend pool.
 
-1. 구성** 탭에서 **라우팅 규칙에 대해 설명합니다. 부하 분산 장치 규칙과 비교합니다.
+1. On the **Configuration** tab, discuss routing rules. Compare to the load balancer rules.
 
-1. 게이트웨이를 만든 후 백 엔드 대상을 추가하고 테스트한다고 설명합니다. 
+1. Explain that after gateway is created, you would then add backend targets and test. 

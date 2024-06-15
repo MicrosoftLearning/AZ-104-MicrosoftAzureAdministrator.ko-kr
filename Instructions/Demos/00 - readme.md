@@ -1,27 +1,27 @@
 ---
 demo:
-  title: 데모 지침
-  module: All
+    title: 'Demonstration Instructions'
+    module: 'All'
 ---
 
-# 목적
+# Purpose
 
-이 디렉터리에서는 AZ-104 Azure 관리istrator 과정에 대한 강사 데모를 제공합니다. **모든 데모를 수행하는 것은 아닙니다. 대상 그룹에 가장 적용 가능한 대상을 선택합니다.**
+This directory provides instructor demonstrations for the AZ-104 Azure Administrator course. **It is not intended for you to do every demonstration. Pick the ones most applicable to your audience.**
 
-# 고려해야 할 사항
+# Things to think about
 
-- 대부분의 영역에 데모가 있습니다. 시간을 내어 각 작업을 살펴보고 어떤 것을 사용할지 결정합니다. 데모 중 일부는 간단한 쇼로서 Azure Portal를 살펴봅니다. 다른 일부 데모에서는 스크립팅 기술이 필요합니다.
+- Most areas have a demonstration. Take the time to work through each one and decide which to use. Some of the demonstrations are simple show and tell walk-throughs of the Azure portal; others require scripting skills.
 
-- 데모를 수행하거나 학생들의 "드라이브"중 하나를 가지고 단계를 통해 그들을 코치할 때 학생들이 따라가도록 하는 것이 좋습니다.
+- Consider having the students follow along as you do the demonstration or have one of the students' "drive" and coach them through the steps.
 
-- 먼저 데모를 수행한 다음 슬라이드를 사용하여 질문에 답하고 모든 항목을 교육하는지 확인합니다.
+- Consider doing the demonstration first and then using the slides to answer questions and ensure everything is covered.
 
-- 공식 랩과의 겹침을 고려하고 시간을 최대한 활용합니다.
+- Consider the overlap with the formal labs and make the best use of your time.
 
-- 이러한 데모는 Azure 관리 환경을 갖춘 강사를 위해 제공됩니다. 단계는 학생들이 수행할 과정 랩보다 높은 수준입니다.
+- These demonstrations are provided for an instructor with Azure administration experience. The steps are at a higher level than the course labs that students will perform.
 
-- 이러한 데모는 학생을 표시하는 최소한의 기능 집합을 제공합니다. 시간이 지남에 따라 더 많은 것을 추가하고, 보여주고, 토론할 수 있습니다.
+- These demonstrations provide a minimal set of features to show your students. As time permits feel free to add, show, and discuss more things.
 
-- *요약 및 리소스* 페이지는 Learn 샌드박스를 사용할 수 있는 위치를 식별합니다. 샌드박스를 사용하여 학생들에게 단계를 안내하는 것이 좋습니다.
+- The *Summary and Resources* page identifies where Learn sandboxes are available. Consider using a sandbox to walk students through the steps.
 
-- 데모 환경이 없는 경우 제공된 자습서 및 빠른 시작 페이지를 사용하는 것이 좋습니다. 
+- If you don't have a demonstration environment consider using the Tutorial and QuickStart pages that are provided. 

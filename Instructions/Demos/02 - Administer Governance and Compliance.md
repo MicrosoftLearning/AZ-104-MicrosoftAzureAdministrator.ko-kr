@@ -1,111 +1,112 @@
 ---
+
 demo:
-  title: '데모 02: 관리 거버넌스 및 규정 준수 등록'
-  module: Administer Governance and Compliance
+    title: 'Demonstration 02: Administer Governance and Compliance'
+    module: 'Administer Governance and Compliance'
 ---
 
-# 02 - 관리 거버넌스 및 규정 준수 등록
+# 02 - Administer Governance and Compliance
 
-## 구독 구성
+## Configure Subscriptions
 
-이 영역에는 공식 데모가 없습니다. 
+This area does not have a formal demonstration. 
 
-**참조**: [추가 Azure 구독 만들기](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription)
+**Reference**: [Create an additional Azure subscription](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription)
 
-## Azure Policy 구성
+## Configure Azure Policy
 
-이 데모에서는 Azure 정책을 사용합니다.
+In this demonstration, we will work with Azure policies.
 
-**참조**: [자습서: 규정 준수를 적용하는 정책 빌드 - Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+**Reference**: [Tutorial: Build policies to enforce compliance - Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-**정책 할당**
+**Assign a policy**
 
-1.  Azure Portal에 액세스합니다.
+1.  Access the Azure portal.
 
-2.  정책을 ** 검색하고 선택합니다**.
+2.  Search for and select **Policy**.
 
-3.  할당을 선택한 다음, 정책을** 할당합니다  **.****
+3.  Select **Assignments** and then **Assign Policy**.
 
-5.  정책 할당이 **적용되는 리소스 또는 리소스 그룹을 결정하는 범위에** 대해 설명합니다.
+5.  Discuss the **Scope** which determines what resources or grouping of resources the policy assignment is enforced on.
 
-6.   **정책 정의** 줄임표를 선택하여 사용 가능한 정의 목록을 엽니다. 기본 제공 정책 정의를 검토하는 데 약간의 시간이 소요됩니다.
+6.  Select the **Policy definition** ellipsis to open the list of available definitions. Take some time to review the built-in policy definitions.
 
-7.  허용된 위치 ** 정책을 검색하여 선택합니다**. 이 정책을 사용하면 조직에서 리소스를 배포할 때 지정할 수 있는 위치를 제한할 수 있습니다.
+7.  Search for and select the **Allowed locations** policy. This policy enables you to restrict the locations your organization can specify when deploying resources.
 
-8.  매개 변수 ** 탭을**이동하고 드롭다운을 사용하여 하나 이상의 허용된 위치를 선택합니다.
+8.  Move the **Parameters** tab and using the drop-down select one or more allowed locations.
 
-9.  검토 + 만들기  **를 클릭한 다음 **만들기** 를 클릭하여**정책을 만듭니다.
+9.  Click **Review + create** and then **Create** to create the policy.
 
-**이니셔티브 정의 만들기 및 할당**
+**Create and assign an initiative definition**
 
-1.  Azure Policy 페이지로 돌아가서 작성에서 정의를 ** 선택합니다**.
+1.  Return to the Azure Policy page and select **Definitions** under Authoring.
 
-2.  페이지 맨 위에서 이니셔티브 정의를 ** 선택합니다**.
+2.  Select **Initiative Definition** at the top of the page.
 
-3.   **이름** 및 **설명을** 제공합니다.
+3.  Provide a **Name** and **Description**.
 
-4.  **새** 범주를 만듭니다.
+4.  **Create new** Category.
 
-5.  오른쪽 패널 **에서 허용된 위치 정책을 추가** ** 합니다.** 
+5.  From the right panel **Add** the **Allowed locations** policy.
 
-6.  선택한 정책을 하나 더 추가합니다.
+6.  Add one additional policy of your choosing.
 
-7.  **변경 내용을 저장** 한 다음 **, 이니셔티브 정의를 구독에 할당** 합니다.
+7.  **Save** your changes and then **Assign** your initiative definition to your subscription.
 
-**규정 준수 확인**
+**Check for compliance**
 
-1.  Azure Policy 서비스 페이지로 돌아갑니다.
+1.  Return to the Azure Policy service page.
 
-2.  준수 **를 선택합니다**.
+2.  Select **Compliance**.
 
-3.  정책 및 정의의 상태 검토합니다.
+3.  Review the status of your policy and your definition.
 
-**수정 작업 확인**
+**Check for remediation tasks**
 
-1.  Azure Policy 서비스 페이지로 돌아갑니다.
+1.  Return to the Azure Policy service page.
 
-2.  수정 **을 선택합니다**.
+2.  Select **Remediation**.
 
-3.  나열된 수정 작업을 검토합니다.
+3.  Review any remediation tasks that are listed.
 
-4. 시간이 지남에 따라 정책과 이니셔티브를 제거합니다. 
+4. As you have time, remove the policy and the initiative. 
 
-## 역할 기반 액세스 제어 구성
+## Configure Role-Based Access Control
 
-이 데모에서는 역할 할당에 대해 알아봅니다.
+In this demonstration, we will learn about role assignments.
 
-**참조**: [자습서: Azure Portal을 사용하여 Azure 리소스에 대한 사용자 액세스 권한 부여 - Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+**Reference**: [Tutorial: Grant a user access to Azure resources using the Azure portal - Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
-**참조**: [빠른 시작 - Azure 리소스에 대한 사용자 액세스 확인 - Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/check-access)
+**Reference**: [Quickstart - Check access for a user to Azure resources - Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/check-access)
 
-**액세스 제어 창 찾기**
+**Locate Access Control blade**
 
-1.  Azure Portal에 액세스하고 리소스 그룹을 선택합니다. 어떤 리소스 그룹을 사용하는지 메모합니다.
+1.  Access the Azure portal and select a resource group. Make a note of what resource group you use.
 
-2.   **액세스 제어(IAM) 블레이드를**  선택합니다.
+2.  Select the **Access Control (IAM)** blade.
 
-3.  이 블레이드는 다양한 리소스에 사용할 수 있으므로 권한을 제어할 수 있습니다.
+3.  This blade will be available for many different resources so you can control permissions.
 
-**역할 권한 검토**
+**Review role permissions**
 
-1.  역할 ** 탭(위쪽)을**선택합니다.
+1.  Select the **Roles** tab (top).
 
-1.  사용할 수 있는 많은 기본 제공 역할을 검토합니다.
+1.  Review the large number of built-in roles that are available.
 
-1.  역할을 두 번 클릭한 다음 사용 권한(위쪽)을 **  선택합니다**.
+1.  Double-click a role, and then select **Permissions** (top).
 
-1.  해당 역할에 대한 읽기, 쓰기 및 삭제 ** 작업을 볼**수 있도록 역할을 계속 드릴다운합니다.
+1.  Continue drilling into the role until you can view the **Read, Write, and Delete** actions for that role.
 
-1.   **액세스 제어(IAM)**  블레이드로 돌아갑니다.
+1.  Return to the **Access Control (IAM)** blade.
 
-**역할 할당 추가**
+**Add a role assignment**
 
-1.  사용자를 만들거나 기존 사용자를 선택합니다.
+1.  Create a user or select an existing user.
 
-1.   **역할 할당** 추가를 선택하고 역할을 선택합니다. 예를 들어 소유자*입니다*.
+1.  Select **Add role assignment** and select a role. For example, *owner*.
 
-1.  액세스 ** 확인 선택**
+1.  Select **Check access**.
 
-1.  사용자 권한을 검토합니다.
+1.  Review the user permissions.
 
-1.  할당을 거부할 수 있습니다 ****.
+1.  Note that you can **Deny assignments**.

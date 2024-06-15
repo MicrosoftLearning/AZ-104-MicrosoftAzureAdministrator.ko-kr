@@ -1,77 +1,78 @@
 ---
+
 demo:
-  title: '데모 04: 가상 네트워킹 관리 등록'
-  module: Administer Virtual Networking
+    title: 'Demonstration 04: Administer Virtual Networking'
+    module: 'Administer Virtual Networking'
 ---
 
-# 04 - 가상 네트워킹 관리 등록
+# 04 - Administer Virtual Networking
 
-## Virtual Networks 구성
+## Configure Virtual Networks
 
-이 데모에서는 가상 네트워크를 만듭니다.
+In this demonstration, you will create virtual networks.
 
-**참조**: [빠른 시작: 가상 네트워크 만들기 - Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+**Reference**: [Quickstart: Create a virtual network - Azure portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
-## 포털에서 가상 네트워크 만들기
+## Create a virtual network in the portal
 
-1.  Azure Portal에 로그인하고 Virtual Network를 **검색합니다**.
+1.  Sign in the to the Azure portal and search for **Virtual Networks**.
 
-1.  가상 네트워크를 만들어 기본 설정을 설명합니다. 하나 이상의 서브넷이 생성되었는지 확인합니다. 
+1.  Create a virtual network, explaining the basic settings as you go. Ensure at least one subnet is created. 
 
-1.  가상 네트워크가 만들어졌는지 확인합니다.
+1.  Verify your virtual network was created.
 
-## 네트워크 보안 그룹 구성
+## Configure Network Security Groups
 
-이 데모에서는 NSG 및 서비스 엔드포인트를 살펴봅니다.
+In this demonstration, you will explore NSGs and service endpoints.
 
-**참조**: [PaaS 리소스에 대한 액세스 제한 - 자습서 - Azure Portal](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources)
+**Reference**: [Restrict access to PaaS resources - tutorial - Azure portal](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources)
 
-**네트워크 보안 그룹 만들기**
+**Create a network security group**
 
-1. Azure Portal에 액세스합니다.
+1. Access the Azure Portal.
 
-1. 네트워크 보안 그룹을 ** 검색하여 선택합니다**.
+1. Search for and select the **Network Security Groups**.
 
-1. 이동하는 동안 설정을 설명하는 NSG를 만듭니다. 
+1. Create a NSG explaining the settings as you go. 
  
-1. 새 NSG가 배포되기를 기다립니다.
+1. Wait for the new NSG to deploy.
 
-**인바운드 및 아웃바운드 규칙 탐색**
+**Explore inbound and outbound rules**
 
-1. 새 NSG를 선택합니다.
+1. Select your new NSG.
 
-1. NSG를 서브넷 또는 네트워크 인터페이스와 연결할 수 있는 방법에 대해 설명합니다.
+1. Discuss how the NSG can be associated with subnets or network interfaces.
 
-1. 인바운드 및 아웃바운드 규칙의 목적에 대해 설명합니다.  
+1. Discuss the purpose inbound and outbound rules.  
 
-1. 기본 인바운드 및 아웃바운드 규칙을 검토합니다. 
+1. Review the default inbound and outbound rules. 
 
-1. 이동하면서 설정을 설명하는 새 규칙을 만듭니다. 특히 서비스 선택(예: HTTPS) 및 우선 순위 설정에 대해 설명합니다. 
+1. Create a new rule, explaining the settings as you go. Specifically discuss the service selection (like HTTPS) and the priority settings. 
 
-## Azure DNS 구성
+## Configure Azure DNS
 
-본 데모에서는 Azure DNS에 대해 살펴봅니다.
+In this demonstration, you will explore Azure DNS.
 
-**참조**: [자습서: 할 일기본 및 하위 기본 호스트 - Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)
+**Reference**: [Tutorial: Host your domain and subdomain - Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)
 
 
-**DNS 영역 만들기**
+**Create a DNS zone**
 
-1. Azure Portal에 액세스합니다.
+1. Access the Azure Portal.
 
-1.  **DNS 영역 서비스를 검색합니다** .
+1. Search for the **DNS zones** service.
 
-1. **DNS 영역을 만들고 영역**의 용도를 설명합니다. 이름의 경우 contoso.internal.com 사용할 수 있습니다.
+1. Create a **DNS zone** and explain the purpose of the zone. For a name you can use contoso.internal.com.
 
-1.  DNS 영역이 만들어질 때까지 기다립니다. 페이지를 새로 고쳐 ** 야 할**수도 있습니다.
+1.  Wait for the DNS zone to be created. You may need to **Refresh** the page.
 
-**DNS 레코드 집합 추가**
+**Add a DNS record set**
 
-**참조**: [자습서: 영역 리소스 레코드를 참조하는 별칭 레코드 만들기](https://learn.microsoft.com/azure/dns/tutorial-alias-rr)
+**Reference**: [Tutorial: Create an alias record to refer to a zone resource record](https://learn.microsoft.com/azure/dns/tutorial-alias-rr)
 
-1. 영역이 만들어지면 +레코드 집합 **을 선택합니다**.
+1. Once your zone is created, select **+Record Set**.
 
-1. 형식 ** 드롭다운을**사용하여 다양한 형식의 레코드를 볼 수 있습니다. 다양한 레코드 형식이 사용되는 방법을 검토합니다. 다른 레코드 유형을 선택하면 레코드 정보가 어떻게 변경되는지 확인합니다.
+1. Use the **Type** drop-down to view the different types of records. Review how the different record types are used. Notice how the record information changes as you select different record types.
 
-1. A 레코드를 **** 예로 만듭니다. 
+1. Create an **A** record as an example. 
 
