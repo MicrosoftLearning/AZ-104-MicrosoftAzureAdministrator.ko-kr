@@ -113,11 +113,9 @@ lab:
     
     >**유용한 정보** 지역 간 복원 옵션을 사용하면 [Azure 쌍을 이루는 지역](https://learn.microsoft.com/azure/backup/backup-create-recovery-services-vault#set-cross-region-restore)에서 데이터를 복원할 수 있습니다. 
 
-1. Recovery Services 자격 증명 모음 블레이드로 돌아가서 **보안 설정 > 일시 삭제 및 보안 설정** 레이블 아래에 있는 **업데이트** 링크를 클릭합니다.
+1. **보안 설정 > 일시 삭제 및 보안 설정** 레이블 아래에 있는 **업데이트** 링크를 선택합니다.
 
 1. **보안 설정** 블레이드에서 **일시 삭제(Azure에서 실행되는 워크로드의 경우)** 가 **사용**으로 설정되어 있는지 확인합니다. **일시 삭제 보존 기간**은 **14**일입니다. 
-
-1. Recovery Services 자격 증명 모음 블레이드로 돌아가서 **개요** 블레이드를 선택합니다.
 
 >**유용한 정보** Azure에는 두 가지 형식의 자격 증명 모음이 있습니다. Recovery Services 자격 증명 모음 및 백업 자격 증명 모음. 이러한 두 가지 형식은 백업할 수 있는 데이터 원본에 차이가 있습니다. [차이점](https://learn.microsoft.com/answers/questions/405915/what-is-difference-between-recovery-services-vault)에 대해 자세히 알아봅니다.
 
