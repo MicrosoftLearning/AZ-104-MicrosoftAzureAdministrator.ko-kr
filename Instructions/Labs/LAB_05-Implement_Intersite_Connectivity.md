@@ -169,38 +169,21 @@ lab:
 
 1. CoreServicesVnet의 **설정**에서 **피어링**을 선택합니다.
 
-1. CoreServicesVnet | 피어링에서 **+ 추가**를 선택합니다.
-
-1. 다음 표의 정보를 사용하여 피어링을 만듭니다.
+1. CoreServicesVnet | 피어링에서 **+ 추가**를 선택합니다. 지정되지 않은 경우 기본값을 사용합니다. 
 
 | **매개 변수**                                    | **값**                             |
-| --------------------------------------------- | ------------------------------------- |
-| **이 가상 네트워크**                                       |                                       |
+| --------------------------------------------- | ------------------------------------- |                                
 | 피어링 링크 이름                             | `CoreServicesVnet-to-ManufacturingVnet` |
-| CoreServicesVnet이 피어링된 가상 네트워크에 액세스하도록 허용            | 선택됨(기본값)                       |
-| CoreServicesVnet이 피어링된 가상 네트워크에서 전달된 트래픽을 수신하도록 허용 | 선택됨                       |
-| CoreServicesVnet의 게이트웨이가 피어링된 가상 네트워크로 트래픽을 전달하도록 허용 | 선택되지 않음(기본값) |
-| 피어링된 가상 네트워크의 원격 게이트웨이를 사용하기 위해 CoreServicesVnet 활성화       | 선택되지 않음(기본값)                        |
-| **원격 가상 네트워크**                                   |                                       |
-| 피어링 링크 이름                             | `ManufacturingVnet-to-CoreServicesVnet` |
-| 가상 네트워크 배포 모델              | **리소스 관리자**                      |
-| 리소스 ID를 알고 있음                         | 선택 안 됨                          |
-| 구독                                  | *구독*    |
-| 가상 네트워크                               | **ManufacturingVnet**                     |
+| 가상 네트워크    | **ManufacturingVM-net (az104-rg5)**  |
 | ManufacturingVnet이 CoreServicesVnet에 액세스하도록 허용  | 선택됨(기본값)                       |
 | ManufacturingVnet이 CoreServicesVnet에서 전달된 트래픽을 수신하도록 허용 | 선택됨                        |
-| CoreServicesVnet의 게이트웨이가 피어링된 가상 네트워크로 트래픽을 전달하도록 허용 | 선택되지 않음(기본값) |
-| CoreServicesVnet의 원격 게이트웨이를 사용하기 위해 ManufacturingVnet 활성화       | 선택되지 않음(기본값)                        |
+| 피어링 링크 이름                             | `ManufacturingVnet-to-CoreServicesVnet` |
+| CoreServicesVnet이 피어링된 가상 네트워크에 액세스하도록 허용            | 선택됨(기본값)                       |
+| CoreServicesVnet이 피어링된 가상 네트워크에서 전달된 트래픽을 수신하도록 허용 | 선택됨                       |
 
-1. 설정을 검토하고 **추가**를 선택합니다.
-
-![피어링 페이지 스크린샷](../media/az104-lab05-peering.png)
-
- 
 1. CoreServicesVnet | 피어링에서 **CoreServicesVnet-to-ManufacturingVnet** 피어링이 표시되는지 확인합니다. 페이지를 새로 고쳐 **피어링 상태**가 **연결됨**인지 확인합니다.
 
 1. **ManufacturingVnet**으로 전환하고 **ManufacturingVnet-to-CoreServicesVnet** 피어링이 나열되어 있는지 확인합니다. **피어링 상태**가 **연결됨**이어야 합니다. 페이지를 **새로 고침**해야 할 수도 있습니다. 
-
 
 ## 작업 5: Azure PowerShell을 사용하여 가상 머신 간의 연결 테스트
 
