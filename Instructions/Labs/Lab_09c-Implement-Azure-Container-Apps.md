@@ -47,7 +47,7 @@ Azure Container Apps는 관리되는 Kubernetes 클러스터의 개념을 한 �
     | Resource group | `az104-rg9` |
     | 컨테이너 앱 이름 |  `my-app` |
     | 지역    | **미국 동부**(또는 가까운 지역) |
-    | Container Apps 환경 | 기본값 유지 |
+    | Container Apps 환경 | **새로 만들기** 선택 > 환경 이름을 **my-environment**로 설정 > **만들기** |
 
 1. **컨테이너** 탭에서 **빠른 시작 이미지 사용**이 사용하도록 설정되어 있고 빠른 시작 이미지가 **간단한 hello world 컨테이너**로 설정되어 있는지 확인합니다.
 
