@@ -111,7 +111,7 @@ lab:
     | --- | --- |
     | 속성 | `az104-lbpip` |
     | SKU | 표준 |
-    | 계층 | 지역 |
+    | 서비스 계층 | 지역 |
     | 할당 | 정적 |
     | 라우팅 기본 설정 | **Microsoft 네트워크** |
 
@@ -326,11 +326,11 @@ lab:
 
 Copilot은 Azure 스크립팅 도구를 사용하는 방법을 익히는 데 도움을 줍니다. 또한 Copilot은 랩에서 다루지 않는 영역이나 추가 정보가 필요한 영역을 지원할 수 있습니다. Edge 브라우저를 열고 Copilot(오른쪽 위)을 선택하거나 *copilot.microsoft.com*으로 이동하세요. 몇 분 정도 시간을 내어 이러한 프롬프트를 사용해 보세요.
 
-+ Azure Load Balancer를 Azure Application Gateway와 비교하고 대조해 보세요.
-+ Azure Load Balancer에 대한 인바운드 연결 문제를 해결하려면 어떻게 해야 하나요?
-+ Azure Application Gateway를 구성하기 위한 기본 단계는 무엇인가요?
-+ Azure 부하 분산 솔루션을 강조 표시하는 표를 만듭니다. 다음 열을 포함합니다. 지원되는 프로토콜, 프라이빗 부하 분산, 글로벌 부하 분산, 라우팅 정책, 지원되는 환경, 연결 드레이닝, 세션 선호도, 호스트 및 경로 기반 부하 분산, TLS 오프로딩, 사이트 가속, 보안, 캐싱 및 압축.
-
++ Azure Load Balancer를 Azure Application Gateway와 비교하고 대조해 보세요. 각 제품을 사용해야 하는 시나리오를 결정하는 데 도움이 됩니다.
++ Azure Load Balancer 연결 문제를 해결하는 데 사용할 수 있는 도구는 무엇인가요? 
++ Azure Application Gateway를 구성하기 위한 기본 단계는 무엇인가요? 상위 수준 검사 목록을 제공합니다. 
++ Azure 부하 분산 솔루션을 강조 표시하는 테이블을 만듭니다. 각 솔루션에 대해 지원되는 프로토콜, 라우팅 정책, 세션 선호도 및 TLS 오프로딩을 보여 줍니다.
+  
 ## 자기 주도적 학습을 통해 자세히 알아보기
 
 + [Azure Load Balancer를 사용하여 애플리케이션 확장성 및 복원력을 개선합니다](https://learn.microsoft.com/training/modules/improve-app-scalability-resiliency-with-load-balancer/). Azure의 다양한 부하 분산 장치 및 요구 사항을 충족하는 적절한 Azure Load Balancer 솔루션을 선택하는 방법에 관해 논의합니다.
@@ -338,7 +338,7 @@ Copilot은 Azure 스크립팅 도구를 사용하는 방법을 익히는 데 도
 
 ## 핵심 내용
 
-축하합니다. 랩을 완료했습니다. 이 랩의 주요 내용은 다음과 같습니다.
+축하합니다. 랩을 완료했습니다. 다음은 이 랩의 핵심 사항입니다.
 
 + Azure Load Balancer는 전송 계층(OSI 계층 4 - TCP 및 UDP)에서 여러 가상 머신에 네트워크 트래픽을 분산하는 데 탁월한 선택입니다.
 + 공용 Load Balancer는 인터넷 트래픽 부하를 VM에 분산하는 데 사용됩니다. 내부(또는 개인) 부하 분산 장치는 프라이빗 IP가 프런트 엔드에서만 필요한 경우에 사용됩니다.
