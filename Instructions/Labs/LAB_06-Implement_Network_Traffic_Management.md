@@ -1,10 +1,10 @@
 ---
 lab:
-  title: '랩 06: 트래픽 관리 구현'
+  title: '랩 06: 네트워크 트래픽 관리 구현'
   module: Administer Network Traffic Management
 ---
 
-# 랩 06 - 트래픽 관리 구현
+# 랩 06 - 네트워크 트래픽 관리 구현
 
 ## 랩 소개
 
