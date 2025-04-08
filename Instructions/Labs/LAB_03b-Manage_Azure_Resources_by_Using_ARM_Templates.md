@@ -44,8 +44,8 @@ lab:
 
 1. **Azure Portal** - `https://portal.azure.com`에 로그인합니다.
 
-1. `Disks`을 검색하고 선택합니다.
-
+1. `Disks`을 검색하고 선택합니다. 
+   
 1. 디스크 페이지에서 **만들기**를 선택합니다.
 
 1. **관리 디스크 만들기** 페이지에서 디스크를 구성한 다음 **확인**을 선택합니다. 
@@ -213,22 +213,26 @@ lab:
 
 이 작업에서는 Bicep 파일을 사용하여 관리 디스크를 배포합니다. Bicep은 ARM 템플릿을 기반으로 빌드된 선언적 자동화 도구입니다.
 
+1. **\Allfiles\Lab03\azuredeploydisk.bicep** 파일을 찾습니다.
+
 1. **Bash** 세션의 **Cloud Shell**에서 계속 작업합니다.
 
-1. **\Allfiles\Lab03\azuredeploydisk.bicep** 파일을 찾아 다운로드합니다.
+1. **파일 관리**를 선택한 다음 Bicep 파일을 Cloud Shell에 **업로드**합니다. 
 
-1. bicep 파일을 Cloud Shell에 **업로드**합니다. 
+1. **편집기**를 클릭하고 메시지가 표시되면 **확인**을 클릭하여 클래식 Cloud Shell로 전환합니다.
 
-1. **편집기**(중괄호) 아이콘을 선택하고 파일을 탐색합니다.
+1. **azuredeploydisk.bicep** 파일을 선택합니다. 
 
-1. bicep 템플릿 파일을 읽어 보세요. 디스크 리소스가 어떻게 정의되는지 확인합니다. 
+1. 잠시 시간을 내어 Bicep 서식 파일을 읽어보세요. 디스크 리소스가 어떻게 정의되는지 확인합니다. 
    
 1. 다음과 같이 변경합니다.
 
-    + **managedDiskName** 값을 `Disk4`로 변경합니다.
-    + **sku 이름** 값을 `StandardSSD_LRS`로 변경합니다.
-    + **diskSizeinGiB** 값을 `32`로 변경합니다.
+    + 4번째 줄의 **managedDiskName** 값을 Disk4로 변경합니다.
+    + 26번째 줄의 **sku name** 값을 StandardSSD_LRS로 변경합니다.
+    + 7번째 줄의 **diskSizeinGiB** 값을 32로 변경합니다.
 
+    >**참고:** 완료된 Bicep 템플릿은 랩 파일에서 사용할 수 있습니다.
+    
 1. 변경 내용을 저장하려면 **Ctrl +S**를 사용합니다.
 
 1. 이제 템플릿을 배포합니다.
