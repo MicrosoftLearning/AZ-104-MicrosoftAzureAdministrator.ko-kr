@@ -227,7 +227,7 @@ lab:
    
 1. 다음과 같이 변경합니다.
 
-    + 4번째 줄의 **managedDiskName** 값을 Disk4로 변경합니다.
+    + 2번째 줄의 **managedDiskName** 값을 Disk4로 변경합니다.
     + 26번째 줄의 **sku name** 값을 StandardSSD_LRS로 변경합니다.
     + 7번째 줄의 **diskSizeinGiB** 값을 32로 변경합니다.
 
