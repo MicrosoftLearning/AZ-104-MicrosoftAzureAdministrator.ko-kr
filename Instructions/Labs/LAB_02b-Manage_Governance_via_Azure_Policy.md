@@ -49,7 +49,7 @@ lab:
 
 ## 작업 1: Azure Portal을 통한 태그 할당
 
-이 작업에서는 Azure Portal을 통해 Azure 리소스 그룹에 태그를 만들고 할당합니다. 태그는 Microsoft Well-Architected Framework 및 클라우드 채택 프레임워크에 설명된 거버넌스 전략의 중요한 구성 요소입니다. 태그를 사용하면 조직에서 중요하다고 간주하는 리소스 소유자, 종료 날짜, 그룹 연락처 및 기타 이름/값 쌍을 빠르게 식별할 수 있습니다. 이 작업에서는 리소스 역할을 식별하는 태그를 할당합니다('Infrastructure'는 'Infra').
+이 작업에서는 Azure Portal을 통해 Azure 리소스 그룹에 태그를 만들고 할당합니다. 태그는 Microsoft Well-Architected Framework 및 클라우드 채택 프레임워크에 설명된 거버넌스 전략의 중요한 구성 요소입니다. 태그를 사용하면 조직에서 중요하다고 간주하는 리소스 소유자, 종료 날짜, 그룹 연락처 및 기타 이름/값 쌍을 빠르게 식별할 수 있습니다. 이 작업의 경우 리소스 비용 센터를 식별하는 태그를 할당합니다. 
 
 1. **Azure Portal** - `https://portal.azure.com`에 로그인합니다.
       
