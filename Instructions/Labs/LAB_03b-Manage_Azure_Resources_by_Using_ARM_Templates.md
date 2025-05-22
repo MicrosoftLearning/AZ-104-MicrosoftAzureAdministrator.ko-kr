@@ -227,11 +227,9 @@ lab:
    
 1. 다음과 같이 변경합니다.
 
-    + 2번째 줄의 **managedDiskName** 값을 Disk4로 변경합니다.
-    + 26번째 줄의 **sku name** 값을 StandardSSD_LRS로 변경합니다.
-    + 7번째 줄의 **diskSizeinGiB** 값을 32로 변경합니다.
-
-    >**참고:** 완료된 Bicep 템플릿은 랩 파일에서 사용할 수 있습니다.
+    + **managedDiskName** 값의 2번째 줄을 **az104-disk5**로 변경합니다.
+    + 26번째 줄의 **sku name** 값을 **StandardSSD_LRS**로 변경합니다.
+    + 7번째 줄의 **diskSizeinGiB** 값을 **32**로 변경합니다.
     
 1. 변경 내용을 저장하려면 **Ctrl +S**를 사용합니다.
 
