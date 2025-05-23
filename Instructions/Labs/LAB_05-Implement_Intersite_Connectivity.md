@@ -73,7 +73,7 @@ lab:
 
 1. **네트워킹** 탭의 가상 네트워크에서 **새로 만들기**를 선택합니다.
 
-1. 다음 정보를 사용하여 가상 네트워크를 구성한 다음 **확인**을 선택합니다. 필요한 경우 기존 정보를 제거하거나 바꿉니다.
+1. 다음 정보를 사용하여 가상 네트워크를 구성한 다음 **OK**를 선택합니다. 필요한 경우 기존 정보를 제거하거나 바꿉니다.
 
     | 설정 | 값 | 
     | --- | --- |
@@ -118,7 +118,7 @@ lab:
 
 1. 네트워킹 탭에서 가상 네트워크에 대해 **새로 만들기**를 선택합니다.
 
-1. 다음 정보를 사용하여 가상 네트워크를 구성한 다음 **확인**을 선택합니다.  필요한 경우 기존 주소 범위를 제거하거나 바꿉니다.
+1. 다음 정보를 사용하여 가상 네트워크를 구성한 다음 **OK**를 선택합니다.  필요한 경우 기존 주소 범위를 제거하거나 바꿉니다.
 
     | 설정 | 값 | 
     | --- | --- |
@@ -169,23 +169,23 @@ lab:
 
 1. CoreServicesVnet의 **설정**에서 **피어링**을 선택합니다.
 
-1. CoreServicesVnet | 피어링에서 **+ 추가**를 선택합니다. 지정되지 않은 경우 기본값을 사용합니다. 
+1. CoreServicesVnet의 피어링에서 **+ 추가**를 선택합니다. 지정되지 않은 경우 기본값을 사용합니다. 
 
-| **매개 변수**                                    | **값**                             |
-| --------------------------------------------- | ------------------------------------- |                                
-| 피어링 링크 이름                             | `CoreServicesVnet-to-ManufacturingVnet` |
-| 가상 네트워크    | **ManufacturingVM-net (az104-rg5)**  |
-| ManufacturingVnet이 CoreServicesVnet에 액세스하도록 허용  | 선택됨(기본값)                       |
-| ManufacturingVnet이 CoreServicesVnet에서 전달된 트래픽을 수신하도록 허용 | 선택됨                        |
-| 피어링 링크 이름                             | `ManufacturingVnet-to-CoreServicesVnet` |
-| CoreServicesVnet이 피어링된 가상 네트워크에 액세스하도록 허용            | 선택됨(기본값)                       |
-| CoreServicesVnet이 피어링된 가상 네트워크에서 전달된 트래픽을 수신하도록 허용 | 선택됨                       |
+    | **매개 변수**                                    | **값**                             |
+    | --------------------------------------------- | ------------------------------------- |                                
+    | 피어링 링크 이름                             | `CoreServicesVnet-to-ManufacturingVnet` |
+    | 가상 네트워크    | **ManufacturingVM-net (az104-rg5)**  |
+    | ManufacturingVnet이 CoreServicesVnet에 액세스하도록 허용  | 선택됨(기본값) |
+    | ManufacturingVnet이 CoreServicesVnet에서 전달된 트래픽을 수신하도록 허용 | 선택됨  |
+    | 피어링 링크 이름                             | `ManufacturingVnet-to-CoreServicesVnet` |
+    | CoreServicesVnet이 피어링된 가상 네트워크에 액세스하도록 허용            | 선택됨(기본값) |
+    | CoreServicesVnet이 피어링된 가상 네트워크에서 전달된 트래픽을 수신하도록 허용 | 선택됨 |
 
-1. **추가**를 클릭합니다.
+4. **추가**를 클릭합니다.
 
-1. CoreServicesVnet | 피어링에서 **CoreServicesVnet-to-ManufacturingVnet** 피어링이 표시되는지 확인합니다. 페이지를 새로 고쳐 **피어링 상태**가 **연결됨**인지 확인합니다.
+5. CoreServicesVnet의 피어링에서 **CoreServicesVnet-to-ManufacturingVnet** 피어링이 나열되어 있는지 확인합니다. 페이지를 새로 고쳐 **피어링 상태**가 **연결됨**인지 확인합니다.
 
-1. **ManufacturingVnet**으로 전환하고 **ManufacturingVnet-to-CoreServicesVnet** 피어링이 나열되어 있는지 확인합니다. **피어링 상태**가 **연결됨**이어야 합니다. 페이지를 **새로 고침**해야 할 수도 있습니다. 
+6. **ManufacturingVnet**으로 전환하고 **ManufacturingVnet-to-CoreServicesVnet** 피어링이 나열되어 있는지 확인합니다. **피어링 상태**가 **연결됨**이어야 합니다. 페이지를 **새로 고침**해야 할 수도 있습니다. 
 
 ## 작업 5: Azure PowerShell을 사용하여 가상 머신 간의 연결 테스트
 
@@ -231,7 +231,7 @@ lab:
     | 서브넷 주소 범위 | `10.0.1.0/24`  |
 
    
-1. Azure Portal에서 `Route tables`를 검색하여 선택한 다음, **만들기**를 선택합니다. 
+1. Azure Portal에서 `Route tables`을(를) 검색하여 선택하고, **검토 + 만들기**를 선택한 다음 **만들기**를 선택합니다. 
 
     | 설정 | 값 | 
     | --- | --- |
@@ -245,7 +245,7 @@ lab:
    
 1. 리소스(확인란 아님) **rt-CoreServices**를 선택합니다.
 
-1. **설정**을 확장하고 **경로**를 선택한 다음 **+ 추가**를 선택합니다. 향후 NVA(네트워크 가상 어플라이언스)에서 CoreServices 가상 네트워크로의 경로를 만듭니다. 
+1. **설정**을 확장한 다음 **경로**, **추가**를 차례로 선택합니다. 향후 NVA(네트워크 가상 어플라이언스)에서 CoreServices 가상 네트워크로의 경로를 만듭니다. 
 
     | 설정 | 값 | 
     | --- | --- |
