@@ -165,9 +165,9 @@ lab:
     | --- | --- |
     | 할당 이름 | `Inherit the Cost Center tag and its value 000 from the resource group if missing` |
     | 설명 | `Inherit the Cost Center tag and its value 000 from the resource group if missing` |
-    | 정책 적용 | 사용 |
+    | 정책 적용 | Enabled |
 
-1. **다음**을 두 번 클릭하고 **매개 변수**를 다음 값으로 설정합니다.
+1. **다음**을 클릭하고 **매개 변수**를 다음 값으로 설정합니다.
 
     | 설정 | 값 |
     | --- | --- |

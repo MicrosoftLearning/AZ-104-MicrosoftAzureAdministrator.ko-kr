@@ -204,7 +204,6 @@ lab:
     - **추가 기능 Azure Backup 경고 데이터**
     - **Azure Site Recovery 작업**
     - **Azure Site Recovery 이벤트**
-    - **상태**
 
 1. 대상 세부 정보에서 **스토리지 계정에 보관** 옆에 확인 표시를 합니다.
 
