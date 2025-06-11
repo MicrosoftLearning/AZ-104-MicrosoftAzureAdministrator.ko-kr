@@ -20,11 +20,10 @@ lab:
 
 ## 대화형 랩 시뮬레이션
 
-이 항목에 유용할 수 있는 대화형 랩 시뮬레이션이 있습니다. 시뮬레이션을 통해 고유의 속도에 맞춰 유사한 시나리오를 클릭할 수 있습니다. 대화형 시뮬레이션과 이 랩에는 차이점이 있지만 핵심 개념은 대부분 동일합니다. Azure 구독은 필요하지 않습니다.
-
-+ [모니터링을 구현합니다.](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2017) Log Analytics 작업 영역 및 Azure 자동화 솔루션을 만듭니다. 가상 머신에 대한 모니터링 및 진단 설정을 검토합니다. Azure Monitor 및 Log Analytics 기능을 검토합니다. 
+>**참고**: 이전에 제공되었던 랩 시뮬레이션은 사용 중지되었습니다.
 
 ## 아키텍처 다이어그램
+
 
 ![아키텍처 작업 다이어그램](../media/az104-lab11-architecture.png)
 

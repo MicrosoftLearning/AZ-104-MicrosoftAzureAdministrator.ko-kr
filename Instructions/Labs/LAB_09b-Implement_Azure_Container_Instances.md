@@ -17,13 +17,10 @@ lab:
 ## 랩 시나리오
 
 조직에는 온-프레미스 데이터 센터의 가상 머신에서 실행되는 웹 애플리케이션이 있습니다. 조직은 모든 애플리케이션을 클라우드로 이동하려고 하지만 관리할 서버가 너무 많아지는 것을 원하지 않습니다. Azure Container Instances 및 Docker를 평가하기로 결정했습니다. 
+
 ## 대화형 랩 시뮬레이션
 
-이 항목에 유용할 수 있는 대화형 랩 시뮬레이션이 있습니다. 시뮬레이션을 통해 고유의 속도에 맞춰 유사한 시나리오를 클릭할 수 있습니다. 대화형 시뮬레이션과 이 랩에는 차이점이 있지만 핵심 개념은 대부분 동일합니다. Azure 구독은 필요하지 않습니다.
-
-+ [Azure Container Instances을 배포합니다](https://mslearn.cloudguides.com/en-us/guides/AZ-900%20Exam%20Guide%20-%20Azure%20Fundamentals%20Exercise%203). Azure Container Instances를 사용하여 Docker 컨테이너를 만들고, 구성하고, 배포합니다.
-  
-+ [Azure Container Instances을 구현합니다](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2014).  Azure Container Instances를 사용하여 Docker 이미지를 배포합니다. 
+>**참고**: 이전에 제공되었던 랩 시뮬레이션은 사용 중지되었습니다.
 
 ## 아키텍처 다이어그램
 

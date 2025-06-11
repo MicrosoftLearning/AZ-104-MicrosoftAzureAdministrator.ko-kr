@@ -24,15 +24,7 @@ lab:
 
 ## 대화형 랩 시뮬레이션
 
-이 항목에 유용할 수 있는 몇 가지 대화형 랩 시뮬레이션이 있습니다. 시뮬레이션을 통해 고유의 속도에 맞춰 유사한 시나리오를 클릭할 수 있습니다. 대화형 시뮬레이션과 이 랩에는 차이점이 있지만 핵심 개념은 대부분 동일합니다. Azure 구독은 필요하지 않습니다. 
-
-+ [네트워크 트래픽을 보호합니다](https://mslearn.cloudguides.com/en-us/guides/AZ-900%20Exam%20Guide%20-%20Azure%20Fundamentals%20Exercise%2013). 가상 머신, 가상 네트워크 및 네트워크 보안 그룹을 만듭니다. 트래픽을 허용하거나 허용하지 않는 네트워크 보안 그룹 규칙을 추가합니다.
-  
-+ [간단한 가상 네트워크를 만듭니다](https://mslearn.cloudguides.com/en-us/guides/AZ-900%20Exam%20Guide%20-%20Azure%20Fundamentals%20Exercise%204). 두 개의 가상 머신으로 가상 네트워크를 만듭니다. 가상 머신이 통신할 수 있음을 보여 줍니다. 
-
-+ [Azure에서 가상 네트워크를 설계 및 구현합니다](https://mslabs.cloudguides.com/guides/AZ-700%20Lab%20Simulation%20-%20Design%20and%20implement%20a%20virtual%20network%20in%20Azure). 리소스 그룹을 만들고 서브넷이 있는 가상 네트워크를 만듭니다.  
-
-+ [가상 네트워킹을 구현합니다](https://mslabs.cloudguides.com/en-us/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%208). 가상 네트워크를 만들어 구성하고, 가상 머신을 배포하고, 네트워크 보안 그룹을 구성하고, Azure DNS를 구성합니다.
+>**참고**: 이전에 제공되었던 랩 시뮬레이션은 사용 중지되었습니다.
 
 ## 아키텍처 다이어그램
 

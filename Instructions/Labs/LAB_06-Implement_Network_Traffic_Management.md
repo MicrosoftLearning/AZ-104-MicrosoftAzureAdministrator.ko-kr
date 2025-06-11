@@ -20,11 +20,7 @@ lab:
 
 ## 대화형 랩 시뮬레이션
 
-이 항목에 유용할 수 있는 대화형 랩 시뮬레이션이 있습니다. 시뮬레이션을 통해 고유의 속도에 맞춰 유사한 시나리오를 클릭할 수 있습니다. 대화형 시뮬레이션과 이 랩에는 차이점이 있지만 핵심 개념은 대부분 동일합니다. Azure 구독은 필요하지 않습니다.
-
-+ [Azure Load Balancer를 만들고 구성](https://mslabs.cloudguides.com/guides/AZ-700%20Lab%20Simulation%20-%20Create%20and%20configure%20an%20Azure%20load%20balancer). 가상 네트워크, 백 엔드 서버, 부하 분산 장치를 만든 다음 부하 분산 장치를 테스트합니다.
-+ [Azure Application Gateway 배포](https://mslabs.cloudguides.com/guides/AZ-700%20Lab%20Simulation%20-%20Deploy%20Azure%20Application%20Gateway). 애플리케이션 게이트웨이를 만들고, 가상 머신을 만들고, 백 엔드 풀을 만들고, 게이트웨이를 테스트합니다.
-+ [트래픽 관리 구현](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2010). 가상 머신, 가상 네트워크, 피어링, 부하 분산 장치 및 애플리케이션 게이트웨이를 포함한 완전한 허브 및 스포크 네트워크를 구현합니다.
+>**참고**: 이전에 제공되었던 랩 시뮬레이션은 사용 중지되었습니다.
 
 ## 작업 기술
 
