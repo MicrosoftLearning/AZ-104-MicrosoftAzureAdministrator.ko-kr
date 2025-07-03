@@ -28,13 +28,7 @@ lab:
 
 ## 대화형 랩 시뮬레이션
 
-이 항목에 유용할 수 있는 몇 가지 대화형 랩 시뮬레이션이 있습니다. 시뮬레이션을 통해 고유의 속도에 맞춰 유사한 시나리오를 클릭할 수 있습니다. 대화형 시뮬레이션과 이 랩에는 차이점이 있지만 핵심 개념은 대부분 동일합니다. Azure 구독은 필요하지 않습니다. 
-
-+ [리소스 잠금 관리](https://mslearn.cloudguides.com/en-us/guides/AZ-900%20Exam%20Guide%20-%20Azure%20Fundamentals%20Exercise%2015) 리소스 잠금을 추가하고 테스트하여 확인합니다.
-  
-+ [Azure 정책 만들기](https://mslearn.cloudguides.com/en-us/guides/AZ-900%20Exam%20Guide%20-%20Azure%20Fundamentals%20Exercise%2017) 리소스를 찾을 수 있는 위치를 제한하는 Azure Policy를 만듭니다. 새 리소스를 만들고 정책이 적용되는지 확인합니다. 
-
-+ [Azure Policy을 통한 거버넌스 관리](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%203) Azure Portal을 통해 태그를 만들고 할당합니다. 태그 지정이 필요한 Azure Policy를 만듭니다. 규정 비준수 리소스 수정
+>**참고**: 이전에 제공되었던 랩 시뮬레이션은 사용 중지되었습니다.
 
 ## 아키텍처 다이어그램
 

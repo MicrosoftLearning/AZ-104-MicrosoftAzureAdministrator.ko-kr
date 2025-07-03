@@ -20,9 +20,7 @@ lab:
 
 ## 대화형 랩 시뮬레이션
 
-이 항목에 유용할 수 있는 대화형 랩 시뮬레이션이 있습니다. 시뮬레이션을 통해 고유의 속도에 맞춰 유사한 시나리오를 클릭할 수 있습니다. 대화형 시뮬레이션과 이 랩에는 차이점이 있지만 핵심 개념은 대부분 동일합니다. Azure 구독은 필요하지 않습니다.
-
-+ **[가상 머신 및 온-프레미스 파일을 백업합니다.](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2016)**. Recovery Services 자격 증명 모음을 만들고 Azure Virtual Machines 백업을 구현합니다. Microsoft Azure Recovery Services 에이전트를 사용하여 온-프레미스 파일 및 폴더 백업을 구현합니다. 온-프레미스 백업은 이 랩 범위를 벗어나지만 해당 단계를 살펴보는 것이 도움이 될 수 있습니다. 
+>**참고**: 이전에 제공되었던 랩 시뮬레이션은 사용 중지되었습니다.
 
 ## 작업 기술
 

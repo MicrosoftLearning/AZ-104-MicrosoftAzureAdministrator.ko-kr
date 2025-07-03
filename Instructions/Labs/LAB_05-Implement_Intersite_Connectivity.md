@@ -20,13 +20,7 @@ lab:
 
 ## 대화형 랩 시뮬레이션
 
-이 항목에 유용할 수 있는 몇 가지 대화형 랩 시뮬레이션이 있습니다. 시뮬레이션을 통해 고유의 속도에 맞춰 유사한 시나리오를 클릭할 수 있습니다. 대화형 시뮬레이션과 이 랩에는 차이점이 있지만 핵심 개념은 대부분 동일합니다. Azure 구독은 필요하지 않습니다. 
-
-+ [전역 가상 네트워크 피어링을 사용해 Azure Virtual Network 2개를 연결합니다](https://mslabs.cloudguides.com/guides/AZ-700%20Lab%20Simulation%20-%20Connect%20two%20Azure%20virtual%20networks%20using%20global%20virtual%20network%20peering). 서로 다른 가상 네트워크에 있는 두 가상 머신 간의 연결을 테스트합니다. 가상 네트워크 피어링을 만들고 다시 테스트합니다.
-
-+ [가상 네트워크에 대한 모니터링 구성](https://learn.microsoft.com/training/modules/configure-monitoring-virtual-networks/). Azure Network Watcher 연결 모니터, 흐름 로그, NSG 진단 및 패킷 캡처를 사용하여 Azure IaaS 네트워크 리소스 전반의 연결을 모니터링하는 방법을 파악합니다.
-
-+ [사이트 간 연결을 구현합니다](https://mslabs.cloudguides.com/en-us/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%209). 템플릿을 실행하여 여러 가상 머신으로 가상 네트워크 인프라를 만듭니다. 가상 네트워크 피어링을 구성하고 연결을 테스트합니다. 
+>**참고**: 이전에 제공되었던 랩 시뮬레이션은 사용 중지되었습니다.
 
 ## 아키텍처 다이어그램
 
@@ -56,7 +50,7 @@ lab:
     | 설정 | 값 | 
     | --- | --- |
     | 구독 |  *구독* |
-    | 리소스 그룹 |  `az104-rg5`(필요한 경우 **새로 만들기**. )
+    | 리소스 그룹 |  `az104-rg5`(필요한 경우 **새로 만들기**. =
     | 가상 머신 이름 |    `CoreServicesVM` |
     | 지역 | **(미국) 미국 동부** |
     | 가용성 옵션 | 인프라 중복 필요 없음 |

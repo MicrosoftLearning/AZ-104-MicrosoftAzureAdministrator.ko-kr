@@ -20,15 +20,7 @@ lab:
 
 ## 대화형 랩 시뮬레이션
 
-이 항목에 유용할 수 있는 대화형 랩 시뮬레이션이 있습니다. 시뮬레이션을 통해 고유의 속도에 맞춰 유사한 시나리오를 클릭할 수 있습니다. 대화형 시뮬레이션과 이 랩에는 차이점이 있지만 핵심 개념은 대부분 동일합니다. Azure 구독은 필요하지 않습니다.
-
-+ [포털에서 가상 머신을 만듭니다](https://mslearn.cloudguides.com/en-us/guides/AZ-900%20Exam%20Guide%20-%20Azure%20Fundamentals%20Exercise%201). 가상 머신을 만들고 웹 서버 역할을 연결 및 설치합니다.
-
-+ [템플릿을 사용하여 가상 머신을 배포합니다](https://mslearn.cloudguides.com/en-us/guides/AZ-900%20Exam%20Guide%20-%20Azure%20Fundamentals%20Exercise%209). QuickStart 갤러리를 탐색하고 가상 머신 템플릿을 찾습니다. 템플릿을 배포하고 배포를 확인합니다.
-
-+ [PowerShell을 사용하여 가상 머신 만들기](https://mslearn.cloudguides.com/en-us/guides/AZ-900%20Exam%20Guide%20-%20Azure%20Fundamentals%20Exercise%2010)를 참조하세요. Azure PowerShell을 사용하여 가상 머신을 배포합니다. Azure Advisor 권장 사항을 검토합니다.
-
-+ [CLI를 사용하여 가상 머신을 만듭니다](https://mslearn.cloudguides.com/en-us/guides/AZ-900%20Exam%20Guide%20-%20Azure%20Fundamentals%20Exercise%2011). CLI를 사용하여 가상 머신을 배포합니다. Azure Advisor 권장 사항을 검토합니다.
+>**참고**: 이전에 제공되었던 랩 시뮬레이션은 사용 중지되었습니다.
 
 ## 작업 기술
 
