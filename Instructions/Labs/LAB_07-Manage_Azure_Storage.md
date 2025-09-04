@@ -257,7 +257,6 @@ Copilot은 Azure 스크립팅 도구를 사용하는 방법을 익히는 데 도
 
 + [Azure Storage 계정을 만듭니다](https://learn.microsoft.com/training/modules/create-azure-storage-account/). 비즈니스 요구 사항에 적합한 옵션을 사용하여 Azure Storage 계정을 만듭니다.
 + [Azure Blob Storage 수명 주기 관리](https://learn.microsoft.com/training/modules/manage-azure-blob-storage-lifecycle). Azure Blob Storage 수명 주기 전체에서 데이터 가용성을 관리하는 방법을 알아봅니다.
-+ [Azure Blob Storage를 사용하여 비용을 최적화합니다](https://learn.microsoft.com/training/modules/optimize-your-cost-azure-blob-storage/). Azure Blob Storage를 사용하여 비용을 최적화하는 방법을 알아봅니다.
 
 ## 핵심 내용
 
