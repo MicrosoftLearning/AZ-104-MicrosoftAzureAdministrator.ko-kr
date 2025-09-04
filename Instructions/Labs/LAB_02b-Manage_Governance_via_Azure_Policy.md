@@ -36,9 +36,9 @@ lab:
 
 ## 작업 기술
 
-+ 작업 1: Azure Portal을 통해 태그를 만들고 할당합니다.
-+ 작업 2: Azure Policy를 통한 강제 태그 지정
-+ 작업 3: Azure Policy를 통한 태그 지정 적용
++ 작업 1: Azure Portal을 통한 태그 만들기 및 할당.
++ 작업 2: Azure Policy를 통한 강제 태그 지정.
++ 작업 3: Azure Policy를 통한 태그 지정 적용.
 + 작업 4: 리소스 잠금을 구성하고 테스트합니다. 
 
 ## 작업 1: Azure Portal을 통한 태그 할당
@@ -241,10 +241,6 @@ Copilot은 Azure 스크립팅 도구를 사용하는 방법을 익히는 데 도
 + Azure Policy와 Azure RBAC 간의 차이점을 표로 작성하고 예를 포함합니다.
 + Azure Policy를 적용하고 규정을 준수하지 않는 리소스를 수정하는 단계는 무엇인가요?
 + 특정 태그가 포함된 Azure 리소스 보고서를 가져오려면 어떻게 해야 하나요?
-
-## 자기 주도적 학습을 통해 자세히 알아보기
-
-+ [엔터프라이즈 거버넌스 전략 디자인](https://learn.microsoft.com/training/modules/enterprise-governance/) RBAC 및 Azure Policy를 사용하여 Azure 솔루션에 대한 액세스를 제한하고 보안 목표에 적합한 방법을 결정합니다.
 
 ## 핵심 내용
 

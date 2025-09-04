@@ -162,7 +162,6 @@ Copilot은 Azure 스크립팅 도구를 사용하는 방법을 익히는 데 도
 ## 자기 주도적 학습을 통해 자세히 알아보기
 
 + [Azure RBAC(Azure 역할 기반 액세스 제어)로 Azure 리소스를 보호합니다](https://learn.microsoft.com/training/modules/secure-azure-resources-with-rbac/). Azure RBAC를 사용하여 Azure의 리소스에 대한 액세스를 관리합니다.
-+ [역할 기반 액세스 제어(RBAC)를 사용하여 Azure 리소스에 대한 사용자 지정 역할을 만듭니다](https://learn.microsoft.com/training/modules/create-custom-azure-roles-with-rbac/). 액세스 제어에 대한 역할 정의의 구조를 이해합니다. 사용자 지정 역할 권한을 정의하는 역할 속성을 식별합니다. Azure 사용자 지정 역할을 만들고 사용자에게 할당합니다.
 
 ## 핵심 내용
 
@@ -174,6 +173,7 @@ Copilot은 Azure 스크립팅 도구를 사용하는 방법을 익히는 데 도
 + 새 역할을 만들거나 기존 역할을 사용자 지정할 수 있습니다.
 + 역할은 JSON 형식의 파일로 정의되며 *Actions*, *NotActions* 및 *AssignableScopes*를 포함합니다.
 + 활동 로그를 사용하여 역할 할당을 모니터링할 수 있습니다.
+
 
 
 
