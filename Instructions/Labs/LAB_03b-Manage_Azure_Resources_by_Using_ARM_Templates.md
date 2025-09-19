@@ -172,7 +172,7 @@ lab:
 1. 디스크가 만들어졌는지 확인합니다.
 
    ```powershell
-   Get-AzDisk
+   Get-AzDisk | ft
    ```
    
 ## 작업 4: CLI를 사용하여 템플릿 배포 
