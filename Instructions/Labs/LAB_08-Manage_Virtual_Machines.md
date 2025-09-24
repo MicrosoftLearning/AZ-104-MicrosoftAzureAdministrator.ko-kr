@@ -381,7 +381,7 @@ lab:
 1. 명령이 완료되면 **az vm show**를 사용하여 컴퓨터가 만들어졌는지 확인합니다.
 
     ```sh
-    az vm show --name  myCLIVM --resource-group az104-rg8 --show-details
+    az vm show --name  myCLIVM --resource-group az104-rg8 --show-details --output table
     ```
 
 1. **powerState**가 **VM 실행 중**인지 확인합니다.
