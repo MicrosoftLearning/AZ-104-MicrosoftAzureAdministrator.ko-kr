@@ -91,7 +91,7 @@ lab:
 
     | 설정 | 값 |
     | --- | --- |
-    | 할당 이름 | `비용 센터 태그와 리소스에 대한 값이 필요합니다. |
+    | 할당 이름 | `Require Cost Center tag and its value on resources` |
     | 설명 | `Require Cost Center tag and its value on all resources in the resource group`|
     | 정책 적용 | 사용 |
 
