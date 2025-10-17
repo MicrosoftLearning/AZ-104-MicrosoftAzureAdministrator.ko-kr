@@ -26,10 +26,6 @@ lab:
 
 - 리소스 잠금을 사용하여 구성된 리소스 보호
 
-## 대화형 랩 시뮬레이션
-
->**참고**: 이전에 제공되었던 랩 시뮬레이션은 사용 중지되었습니다.
-
 ## 아키텍처 다이어그램
 
 ![작업 아키텍처의 다이어그램](../media/az104-lab02b-architecture.png)
@@ -95,7 +91,7 @@ lab:
 
     | 설정 | 값 |
     | --- | --- |
-    | 할당 이름 | `비용 센터 태그와 리소스에 대한 값이 필요합니다. |
+    | 할당 이름 | `Require Cost Center tag and its value on resources` |
     | 설명 | `Require Cost Center tag and its value on all resources in the resource group`|
     | 정책 적용 | 사용 |
 
