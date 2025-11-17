@@ -54,7 +54,7 @@ lab:
     | 가용성 옵션 | **가용성 영역** |
     | 가용성 영역 | **영역 1, 2**(가상 머신 확장 집합 사용에 대한 참고 사항 읽기) |
     | 보안 유형 | **Standard** |
-    | 이미지 | **Windows Server 2019 Datacenter - x64 Gen2** |
+    | 이미지(모든 이미지 참조) | **Windows Server 2019 Datacenter - x64 Gen2** |
     | Azure Spot 인스턴스 | **unchecked** |
     | 크기 | **표준 D2s v3** |
     | 사용자 이름 | `localadmin` |
@@ -172,7 +172,7 @@ lab:
     | 오케스트레이션 모드 | **Uniform** |
     | 보안 유형 | **Standard** |
     | 크기 조정 옵션 | **기본값을 검토하고 사용합니다**. 다음 작업에서 이를 변경합니다. |
-    | 이미지 | **Windows Server 2019 Datacenter - x64 Gen2** |
+    | 이미지(모든 이미지 참조) | **Windows Server 2019 Datacenter - x64 Gen2** |
     | Azure Spot 할인으로 실행 | **선택 취소** |
     | 크기 | **표준 D2s_v3** |
     | 사용자 이름 | `localadmin` |
