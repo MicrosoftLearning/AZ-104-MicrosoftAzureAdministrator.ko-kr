@@ -198,7 +198,7 @@ lab:
 1. 디스크가 만들어졌는지 확인합니다.
 
      ```sh
-     az disk list --output table
+     az disk list --resource-group az104-rg3 --output table
      ```
    
 ## 작업 5: Azure Bicep을 사용하여 리소스 배포
@@ -234,7 +234,7 @@ lab:
 1. 디스크가 만들어졌는지 확인합니다.
 
     ```sh
-    az disk list --output table
+    az disk list --resource-group az104-rg3 --output table
     ```
 
     >**참고:** 각각 다른 방식으로 5개의 관리 디스크를 성공적으로 배포했습니다. 잘하셨습니다!
