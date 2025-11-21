@@ -207,7 +207,7 @@ lab:
 
 이 작업에서는 Azure Monitor를 사용하여 가상 머신에서 캡처된 데이터를 쿼리합니다.
 
-    >**Note:** It can take 15-30 minutes for data to appear. Concentrate on the method and types of queries, rather than the results. 
+   >**참고:** 데이터가 표시되지 않아도 괜찮습니다. 미리 구성된 로그 쿼리 및 사용자 지정 로그 쿼리를 포함하여 모니터링 정보를 검토하는 단계에 중점을 두세요. 
 
 1. Azure Portal에서 `Monitor` 검색 및 선택 후 **로그**를 클릭합니다.
 
