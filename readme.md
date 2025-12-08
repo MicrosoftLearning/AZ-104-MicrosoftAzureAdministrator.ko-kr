@@ -1,5 +1,3 @@
-**⚠️ This GitHub repo will retire on 30th December 2025.**
-
 # AZ-104: Microsoft Azure Administrator
 
 ## 환영
